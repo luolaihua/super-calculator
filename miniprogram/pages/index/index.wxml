@@ -1,0 +1,42 @@
+<!--index.wxml-->
+<view class="screen">
+	<view id="result">{{res}}</view>
+</view>
+<view class="btngroup">
+	<view class="btnbox">
+		<button class="c" id='{{id_c}}' bindtap="clearBtn">C</button>
+		<button class="c" id='{{id_d}}' bindtap="backBtn">←</button>
+		<button class="c" id='{{id_love}}'>♡</button>
+		<button class="brown" id='{{id_div}}' bindtap="clickBtn">÷</button>
+	</view>
+  	<view class="btnbox">
+		<button  id='{{id_inverse}}' >1/x</button>
+		<button  id='{{id_left}}' bindtap="clickBtn">(</button>
+		<button  id='{{id_right}}' bindtap="clickBtn">)</button>
+		<button class="brown" id='{{id_two}}' >²</button>
+	</view>
+	<view class="btnbox">
+		<button id='{{id7}}' bindtap="clickBtn">7</button>
+		<button id='{{id8}}' bindtap="clickBtn">8</button>
+		<button id='{{id9}}' bindtap="clickBtn">9</button>
+		<button class="brown" id='{{id_mult}}' bindtap="clickBtn">×</button>
+	</view>
+	<view class="btnbox">
+		<button id='{{id4}}' bindtap="clickBtn">4</button>
+		<button id='{{id5}}' bindtap="clickBtn">5</button>
+		<button id='{{id6}}' bindtap="clickBtn">6</button>
+		<button class="brown" id='{{id_sub}}' bindtap="clickBtn">－</button>
+	</view>
+	<view class="btnbox">
+		<button id='{{id1}}' bindtap="clickBtn">1</button>
+		<button id='{{id2}}' bindtap="clickBtn">2</button>
+		<button id='{{id3}}' bindtap="clickBtn">3</button>
+		<button class="brown" id='{{id_add}}' bindtap="clickBtn">＋</button>
+	</view>
+	<view class="btnbox">
+		<button id='{{id0}}' bindtap="clickBtn">0</button>
+		<button id='{{id00}}' bindtap="clickBtn">00</button>
+		<button id='{{id_dot}}' bindtap="clickBtn">.</button>
+		<button class="brown" id='{{id_equal}}' bindtap="equal">＝</button>
+	</view>
+</view>
