@@ -34,6 +34,26 @@ Page({
     justOne:false
 
   },
+  sqrt:function(e){
+    var res = this.data.res;
+    if(!isNaN(res)){
+      res = Number(res)
+      this.setData({
+        res:Math.sqrt(res)+'',
+        condition:'equaled'
+      })
+    }
+  },
+  pow2:function(e){
+    var res = this.data.res;
+    if(!isNaN(res)){
+      res = Number(res)
+      this.setData({
+        res:res*res+'',
+        condition:'equaled'
+      })
+    }
+  },
   loveBtn:function(e){
       wx.showToast({
         title: '老婆，我爱你',
@@ -43,7 +63,7 @@ Page({
   backBtn:function(e){
     var res = this.data.res;
     var condition = this.data.condition;
-    if(condition != 'initial'){
+    if(condition != 'initial' ||res.length>1){
       this.setData({
         res:res.substr(0,res.length-1)
       })
