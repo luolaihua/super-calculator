@@ -34,6 +34,12 @@ Page({
     justOne:false
 
   },
+  loveBtn:function(e){
+      wx.showToast({
+        title: '老婆，我爱你',
+        image:'../../images/t3.jpg'
+      })
+  },
   backBtn:function(e){
     var res = this.data.res;
     var condition = this.data.condition;
@@ -53,22 +59,9 @@ Page({
     var btnValue = e.target.id;
     var result = this.data.res;
     var condition = this.data.condition;
-    //不能连续重复点击： +-*/.
-    if(btnValue =='+'&&btnValue=='-'&&btnValue=='×'&&btnValue=='÷'&&btnValue=='.'){
-      result = result+btnValue;
-       this.setData({
-        res:result,
-        condition:'clicked',
-        justOne:true
-       });
-    }else{
-      this.setData({
-        justOne:false
-       })
-    }
-
-  if(!this.data.justOne){
     
+   // if(btnValue =='+'&&btnValue=='-'&&btnValue=='×'&&btnValue=='÷'&&btnValue=='.'
+
     switch(condition){
       case 'initial':
            result = btnValue;
@@ -77,6 +70,17 @@ Page({
             condition:'clicked'});break;
 
       case 'clicked':
+        //不能连续重复点击： +-*/. 判断最后一个字符是否+-*/. 如果是就删除
+        var lastChar = result.charAt(result.length-1);
+      
+        if(btnValue =='+'||btnValue=='-'||btnValue=='×'||btnValue=='÷'||btnValue=='.'){
+          
+          if(lastChar =='+'||  lastChar=='-'||lastChar=='×'||lastChar=='÷'||lastChar=='.'){
+            result = result.substr(0,result.length-1)
+          }
+        }
+
+
         result = result+btnValue;
        this.setData({
         res:result,
@@ -100,7 +104,6 @@ Page({
 
     }
 
-  }
   
 
   },

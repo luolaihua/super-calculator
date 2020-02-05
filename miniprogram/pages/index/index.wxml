@@ -6,7 +6,7 @@
 	<view class="btnbox">
 		<button class="c" id='{{id_c}}' bindtap="clearBtn">C</button>
 		<button class="c" id='{{id_d}}' bindtap="backBtn">←</button>
-		<button class="c" id='{{id_love}}'>♡</button>
+		<button class="c" id='{{id_love}}' bindtap="loveBtn">♡</button>
 		<button class="brown" id='{{id_div}}' bindtap="clickBtn">÷</button>
 	</view>
   	<view class="btnbox">
