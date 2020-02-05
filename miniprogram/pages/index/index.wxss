@@ -35,7 +35,6 @@ button::after{
   width: 100%;
   position: fixed;
   bottom: 900rpx;
-  font-size: 100rpx;
   
 }
 .screen view{
