@@ -1,12 +1,12 @@
 <!--index.wxml-->
-<view class="screen" style="font-size:{{fontsize}}rpx">
+<view class="screen" style="font-size:{{fontsize}}rpx ">
 	<view id="result">{{res}}</view>
 </view>
 <view class="btngroup">
 	<view class="btnbox">
 		<button class="c" id='{{id_c}}' bindtap="clearBtn">C</button>
 		<button class="c" id='{{id_d}}' bindtap="backBtn">←</button>
-		<button class="c" id='{{id_love}}' bindtap="loveBtn" bindlongtap="longtap">♡</button>
+		<button class="c" id='{{id_love}}' bindtap="loveBtn" bindtouchmove="touchMove" bindtouchstart="touchStart" bindtouchend="touchEnd">♡</button>
 		<button class="brown" id='{{id_div}}' bindtap="clickBtn">÷</button>
 	</view>
   	<view class="btnbox">
@@ -34,8 +34,8 @@
 		<button class="brown" id='{{id_add}}' bindtap="clickBtn">＋</button>
 	</view>
 	<view class="btnbox">
-		<button id='{{id0}}' bindtap="clickBtn">0</button>
 		<button id='{{id00}}' bindtap="clickBtn">00</button>
+		<button id='{{id0}}' bindtap="clickBtn">0</button>
 		<button id='{{id_dot}}' bindtap="clickBtn">.</button>
 		<button class="brown" id='{{id_equal}}' bindtap="equal">＝</button>
 	</view>
