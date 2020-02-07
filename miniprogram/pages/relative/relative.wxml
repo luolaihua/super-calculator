@@ -1,2 +1,32 @@
-<!--miniprogram/pages/relative/relative.wxml-->
-<text>miniprogram/pages/relative/relative.wxml</text>
+<view class="text" >{{screenData}}</view>
+
+  <!-- 用来显示结果 -->
+  <view class="result">{{result}} </view>
+  <!-- 显示按钮功能 style="height:{{second_height}}px"-->
+  <view class="btngroup" >
+    <view class="btnBox"  >  
+			    <button class="btn " bindtap="clickButton" hover-class='shadow' id="{{id_h}}">夫</button>
+        <button class="btn " bindtap="clickButton" id="{{id_w}}" hover-class='shadow'>妻</button>
+        <button class="btn orange1" bindtap="loveBtn" id="{{id_love}}" hover-class='shadow'>♡</button>
+        <button class="btn orange" bindtap="clickButton" id="{{id_clear}}" hover-class='shadow'>AC</button>
+ 		</view>
+
+    <view class="btnBox">
+         <button class="btn " bindtap="clickButton" id="{{id_f}}" hover-class='shadow'>父</button>
+        <button class="btn " bindtap="clickButton" id="{{id_m}}" hover-class='shadow'>母</button>
+        <button class="btn orange1" bindtap="changeSex" id="{{id_sex}}" hover-class='shadow'>{{sex_text}}</button>
+        <button class="btn orange" bindtap="clickButton" id="{{id_back}}" hover-class='shadow'>←</button>
+ 		</view>
+    <view class="btnBox">
+        <button class="btn " bindtap="clickButton" id="{{id_bb}}" hover-class='shadow'>兄</button>
+        <button class="btn " bindtap="clickButton" id="{{id_sb}}" hover-class='shadow'>弟</button>
+        <button class="btn " bindtap="clickButton" id="{{id_son}}" hover-class='shadow'>子</button>
+        <button class="btn orange" bindtap="clickButton" id="{{id_inverse}}" hover-class='shadow'>互查</button>
+ 		</view>
+    <view class="btnBox">
+				<button class="btn " bindtap="clickButton" id="{{id_bs}}" hover-class='shadow'>姐</button>
+        <button class="btn " bindtap="clickButton" id="{{id_ss}}" hover-class='shadow'>妹</button>
+				<button class="btn " bindtap="clickButton" id="{{id_d}}" hover-class='shadow'>女</button>
+        <button class="btn orange" bindtap="clickButton" id="{{id_equal}}" hover-class='shadow'>=</button>  
+    </view>
+  </view>

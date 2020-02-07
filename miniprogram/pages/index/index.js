@@ -12,10 +12,12 @@ var touchMoveY = 0; // y轴方向移动的距离
 
 Page({
   data: {
+    poet:'',
     isRuleTrue: false,
     imageUrl:'',
     fontsize:100,
     res:"0",//结果
+    res_ed:'',
     id1:"1",
     id2:'2',
     id3:'3',
@@ -93,10 +95,11 @@ hideRule: function () {
       //isRuleTrue: true
     })
     //判断是否长按
-    if((this.data.endTime-this.data.startTime) >3000){
+    if((this.data.endTime-this.data.startTime) >1000){
       this.setData({
-        fontsize:40,
-        res:'亲爱的老婆，我爱你，很爱很爱，我想你，很想很想。我想吻你千遍，拥你入眠,和你一起看日出日落，和你度过余生。我的未来里有你，你的未来里有我，这样就很好。爱你。再吻你千遍❤❤❤'
+        res:'',
+        fontsize:25,
+        res:'老婆，昨晚是我们第一次闹矛盾，是我不好，也谢谢你原谅我。情侣之间有矛盾是难免的，我们需要互相磨合，互相迁就。你要相信我是爱你的。对待这段感情我也是很认真很认真的，如果你愿意，等我们毕业了，你就做我真正的老婆好不好。我爱你，亲爱的朱永慧，再吻你千遍♥♥♥♥♥♥'
       })
     }else {
       
@@ -147,31 +150,54 @@ hideRule: function () {
     if (moveX <= moveY && touchMoveY!=0) {// 上下
      // 向上滑动
      if (touchMoveY - touchStartY <= -120 && time < 10) {
+       this.setData({
+         poet:'除了爱你我没有别的愿望\n一场风暴占满了河谷\n一条鱼占满了河\n我把你造得像我的孤独一样大\n整个世界好让我们躲藏\n日日夜夜好让我们互相了解\n为了在你的眼睛里不再看到别的\n只看到我对你的想象\n只看到你的形象中的世界\n还有你眼帘控制的日日夜夜',
+         isRuleTrue:true
+       })
        wx.showToast({
-         title:'想',
+         title:'遇见你真好',
+         icon:"none"
        })
      //console.log("向上滑动"+touchMoveY+ '  |  '+touchStartY+'up')
      }
      // 向下滑动 
      if (touchMoveY - touchStartY >= 120 && time < 10) {
      //console.log('向下滑动 '+touchMoveY+ '   |  '+touchStartY);
+
+     this.setData({
+      poet:'我爱你，不光因为你的样子，\n还因为，和你在一起时，我的样子。\n我爱你，\n不光因为你为我而做的事，\n还因为，为了你，\n我能做成的事。\n我爱你，\n因为你能唤出，我最真的那部分。\n我爱你，因为你穿越我心灵的旷野，\n如同阳光穿透水晶般容易，\n我的傻气，我的弱点，\n在你的目光里几乎不存在。\n而我心里最美丽的地方，\n却被你的光芒照得通亮，\n别人都不曾费心走那么远，\n别人都觉得寻找太麻烦，\n所以没人发现过我的美丽，\n所以没人到过这里。',
+     isRuleTrue:true
+    })
      wx.showToast({
-      title:'爱',
+      title:'我的一切都属于你',
+      icon:"none"
     })
      }
     }else if(touchMoveX!=0){// 左右
      // 向左滑动
      if (touchMoveX - touchStartX <= -120 && time < 10) {
      //console.log("左滑页面"+touchMoveX+ '  |  '+touchStartX+'left')
+
+     this.setData({
+      poet:'深深的话，\n我们浅浅地说。\n长长的路，\n我们慢慢地走。\n爱你，想你，念你。\n我并不害怕我们暂时分开，\n如果好的爱情需要绕一大圈后再回来，\n到那时我也可以笑着拥抱你说，\n你看，你还是我的。',
+       isRuleTrue:true
+    })
      wx.showToast({
-      title:'朱永慧',
+      title:'多想和你身体交融',
+      icon:"none"
     })
      }
      // 向右滑动 
      if (touchMoveX - touchStartX >= 120 && time < 10) {
      //console.log('向右滑动'+touchMoveX+ '  |  '+touchStartX+'left');
+
+     this.setData({
+      poet:'愿我如星君如月，\n夜夜流光相皎洁。\n不是我喜欢的样子你都有，\n而是你所有的样子我都喜欢。\n朱永慧，\n你好，我是罗来华，\n我爱你。',
+          isRuleTrue:true
+    })
      wx.showToast({
-      title:'罗来华',
+      title:'我想把一切都交给你,我的灵魂和我的肉体',
+      icon:"none"
     })
      }
     }

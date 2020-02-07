@@ -1,1 +1,90 @@
-/* miniprogram/pages/relative/relative.wxss */
+/* pages/welcome/welcome.wxss */
+page {
+  background-color: black;
+}
+
+/*
+.wx-switch-input{
+width:82rpx !important;
+height:40rpx !important;
+}
+白色样式（false的样式）
+.wx-switch-input::before{
+  width:80rpx !important;
+  height: 36rpx !important;
+  }
+  绿色样式（true的样式）
+  .wx-switch-input::after{
+  width: 40rpx !important;
+  height: 36rpx !important;
+  }
+
+*/
+
+
+.text {
+
+  word-wrap: break-word;
+  background-color: black;
+  color: white;
+  font-size: 50rpx;
+  width: auto;
+  height: 150rpx;
+  margin: 40rpx;
+
+}
+
+.result {
+  word-wrap: break-word;
+  height: 200rpx;
+  background-color: black;
+  color: white;
+  font-size: 60rpx;
+  text-align: right;
+  width: auto;
+  margin: 40rpx
+}
+
+.btnBox {
+  z-index: 9;
+  display: flex;
+  height: 150rpx;
+  bottom: 0rpx;
+  width: 100%;
+  border: none;
+}
+
+.btngroup {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.btn {
+  background-color: white;
+  width: 25%;
+  margin: 0rpx;
+  border-radius: 0px;
+  text-align: center;
+  font-size: 50rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.orange {
+  background-color: orange;
+}
+
+.orange1 {
+  color: orange;
+}
+
+.gray {
+  background-color: #cfcfcf;
+}
+
+.shadow {
+  background-color: #999;
+}
