@@ -12,7 +12,9 @@
     "pages/openapi/callback/callback",
     "pages/openapi/cloudid/cloudid",
     "pages/im/im",
-    "pages/im/room/room"
+    "pages/im/room/room",
+    "pages/scientific/scientific",
+    "pages/relative/relative"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
@@ -22,5 +24,21 @@
     "navigationBarTextStyle": "black"
   },
   "sitemapLocation": "sitemap.json",
-  "style": "v2"
+  "style": "v2",
+  "tabBar": {
+    "color": "#fff",
+    "backgroundColor": "#000",
+    "selectedColor": "#A52A2A",
+
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "普通计算"
+      },
+      {
+        "pagePath": "pages/relative/relative",
+        "text": "亲戚计算"
+      }
+    ]
+  }
 }

@@ -1,0 +1,2 @@
+<!--miniprogram/pages/scientific/scientific.wxml-->
+<scroll-view>{{show}}</scroll-view>
