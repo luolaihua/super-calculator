@@ -9,6 +9,11 @@ Page({
    * 页面的初始数据
    */
   data: {
+    inputValue:'',
+    chain:'',
+    isShowScreen:true,
+    isFu:false,
+    isQi:true,
     second_height: 0, //第二部分的高度
     screenData: "我",
     result: "",
@@ -34,6 +39,24 @@ Page({
     sex_text: '♂'
 
   },
+  clearBtn:function(e){
+    this.setData({
+      inputValue:"",
+      chain:''
+    })
+
+  },
+  inputChain:function(e){
+    var  result = relationship({
+      text: e.detail.value,
+      sex: this.data.sex,
+      reverse: false,
+      type: 'chain'
+    });
+    this.setData({
+      chain:result
+    })
+  },
 
   /**
    * 生命周期函数--监听页面加载
@@ -54,9 +77,21 @@ Page({
    * 点击开关男|女
    */
   loveBtn:function(e){
-    wx.showToast({
-      title: '老婆我爱你',
-    })
+    if(this.data.isShowScreen){
+      this.setData({
+        isShowScreen:false
+      })
+      wx.showToast({
+        title: '亲戚关系查找',
+      })
+    }else{
+      this.setData({
+        isShowScreen:true
+      })
+      wx.showToast({
+        title: '亲戚关系计算',
+      })
+    }
   },
   changeSex: function (e) {
     //console.log('switch1 发生 change 事件，携带值为', e.detail.value)
@@ -65,19 +100,23 @@ Page({
       //设置数据为选中
       this.setData({
         sex: 0,
-        sex_text: '♀'
+        sex_text: '♀',
+        isFu:false,
+        isQi:true
       })
       wx.showToast({
-        title: '我是朱永慧',
+        title: '我是男孩',
       })
     } else {
       //设置数据为选中
       this.setData({
         sex: 1,
-        sex_text: '♂'
+        sex_text: '♂',
+        isFu:true,
+        isQi:false
       })
       wx.showToast({
-        title: '我是罗来华',
+        title: '我是女孩',
       })
     }
 
@@ -96,36 +135,6 @@ Page({
     var dataResult = this.data.result.toString();
     //获取点击的id
     var id = event.target.id;
-/*
-    switch (id) {
-      //退格功能实现
-      case this.data.id_back:
-        //如果屏幕只有 "我" 则不处理
-        if (data == "我") {
-          break;
-        } else {
-          data = data.substring(0, data.length - 3);
-          //需要重新计算关系
-          var result = relationship({
-            text: data,
-            sex: this.data.sex,
-            reverse: false,
-            type: 'default'
-          });
-          dataResult = result;
-        }
-        break;
-        //清除功能实现
-      case this.data.id_clear:
-        data = "我";
-        dataResult = "";
-        break;
-      case this.data.id_back:
-        break;
-      case this.data.id_back:
-        break;
-    }
-*/
 
     //退格功能实现
     if (id == this.data.id_back) { //如果是X 后退则清除两个字符
@@ -152,9 +161,7 @@ Page({
 
 
 
-      //点击其他操作
-      //var data = data.substring(0, data.length);
-
+      //点击其他操作 点击按钮即计算一遍
       var result = relationship({
         text: data,
         sex: this.data.sex,
@@ -163,11 +170,11 @@ Page({
       });
       console.log(result);
 
+
       //点击等于按钮
       if (id == this.data.id_equal) {
 
-        //点击 = 处理
-        //如果字数大于22个则不要增加and提示关系态复杂啦
+
         if (data.length >= 22) {
           //console.log("字数超出限制");
           dataResult = "关系有点远，年长就叫老祖宗吧~";
@@ -176,14 +183,17 @@ Page({
         //计算公式，核心算法
         //修改屏幕结果为result
         dataResult = result;
+
+
       } else if (id == this.data.id_inverse) { //互查操作  Ta称呼我
-        //如果字数大于22个则不要增加and提示关系态复杂啦
+
+        
         if (data.length >= 22) {
           //console.log("字数超出限制");
           dataResult = "关系有点远，年长就叫老祖宗吧~";
           return;
         }
-        //this.data.isTrue
+        
         if (this.data.isTrue) { //一开始为false
           result = relationship({
             text: data,
@@ -212,16 +222,15 @@ Page({
         //修改屏幕结果为result
         dataResult = result;
       } else {
-        //如果字数大于22个则不要增加and提示关系态复杂啦
+        
+
+        //点击十个关系字
+
         if (data.length >= 22) {
           //console.log("字数超出限制");
           dataResult = "关系有点远，年长就叫老祖宗~\n同龄人就叫帅哥美女吧";
         } else {
 
-          //同性关系处理 当为男性时，一开始点击夫不做处理
-          if ((this.data.sex == 1 && id == this.data.id1 && data == '我') || (this.data.sex == 0 && id == this.data.id2 && data == '我')) {
-
-          } else {
             data = data + "的" + id;
             //需要重新计算关系
             result = relationship({
@@ -230,19 +239,18 @@ Page({
               reverse: false,
               type: 'default'
             });
-            if (this.isNull(result)) { //结果为空
+            console.log(result+"666")
+            if (result.length==0) { //结果为空
               result = "哎呀，关系太复杂了啊，我算不出来";
             }
 
             dataResult = result;
-          }
+          
 
         }
       }
-
-
-
     }
+/*
     //设置数据
     if(data =='我的妻子'&&this.data.sex!=0){
       dataResult = '朱永慧'
@@ -250,17 +258,10 @@ Page({
     if(data =='我的丈夫'&&this.data.sex!=1){
       dataResult = '罗来华'
     }
+    */
     this.setData({
       screenData: data,
       result: dataResult
     })
-  },
-  //判断结果是否为空，若是则输出关系太复杂了
-  isNull: function (result) {
-    if (result.length == 0) {
-      return true;
-    }
-    return false;
   }
-
 })

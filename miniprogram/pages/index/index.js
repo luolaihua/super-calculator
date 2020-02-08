@@ -45,7 +45,8 @@ Page({
     condition:'initial',
     justOne:false,
     startTime:'',
-    endTime:''
+    endTime:'',
+    isLove:'false'
 
   },
   
@@ -95,12 +96,12 @@ hideRule: function () {
       //isRuleTrue: true
     })
     //判断是否长按
+    
     if((this.data.endTime-this.data.startTime) >1000){
       this.setData({
         res:'',
         fontsize:25,
-        res:'老婆，昨晚是我们第一次闹矛盾，是我不好，也谢谢你原谅我。情侣之间有矛盾是难免的，我们需要互相磨合，互相迁就。你要相信我是爱你的。对待这段感情我也是很认真很认真的，如果你愿意，等我们毕业了，你就做我真正的老婆好不好。我爱你，亲爱的朱永慧，再吻你千遍♥♥♥♥♥♥'
-      })
+        res:'' })
     }else {
       
       if(isExist !=-1){

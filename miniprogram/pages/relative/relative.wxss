@@ -20,7 +20,45 @@ height:40rpx !important;
   }
 
 */
+.inputBox{
+  display: flex;
+  padding: 2%;
+  justify-content: center;
+  align-items: center;
+ 
+}
+.input {
+  background-color: black;
+  color: white;
+  font-size: 50rpx;
+  width: auto;
+  height: 100rpx;
+  margin: 10rpx;
 
+}
+.ok{
+  width: 20rpx;
+  height: 100rpx;
+  margin: 20rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: orange;
+  background-color: white;
+  font-size: 40rpx;
+}
+
+.show{
+  word-wrap: break-word;
+  height: 200rpx;
+  background-color: black;
+  color: orange;
+  font-size: 60rpx;
+  text-align: center;
+  width: auto;
+  margin: 40rpx;
+  
+}
 
 .text {
 

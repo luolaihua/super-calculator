@@ -1,8 +1,9 @@
 {
   "pages": [
+   
+   
     "pages/index/index",
     "pages/relative/relative",
-    
     "pages/userConsole/userConsole",
     "pages/storageConsole/storageConsole",
     "pages/databaseGuide/databaseGuide",
@@ -21,7 +22,7 @@
     "backgroundColor": "#F6F6F6",
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#F6F6F6",
-    "navigationBarTitleText": "ToMyLove_ZYH",
+    "navigationBarTitleText": "计算器",
     "navigationBarTextStyle": "black"
   },
   "sitemapLocation": "sitemap.json",
