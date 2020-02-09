@@ -1,0 +1,11 @@
+<!--miniprogram/pages/introduction/introduction.wxml-->
+<view >
+	<view>
+		使用说明
+	</view>
+	<text>
+←    删除键
+♡    亲戚关系查找/亲戚关系计算  功能切换
+使用前先通过 ♀/♂ 按钮选择您的性别
+</text>
+</view>

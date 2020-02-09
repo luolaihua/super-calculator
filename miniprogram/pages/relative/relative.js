@@ -105,7 +105,7 @@ Page({
         isQi:true
       })
       wx.showToast({
-        title: '我是男孩',
+        title: '我是女孩',
       })
     } else {
       //设置数据为选中
@@ -116,7 +116,7 @@ Page({
         isQi:false
       })
       wx.showToast({
-        title: '我是女孩',
+        title: '我是男孩',
       })
     }
 
@@ -173,7 +173,9 @@ Page({
 
       //点击等于按钮
       if (id == this.data.id_equal) {
-
+        wx.navigateTo({
+          url: '../introduction/introduction',
+        })
 
         if (data.length >= 22) {
           //console.log("字数超出限制");

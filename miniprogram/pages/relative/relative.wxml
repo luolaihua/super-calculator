@@ -38,6 +38,6 @@
  		<button class="btn " bindtap="clickButton" id="{{id_bs}}" hover-class='shadow'>姐</button>
  		<button class="btn " bindtap="clickButton" id="{{id_ss}}" hover-class='shadow'>妹</button>
  		<button class="btn " bindtap="clickButton" id="{{id_d}}" hover-class='shadow'>女</button>
- 		<button class="btn orange" bindtap="clickButton" id="{{id_equal}}" hover-class='shadow'>=</button>
+ 		<button class="btn orange" bindtap="clickButton" id="{{id_equal}}" hover-class='shadow'>?</button>
  	</view>
  </view>

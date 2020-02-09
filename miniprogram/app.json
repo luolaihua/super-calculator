@@ -1,8 +1,8 @@
 {
   "pages": [
    
-   
     "pages/index/index",
+    "pages/introduction/introduction",
     "pages/relative/relative",
     "pages/userConsole/userConsole",
     "pages/storageConsole/storageConsole",
@@ -17,6 +17,7 @@
     "pages/im/im",
     "pages/im/room/room",
     "pages/scientific/scientific"
+   
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
@@ -31,7 +32,6 @@
     "color": "#fff",
     "backgroundColor": "#000",
     "selectedColor": "#A52A2A",
-
     "list": [
       {
         "pagePath": "pages/index/index",
