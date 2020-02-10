@@ -1,9 +1,13 @@
 .btnbox{
   display: flex;
-  height: 150rpx;
   bottom: 0rpx;
   width: 100%;
   border: none;
+  
+}
+.test{
+  position: fixed;
+  bottom: 0;
 }
 .btngroup{
   position: fixed;
@@ -17,7 +21,8 @@ button{
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 60rpx;
+  font-size: 40rpx;
+  
 }
 button::after{
   border-radius: 0;
