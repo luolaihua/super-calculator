@@ -20,8 +20,8 @@ var touchMoveY = 0; // y轴方向移动的距离
 
 Page({
   data: {
-    isScientific:false,
-    isFraction:false,
+    isScientific: false,
+    isFraction: false,
     ANS: '0',
     poet: '',
     isRuleTrue: false,
@@ -29,6 +29,20 @@ Page({
     fontsize: 100,
     res: "0", //结果
     res_ed: '',
+    id_sin: 'sin(',
+    id_cos: 'cos(',
+    id_tan: 'tan(',
+    id_asin: 'asin(',
+    id_acos: 'acos(',
+    id_atan: 'atan(',
+    id_X: '!',
+    id_log: 'log(',
+    id_gen: 'sqrt(',
+    id_mod: '%',
+    id_deg: 'deg',
+    id_i: 'i',
+    id_pi: 'pi',
+    id_e: 'e',
     id1: "1",
     id2: '2',
     id3: '3',
@@ -42,7 +56,7 @@ Page({
     id_d: 'del',
     id_love: 'love',
     id_div: '÷',
-    id_inverse: '',
+    id_inverse: '^(-1)',
     id_left: '(',
     id_right: ')',
     id_pow: '^',
@@ -78,35 +92,35 @@ Page({
   startFraction: function (e) {
     var isFraction = this.data.isFraction
     console.log(isFraction)
-    console.log(isNaN('2/3')+'---')
+    console.log(isNaN('2/3') + '---')
     var res = this.data.res
 
 
-    if(isFraction){
+    if (isFraction) {
       math.config({
         number: 'number'
       })
       this.setData({
-        isFraction:false
+        isFraction: false
       })
       wx.showToast({
         title: '普通运算',
       })
-      try{
+      try {
         res = new Fraction(res).toString()
-      }catch(e){
+      } catch (e) {
         console.log(e)
         wx.showToast({
           title: '格式错误！',
         })
       }
-      
-      if(!isNaN(res)){
+
+      if (!isNaN(res)) {
         this.setData({
-          res:res
+          res: res
         })
       }
-    }else{
+    } else {
       math.config({
         number: 'Fraction'
       })
@@ -114,24 +128,24 @@ Page({
         title: '分式运算',
       })
       this.setData({
-        isFraction:true
+        isFraction: true
       })
-      if(!isNaN(res)){
+      if (!isNaN(res)) {
         this.setData({
-          res:new Fraction(res).toFraction()
+          res: new Fraction(res).toFraction()
         })
       }
     }
   },
   //-------------------------------------------心形按钮功能
   loveBtn: function (e) {
-    if(this.data.isScientific){
+    if (this.data.isScientific) {
       this.setData({
-        isScientific:false
+        isScientific: false
       })
-    }else{
+    } else {
       this.setData({
-        isScientific:true
+        isScientific: true
       })
     }
 
@@ -141,7 +155,7 @@ Page({
     //判断有没有该元素
     var isExist = oneBox.indexOf(res);
     this.setData({
-      condition: "equaled",
+      condition: "initial",
       //isRuleTrue: true
     })
     //判断是否长按
@@ -302,11 +316,11 @@ Page({
             result = result.substr(0, result.length - 1)
           }
         }
-        if(lastChar!='A'||btnValue!="A"){
+        if (lastChar != 'A' || btnValue != "A") {
           result = result + btnValue;
         }
-        
-       
+
+
         this.setData({
           res: result,
           condition: 'clicked'
@@ -337,27 +351,47 @@ Page({
   equal: function (e) {
     var result = this.data.res;
     var ans = this.data.ANS;
-    //result = result.replaceAll('ANS',ans);
+
+    //预处理
     result = result.replaceAll('×', '*');
     result = result.replaceAll('÷', '/');
     parser.evaluate('A = ' + ans)
 
+    //求左括号出现次数
+    var index = result.indexOf('('); // 字符首次出现的位置
+    var count_left = 0; // 这个字符出现的次数
+    while (index !== -1) {
+      count_left++; // 每出现一次 次数加一
+      index = result.indexOf('(', index + 1); // 从字符串出现的位置的下一位置开始继续查找
+    }
+    //求左括号出现次数
+    var index = result.indexOf(')'); // 字符首次出现的位置
+    var count_right = 0; // 这个字符出现的次数
+    while (index !== -1) {
+      count_right++; // 每出现一次 次数加一
+      index = result.indexOf(')', index + 1); // 从字符串出现的位置的下一位置开始继续查找
+    }
+    //补填右括号
+    for(var i=0;i<(count_left-count_right) ;i++){
+      result = result+')'
+    }
 
-    try{
-      var res = parser.evaluate(result)
-      if(this.data.isFraction){
+    //计算结果
+    try {
+      var res = parser.evaluate(result).toString()
+      if (this.data.isFraction) {
         res = new Fraction(res).toFraction()
       }
-     
+
       console.log(res)
-    }catch(e){
+    } catch (e) {
       console.log(e)
       wx.showToast({
         title: '表达式错误,请重新输入',
-        icon:'none'
+        icon: 'none'
       })
     }
-    
+
 
     this.setData({
       res: res,
@@ -367,8 +401,6 @@ Page({
   },
 
   onLoad: function () {
-
-    console.log(math.evaluate('acos(0)') + '-------')
 
   },
 })

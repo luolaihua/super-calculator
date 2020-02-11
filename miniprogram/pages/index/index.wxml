@@ -8,56 +8,56 @@
 
 <view class="btngroup">
 	<view class="btnbox" wx:if="{{isScientific}}" style="height:{{isScientific?100:150}}rpx">
-		<button id='{{id0}}' bindtap="clickBtn">sin(</button>
-		<button id='{{id_inverse}}' bindtap="startFraction" style="color:{{isFraction?'brown':'white'}}">cos(</button>
-		<button id='{{id_left}}' bindtap="clickBtn">tan(</button>
-		<button id='{{id_right}}' bindtap="clickBtn">X!</button>
-		<button class="brown" id='{{id_div}}' bindtap="clickBtn">log(</button>
+		<button id='{{id_sin}}' bindtap="clickBtn">sin(</button>
+		<button id='{{id_cos}}' bindtap="clickBtn">cos(</button>
+		<button id='{{id_tan}}' bindtap="clickBtn">tan(</button>
+		<button id='{{id_X}}' bindtap="clickBtn">X!</button>
+		<button class="brown" id='{{id_log}}' bindtap="clickBtn">log(</button>
 	</view>
 	<view class="btnbox" wx:if="{{isScientific}}" style="height:{{isScientific?100:150}}rpx">
-		<button id='{{id0}}' bindtap="clickBtn">asin(</button>
-		<button id='{{id_inverse}}' bindtap="startFraction" style="color:{{isFraction?'brown':'white'}}">acos(</button>
-		<button id='{{id_left}}' bindtap="clickBtn">atan(</button>
-		<button id='{{id_right}}' bindtap="clickBtn">1/x</button>
-		<button class="brown" id='{{id_div}}' bindtap="clickBtn">ln(</button>
+		<button id='{{id_asin}}' bindtap="clickBtn">asin(</button>
+		<button id='{{id_acos}}' bindtap="clickBtn">acos(</button>
+		<button id='{{id_atan}}' bindtap="clickBtn">atan(</button>
+		<button id='{{id_inverse}}' bindtap="clickBtn">1/x</button>
+		<button class="brown" id='{{id_ln}}' bindtap="clickBtn">ln(</button>
 	</view>
 	<view class="btnbox" style="height:{{isScientific?100:150}}rpx">
-		<button id='{{id0}}' bindtap="clickBtn" wx:if="{{isScientific}}">√</button>
+		<button id='{{id_gen}}' bindtap="clickBtn" wx:if="{{isScientific}}">√</button>
 		<button class="c" id='{{id_c}}' bindtap="clearBtn">C</button>
 		<button class="c" id='{{id_d}}' bindtap="backBtn">←</button>
 		<button class="c" id='{{id_love}}' bindtap="loveBtn">♡</button>
 		<button class="brown" id='{{id_pow}}' bindtap="clickBtn">^</button>
 	</view>
 	<view class="btnbox" style="height:{{isScientific?100:150}}rpx">
-		<button id='{{id0}}' bindtap="clickBtn" wx:if="{{isScientific}}">%</button>
-		<button id='{{id_inverse}}' bindtap="startFraction" style="color:{{isFraction?'brown':'white'}}">a/b</button>
+		<button id='{{id_mod}}' bindtap="clickBtn" wx:if="{{isScientific}}">%</button>
+		<button bindtap="startFraction" style="color:{{isFraction?'brown':'white'}}">a/b</button>
 		<button id='{{id_left}}' bindtap="clickBtn">(</button>
 		<button id='{{id_right}}' bindtap="clickBtn">)</button>
 		<button class="brown" id='{{id_div}}' bindtap="clickBtn">÷</button>
 	</view>
 	<view class="btnbox" style="height:{{isScientific?100:150}}rpx">
-		<button id='{{id0}}' bindtap="clickBtn" wx:if="{{isScientific}}">deg</button>
+		<button id='{{id_deg}}' bindtap="clickBtn" wx:if="{{isScientific}}">deg</button>
 		<button id='{{id7}}' bindtap="clickBtn">7</button>
 		<button id='{{id8}}' bindtap="clickBtn">8</button>
 		<button id='{{id9}}' bindtap="clickBtn">9</button>
 		<button class="brown" id='{{id_mult}}' bindtap="clickBtn">×</button>
 	</view>
 	<view class="btnbox" style="height:{{isScientific?100:150}}rpx">
-		<button id='{{id0}}' bindtap="clickBtn" wx:if="{{isScientific}}">i</button>
+		<button id='{{id_i}}' bindtap="clickBtn" wx:if="{{isScientific}}">i</button>
 		<button id='{{id4}}' bindtap="clickBtn">4</button>
 		<button id='{{id5}}' bindtap="clickBtn">5</button>
 		<button id='{{id6}}' bindtap="clickBtn">6</button>
 		<button class="brown" id='{{id_sub}}' bindtap="clickBtn">－</button>
 	</view>
 	<view class="btnbox" style="height:{{isScientific?100:150}}rpx">
-		<button id='{{id0}}' bindtap="clickBtn" wx:if="{{isScientific}}">π</button>
+		<button id='{{id_pi}}' bindtap="clickBtn" wx:if="{{isScientific}}">π</button>
 		<button id='{{id1}}' bindtap="clickBtn">1</button>
 		<button id='{{id2}}' bindtap="clickBtn">2</button>
 		<button id='{{id3}}' bindtap="clickBtn">3</button>
 		<button class="brown" id='{{id_add}}' bindtap="clickBtn">＋</button>
 	</view>
 	<view class="btnbox" style="height:{{isScientific?100:150}}rpx">
-		<button id='{{id0}}' bindtap="clickBtn" wx:if="{{isScientific}}">e</button>
+		<button id='{{id_e}}' bindtap="clickBtn" wx:if="{{isScientific}}">e</button>
 		<button id='{{id0}}' bindtap="clickBtn">0</button>
 		<button id='{{id_dot}}' bindtap="clickBtn">.</button>
 		<button id='{{id_ans}}' bindtap="clickBtn">A</button>
