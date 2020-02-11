@@ -25,7 +25,7 @@
 		<button id='{{id_gen}}' bindtap="clickBtn" wx:if="{{isScientific}}">√</button>
 		<button class="c" id='{{id_c}}' bindtap="clearBtn">C</button>
 		<button class="c" id='{{id_d}}' bindtap="backBtn">←</button>
-		<button class="c" id='{{id_love}}' bindtap="loveBtn">♡</button>
+		<button class="c" id='{{id_love}}' data-time="{{lastTapTime}}" data-title="标题" bindtap="loveBtn" bindtouchstart="touchStart" bindtouchend="touchEnd" bindtouchmove="touchMove">♡</button>
 		<button class="brown" id='{{id_pow}}' bindtap="clickBtn">^</button>
 	</view>
 	<view class="btnbox" style="height:{{isScientific?100:150}}rpx">
