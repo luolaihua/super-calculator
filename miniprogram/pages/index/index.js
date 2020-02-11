@@ -1,5 +1,4 @@
 //index.js
-var util = require('../index/mathStr.js');
 var math = require('../util/math.min.js');
 var Fraction = require('../util/fraction.js');
 const parser = math.parser();
@@ -20,13 +19,13 @@ var touchMoveY = 0; // y轴方向移动的距离
 
 Page({
   data: {
-    isScientific: false,
+    isScientific: true,
     isFraction: false,
     ANS: '0',
     poet: '',
     isRuleTrue: false,
     imageUrl: '',
-    fontsize: 100,
+    fontsize: 70,
     res: "0", //结果
     res_ed: '',
     id_sin: 'sin(',
@@ -37,11 +36,12 @@ Page({
     id_atan: 'atan(',
     id_X: '!',
     id_log: 'log(',
-    id_gen: 'sqrt(',
+    id_dou:',',
+    id_gen: '√(',
     id_mod: '%',
     id_deg: 'deg',
     id_i: 'i',
-    id_pi: 'pi',
+    id_pi: 'π',
     id_e: 'e',
     id1: "1",
     id2: '2',
@@ -340,12 +340,21 @@ Page({
         break;
 
       case 'equaled':
-        if (isNaN(btnValue) && btnValue != 'A') {
-          result = result + btnValue;
+
+        if(this.data.isScientific){
+          result = btnValue;
           this.setData({
             res: result,
             condition: 'clicked'
           })
+        }else{
+          if (isNaN(btnValue) && btnValue != 'A') {
+            result = result + btnValue;
+            this.setData({
+              res: result,
+              condition: 'clicked'
+            })
+         
         } else {
           result = btnValue;
           this.setData({
@@ -353,6 +362,8 @@ Page({
             condition: 'clicked'
           })
         };
+        }
+       
         break;
 
     }
@@ -367,6 +378,8 @@ Page({
     //预处理
     result = result.replaceAll('×', '*');
     result = result.replaceAll('÷', '/');
+    result = result.replaceAll('π', 'pi');
+    result = result.replaceAll('√', 'sqrt');
     parser.evaluate('A = ' + ans)
 
     //求左括号出现次数

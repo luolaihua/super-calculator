@@ -65,22 +65,21 @@ height:40rpx !important;
   word-wrap: break-word;
   background-color: black;
   color: white;
-  font-size: 50rpx;
+  font-size: 40rpx;
   width: auto;
-  height: 150rpx;
+  height: 300rpx;
   margin: 40rpx;
 
 }
 
 .result {
-  word-wrap: break-word;
-  height: 200rpx;
-  background-color: black;
+  height: 100rpx;
+  background-color: transparent;
   color: white;
-  font-size: 60rpx;
+  font-size: 70rpx;
   text-align: right;
   width: auto;
-  margin: 40rpx
+  margin: 20rpx
 }
 
 .btnBox {

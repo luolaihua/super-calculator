@@ -1,7 +1,4 @@
 <!--index.wxml-->
-<view class="screen2">
-	<view id="result">{{res_ed}}</view>
-</view>
 <view class="screen1" style="font-size:{{fontsize}}rpx ">
 	<view id="result">{{res}}</view>
 </view>
@@ -19,7 +16,7 @@
 		<button id='{{id_acos}}' bindtap="clickBtn" style="font-size:{{isScientific?40:60}}rpx" >acos(</button>
 		<button id='{{id_atan}}' bindtap="clickBtn" style="font-size:{{isScientific?40:60}}rpx" >atan(</button>
 		<button id='{{id_inverse}}' bindtap="clickBtn" style="font-size:{{isScientific?40:60}}rpx" >1/x</button>
-		<button class="brown" id='{{id_ln}}' bindtap="clickBtn" style="font-size:{{isScientific?40:60}}rpx" >ln(</button>
+		<button class="brown" id='{{id_dou}}' bindtap="clickBtn" style="font-size:{{isScientific?40:60}}rpx" >,</button>
 	</view>
 	<view class="btnbox" style="height:{{isScientific?100:150}}rpx">
 		<button id='{{id_gen}}' bindtap="clickBtn" wx:if="{{isScientific}}" style="font-size:{{isScientific?40:60}}rpx" >√</button>
