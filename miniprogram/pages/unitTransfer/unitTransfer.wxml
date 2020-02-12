@@ -1,0 +1,100 @@
+<!--miniprogram/pages/unitTransfer/unitTransfer.wxml-->
+<view class="body">
+	<swiper indicator-dots="true">
+		<swiper-item>
+			<view class="viewGroup">
+				<view class="viewBox">
+					<view class="v1" hover-class="shadow">长度</view>
+					<view class="v1" hover-class="shadow">距离</view>
+					<view class="v1" hover-class="shadow">时间</view>
+					<view class="v1" hover-class="shadow">体积</view>
+				</view>
+				<view class="viewBox">
+					<view class="v1" hover-class="shadow">液体体积</view>
+					<view class="v1" hover-class="shadow">面积</view>
+					<view class="v1" hover-class="shadow">质量</view>
+					<view class="v1" hover-class="shadow">温度</view>
+				</view>
+				<view class="viewBox">
+					<view class="v1" hover-class="shadow">速度</view>
+					<view class="v1" hover-class="shadow">进制</view>
+					<view class="v1" hover-class="shadow">电学单位</view>
+					<view class="v1" hover-class="shadow">压强</view>
+				</view>
+			</view>
+		</swiper-item>
+		<swiper-item>
+			<view class="viewGroup">
+				<view class="viewBox">
+					<view class="v1" hover-class="shadow">长度</view>
+					<view class="v1" hover-class="shadow">距离</view>
+					<view class="v1" hover-class="shadow">时间</view>
+					<view class="v1" hover-class="shadow">体积</view>
+				</view>
+				<view class="viewBox">
+					<view class="v1" hover-class="shadow">液体体积</view>
+					<view class="v1" hover-class="shadow">面积</view>
+					<view class="v1" hover-class="shadow">质量</view>
+					<view class="v1" hover-class="shadow">温度</view>
+				</view>
+				<view class="viewBox">
+					<view class="v1" hover-class="shadow">速度</view>
+					<view class="v1" hover-class="shadow">进制</view>
+					<view class="v1" hover-class="shadow">电学单位</view>
+					<view class="v1" hover-class="shadow">压强</view>
+				</view>
+			</view>
+		</swiper-item>
+	</swiper>
+	<view class="show-section">
+		<view class="select">
+			<picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}" style="font-size:40rpx">
+				<view class="picker">
+					单位：{{array[index]}}
+				</view>
+			</picker>
+		</view>
+		<view class="show">
+			66666
+		</view>
+	</view>
+	<view class="show-section">
+		<view class="select">
+			<picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}" style="font-size:40rpx">
+				<view class="picker">
+					单位：{{array[index]}}
+				</view>
+			</picker>
+		</view>
+		<view class="show">
+			66666
+		</view>
+	</view>
+
+	<view class="input-section">
+		<view class="inputBox">
+			<view class="v2" hover-class="shadow">7</view>
+			<view class="v2" hover-class="shadow">4</view>
+			<view class="v2" hover-class="shadow">1</view>
+			<view class="v2" hover-class="shadow">0</view>
+		</view>
+		<view class="inputBox">
+			<view class="v2" hover-class="shadow">8</view>
+			<view class="v2" hover-class="shadow">5</view>
+			<view class="v2" hover-class="shadow">2</view>
+			<view class="v2" hover-class="shadow">0</view>
+		</view>
+		<view class="inputBox">
+			<view class="v2" hover-class="shadow">9</view>
+			<view class="v2" hover-class="shadow">6</view>
+			<view class="v2" hover-class="shadow">3</view>
+			<view class="v2" hover-class="shadow">.</view>
+		</view>
+		<view class="inputBox">
+			<view class="backBtn" hover-class="shadow">←</view>
+			<view class="clearBtn" hover-class="shadow">C</view>
+
+		</view>
+
+	</view>
+</view>

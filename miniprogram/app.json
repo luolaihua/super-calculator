@@ -1,6 +1,7 @@
 {
   "pages": [
-    
+  
+    "pages/unitTransfer/unitTransfer",
     "pages/index/index",
     "pages/introduction/introduction",
     "pages/relative/relative",
@@ -16,7 +17,6 @@
     "pages/openapi/cloudid/cloudid",
     "pages/im/im",
     "pages/im/room/room"
-   
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
@@ -39,6 +39,10 @@
       {
         "pagePath": "pages/relative/relative",
         "text": "亲戚计算"
+      },
+      {
+        "pagePath": "pages/unitTransfer/unitTransfer",
+        "text": "单位转换"
       }
     ]
   }
