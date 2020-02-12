@@ -19,7 +19,7 @@ var touchMoveY = 0; // y轴方向移动的距离
 
 Page({
   data: {
-    isScientific: true,
+    isScientific: false,
     isFraction: false,
     ANS: '0',
     poet: '',
@@ -36,7 +36,7 @@ Page({
     id_atan: 'atan(',
     id_X: '!',
     id_log: 'log(',
-    id_dou:',',
+    id_dou: ',',
     id_gen: '√(',
     id_mod: '%',
     id_deg: 'deg',
@@ -160,33 +160,33 @@ Page({
 
 
     } else if (curTime - lastTime < 500) { //是双击事件
-               //切换科学计算
-        if (this.data.isScientific) {
-          this.setData({
-            isScientific: false
-          })
-          wx.showToast({
-            title: '普通计算',
-          })
-        } else {
-          this.setData({
-            isScientific: true
-          })
-          wx.showToast({
-            title: '科学计算',
-          })
-        }
+      //切换科学计算
+      if (this.data.isScientific) {
+        this.setData({
+          isScientific: false
+        })
+        wx.showToast({
+          title: '普通计算',
+        })
+      } else {
+        this.setData({
+          isScientific: true
+        })
+        wx.showToast({
+          title: '科学计算',
+        })
+      }
     } else {
 
       //数字谐音解析功能
-      if (isExist != -1 &&res!='0') {
+      if (isExist != -1 && res != '0') {
         res = oneBox[isExist + 1]
         wx.showToast({
           title: res,
           icon: 'success'
           // image:'../../images/t1.jpg'
         })
-      } else if(res!='0'){
+      } else if (res != '0') {
         wx.showToast({
           title: res,
           icon: 'none'
@@ -341,20 +341,14 @@ Page({
 
       case 'equaled':
 
-        if(this.data.isScientific){
-          result = btnValue;
+
+        if (isNaN(btnValue) && btnValue != 'A') {
+          result = result + btnValue;
           this.setData({
             res: result,
             condition: 'clicked'
           })
-        }else{
-          if (isNaN(btnValue) && btnValue != 'A') {
-            result = result + btnValue;
-            this.setData({
-              res: result,
-              condition: 'clicked'
-            })
-         
+
         } else {
           result = btnValue;
           this.setData({
@@ -362,8 +356,7 @@ Page({
             condition: 'clicked'
           })
         };
-        }
-       
+
         break;
 
     }
