@@ -15,8 +15,7 @@
     "pages/openapi/callback/callback",
     "pages/openapi/cloudid/cloudid",
     "pages/im/im",
-    "pages/im/room/room",
-    "pages/scientific/scientific"
+    "pages/im/room/room"
    
   ],
   "window": {
