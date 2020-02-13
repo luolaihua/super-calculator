@@ -4,53 +4,31 @@
 		<swiper-item>
 			<view class="viewGroup">
 				<view class="viewBox">
-					<view class="v1" hover-class="shadow">长度</view>
-					<view class="v1" hover-class="shadow">距离</view>
-					<view class="v1" hover-class="shadow">时间</view>
-					<view class="v1" hover-class="shadow">体积</view>
+					<view class="v1" id="{{id_length}}" bindtap="clickBtn" hover-class="shadow">长度</view>
+					<view class="v1"  id="{{id_energy}}"  bindtap="clickBtn" hover-class="shadow">能量</view>
+					<view class="v1"  id="{{id_time}}" bindtap="clickBtn" hover-class="shadow">时间</view>
+					<view class="v1" id="{{id_volume}}" bindtap="clickBtn" hover-class="shadow">体积</view>
 				</view>
 				<view class="viewBox">
-					<view class="v1" hover-class="shadow">液体体积</view>
-					<view class="v1" hover-class="shadow">面积</view>
-					<view class="v1" hover-class="shadow">质量</view>
-					<view class="v1" hover-class="shadow">温度</view>
+					<view class="v1"  id="{{id_liquidVolume}}" bindtap="clickBtn" hover-class="shadow">液体体积</view>
+					<view class="v1"  id="{{id_area}}"  bindtap="clickBtn" hover-class="shadow">面积</view>
+					<view class="v1"  id="{{id_mass}}"  bindtap="clickBtn" hover-class="shadow">质量</view>
+					<view class="v1"  id="{{id_temperature}}"  bindtap="clickBtn" hover-class="shadow">温度</view>
 				</view>
 				<view class="viewBox">
-					<view class="v1" hover-class="shadow">速度</view>
-					<view class="v1" hover-class="shadow">进制</view>
-					<view class="v1" hover-class="shadow">电学单位</view>
-					<view class="v1" hover-class="shadow">压强</view>
-				</view>
-			</view>
-		</swiper-item>
-		<swiper-item>
-			<view class="viewGroup">
-				<view class="viewBox">
-					<view class="v1" hover-class="shadow">长度</view>
-					<view class="v1" hover-class="shadow">距离</view>
-					<view class="v1" hover-class="shadow">时间</view>
-					<view class="v1" hover-class="shadow">体积</view>
-				</view>
-				<view class="viewBox">
-					<view class="v1" hover-class="shadow">液体体积</view>
-					<view class="v1" hover-class="shadow">面积</view>
-					<view class="v1" hover-class="shadow">质量</view>
-					<view class="v1" hover-class="shadow">温度</view>
-				</view>
-				<view class="viewBox">
-					<view class="v1" hover-class="shadow">速度</view>
-					<view class="v1" hover-class="shadow">进制</view>
-					<view class="v1" hover-class="shadow">电学单位</view>
-					<view class="v1" hover-class="shadow">压强</view>
+					<view class="v1"  id="{{id_velocity}}" bindtap="clickBtn" hover-class="shadow">速度</view>
+					<view class="v1"  id="{{id_jinzhi}}"  bindtap="clickBtn" hover-class="shadow">进制</view>
+					<view class="v1"  id="{{id_EM}}"  bindtap="clickBtn" hover-class="shadow">电学单位</view>
+					<view class="v1"  id="{{id_presure}}" bindtap="clickBtn" hover-class="shadow">压强</view>
 				</view>
 			</view>
 		</swiper-item>
 	</swiper>
 	<view class="show-section">
 		<view class="select">
-			<picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}" style="font-size:40rpx">
+			<picker wx:if="{{id}}=='length'" bindchange="bindPickerChange1" range="{{array}}" style="font-size:40rpx">
 				<view class="picker">
-					单位：{{array[index]}}
+				{{array[index1]}}
 				</view>
 			</picker>
 		</view>
@@ -60,9 +38,9 @@
 	</view>
 	<view class="show-section">
 		<view class="select">
-			<picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}" style="font-size:40rpx">
+			<picker wx:if="{{id}}=='length'" bindchange="bindPickerChange2" range="{{array}}" style="font-size:40rpx">
 				<view class="picker">
-					单位：{{array[index]}}
+					{{array[index2]}}
 				</view>
 			</picker>
 		</view>
@@ -76,7 +54,7 @@
 			<view class="v2" hover-class="shadow">7</view>
 			<view class="v2" hover-class="shadow">4</view>
 			<view class="v2" hover-class="shadow">1</view>
-			<view class="v2" hover-class="shadow">0</view>
+			<view class="v2" hover-class="shadow">♡</view>
 		</view>
 		<view class="inputBox">
 			<view class="v2" hover-class="shadow">8</view>

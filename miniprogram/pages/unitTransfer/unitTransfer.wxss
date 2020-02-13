@@ -20,19 +20,22 @@
   align-items: center;
 }
 .show-section{
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100rpx;
+  margin-top: 20rpx;
 }
 .select{
   font-size: 50rpx;
-  width: 40%;
+  width: 300rpx;
   background-color: turquoise;
 }
+
 .show{
   font-size: 80rpx;
-  width: 60%;
+  width:600rpx;
   background-color: tomato;
   text-align: right;
 }
@@ -50,6 +53,7 @@
   flex-direction: column;
 }
 .v2{
+  font-size: 50rpx;
   background-color: wheat;
   height: 150rpx;
   display: flex;
