@@ -30,15 +30,18 @@
 .select{
   font-size: 50rpx;
   width: 300rpx;
-  background-color: turquoise;
 }
 
 .show{
   font-size: 80rpx;
   width:600rpx;
-  background-color: tomato;
   text-align: right;
 }
+.showUnit{
+  text-align: right;
+}
+
+
 
 .input-section{
   width: 100%;

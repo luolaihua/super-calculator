@@ -27,7 +27,7 @@
 	</view>
 	<view class="btnbox" style="height:{{isScientific?100:150}}rpx">
 		<button id='{{id_mod}}' bindtap="clickBtn" wx:if="{{isScientific}}" style="font-size:{{isScientific?40:60}}rpx" >%</button>
-		<button bindtap="startFraction" style="color:{{isFraction?'brown':'white'}}" style="font-size:{{isScientific?40:60}}rpx" >a/b</button>
+		<button bindtap="startFraction" style="font-size:{{isScientific?40:60}}rpx;color:{{isFraction?'brown':'white'}}" >a/b</button>
 		<button id='{{id_left}}' bindtap="clickBtn" style="font-size:{{isScientific?40:60}}rpx" >(</button>
 		<button id='{{id_right}}' bindtap="clickBtn" style="font-size:{{isScientific?40:60}}rpx" >)</button>
 		<button class="brown" id='{{id_div}}' bindtap="clickBtn" style="font-size:{{isScientific?40:60}}rpx" >÷</button>

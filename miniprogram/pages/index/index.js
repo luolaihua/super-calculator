@@ -93,7 +93,6 @@ Page({
   startFraction: function (e) {
     var isFraction = this.data.isFraction
     console.log(isFraction)
-    console.log(isNaN('2/3') + '---')
     var res = this.data.res
 
 
