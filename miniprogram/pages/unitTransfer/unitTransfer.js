@@ -43,7 +43,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    flag:false,
+    condition: '',
     res: '0',
     res1: '0',
     res2: '0',
@@ -52,6 +52,7 @@ Page({
     index2: 0,
     showUnit1: 'm',
     showUnit2: 'm',
+    isChooseUnit:false,
     isChoose: true,
     id: 'length',
     id_length: 'length',
@@ -69,24 +70,24 @@ Page({
     id_EM: 'EM',
     id_velocity: 'velocity',
 
-    array: ['米 m', '千米 km', '分米 dm', '厘米 cm', '厘米 cm', '毫米 mm', '微米 um', '纳米 nm', '皮米 pm',
+    array: ['米 m', '千米 km', '分米 dm', '厘米 cm','毫米 mm', '微米 um', '纳米 nm', '皮米 pm',
       '公里 gongli', '里 lli', '丈 zhang', '尺 chi', '寸 cun', '分 fen', '厘 lii', '毫 hao',
       '海里 nmi', '英里 mi', '浪 fur', '英寸 in', '英尺 ft', '码 yd',
       '杆 rd', '链 ch', 'angstrom', '密耳mil', 'link', 'angstrom'
     ],
-    array_length:['米 m', '千米 km', '分米 dm', '厘米 cm', '厘米 cm', '毫米 mm', '微米 um', '纳米 nm', '皮米 pm',
-    '公里 gongli', '里 lli', '丈 zhang', '尺 chi', '寸 cun', '分 fen', '厘 lii', '毫 hao',
-    '海里 nmi', '英里 mi', '浪 fur', '英寸 in', '英尺 ft', '码 yd',
-    '杆 rd', '链 ch', 'angstrom', '密耳mil', 'link', 'angstrom'
-  ],
+    array_length: ['米 m', '千米 km', '分米 dm', '厘米 cm', '毫米 mm', '微米 um', '纳米 nm', '皮米 pm',
+      '公里 gongli', '里 lli', '丈 zhang', '尺 chi', '寸 cun', '分 fen', '厘 lii', '毫 hao',
+      '海里 nmi', '英里 mi', '浪 fur', '英寸 in', '英尺 ft', '码 yd',
+      '杆 rd', '链 ch','密耳 mil','link', 'angstrom'
+    ],
     array_energy: ['焦耳 J', '千焦 kJ', '卡 cal', '千卡 kcal', 'erg', '瓦时 Wh', 'BTU', '电子伏特 eV'],
-    array_pressure: ['帕斯卡 Pa', 'psi', '标压atm', 'torr', '巴 bar', '毫米汞柱mmHg', '毫米水柱mmH2O', '厘米水柱cmH2O'],
+    array_pressure: ['帕斯卡 Pa', 'psi', '标压 atm', 'torr', '巴 bar', '毫米汞柱 mmHg', '毫米水柱 mmH2O', '厘米水柱 cmH2O'],
     array_temperature: ['开氏度 K', '摄氏度 °C', '华氏度 °F', '兰氏度 °R', '列氏度 °Re'],
-    array_mass: ['千克 kg', '克 g', '毫克 mg', '微克 ug', '担 dan', '斤 jin', '两 linag', '钱 qian', '吨 t', '短吨 shortt', '长吨 longt', '格令 gr', '打兰 dr', '盎司 oz', '磅 lb', '美担 cwt', '英担 brcwt', '公担 gcwt', '分 point', '英石 stone', 'stick'],
-    array_area: ['平方千米 km2', '平方米 m2', '平方分米 dm2', '平方厘米 cm2', '平方毫米 mm2', '顷 qing', '亩 mu', '分 areaF', '平方尺 chi2', '平方寸 cun2', '平方英寸 sqin', '平方英尺 sqft', ' 平方码 sqyd', '平方英里 sqmi', '平方竿 sqrd', 'sqch', 'sqmil', '英亩 acre', '公顷 ha', '英亩 acre', '公顷 ha', '公亩 are', '公顷 ha'],
+    array_mass: ['千克 kg', '克 g', '毫克 mg', '微克 ug', '担 dan', '斤 jin', '两 liang', '钱 qian', '吨 t', '短吨 shortt', '长吨 longt', '格令 gr', '打兰 dr', '盎司 oz', '磅 lb', '美担 cwt', '英担 brcwt', '公担 gcwt', '分 point', '英石 stone', 'stick'],
+    array_area: ['平方千米 km2', '平方米 m2', '平方分米 dm2', '平方厘米 cm2', '平方毫米 mm2', '顷 qing', '亩 mu', '分 areaF', '平方尺 chi2', '平方寸 cun2', '平方英寸 sqin', '平方英尺 sqft', ' 平方码 sqyd', '平方英里 sqmi', '平方竿 sqrd', 'sqch', 'sqmil', '英亩 acre', '公顷 ha'],
     array_volume: ['立方米 m3', '立方分米 dm3', '立方厘米 cm3', '立方毫米 mm3', '升 l', '毫升 ml', '微升 ul', '厘升 cl', '分升 dl', 'cc', '立方英寸 cuin', '立方英尺 cuft', '立方码 cuyd', 'teaspoon', 'tablespoon'],
-    array_angles: ['弧度 rad', '角度 deg', '百分度 grad', '圆周 cycle', '弧秒 arcsec', '弧分 arcmin'],
-    array_time: ['纳秒 ns', '微秒 us', '毫秒 ms', '秒 s', '分 mins', '时 h', '天 day', '周 week', '月 month', '年 year', '十年 decade', '世纪 century', '千年 millennium'],
+    array_angles: ['弧度 rad', '角度 °', '百分度 grad', '圆周 cycle', '弧秒 arcsec', '弧分 arcmin'],
+    array_time: ['纳秒 ns', '微秒 us', '毫秒 ms', '秒 s', '分 mins', '时 h', '天 day', '周 week', '月 month', '年 year', '十年 decade', '世纪 century'],
     array_jinzhi: ['二进制 BIN', '八进制 OCT', '十进制 DEC', '十六进制 HEX'],
 
     id0: '0',
@@ -121,44 +122,55 @@ Page({
       //判断是否按下退格键
       if (btnValue == "del") {
         if (res1.length == 1) {
-            res1= '0' 
+          res1 = '0'
         } else {
-            res1= res1.substr(0, res1.length - 1)
+          res1 = res1.substr(0, res1.length - 1)
         }
       } else {
         //如果按下数字按钮
-        if (res1 == '0') {
+        if (res1 == '0' || this.data.condition=='choose') {
           res1 = btnValue
         } else {
           res1 = res1 + btnValue
         }
       }
-       //按一次按钮做一次运算
-       var res = this.transfer(res1,this.data.showUnit1,this.data.showUnit2)
-       this.setData({
-         res2: res,
-         res1: res1
-       })
+      //按一次按钮做一次运算
+      if (!isNaN(res1)) {
+        var res = this.transfer(res1, this.data.showUnit1, this.data.showUnit2)
+        this.setData({
+          res2: res,
+        })
+      }
+      this.setData({
+        condition:'clicked',
+        res1: res1
+      })
+
     } else {
       //如果isChoose为false，则修改res2中的数据
       var res2 = this.data.res2
       if (btnValue == "del") {
         if (res2.length == 1) {
-            res2='0'
+          res2 = '0'
         } else {
-            res2= res2.substr(0, res2.length - 1)  
+          res2 = res2.substr(0, res2.length - 1)
         }
       } else {
-        if (res2 == '0') {
+        if (res2 == '0' || this.data.condition=='choose') {
           res2 = btnValue
         } else {
           res2 = res2 + btnValue
         }
       }
       //处理完res2后再处理数据
-      var res = this.transfer(res2,this.data.showUnit2,this.data.showUnit1)
+      if (!isNaN(res2)) {
+        var res = this.transfer(res2, this.data.showUnit2, this.data.showUnit1)
+        this.setData({
+          res1: res,
+        })
+      }
       this.setData({
-        res1: res,
+        condition:'clicked',
         res2: res2
       })
     }
@@ -167,18 +179,19 @@ Page({
 
   choose1: function (e) {
     this.setData({
+      condition:'choose',
       isChoose: true
     })
   },
   choose2: function (e) {
     this.setData({
+      condition:'choose',
       isChoose: false,
     })
   },
 
   //选择单位
   clickBtn: function (e) {
-    console.log(e)
     var btnValue = e.target.id;
     this.setData({
       id: btnValue
@@ -275,8 +288,7 @@ Page({
     }
   },
   bindPickerChange1: function (e) {
-    console.log(e)
-    console.log('picker1发送选择改变，携带值为', e.detail.value)
+    
     var index = Number(e.detail.value)
     var id = this.data.id
     switch (id) {
@@ -445,19 +457,15 @@ Page({
     })
   },
   transfer: function (num, u1, u2) {
+    u1 = u1.replace('°','deg')
+    u2 = u2.replace('°','deg')
     var str = num + u1 + ' to ' + u2
     var a = math.evaluate(str)
     var b = a.toNumber()
     var c = parseFloat(b)
-    console.log(a)
-    console.log(a.format())
-    console.log(a.toString())
-    console.log(math.format(b, {
-      notation: 'fixed',
-      precision: 6
-    }))
-    console.log(c + '')
-    return c+''
+    //console.log(math.format(b, {notation: 'fixed',precision: 6}))
+   // console.log(c + '')
+    return c + ''
 
   },
   initial: function (array) {
