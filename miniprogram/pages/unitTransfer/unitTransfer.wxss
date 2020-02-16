@@ -12,6 +12,7 @@
   display: flex;
 }
 .v1{
+  font-size: 40rpx;
   width: 200rpx;
   background-color: transparent;
   display: flex;
@@ -29,11 +30,12 @@
 .select{
   margin-left: 20rpx;
   font-size: 50rpx;
-  width: 400rpx;
+  width: 300rpx;
   color: orangered;
 }
 
 .show{
+  word-break: break-all;
   font-size: 60rpx;
   width:600rpx;
   text-align: right;
@@ -74,6 +76,10 @@
   justify-content: center;
 }
 
-.shadow{
+.shadow1{
+  font-size: 60rpx;
+}
+.shadow2{
+  font-weight: 800;
   color: orangered;
 }

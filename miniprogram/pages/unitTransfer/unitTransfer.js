@@ -1,7 +1,9 @@
 // miniprogram/pages/unitTransfer/unitTransfer.js
 var math = require('../util/math.min.js');
 var Fraction = require('../util/fraction.js');
-const parser = math.parser();
+math.config({
+  number: 'bigNumber'
+})
 math.createUnit('nmi', '1.852km')
 math.createUnit('fur', '220yd')
 math.createUnit('gongli', '1km')
@@ -43,6 +45,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    showFontSize:45,
+    isVibrate:false,
     condition: '',
     res: '0',
     res1: '0',
@@ -106,10 +110,13 @@ Page({
   },
   //清除按钮
   clearBtn: function (e) {
-    wx.vibrateShort({
-      complete: (res) => {
-      },
-    })
+    if(this.data.isVibrate){
+      wx.vibrateShort({
+        complete: (res) => {
+        },
+      })
+    }
+
     this.setData({
       res1: '0',
       res2: '0'
@@ -117,10 +124,12 @@ Page({
   },
   //输入数字按钮
   inputBtn: function (e) {
-    wx.vibrateShort({
-      complete: (res) => {
-      },
-    })
+    if(this.data.isVibrate){
+      wx.vibrateShort({
+        complete: (res) => {
+        },
+      })
+    }
     //获取当前按钮id值
     var btnValue = e.target.id
     //判断是输入到res1还是res2中，如果isChoose为true则输入到res1
@@ -200,10 +209,12 @@ Page({
 
   //选择单位
   clickBtn: function (e) {
-    wx.vibrateShort({
-      complete: (res) => {
-      },
-    })
+    if(this.data.isVibrate){
+      wx.vibrateShort({
+        complete: (res) => {
+        },
+      })
+    }
     var btnValue = e.target.id;
     this.setData({
       id: btnValue
