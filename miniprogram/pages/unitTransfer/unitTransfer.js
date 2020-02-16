@@ -43,14 +43,15 @@ Page({
    * 页面的初始数据
    */
   data: {
+    flag:false,
     res: '0',
     res1: '0',
     res2: '0',
     index: 0,
     index1: 0,
     index2: 0,
-    showUnit1:'m',
-    showUnit2:'m',
+    showUnit1: 'm',
+    showUnit2: 'm',
     isChoose: true,
     id: 'length',
     id_length: 'length',
@@ -69,15 +70,15 @@ Page({
     id_velocity: 'velocity',
 
     array: ['米 m', '千米 km', '分米 dm', '厘米 cm', '厘米 cm', '毫米 mm', '微米 um', '纳米 nm', '皮米 pm',
-      '公里', '里', '丈', '尺', '寸', '分', '厘', '毫',
+      '公里 gongli', '里 lli', '丈 zhang', '尺 chi', '寸 cun', '分 fen', '厘 lii', '毫 hao',
       '海里 nmi', '英里 mi', '浪 fur', '英寸 in', '英尺 ft', '码 yd',
       '杆 rd', '链 ch', 'angstrom', '密耳mil', 'link', 'angstrom'
     ],
-    array_length: ['米 m', '千米 km', '分米 dm', '厘米 cm', '厘米 cm', '毫米 mm', '微米 um', '纳米 nm', '皮米 pm',
-      '公里', '里', '丈', '尺', '寸', '分', '厘', '毫',
-      '海里 nmi', '英里 mi', '浪 fur', '英寸 in', '英尺 ft', '码 yd',
-      '杆 rd', '链 ch', 'angstrom', '密耳mil', 'link', 'angstrom'
-    ],
+    array_length:['米 m', '千米 km', '分米 dm', '厘米 cm', '厘米 cm', '毫米 mm', '微米 um', '纳米 nm', '皮米 pm',
+    '公里 gongli', '里 lli', '丈 zhang', '尺 chi', '寸 cun', '分 fen', '厘 lii', '毫 hao',
+    '海里 nmi', '英里 mi', '浪 fur', '英寸 in', '英尺 ft', '码 yd',
+    '杆 rd', '链 ch', 'angstrom', '密耳mil', 'link', 'angstrom'
+  ],
     array_energy: ['焦耳 J', '千焦 kJ', '卡 cal', '千卡 kcal', 'erg', '瓦时 Wh', 'BTU', '电子伏特 eV'],
     array_pressure: ['帕斯卡 Pa', 'psi', '标压atm', 'torr', '巴 bar', '毫米汞柱mmHg', '毫米水柱mmH2O', '厘米水柱cmH2O'],
     array_temperature: ['开氏度 K', '摄氏度 °C', '华氏度 °F', '兰氏度 °R', '列氏度 °Re'],
@@ -102,66 +103,68 @@ Page({
     id_d: 'del',
     id_dot: '.'
   },
+  //清除按钮
   clearBtn: function (e) {
     this.setData({
-      res1:'0',
-      res2:'0'
+      res1: '0',
+      res2: '0'
     })
   },
+  //输入数字按钮
   inputBtn: function (e) {
+    //获取当前按钮id值
     var btnValue = e.target.id
-
+    //判断是输入到res1还是res2中，如果isChoose为true则输入到res1
     if (this.data.isChoose) {
+      //获取当前res1的数据
       var res1 = this.data.res1
-
+      //判断是否按下退格键
       if (btnValue == "del") {
-        if(res1.length ==1){
-        this.setData({
-          res1: '0'
-        })
-        }else{
-          this.setData({
-            res1: res1.substr(0, res1.length - 1)
-          })
+        if (res1.length == 1) {
+            res1= '0' 
+        } else {
+            res1= res1.substr(0, res1.length - 1)
         }
-
       } else {
-        
+        //如果按下数字按钮
         if (res1 == '0') {
           res1 = btnValue
         } else {
           res1 = res1 + btnValue
         }
-        this.setData({
-          res1: res1
-        })
       }
+       //按一次按钮做一次运算
+       var res = this.transfer(res1,this.data.showUnit1,this.data.showUnit2)
+       this.setData({
+         res2: res,
+         res1: res1
+       })
     } else {
+      //如果isChoose为false，则修改res2中的数据
       var res2 = this.data.res2
       if (btnValue == "del") {
-        if(res2.length ==1){
-        this.setData({
-          res2: '0'
-        })
-        }else{
-          this.setData({
-            res2: res2.substr(0, res2.length - 1)
-          })
+        if (res2.length == 1) {
+            res2='0'
+        } else {
+            res2= res2.substr(0, res2.length - 1)  
         }
-
-      }  else {
-      if (res2 == '0') {
-        res2 = btnValue
       } else {
-        res2 = res2 + btnValue
+        if (res2 == '0') {
+          res2 = btnValue
+        } else {
+          res2 = res2 + btnValue
+        }
       }
+      //处理完res2后再处理数据
+      var res = this.transfer(res2,this.data.showUnit2,this.data.showUnit1)
       this.setData({
+        res1: res,
         res2: res2
       })
     }
-  }
 
   },
+
   choose1: function (e) {
     this.setData({
       isChoose: true
@@ -169,14 +172,16 @@ Page({
   },
   choose2: function (e) {
     this.setData({
-      isChoose: false
+      isChoose: false,
     })
   },
+
+  //选择单位
   clickBtn: function (e) {
     console.log(e)
     var btnValue = e.target.id;
     this.setData({
-      id:btnValue
+      id: btnValue
     })
     wx.showToast({
       title: this.data.id,
@@ -272,12 +277,12 @@ Page({
   bindPickerChange1: function (e) {
     console.log(e)
     console.log('picker1发送选择改变，携带值为', e.detail.value)
-    var index =Number(e.detail.value) 
+    var index = Number(e.detail.value)
     var id = this.data.id
     switch (id) {
       case 'length':
         this.setData({
-          showUnit1: this.getUnit(this.data.array_length[index]) 
+          showUnit1: this.getUnit(this.data.array_length[index])
         });
         break;
       case 'time':
@@ -348,22 +353,22 @@ Page({
 
     }
 
-    var res = this.transfer(this.data.res1,this.data.showUnit1,this.data.showUnit2)
-  
+    var res = this.transfer(this.data.res1, this.data.showUnit1, this.data.showUnit2)
+
     this.setData({
       index1: e.detail.value,
-      res2:res
+      res2: res
     })
   },
   bindPickerChange2: function (e) {
     console.log(e)
     console.log('picker2发送选择改变，携带值为', e.detail.value)
-    var index =Number(e.detail.value) 
+    var index = Number(e.detail.value)
     var id = this.data.id
     switch (id) {
       case 'length':
         this.setData({
-          showUnit2: this.getUnit(this.data.array_length[index]) 
+          showUnit2: this.getUnit(this.data.array_length[index])
         });
         break;
       case 'time':
@@ -433,16 +438,29 @@ Page({
         break;
 
     }
+    var res = this.transfer(this.data.res2, this.data.showUnit2, this.data.showUnit1)
     this.setData({
-      index2: e.detail.value
+      index2: e.detail.value,
+      res1: res
     })
   },
-  transfer:function(num,u1,u2){
-    var str = num+u1+' to '+u2
-    return  math.evaluate(str).toString()
-    
+  transfer: function (num, u1, u2) {
+    var str = num + u1 + ' to ' + u2
+    var a = math.evaluate(str)
+    var b = a.toNumber()
+    var c = parseFloat(b)
+    console.log(a)
+    console.log(a.format())
+    console.log(a.toString())
+    console.log(math.format(b, {
+      notation: 'fixed',
+      precision: 6
+    }))
+    console.log(c + '')
+    return c+''
+
   },
-  initial:function(array) {
+  initial: function (array) {
     this.setData({
       res: '0',
       res1: '0',
@@ -450,17 +468,17 @@ Page({
       index: 0,
       index1: 0,
       index2: 0,
-      showUnit1:this.getUnit(array[0]),
-      showUnit2:this.getUnit(array[0]),
-    }) 
+      showUnit1: this.getUnit(array[0]),
+      showUnit2: this.getUnit(array[0]),
+    })
   },
   //得到单位函数
-  getUnit:function (str) {
-    var n=str.indexOf(" ")
-    if(n==-1){
+  getUnit: function (str) {
+    var n = str.indexOf(" ")
+    if (n == -1) {
       return str
-    }else{
-     var temp = str.split(" ")
+    } else {
+      var temp = str.split(" ")
       return temp[1]
     }
   },

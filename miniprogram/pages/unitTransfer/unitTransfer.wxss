@@ -33,7 +33,7 @@
 }
 
 .show{
-  font-size: 80rpx;
+  font-size: 60rpx;
   width:600rpx;
   text-align: right;
 }
