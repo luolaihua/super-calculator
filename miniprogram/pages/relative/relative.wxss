@@ -75,7 +75,7 @@ height:40rpx !important;
 .result {
   height: 100rpx;
   background-color: transparent;
-  color: white;
+  color:orange;
   font-size: 70rpx;
   text-align: right;
   width: auto;

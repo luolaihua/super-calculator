@@ -106,6 +106,10 @@ Page({
   },
   //清除按钮
   clearBtn: function (e) {
+    wx.vibrateShort({
+      complete: (res) => {
+      },
+    })
     this.setData({
       res1: '0',
       res2: '0'
@@ -113,6 +117,10 @@ Page({
   },
   //输入数字按钮
   inputBtn: function (e) {
+    wx.vibrateShort({
+      complete: (res) => {
+      },
+    })
     //获取当前按钮id值
     var btnValue = e.target.id
     //判断是输入到res1还是res2中，如果isChoose为true则输入到res1
@@ -192,6 +200,10 @@ Page({
 
   //选择单位
   clickBtn: function (e) {
+    wx.vibrateShort({
+      complete: (res) => {
+      },
+    })
     var btnValue = e.target.id;
     this.setData({
       id: btnValue

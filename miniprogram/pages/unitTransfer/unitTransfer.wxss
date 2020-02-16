@@ -27,8 +27,10 @@
   margin-top: 20rpx;
 }
 .select{
+  margin-left: 20rpx;
   font-size: 50rpx;
   width: 400rpx;
+  color: orangered;
 }
 
 .show{
