@@ -1,6 +1,6 @@
 {
   "pages": [
-    
+    "pages/welcome/welcome",
     "pages/unitTransfer/unitTransfer",
     "pages/index/index",
     "pages/introduction/introduction",
@@ -17,6 +17,7 @@
     "pages/openapi/cloudid/cloudid",
     "pages/im/im",
     "pages/im/room/room"
+    
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
