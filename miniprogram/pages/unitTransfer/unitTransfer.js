@@ -91,7 +91,7 @@ Page({
     array_volume: ['立方米 m3', '立方分米 dm3', '立方厘米 cm3', '立方毫米 mm3', '升 l', '毫升 ml', '微升 ul', '厘升 cl', '分升 dl', 'cc', '立方英寸 cuin', '立方英尺 cuft', '立方码 cuyd', 'teaspoon', 'tablespoon'],
     array_angles: ['弧度 rad', '角度 °', '百分度 grad', '圆周 cycle', '弧秒 arcsec', '弧分 arcmin'],
     array_time: ['纳秒 ns', '微秒 us', '毫秒 ms', '秒 s', '分 mins', '时 h', '天 day', '周 week', '月 month', '年 year', '十年 decade', '世纪 century'],
-    array_jinzhi: ['二进制 BIN', '八进制 OCT', '十进制 DEC', '十六进制 HEX', '2进制', '3进制', '4进制', '5进制', '6进制', '7进制', '8进制', '9进制', '10进制', '11进制', '12进制', '13进制', '14进制', '15进制'],
+    array_jinzhi: ['二进制BIN', '八进制OCT', '十进制DEC', '十六进制HEX', '2进制', '3进制', '4进制', '5进制', '6进制', '7进制', '8进制', '9进制', '10进制', '11进制', '12进制', '13进制', '14进制', '15进制'],
 
     id0: '0',
     id1: "1",
@@ -167,6 +167,7 @@ Page({
             var res = this.transfer(res1, this.data.showUnit1, this.data.showUnit2)
             this.setData({
               res2: res,
+              res1: res1
             })
           }
           break;
@@ -175,6 +176,7 @@ Page({
             var res = this.changeNumMoneyToChinese(res1)
             this.setData({
               res2: res,
+              res1: res1
             })
           }
           break;
@@ -182,15 +184,15 @@ Page({
           var m = this.data.index1
           var n = this.data.index2
           var res = this.jinzhiTransfer(res1, m, n)
+          res=this.formatResult(res)
+          res1=this.formatResult(res1)
           this.setData({
             res2: res,
-          })
-
-          break;
+            res1: res1
+          }) ;break;
       }
       this.setData({
-        condition: 'clicked',
-        res1: res1
+        condition: 'clicked'
       })
 
     } else {
@@ -218,6 +220,7 @@ Page({
             var res = this.transfer(res2, this.data.showUnit2, this.data.showUnit1)
             this.setData({
               res1: res,
+              res2: res2
             })
           }
           break;
@@ -225,14 +228,16 @@ Page({
           var m = this.data.index1
           var n = this.data.index2
           var res = this.jinzhiTransfer(res2, n, m)
+          res=this.formatResult(res)
+          res2=this.formatResult(res2)
           this.setData({
             res1: res,
+            res2: res2
           })
           break;
       }
       this.setData({
         condition: 'clicked',
-        res2: res2
       })
     }
 
@@ -260,7 +265,8 @@ Page({
     }
     var btnValue = e.target.id;
     this.setData({
-      id: btnValue
+      id: btnValue,
+      isChoose: true
     })
     wx.showToast({
       title: this.data.id,
@@ -706,6 +712,7 @@ Page({
     return ChineseStr;
   },
   jinzhiTransfer: function (num, m, n) {
+    num = num.replace(/\s/g,"")
     m = Number(m)
     n = Number(n)
     switch (m) {
@@ -747,6 +754,12 @@ Page({
     var result = parseInt(num, m).toString(n);
     return result;
   },
+  formatResult: function (str){
+    // 先删除所有的空格 replace(/\s/g,'')，再每个四个字符添加空格 replace(/(.{4})/g,"$1 ")
+    str=str.replace(/\s/g,'').replace(/(.{4})/g,"$1 ");
+    return str
+},
+
 
 
   /**
@@ -768,6 +781,9 @@ Page({
    */
   onShow: function () {
     //console.log(parseInt(333, 4).toString(5))
+    var str = '288892471488734673jbdkjsdfkdfesf'
+    console.log(this.formatResult('233333333333323333344245'))
+    console.log(this.formatResult('23 33 333  3 333 332 3333344 245'))
   },
 
   /**

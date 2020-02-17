@@ -38,6 +38,12 @@
   width: 300rpx;
   color: orangered;
 }
+.jinzhi-select {
+  margin-left: 20rpx;
+  font-size: 50rpx;
+  width: 150rpx;
+  color: orangered;
+}
 
 .show {
   word-break: break-all;

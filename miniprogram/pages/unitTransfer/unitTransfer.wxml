@@ -55,7 +55,7 @@
 
 	<view class="jinzhi-section" wx:if="{{showWhichSection=='jinzhi'}}">
 		<view class="show-section">
-			<view class="select">
+			<view class="jinzhi-select">
 				<picker wx:if="{{id}}=='length'" bindchange="bindPickerChange1" range="{{array}}" style="font-size:40rpx">
 					<view class="picker">
 						{{array[index1]}}
@@ -67,7 +67,7 @@
 			</view>
 		</view>
 		<view class="show-section">
-			<view class="select">
+			<view class="jinzhi-select">
 				<picker wx:if="{{id}}=='length'" bindchange="bindPickerChange2" range="{{array}}" style="font-size:40rpx">
 					<view class="picker">
 						{{array[index2]}}
