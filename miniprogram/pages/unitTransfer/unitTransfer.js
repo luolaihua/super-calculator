@@ -45,8 +45,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    showFontSize:45,
-    isVibrate:false,
+    isJinzhi: false,
+    showWhichSection: 'unit',
+    isVibrate: false,
     condition: '',
     res: '0',
     res1: '0',
@@ -56,7 +57,7 @@ Page({
     index2: 0,
     showUnit1: 'm',
     showUnit2: 'm',
-    isChooseUnit:false,
+    isChooseUnit: false,
     isChoose: true,
     id: 'length',
     id_length: 'length',
@@ -74,7 +75,7 @@ Page({
     id_EM: 'EM',
     id_velocity: 'velocity',
 
-    array: ['米 m', '千米 km', '分米 dm', '厘米 cm','毫米 mm', '微米 um', '纳米 nm', '皮米 pm',
+    array: ['米 m', '千米 km', '分米 dm', '厘米 cm', '毫米 mm', '微米 um', '纳米 nm', '皮米 pm',
       '公里 gongli', '里 lli', '丈 zhang', '尺 chi', '寸 cun', '分 fen', '厘 lii', '毫 hao',
       '海里 nmi', '英里 mi', '浪 fur', '英寸 in', '英尺 ft', '码 yd',
       '杆 rd', '链 ch', 'angstrom', '密耳mil', 'link', 'angstrom'
@@ -82,7 +83,7 @@ Page({
     array_length: ['米 m', '千米 km', '分米 dm', '厘米 cm', '毫米 mm', '微米 um', '纳米 nm', '皮米 pm',
       '公里 gongli', '里 lli', '丈 zhang', '尺 chi', '寸 cun', '分 fen', '厘 lii', '毫 hao',
       '海里 nmi', '英里 mi', '浪 fur', '英寸 in', '英尺 ft', '码 yd',
-      '杆 rd', '链 ch','密耳 mil','link', 'angstrom'
+      '杆 rd', '链 ch', '密耳 mil', 'link', 'angstrom'
     ],
     array_energy: ['焦耳 J', '千焦 kJ', '卡 cal', '千卡 kcal', 'erg', '瓦时 Wh', 'BTU', '电子伏特 eV'],
     array_pressure: ['帕斯卡 Pa', 'psi', '标压 atm', 'torr', '巴 bar', '毫米汞柱 mmHg', '毫米水柱 mmH2O', '厘米水柱 cmH2O'],
@@ -110,26 +111,29 @@ Page({
   },
   //清除按钮
   clearBtn: function (e) {
-    if(this.data.isVibrate){
+    if (this.data.isVibrate) {
       wx.vibrateShort({
-        complete: (res) => {
-        },
+        complete: (res) => {},
       })
     }
-
+    var res2 = '0'
+    if (this.data.showWhichSection == 2) {
+      res2 = '零元整'
+    }
     this.setData({
       res1: '0',
-      res2: '0'
+      res2: res2
     })
   },
   //输入数字按钮
   inputBtn: function (e) {
-    if(this.data.isVibrate){
+    if (this.data.isVibrate) {
       wx.vibrateShort({
-        complete: (res) => {
-        },
+        complete: (res) => {},
       })
     }
+
+
     //获取当前按钮id值
     var btnValue = e.target.id
     //判断是输入到res1还是res2中，如果isChoose为true则输入到res1
@@ -145,21 +149,35 @@ Page({
         }
       } else {
         //如果按下数字按钮
-        if (res1 == '0' || this.data.condition=='choose') {
+        if (res1 == '0' || this.data.condition == 'choose') {
           res1 = btnValue
         } else {
           res1 = res1 + btnValue
         }
       }
+
       //按一次按钮做一次运算
-      if (!isNaN(res1)) {
-        var res = this.transfer(res1, this.data.showUnit1, this.data.showUnit2)
-        this.setData({
-          res2: res,
-        })
+      switch (this.data.showWhichSection) {
+        case 'unit':
+          if (!isNaN(res1)) {
+            var res = this.transfer(res1, this.data.showUnit1, this.data.showUnit2)
+            this.setData({
+              res2: res,
+            })
+          }
+          break;
+        case 'daxie':
+          if (!isNaN(res1)) {
+            var res = this.changeNumMoneyToChinese(res1)
+            this.setData({
+              res2: res,
+            })
+          }
+          break;
       }
+
       this.setData({
-        condition:'clicked',
+        condition: 'clicked',
         res1: res1
       })
 
@@ -173,7 +191,7 @@ Page({
           res2 = res2.substr(0, res2.length - 1)
         }
       } else {
-        if (res2 == '0' || this.data.condition=='choose') {
+        if (res2 == '0' || this.data.condition == 'choose') {
           res2 = btnValue
         } else {
           res2 = res2 + btnValue
@@ -187,7 +205,7 @@ Page({
         })
       }
       this.setData({
-        condition:'clicked',
+        condition: 'clicked',
         res2: res2
       })
     }
@@ -196,23 +214,22 @@ Page({
 
   choose1: function (e) {
     this.setData({
-      condition:'choose',
+      condition: 'choose',
       isChoose: true
     })
   },
   choose2: function (e) {
     this.setData({
-      condition:'choose',
+      condition: 'choose',
       isChoose: false,
     })
   },
 
   //选择单位
   clickBtn: function (e) {
-    if(this.data.isVibrate){
+    if (this.data.isVibrate) {
       wx.vibrateShort({
-        complete: (res) => {
-        },
+        complete: (res) => {},
       })
     }
     var btnValue = e.target.id;
@@ -226,92 +243,121 @@ Page({
       case 'length':
         this.initial(this.data.array_length)
         this.setData({
-          array: this.data.array_length
+          showWhichSection: 'unit',
+          array: this.data.array_length,
+          isJinzhi: false
         });
         break;
       case 'time':
         this.initial(this.data.array_time)
         this.setData({
-          array: this.data.array_time
+          showWhichSection: 'unit',
+          array: this.data.array_time,
+          isJinzhi: false
         });
         break;
       case 'mass':
         this.initial(this.data.array_mass)
         this.setData({
-          array: this.data.array_mass
+          showWhichSection: 'unit',
+          array: this.data.array_mass,
+          isJinzhi: false
         });
         break;
       case 'volume':
         this.initial(this.data.array_volume)
         this.setData({
-          array: this.data.array_volume
+          showWhichSection: 'unit',
+          array: this.data.array_volume,
+          isJinzhi: false
         });
         break;
       case 'temperature':
         this.initial(this.data.array_temperature)
         this.setData({
-          array: this.data.array_temperature
+          showWhichSection: 'unit',
+          array: this.data.array_temperature,
+          isJinzhi: false
         });
         break;
       case 'presure':
         this.initial(this.data.array_pressure)
         this.setData({
-          array: this.data.array_pressure
+          showWhichSection: 'unit',
+          array: this.data.array_pressure,
+          isJinzhi: false
         });
         break;
       case 'area':
         this.initial(this.data.array_area)
         this.setData({
-          array: this.data.array_area
+          showWhichSection: 'unit',
+          array: this.data.array_area,
+          isJinzhi: false
         });
         break;
       case 'liquidVolume':
         this.initial(this.data.array)
         this.setData({
-          array: this.data.array
+          showWhichSection: 'unit',
+          array: this.data.array,
+          isJinzhi: false
         });
         break;
       case 'angles':
         this.initial(this.data.array_angles)
         this.setData({
-          array: this.data.array_angles
+          showWhichSection: 'unit',
+          array: this.data.array_angles,
+          isJinzhi: false
         });
         break;
       case 'big':
         this.initial(this.data.array_length)
         this.setData({
-          array: this.data.array_length
+          showWhichSection: 'daxie',
+          array: this.data.array_length,
+          res2: '零元整',
+          isJinzhi: false
         });
         break;
       case 'energy':
         this.initial(this.data.array_energy)
         this.setData({
-          array: this.data.array_energy
+          showWhichSection: 'unit',
+          array: this.data.array_energy,
+          isJinzhi: false
         });
         break;
       case 'jinzhi':
         this.initial(this.data.array_jinzhi)
         this.setData({
-          array: this.data.array_jinzhi
+          showWhichSection: 'unit',
+          array: this.data.array_jinzhi,
+          isJinzhi: true
         });
         break;
       case 'EM':
         this.initial(this.data.array_length)
         this.setData({
-          array: this.data.array_length
+          showWhichSection: 'unit',
+          array: this.data.array_length,
+          isJinzhi: false
         });
         break;
       case 'velocity':
         this.initial(this.data.array_length)
         this.setData({
-          array: this.data.array_length
+          showWhichSection: 'unit',
+          array: this.data.array_length,
+          isJinzhi: false
         });
         break;
 
     }
   },
   bindPickerChange1: function (e) {
-    
+
     var index = Number(e.detail.value)
     var id = this.data.id
     switch (id) {
@@ -480,14 +526,14 @@ Page({
     })
   },
   transfer: function (num, u1, u2) {
-    u1 = u1.replace('°','deg')
-    u2 = u2.replace('°','deg')
+    u1 = u1.replace('°', 'deg')
+    u2 = u2.replace('°', 'deg')
     var str = num + u1 + ' to ' + u2
     var a = math.evaluate(str)
     var b = a.toNumber()
     var c = parseFloat(b)
     //console.log(math.format(b, {notation: 'fixed',precision: 6}))
-   // console.log(c + '')
+    // console.log(c + '')
     return c + ''
 
   },
@@ -513,6 +559,88 @@ Page({
       return temp[1]
     }
   },
+  changeNumMoneyToChinese: function (money) {
+    var cnNums = new Array("零", "壹", "贰", "叁", "肆", "伍", "陆", "柒", "捌", "玖"); //汉字的数字
+    var cnIntRadice = new Array("", "拾", "佰", "仟"); //基本单位
+    var cnIntUnits = new Array("", "万", "亿", "兆"); //对应整数部分扩展单位
+    var cnDecUnits = new Array("角", "分", "毫", "厘"); //对应小数部分单位
+    var cnInteger = "整"; //整数金额时后面跟的字符
+    var cnIntLast = "元"; //整型完以后的单位
+    var maxNum = 999999999999999.9999; //最大处理的数字
+    var IntegerNum; //金额整数部分
+    var DecimalNum; //金额小数部分
+    var ChineseStr = ""; //输出的中文金额字符串
+    var parts; //分离金额后用的数组，预定义    
+    var Symbol = ""; //正负值标记
+    if (money == "") {
+      return "";
+    }
+
+    money = parseFloat(money);
+    if (money >= maxNum) {
+      alert('超出最大处理数字');
+      return "";
+    }
+    if (money == 0) {
+      ChineseStr = cnNums[0] + cnIntLast + cnInteger;
+      return ChineseStr;
+    }
+    if (money < 0) {
+      money = -money;
+      Symbol = "负 ";
+    }
+    money = money.toString(); //转换为字符串
+    if (money.indexOf(".") == -1) {
+      IntegerNum = money;
+      DecimalNum = '';
+    } else {
+      parts = money.split(".");
+      IntegerNum = parts[0];
+      DecimalNum = parts[1].substr(0, 4);
+    }
+    if (parseInt(IntegerNum, 10) > 0) { //获取整型部分转换
+      var zeroCount = 0;
+      var IntLen = IntegerNum.length;
+      for (var i = 0; i < IntLen; i++) {
+        var n = IntegerNum.substr(i, 1);
+        var p = IntLen - i - 1;
+        var q = p / 4;
+        var m = p % 4;
+        if (n == "0") {
+          zeroCount++;
+        } else {
+          if (zeroCount > 0) {
+            ChineseStr += cnNums[0];
+          }
+          zeroCount = 0; //归零
+          ChineseStr += cnNums[parseInt(n)] + cnIntRadice[m];
+        }
+        if (m == 0 && zeroCount < 4) {
+          ChineseStr += cnIntUnits[q];
+        }
+      }
+      ChineseStr += cnIntLast;
+      //整型部分处理完毕
+    }
+    if (DecimalNum != '') { //小数部分
+      var decLen = DecimalNum.length;
+      for (var i = 0; i < decLen; i++) {
+        var n = DecimalNum.substr(i, 1);
+        if (n != '0') {
+          ChineseStr += cnNums[Number(n)] + cnDecUnits[i];
+        }
+      }
+    }
+    if (ChineseStr == '') {
+      ChineseStr += cnNums[0] + cnIntLast + cnInteger;
+    } else if (DecimalNum == '') {
+      ChineseStr += cnInteger;
+    }
+    ChineseStr = Symbol + ChineseStr;
+
+    return ChineseStr;
+  },
+
 
   /**
    * 生命周期函数--监听页面加载
@@ -532,7 +660,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    console.log(this.changeNumMoneyToChinese('94535467579..5545459'))
   },
 
   /**
