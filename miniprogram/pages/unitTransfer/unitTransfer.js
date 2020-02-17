@@ -45,19 +45,17 @@ Page({
    * 页面的初始数据
    */
   data: {
-    isJinzhi: false,
     showWhichSection: 'unit',
     isVibrate: false,
     condition: '',
     res: '0',
     res1: '0',
     res2: '0',
-    index: 0,
+    index: 2,
     index1: 0,
     index2: 0,
     showUnit1: 'm',
     showUnit2: 'm',
-    isChooseUnit: false,
     isChoose: true,
     id: 'length',
     id_length: 'length',
@@ -93,7 +91,7 @@ Page({
     array_volume: ['立方米 m3', '立方分米 dm3', '立方厘米 cm3', '立方毫米 mm3', '升 l', '毫升 ml', '微升 ul', '厘升 cl', '分升 dl', 'cc', '立方英寸 cuin', '立方英尺 cuft', '立方码 cuyd', 'teaspoon', 'tablespoon'],
     array_angles: ['弧度 rad', '角度 °', '百分度 grad', '圆周 cycle', '弧秒 arcsec', '弧分 arcmin'],
     array_time: ['纳秒 ns', '微秒 us', '毫秒 ms', '秒 s', '分 mins', '时 h', '天 day', '周 week', '月 month', '年 year', '十年 decade', '世纪 century'],
-    array_jinzhi: ['二进制 BIN', '八进制 OCT', '十进制 DEC', '十六进制 HEX'],
+    array_jinzhi: ['二进制 BIN', '八进制 OCT', '十进制 DEC', '十六进制 HEX', '2进制', '3进制', '4进制', '5进制', '6进制', '7进制', '8进制', '9进制', '10进制', '11进制', '12进制', '13进制', '14进制', '15进制'],
 
     id0: '0',
     id1: "1",
@@ -105,6 +103,12 @@ Page({
     id7: "7",
     id8: '8',
     id9: '9',
+    id_A: 'A',
+    id_B: 'B',
+    id_C: 'C',
+    id_D: 'D',
+    id_E: 'E',
+    id_F: 'F',
     id_c: 'clear',
     id_d: 'del',
     id_dot: '.'
@@ -156,7 +160,7 @@ Page({
         }
       }
 
-      //按一次按钮做一次运算
+      //按一次按钮做一次运算----11111
       switch (this.data.showWhichSection) {
         case 'unit':
           if (!isNaN(res1)) {
@@ -174,8 +178,16 @@ Page({
             })
           }
           break;
-      }
+        case 'jinzhi':
+          var m = this.data.index1
+          var n = this.data.index2
+          var res = this.jinzhiTransfer(res1, m, n)
+          this.setData({
+            res2: res,
+          })
 
+          break;
+      }
       this.setData({
         condition: 'clicked',
         res1: res1
@@ -198,11 +210,25 @@ Page({
         }
       }
       //处理完res2后再处理数据
-      if (!isNaN(res2)) {
-        var res = this.transfer(res2, this.data.showUnit2, this.data.showUnit1)
-        this.setData({
-          res1: res,
-        })
+
+      //按一次按钮做一次运算------2222222222222
+      switch (this.data.showWhichSection) {
+        case 'unit':
+          if (!isNaN(res2)) {
+            var res = this.transfer(res2, this.data.showUnit2, this.data.showUnit1)
+            this.setData({
+              res1: res,
+            })
+          }
+          break;
+        case 'jinzhi':
+          var m = this.data.index1
+          var n = this.data.index2
+          var res = this.jinzhiTransfer(res2, n, m)
+          this.setData({
+            res1: res,
+          })
+          break;
       }
       this.setData({
         condition: 'clicked',
@@ -226,7 +252,7 @@ Page({
   },
 
   //选择单位
-  clickBtn: function (e) {
+  chooseUnit: function (e) {
     if (this.data.isVibrate) {
       wx.vibrateShort({
         complete: (res) => {},
@@ -245,7 +271,7 @@ Page({
         this.setData({
           showWhichSection: 'unit',
           array: this.data.array_length,
-          isJinzhi: false
+
         });
         break;
       case 'time':
@@ -253,7 +279,7 @@ Page({
         this.setData({
           showWhichSection: 'unit',
           array: this.data.array_time,
-          isJinzhi: false
+
         });
         break;
       case 'mass':
@@ -261,7 +287,7 @@ Page({
         this.setData({
           showWhichSection: 'unit',
           array: this.data.array_mass,
-          isJinzhi: false
+
         });
         break;
       case 'volume':
@@ -269,7 +295,7 @@ Page({
         this.setData({
           showWhichSection: 'unit',
           array: this.data.array_volume,
-          isJinzhi: false
+
         });
         break;
       case 'temperature':
@@ -277,7 +303,7 @@ Page({
         this.setData({
           showWhichSection: 'unit',
           array: this.data.array_temperature,
-          isJinzhi: false
+
         });
         break;
       case 'presure':
@@ -285,7 +311,7 @@ Page({
         this.setData({
           showWhichSection: 'unit',
           array: this.data.array_pressure,
-          isJinzhi: false
+
         });
         break;
       case 'area':
@@ -293,7 +319,7 @@ Page({
         this.setData({
           showWhichSection: 'unit',
           array: this.data.array_area,
-          isJinzhi: false
+
         });
         break;
       case 'liquidVolume':
@@ -301,7 +327,7 @@ Page({
         this.setData({
           showWhichSection: 'unit',
           array: this.data.array,
-          isJinzhi: false
+
         });
         break;
       case 'angles':
@@ -309,7 +335,7 @@ Page({
         this.setData({
           showWhichSection: 'unit',
           array: this.data.array_angles,
-          isJinzhi: false
+
         });
         break;
       case 'big':
@@ -318,7 +344,7 @@ Page({
           showWhichSection: 'daxie',
           array: this.data.array_length,
           res2: '零元整',
-          isJinzhi: false
+
         });
         break;
       case 'energy':
@@ -326,15 +352,15 @@ Page({
         this.setData({
           showWhichSection: 'unit',
           array: this.data.array_energy,
-          isJinzhi: false
+
         });
         break;
       case 'jinzhi':
         this.initial(this.data.array_jinzhi)
         this.setData({
-          showWhichSection: 'unit',
+          showWhichSection: 'jinzhi',
           array: this.data.array_jinzhi,
-          isJinzhi: true
+
         });
         break;
       case 'EM':
@@ -342,7 +368,7 @@ Page({
         this.setData({
           showWhichSection: 'unit',
           array: this.data.array_length,
-          isJinzhi: false
+
         });
         break;
       case 'velocity':
@@ -350,14 +376,14 @@ Page({
         this.setData({
           showWhichSection: 'unit',
           array: this.data.array_length,
-          isJinzhi: false
+
         });
         break;
 
     }
   },
   bindPickerChange1: function (e) {
-
+    console.log('picker1发送选择改变，携带值为', e.detail.value)
     var index = Number(e.detail.value)
     var id = this.data.id
     switch (id) {
@@ -433,13 +459,32 @@ Page({
         break;
 
     }
-
-    var res = this.transfer(this.data.res1, this.data.showUnit1, this.data.showUnit2)
-
     this.setData({
-      index1: e.detail.value,
-      res2: res
+      index1: e.detail.value
     })
+
+    //按一次按钮做一次运算
+    switch (this.data.showWhichSection) {
+      case 'unit':
+        if (!isNaN(this.data.res1)) {
+          var res = this.transfer(this.data.res1, this.data.showUnit1, this.data.showUnit2)
+          this.setData({
+            res2: res,
+          })
+        }
+        break;
+      case 'jinzhi':
+        //var m = this.data.index1
+       // var n = this.data.index2
+       // var res = this.jinzhiTransfer(this.data.res1, m, n)
+        this.setData({
+          res1: '0',
+          res2: '0',
+        })
+        break;
+    }
+    // var res = this.transfer(this.data.res1, this.data.showUnit1, this.data.showUnit2)
+
   },
   bindPickerChange2: function (e) {
     console.log(e)
@@ -519,11 +564,31 @@ Page({
         break;
 
     }
-    var res = this.transfer(this.data.res2, this.data.showUnit2, this.data.showUnit1)
     this.setData({
       index2: e.detail.value,
-      res1: res
     })
+
+    //按一次按钮做一次运算
+    switch (this.data.showWhichSection) {
+      case 'unit':
+        if (!isNaN(this.data.res2)) {
+          var res = this.transfer(this.data.res2, this.data.showUnit2, this.data.showUnit1)
+          this.setData({
+            res1: res,
+          })
+        }
+        break;
+      case 'jinzhi':
+        //var m = this.data.index1
+        //var n = this.data.index2
+        //var res = this.jinzhiTransfer(this.data.res2, m, n)
+        this.setData({
+          res1: '0',
+          res2: '0',
+        })
+        break;
+    }
+
   },
   transfer: function (num, u1, u2) {
     u1 = u1.replace('°', 'deg')
@@ -640,6 +705,48 @@ Page({
 
     return ChineseStr;
   },
+  jinzhiTransfer: function (num, m, n) {
+    m = Number(m)
+    n = Number(n)
+    switch (m) {
+      case 0:
+        m = 2;
+        break;
+      case 1:
+        m = 8;
+        break;
+      case 2:
+        m = 10;
+        break;
+      case 3:
+        m = 16;
+        break;
+      default:
+        m = m - 2
+
+    }
+    switch (n) {
+      case 0:
+        n = 2;
+        break;
+      case 1:
+        n = 8;
+        break;
+      case 2:
+        n = 10;
+        break;
+      case 3:
+        n = 16;
+        break;
+      default:
+        n = n - 2
+    }
+    console.log(m + "---m")
+    console.log(n + "---n")
+    //var s = num + '';
+    var result = parseInt(num, m).toString(n);
+    return result;
+  },
 
 
   /**
@@ -660,7 +767,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    console.log(this.changeNumMoneyToChinese('94535467579..5545459'))
+    //console.log(parseInt(333, 4).toString(5))
   },
 
   /**
