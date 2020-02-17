@@ -117,7 +117,7 @@ Page({
       })
     }
     var res2 = '0'
-    if (this.data.showWhichSection == 2) {
+    if (this.data.showWhichSection == 'daxie') {
       res2 = '零元整'
     }
     this.setData({
