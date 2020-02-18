@@ -3,6 +3,6 @@
 <image src="../../images/t1.jpg" mode="aspectFit"></image>
 </view>
 
-<button class="btn" style="primary" bindtap="bindtap">跳过({{time}})</button>
+<button class="btn" style="primary" bindtap="bindtap">老婆我爱你({{time}})</button>
 
 
