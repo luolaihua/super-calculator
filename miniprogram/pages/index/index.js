@@ -25,7 +25,7 @@ Page({
     poet: '',
     isRuleTrue: false,
     imageUrl: '',
-    fontsize: 70,
+    fontsize: 60,
     res: "0", //结果
     res_ed: '',
     id_sin: 'sin(',
@@ -98,7 +98,7 @@ Page({
 
     if (isFraction) {
       math.config({
-        number: 'number'
+        number: 'BigNumber'
       })
       this.setData({
         isFraction: false
@@ -251,7 +251,7 @@ Page({
   //长按触发
   longtap: function (e) {
     this.setData({
-      fontsize: 40,
+      //fontsize: 40,
       res: '亲爱的老婆，我爱你，很爱很爱，我想你，很想很想。我想吻你千遍，拥你入眠,和你一起看日出日落，和你度过余生。我的未来里有你，你的未来里有我，这样就很好。爱你。再吻你千遍❤❤❤'
     })
   },
@@ -268,7 +268,7 @@ Page({
     this.setData({
       res: '0',
       condition: 'initial',
-      fontsize: 100
+      //fontsize: 100
     })
   },
   clickBtn: function (e) {

@@ -47,7 +47,7 @@ math.createUnit('ps', '735.49875W') //米制马力
 console.log(math.evaluate('1m/s to km/h') + '')
 console.log(math.evaluate('1c to km/h') + '')
 console.log(math.evaluate('1ps to hp') + '')
-console.log(math.evaluate('1hp to (N m)/s') + '')
+console.log(math.evaluate('1week to ns') + '')
 
 
 Page({
