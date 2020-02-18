@@ -40,13 +40,14 @@ math.createUnit('kn', '1.852km/h') //节
 math.createUnit('mph', '1.609344km/h') //迈
 math.createUnit('ips', '0.254m/s') //英寸每秒
 math.createUnit('fps', '0.3048m/s') //马赫
+math.createUnit('ps', '735.49875W') //米制马力
 
 
 
 console.log(math.evaluate('1m/s to km/h') + '')
 console.log(math.evaluate('1c to km/h') + '')
-console.log(math.evaluate('1mph to kn') + '')
-console.log(math.evaluate('1fps to ips') + '')
+console.log(math.evaluate('1ps to hp') + '')
+console.log(math.evaluate('1hp to (N m)/s') + '')
 
 
 Page({
@@ -80,7 +81,7 @@ Page({
     id_big: 'big',
     id_energy: 'energy',
     id_jinzhi: 'jinzhi',
-    id_EM: 'EM',
+    id_power: 'power',
     id_velocity: 'velocity',
 
     array: ['米 m', '千米 km', '分米 dm', '厘米 cm', '毫米 mm', '微米 um', '纳米 nm', '皮米 pm',
@@ -103,6 +104,7 @@ Page({
     array_time: ['纳秒 ns', '微秒 us', '毫秒 ms', '秒 s', '分 mins', '时 h', '天 day', '周 week', '月 month', '年 year', '十年 decade', '世纪 century'],
     array_jinzhi: ['二进制BIN', '八进制OCT', '十进制DEC', '十六进制HEX', '2进制', '3进制', '4进制', '5进制', '6进制', '7进制', '8进制', '9进制', '10进制', '11进制', '12进制', '13进制', '14进制', '15进制'],
     array_velocity:['米/秒 m/s','千米/小时 km/h','海里/小时(节) kn','英里/小时(迈) mph','英寸/秒 ips','英尺/秒 fps','光速 c','马赫 Ma'],
+    array_power:['瓦 W','千瓦 kW','英制马力 hp','米制马力 ps','焦耳/秒 J/s','牛顿米/秒 (N m)/s','千卡/秒 kcal/s',],
     id0: '0',
     id1: "1",
     id2: '2',
@@ -379,11 +381,11 @@ Page({
 
         });
         break;
-      case 'EM':
-        this.initial(this.data.array_length)
+      case 'power':
+        this.initial(this.data.array_power)
         this.setData({
           showWhichSection: 'unit',
-          array: this.data.array_length,
+          array: this.data.array_power,
 
         });
         break;
@@ -463,9 +465,9 @@ Page({
           showUnit1: this.getUnit(this.data.array_jinzhi[index])
         });
         break;
-      case 'EM':
+      case 'power':
         this.setData({
-          showUnit1: this.getUnit(this.data.array_length[index])
+          showUnit1: this.getUnit(this.data.array_power[index])
         });
         break;
       case 'velocity':
@@ -568,9 +570,9 @@ Page({
           showUnit2: this.getUnit(this.data.array_jinzhi[index])
         });
         break;
-      case 'EM':
+      case 'power':
         this.setData({
-          showUnit2: this.getUnit(this.data.array_length[index])
+          showUnit2: this.getUnit(this.data.array_power[index])
         });
         break;
       case 'velocity':

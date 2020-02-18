@@ -1,6 +1,6 @@
 <!--miniprogram/pages/unitTransfer/unitTransfer.wxml-->
 <view class="body">
-	<swiper indicator-dots="true">
+	<swiper indicator-dots="false">
 		<swiper-item>
 			<view class="viewGroup">
 				<view class="viewBox">
@@ -18,7 +18,7 @@
 				<view class="viewBox">
 					<view class="v1" style="color:{{id=='velocity'?'orange':'black'}}" id="{{id_velocity}}" bindtap="chooseUnit" hover-class="shadow1">速度</view>
 					<view class="v1" style="color:{{id=='jinzhi'?'orange':'black'}}" id="{{id_jinzhi}}" bindtap="chooseUnit" hover-class="shadow1">进制</view>
-					<view class="v1" style="color:{{id=='EM'?'orange':'black'}}" id="{{id_EM}}" bindtap="chooseUnit" hover-class="shadow1">电学</view>
+					<view class="v1" style="color:{{id=='power'?'orange':'black'}}" id="{{id_power}}" bindtap="chooseUnit" hover-class="shadow1">功率</view>
 					<view class="v1" style="color:{{id=='presure'?'orange':'black'}}" id="{{id_presure}}" bindtap="chooseUnit" hover-class="shadow1">压强</view>
 				</view>
 			</view>
