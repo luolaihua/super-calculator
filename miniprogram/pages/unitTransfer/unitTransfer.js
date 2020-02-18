@@ -2,7 +2,7 @@
 var math = require('../util/math.min.js');
 var Fraction = require('../util/fraction.js');
 math.config({
-  number: 'bigNumber'
+  number: 'BigNumber'
 })
 math.createUnit('nmi', '1.852km')
 math.createUnit('fur', '220yd')
@@ -34,10 +34,20 @@ math.createUnit('mu', '0.01qing') //亩
 math.createUnit('areaFen', '0.1mu') //分
 math.createUnit('chi2', '0.11111111111111111111m2') //平方尺
 math.createUnit('cun2', '0.01chi2') //平方寸
+math.createUnit('c', '299792458m/s') //光速
+math.createUnit('Ma', '340.3m/s') //马赫
+math.createUnit('kn', '1.852km/h') //节
+math.createUnit('mph', '1.609344km/h') //迈
+math.createUnit('ips', '0.254m/s') //英寸每秒
+math.createUnit('fps', '0.3048m/s') //马赫
 
 
-console.log(math.evaluate('1grad to rad') + '')
-console.log(math.evaluate('1day to mins') + '')
+
+console.log(math.evaluate('1m/s to km/h') + '')
+console.log(math.evaluate('1c to km/h') + '')
+console.log(math.evaluate('1mph to kn') + '')
+console.log(math.evaluate('1fps to ips') + '')
+
 
 Page({
 
@@ -92,7 +102,7 @@ Page({
     array_angles: ['弧度 rad', '角度 °', '百分度 grad', '圆周 cycle', '弧秒 arcsec', '弧分 arcmin'],
     array_time: ['纳秒 ns', '微秒 us', '毫秒 ms', '秒 s', '分 mins', '时 h', '天 day', '周 week', '月 month', '年 year', '十年 decade', '世纪 century'],
     array_jinzhi: ['二进制BIN', '八进制OCT', '十进制DEC', '十六进制HEX', '2进制', '3进制', '4进制', '5进制', '6进制', '7进制', '8进制', '9进制', '10进制', '11进制', '12进制', '13进制', '14进制', '15进制'],
-
+    array_velocity:['米/秒 m/s','千米/小时 km/h','海里/小时(节) kn','英里/小时(迈) mph','英寸/秒 ips','英尺/秒 fps','光速 c','马赫 Ma'],
     id0: '0',
     id1: "1",
     id2: '2',
@@ -378,10 +388,10 @@ Page({
         });
         break;
       case 'velocity':
-        this.initial(this.data.array_length)
+        this.initial(this.data.array_velocity)
         this.setData({
           showWhichSection: 'unit',
-          array: this.data.array_length,
+          array: this.data.array_velocity,
 
         });
         break;
@@ -460,7 +470,7 @@ Page({
         break;
       case 'velocity':
         this.setData({
-          showUnit1: this.getUnit(this.data.array_length[index])
+          showUnit1: this.getUnit(this.data.array_velocity[index])
         });
         break;
 
@@ -565,7 +575,7 @@ Page({
         break;
       case 'velocity':
         this.setData({
-          showUnit2: this.getUnit(this.data.array_length[index])
+          showUnit2: this.getUnit(this.data.array_velocity[index])
         });
         break;
 
@@ -782,8 +792,8 @@ Page({
   onShow: function () {
     //console.log(parseInt(333, 4).toString(5))
     var str = '288892471488734673jbdkjsdfkdfesf'
-    console.log(this.formatResult('233333333333323333344245'))
-    console.log(this.formatResult('23 33 333  3 333 332 3333344 245'))
+    //console.log(this.formatResult('233333333333323333344245'))
+    //console.log(this.formatResult('23 33 333  3 333 332 3333344 245'))
   },
 
   /**
