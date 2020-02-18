@@ -1,9 +1,9 @@
 {
   "pages": [
-    "pages/index/index",
+   "pages/index/index",
     "pages/unitTransfer/unitTransfer",
     "pages/welcome/welcome",
-    
+     
     "pages/introduction/introduction",
     "pages/relative/relative",
     "pages/userConsole/userConsole",

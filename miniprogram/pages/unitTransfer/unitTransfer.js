@@ -103,8 +103,8 @@ Page({
     array_angles: ['弧度 rad', '角度 °', '百分度 grad', '圆周 cycle', '弧秒 arcsec', '弧分 arcmin'],
     array_time: ['纳秒 ns', '微秒 us', '毫秒 ms', '秒 s', '分 mins', '时 h', '天 day', '周 week', '月 month', '年 year', '十年 decade', '世纪 century'],
     array_jinzhi: ['二进制BIN', '八进制OCT', '十进制DEC', '十六进制HEX', '2进制', '3进制', '4进制', '5进制', '6进制', '7进制', '8进制', '9进制', '10进制', '11进制', '12进制', '13进制', '14进制', '15进制'],
-    array_velocity:['米/秒 m/s','千米/小时 km/h','海里/小时(节) kn','英里/小时(迈) mph','英寸/秒 ips','英尺/秒 fps','光速 c','马赫 Ma'],
-    array_power:['瓦 W','千瓦 kW','英制马力 hp','米制马力 ps','焦耳/秒 J/s','牛顿米/秒 (N m)/s','千卡/秒 kcal/s',],
+    array_velocity: ['米/秒 m/s', '千米/小时 km/h', '海里/小时(节) kn', '英里/小时(迈) mph', '英寸/秒 ips', '英尺/秒 fps', '光速 c', '马赫 Ma'],
+    array_power: ['瓦 W', '千瓦 kW', '英制马力 hp', '米制马力 ps', '焦耳/秒 J/s', '牛顿米/秒 (N m)/s', '千卡/秒 kcal/s', ],
     id0: '0',
     id1: "1",
     id2: '2',
@@ -183,6 +183,15 @@ Page({
             })
           }
           break;
+        case 'temperature':
+          if (!isNaN(res1)) {
+            var res = this.transfer(res1, this.data.showUnit1, this.data.showUnit2)
+            this.setData({
+              res2: res,
+              res1: res1
+            })
+          }
+          break;
         case 'daxie':
           if (!isNaN(res1)) {
             var res = this.changeNumMoneyToChinese(res1)
@@ -196,12 +205,13 @@ Page({
           var m = this.data.index1
           var n = this.data.index2
           var res = this.jinzhiTransfer(res1, m, n)
-          res=this.formatResult(res)
-          res1=this.formatResult(res1)
+          res = this.formatResult(res)
+          res1 = this.formatResult(res1)
           this.setData({
             res2: res,
             res1: res1
-          }) ;break;
+          });
+          break;
       }
       this.setData({
         condition: 'clicked'
@@ -236,12 +246,21 @@ Page({
             })
           }
           break;
+        case 'temperature':
+          if (!isNaN(res2)) {
+            var res = this.transfer(res2, this.data.showUnit2, this.data.showUnit1)
+            this.setData({
+              res1: res,
+              res2: res2
+            })
+          }
+          break;
         case 'jinzhi':
           var m = this.data.index1
           var n = this.data.index2
           var res = this.jinzhiTransfer(res2, n, m)
-          res=this.formatResult(res)
-          res2=this.formatResult(res2)
+          res = this.formatResult(res)
+          res2 = this.formatResult(res2)
           this.setData({
             res1: res,
             res2: res2
@@ -319,7 +338,7 @@ Page({
       case 'temperature':
         this.initial(this.data.array_temperature)
         this.setData({
-          showWhichSection: 'unit',
+          showWhichSection: 'temperature',
           array: this.data.array_temperature,
 
         });
@@ -491,10 +510,18 @@ Page({
           })
         }
         break;
+      case 'temperature':
+        if (!isNaN(this.data.res1)) {
+          var res = this.transfer(this.data.res1, this.data.showUnit1, this.data.showUnit2)
+          this.setData({
+            res2: res,
+          })
+        }
+        break;
       case 'jinzhi':
         //var m = this.data.index1
-       // var n = this.data.index2
-       // var res = this.jinzhiTransfer(this.data.res1, m, n)
+        // var n = this.data.index2
+        // var res = this.jinzhiTransfer(this.data.res1, m, n)
         this.setData({
           res1: '0',
           res2: '0',
@@ -596,6 +623,14 @@ Page({
           })
         }
         break;
+      case 'temperature':
+        if (!isNaN(this.data.res2)) {
+          var res = this.transfer(this.data.res2, this.data.showUnit2, this.data.showUnit1)
+          this.setData({
+            res1: res,
+          })
+        }
+        break;
       case 'jinzhi':
         //var m = this.data.index1
         //var n = this.data.index2
@@ -605,6 +640,39 @@ Page({
           res2: '0',
         })
         break;
+    }
+
+  },
+  zhengfu: function (e) {
+    if (this.data.isChoose) {
+      this.setData({
+        res1: jian(this.data.res1)
+      })
+      if (!isNaN(this.data.res1)) {
+        var res = this.transfer(this.data.res1, this.data.showUnit1, this.data.showUnit2)
+        this.setData({
+          res2: res,
+        })
+      }
+    } else {
+      this.setData({
+        res2: jian(this.data.res2)
+      })
+      if (!isNaN(this.data.res2)) {
+        var res = this.transfer(this.data.res2, this.data.showUnit2, this.data.showUnit1)
+        this.setData({
+          res1: res,
+        })
+      }
+    }
+
+    function jian(res) {
+      if (res.charAt(0) == '-') {
+        res = res.replace('-', '')
+      } else {
+        res = '-' + res
+      }
+      return res
     }
 
   },
@@ -724,7 +792,7 @@ Page({
     return ChineseStr;
   },
   jinzhiTransfer: function (num, m, n) {
-    num = num.replace(/\s/g,"")
+    num = num.replace(/\s/g, "")
     m = Number(m)
     n = Number(n)
     switch (m) {
@@ -766,11 +834,11 @@ Page({
     var result = parseInt(num, m).toString(n);
     return result;
   },
-  formatResult: function (str){
+  formatResult: function (str) {
     // 先删除所有的空格 replace(/\s/g,'')，再每个四个字符添加空格 replace(/(.{4})/g,"$1 ")
-    str=str.replace(/\s/g,'').replace(/(.{4})/g,"$1 ");
+    str = str.replace(/\s/g, '').replace(/(.{4})/g, "$1 ");
     return str
-},
+  },
 
 
 
