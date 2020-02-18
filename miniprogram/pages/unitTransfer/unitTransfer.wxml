@@ -24,7 +24,7 @@
 			</view>
 		</swiper-item>
 	</swiper>
-	<view class="unit-section" wx:if="{{showWhichSection=='unit'}}">
+	<view class="unit-section" wx:if="{{showWhichSection=='unit'||showWhichSection=='temperature'}}">
 		<view class="show-section">
 			<view class="select">
 				<picker wx:if="{{id}}=='length'" bindchange="bindPickerChange1" range="{{array}}" style="font-size:40rpx">
@@ -52,34 +52,7 @@
 			<view class="showUnit">{{showUnit2}}</view>
 		</view>
 	</view>
-	<view class="temperature-section" wx:if="{{showWhichSection=='temperature'}}">
-		<view class="show-section">
-			<view class="select">
-				<picker wx:if="{{id}}=='length'" bindchange="bindPickerChange1" range="{{array}}" style="font-size:40rpx">
-					<view class="picker">
-						{{array[index1]}}
-					</view>
-				</picker>
-			</view>
-			<view class="show" bindtap="choose1" style="color:{{isChoose?'orange':'black'}}">
-				{{res1}}
-			</view>
-			<view class="showUnit">{{showUnit1}}</view>
-		</view>
-		<view class="show-section">
-			<view class="select">
-				<picker wx:if="{{id}}=='length'" bindchange="bindPickerChange2" range="{{array}}" style="font-size:40rpx">
-					<view class="picker">
-						{{array[index2]}}
-					</view>
-				</picker>
-			</view>
-			<view class="show" bindtap="choose2" style="color:{{!isChoose?'orange':'black'}}">
-				{{res2}}
-			</view>
-			<view class="showUnit">{{showUnit2}}</view>
-		</view>
-	</view>
+
 	<view class="jinzhi-section" wx:if="{{showWhichSection=='jinzhi'}}">
 		<view class="show-section">
 			<view class="jinzhi-select">
