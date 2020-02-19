@@ -42,7 +42,6 @@ math.createUnit('ips', '0.254m/s') //英寸每秒
 math.createUnit('fps', '0.3048m/s') //马赫
 math.createUnit('ps', '735.49875W') //米制马力
 
-
 /* 
 console.log(math.evaluate('1m/s to km/h') + '')
 console.log(math.evaluate('1c to km/h') + '')
@@ -50,6 +49,9 @@ console.log(math.evaluate('1ps to hp') + '')
 console.log(math.evaluate('1week to ns') + '')
 
  */
+
+
+ const app = getApp()
 Page({
 
   /**
@@ -127,7 +129,7 @@ Page({
   },
   //清除按钮
   clearBtn: function (e) {
-    if (this.data.isVibrate) {
+    if (app.globalData.isVibrate) {
       wx.vibrateShort({
         complete: (res) => {},
       })
@@ -143,7 +145,7 @@ Page({
   },
   //输入数字按钮
   inputBtn: function (e) {
-    if (this.data.isVibrate) {
+    if (app.globalData.isVibrate) {
       wx.vibrateShort({
         complete: (res) => {},
       })
@@ -289,7 +291,7 @@ Page({
 
   //选择单位
   chooseUnit: function (e) {
-    if (this.data.isVibrate) {
+    if (app.globalData.isVibrate) {
       wx.vibrateShort({
         complete: (res) => {},
       })

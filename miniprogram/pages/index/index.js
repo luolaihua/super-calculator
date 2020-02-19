@@ -19,7 +19,7 @@ var touchMoveY = 0; // y轴方向移动的距离
 
 Page({
   data: {
-    isScientific: true,
+    isScientific: false,
     isFraction: false,
     ANS: '0',
     poet: '',
@@ -91,6 +91,12 @@ Page({
 
   //是否开启分式运算
   startFraction: function (e) {
+    //是否开启触摸反馈
+    if (app.globalData.isVibrate) {
+      wx.vibrateShort({
+        complete: (res) => {},
+      })
+    }
     var isFraction = this.data.isFraction
     console.log(isFraction)
     var res = this.data.res
@@ -139,6 +145,12 @@ Page({
   },
   //-------------------------------------------心形按钮功能
   loveBtn: function (e) {
+    //是否开启触摸反馈
+    if (app.globalData.isVibrate) {
+      wx.vibrateShort({
+        complete: (res) => {},
+      })
+    }
     var curTime = e.timeStamp
     var lastTime = e.currentTarget.dataset.time // 通过e.currentTarget.dataset.time 访问到绑定到该组件的自定义数据
 
@@ -256,6 +268,12 @@ Page({
     })
   },
   backBtn: function (e) {
+    //是否开启触摸反馈
+    if (app.globalData.isVibrate) {
+      wx.vibrateShort({
+        complete: (res) => {},
+      })
+    }
     var res = this.data.res;
     var condition = this.data.condition;
     if (condition != 'initial' && res.length > 1) {
@@ -270,6 +288,12 @@ Page({
     }
   },
   clearBtn: function (e) {
+    //是否开启触摸反馈
+    if (app.globalData.isVibrate) {
+      wx.vibrateShort({
+        complete: (res) => {},
+      })
+    }
     this.setData({
       res: '0',
       condition: 'initial',
@@ -277,6 +301,12 @@ Page({
     })
   },
   clickBtn: function (e) {
+    //是否开启触摸反馈
+    if (app.globalData.isVibrate) {
+      wx.vibrateShort({
+        complete: (res) => {},
+      })
+    }
     var btnValue = e.target.id;
     var result = this.data.res;
     var condition = this.data.condition;
@@ -337,6 +367,12 @@ Page({
 
   },
   equal: function (e) {
+    //是否开启触摸反馈
+    if (app.globalData.isVibrate) {
+      wx.vibrateShort({
+        complete: (res) => {},
+      })
+    }
     var result = this.data.res;
     var ans = this.data.ANS;
 
@@ -361,7 +397,7 @@ Page({
       //数字谐音解析
       this.showlove(res)
       //把deg转成°
-      res = res.toString().replace(' deg','°');
+      res = res.toString().replace(' deg', '°');
       this.setData({
         res: res,
         ANS: res,
@@ -378,7 +414,7 @@ Page({
 
 
   },
-  toScientificData:function(e){
+  toScientificData: function (e) {
 
     //这一步特别牛，先把全局对象存起来，后面全局对象可能会改变，所以that可以代替this作为全局对象
     var that = this
@@ -388,16 +424,27 @@ Page({
       //不同参数用 & 分隔；如 '/pages/index/index?value1=hello&value2=world'
       url: '../scientificData/scientificData',
       events: {
-        getScientifiData: function(data) {
+        getScientifiData: function (data) {
           that.setData({
-            res:data.data,
-            condition:'clicked'
+            res: data.data,
+            condition: 'clicked'
 
           })
         }
       },
-      success: function(res) {
-      }
+      success: function (res) {}
+    })
+  },
+  help: function (e) {
+    //是否开启触摸反馈
+    if (app.globalData.isVibrate) {
+      wx.vibrateShort({
+        complete: (res) => {},
+      })
+    }
+    this.setData({
+      poet: '666',
+      isRuleTrue: true
     })
   },
 

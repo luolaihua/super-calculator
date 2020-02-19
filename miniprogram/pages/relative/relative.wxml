@@ -1,10 +1,11 @@
+<image  bindtap="introduction" class="about" src="../../images/wen3.png" mode="aspectFit"></image>
  <block wx:if="{{isShowScreen}}">
  	<view class="text">{{screenData}}</view>
  	<!-- 用来显示结果 -->
  	<view class="result">{{result}} </view>
  </block>
  <block wx:else>
- 	<view style="color:white;padding-left:40rpx">你叫TA:</view>
+ 	<view style="color:white;padding-left:40rpx;margin-top:60rpx">你叫TA:</view>
  	<view class="inputBox">
  		<input class="input" placeholder="请输入称呼" value="{{inputValue}}" auto-focus="true" bindinput="inputChain"></input>
  		<button class="ok" bindtap="clearBtn">清除</button>
@@ -21,7 +22,6 @@
  		<button class="btn orange1" bindtap="loveBtn" id="{{id_love}}" hover-class='shadow'>♡</button>
  		<button class="btn orange" bindtap="clickButton" id="{{id_clear}}" hover-class='shadow'>C</button>
  	</view>
-
  	<view class="btnBox">
  		<button class="btn " bindtap="clickButton" id="{{id_f}}" hover-class='shadow'>父</button>
  		<button class="btn " bindtap="clickButton" id="{{id_m}}" hover-class='shadow'>母</button>
@@ -38,6 +38,6 @@
  		<button class="btn " bindtap="clickButton" id="{{id_bs}}" hover-class='shadow'>姐</button>
  		<button class="btn " bindtap="clickButton" id="{{id_ss}}" hover-class='shadow'>妹</button>
  		<button class="btn " bindtap="clickButton" id="{{id_d}}" hover-class='shadow'>女</button>
- 		<button class="btn orange" bindtap="introduction" hover-class='shadow'>?</button>
+ 		<button class="btn orange" bindtap="setting" hover-class='shadow'>۞</button>
  	</view>
  </view>

@@ -20,6 +20,15 @@ height:40rpx !important;
   }
 
 */
+.about{
+  height: 70rpx;
+  width: 70rpx;
+  position: fixed;
+  z-index: 2;
+  bottom: 630rpx;
+  right: 0;
+}
+
 .inputBox{
   display: flex;
   padding: 2%;
@@ -69,6 +78,7 @@ height:40rpx !important;
   width: auto;
   height: 300rpx;
   margin: 40rpx;
+  margin-top: 50rpx;
 
 }
 

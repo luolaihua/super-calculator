@@ -39,11 +39,21 @@ Page({
 
   },
   introduction:function(e){
+    if (app.globalData.isVibrate) {
+      wx.vibrateShort({
+        complete: (res) => {},
+      })
+    }
     wx.navigateTo({
       url: '../introduction/introduction',
     })
   },
   clearBtn: function (e) {
+    if (app.globalData.isVibrate) {
+      wx.vibrateShort({
+        complete: (res) => {},
+      })
+    }
     this.setData({
       inputValue: "",
       chain: ''
@@ -63,6 +73,11 @@ Page({
   },
 
   loveBtn: function (e) {
+    if (app.globalData.isVibrate) {
+      wx.vibrateShort({
+        complete: (res) => {},
+      })
+    }
     if (this.data.isShowScreen) {
       this.setData({
         isShowScreen: false
@@ -80,7 +95,11 @@ Page({
     }
   },
   changeSex: function (e) {
-
+    if (app.globalData.isVibrate) {
+      wx.vibrateShort({
+        complete: (res) => {},
+      })
+    }
     if (this.data.sex == 1) {
       this.setData({
         sex: 0,
@@ -99,12 +118,32 @@ Page({
       })
     }
   },
+  setting:function(e){
+    if(app.globalData.isVibrate){
+      app.globalData.isVibrate = false
+      wx.showToast({
+        title: '触摸反馈关闭',
+      })
+    }else{
+      app.globalData.isVibrate = true
+      wx.showToast({
+        title: '触摸反馈开启',
+      })
+    }
+    
+
+  },
 
 
   /**
    * 点击按钮事件
    */
   clickButton: function (event) {
+    if (app.globalData.isVibrate) {
+      wx.vibrateShort({
+        complete: (res) => {},
+      })
+    }
     var data = this.data.screenData.toString();
     var dataResult = this.data.result.toString();
     var id = event.target.id;
@@ -141,7 +180,7 @@ Page({
         reverse: false,
         type: 'default'
       });
-      console.log(result);
+      //console.log(result);
 
 
       if (id == this.data.id_inverse) { //互查操作  Ta称呼我

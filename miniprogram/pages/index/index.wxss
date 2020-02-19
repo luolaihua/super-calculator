@@ -57,6 +57,15 @@ button::after{
   text-align: right;
   margin: 20rpx;
 }
+.about{
+  height: 50rpx;
+  width: 50rpx;
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  opacity: 0.1;
+}
 
 
   
