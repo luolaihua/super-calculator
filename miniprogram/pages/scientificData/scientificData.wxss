@@ -1,0 +1,6 @@
+/* miniprogram/pages/scientificData/scientificData.wxss */
+.data{
+  font-size: 40rpx;
+  margin-top: 20rpx;
+  
+}

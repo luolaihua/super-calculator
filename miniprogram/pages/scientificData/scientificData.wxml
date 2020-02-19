@@ -1,0 +1,6 @@
+<!--miniprogram/pages/scientificData/scientificData.wxml-->
+<scroll-view>
+<block wx:for="{{array}}" wx:key='*this'>
+  <view class="data" id='{{index}}' bindtap="test" style="color:{{index%2==0?'black':'darkcyan'}}"> {{item}}</view>
+</block>
+</scroll-view>

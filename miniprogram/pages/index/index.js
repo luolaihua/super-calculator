@@ -19,7 +19,7 @@ var touchMoveY = 0; // y轴方向移动的距离
 
 Page({
   data: {
-    isScientific: false,
+    isScientific: true,
     isFraction: false,
     ANS: '0',
     poet: '',
@@ -377,6 +377,28 @@ Page({
     }
 
 
+  },
+  toScientificData:function(e){
+
+    //这一步特别牛，先把全局对象存起来，后面全局对象可能会改变，所以that可以代替this作为全局对象
+    var that = this
+
+    wx.navigateTo({
+      //传参格式：参数与路径之间使用 ?分隔，参数键与参数值用 = 相连，
+      //不同参数用 & 分隔；如 '/pages/index/index?value1=hello&value2=world'
+      url: '../scientificData/scientificData',
+      events: {
+        getScientifiData: function(data) {
+          that.setData({
+            res:data.data,
+            condition:'clicked'
+
+          })
+        }
+      },
+      success: function(res) {
+      }
+    })
   },
 
 

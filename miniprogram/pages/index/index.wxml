@@ -47,7 +47,7 @@
 		<button class="brown" id='{{id_sub}}' bindtap="clickBtn" style="font-size:{{isScientific?40:60}}rpx" >－</button>
 	</view>
 	<view class="btnbox" style="height:{{isScientific?100:150}}rpx">
-		<button id='{{id_pi}}' bindtap="clickBtn" wx:if="{{isScientific}}" style="font-size:{{isScientific?40:60}}rpx" >π</button>
+		<button id='{{id_pi}}' bindtap="clickBtn" bindlongtap="toScientificData" wx:if="{{isScientific}}" style="font-size:{{isScientific?40:60}}rpx" >π</button>
 		<button id='{{id1}}' bindtap="clickBtn" style="font-size:{{isScientific?40:60}}rpx" >1</button>
 		<button id='{{id2}}' bindtap="clickBtn" style="font-size:{{isScientific?40:60}}rpx" >2</button>
 		<button id='{{id3}}' bindtap="clickBtn" style="font-size:{{isScientific?40:60}}rpx" >3</button>
