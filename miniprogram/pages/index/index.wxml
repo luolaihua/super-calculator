@@ -33,7 +33,7 @@
 		<button class="brown" id='{{id_div}}' bindtap="clickBtn" style="font-size:{{isScientific?40:60}}rpx" >÷</button>
 	</view>
 	<view class="btnbox" style="height:{{isScientific?100:150}}rpx">
-		<button id='{{id_deg}}' bindtap="clickBtn" wx:if="{{isScientific}}" style="font-size:{{isScientific?40:60}}rpx" >deg</button>
+		<button id='{{id_deg}}' bindtap="clickBtn" wx:if="{{isScientific}}" style="font-size:{{isScientific?40:60}}rpx" >°</button>
 		<button id='{{id7}}' bindtap="clickBtn" style="font-size:{{isScientific?40:60}}rpx" >7</button>
 		<button id='{{id8}}' bindtap="clickBtn" style="font-size:{{isScientific?40:60}}rpx" >8</button>
 		<button id='{{id9}}' bindtap="clickBtn" style="font-size:{{isScientific?40:60}}rpx" >9</button>

@@ -39,7 +39,7 @@ Page({
     id_dou: ',',
     id_gen: '√(',
     id_mod: '%',
-    id_deg: 'deg',
+    id_deg: '°',
     id_i: 'i',
     id_pi: 'π',
     id_e: 'e',
@@ -262,6 +262,11 @@ Page({
       this.setData({
         res: res.substr(0, res.length - 1)
       })
+    } else if (res.length == 1) {
+      this.setData({
+        res: '0',
+        condition: 'initial'
+      })
     }
   },
   clearBtn: function (e) {
@@ -335,23 +340,28 @@ Page({
     var result = this.data.res;
     var ans = this.data.ANS;
 
-    parser.evaluate('A = ' + ans)
     result = this.dataPre(result)
- 
+    ans = this.dataPre(ans)
 
-    
+    parser.evaluate('A = ' + ans)
+
+
     try {
       //计算结果
       var res = parser.evaluate(result)
       //将精度设为16
-      res = math.format(res, {precision: 16})
+      res = math.format(res, {
+        precision: 16
+      })
+
       //如果是分式计算
       if (this.data.isFraction) {
         res = new Fraction(res).toFraction()
       }
       //数字谐音解析
       this.showlove(res)
-
+      //把deg转成°
+      res = res.toString().replace(' deg','°');
       this.setData({
         res: res,
         ANS: res,
@@ -391,6 +401,7 @@ Page({
 
     //预处理
     result = result.replaceAll('×', '*');
+    result = result.replaceAll('°', 'deg');
     result = result.replaceAll('÷', '/');
     result = result.replaceAll('π', 'pi');
     result = result.replaceAll('√', 'sqrt');
