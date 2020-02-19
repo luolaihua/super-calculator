@@ -1,8 +1,9 @@
 {
   "pages": [
-   
+    
+    "pages/myMatrices/myMatrices",
     "pages/index/index",
-     "pages/scientificData/scientificData",
+    "pages/scientificData/scientificData",
     "pages/unitTransfer/unitTransfer",
     "pages/welcome/welcome",
     "pages/introduction/introduction",
@@ -19,7 +20,6 @@
     "pages/openapi/cloudid/cloudid",
     "pages/im/im",
     "pages/im/room/room"
-    
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
@@ -46,6 +46,10 @@
       {
         "pagePath": "pages/unitTransfer/unitTransfer",
         "text": "单位转换"
+      },
+      {
+        "pagePath": "pages/myMatrices/myMatrices",
+        "text": "矩阵计算"
       }
     ]
   }
