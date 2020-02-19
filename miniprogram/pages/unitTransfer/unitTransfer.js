@@ -43,13 +43,13 @@ math.createUnit('fps', '0.3048m/s') //马赫
 math.createUnit('ps', '735.49875W') //米制马力
 
 
-
+/* 
 console.log(math.evaluate('1m/s to km/h') + '')
 console.log(math.evaluate('1c to km/h') + '')
 console.log(math.evaluate('1ps to hp') + '')
 console.log(math.evaluate('1week to ns') + '')
 
-
+ */
 Page({
 
   /**
@@ -299,9 +299,6 @@ Page({
       id: btnValue,
       isChoose: true
     })
-    wx.showToast({
-      title: this.data.id,
-    })
     switch (btnValue) {
       case 'length':
         this.initial(this.data.array_length)
@@ -420,7 +417,7 @@ Page({
     }
   },
   bindPickerChange1: function (e) {
-    console.log('picker1发送选择改变，携带值为', e.detail.value)
+    //console.log('picker1发送选择改变，携带值为', e.detail.value)
     var index = Number(e.detail.value)
     var id = this.data.id
     switch (id) {
@@ -532,8 +529,8 @@ Page({
 
   },
   bindPickerChange2: function (e) {
-    console.log(e)
-    console.log('picker2发送选择改变，携带值为', e.detail.value)
+    //console.log(e)
+    //console.log('picker2发送选择改变，携带值为', e.detail.value)
     var index = Number(e.detail.value)
     var id = this.data.id
     switch (id) {
@@ -828,8 +825,8 @@ Page({
       default:
         n = n - 2
     }
-    console.log(m + "---m")
-    console.log(n + "---n")
+    //console.log(m + "---m")
+    //console.log(n + "---n")
     //var s = num + '';
     var result = parseInt(num, m).toString(n);
     return result;
