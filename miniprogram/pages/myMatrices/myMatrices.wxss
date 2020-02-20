@@ -1,1 +1,64 @@
 /* miniprogram/pages/myMatrices/myMatrices.wxss */
+.input-section{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+.input1{
+  background-color: aquamarine;
+}
+.operator{
+  background-color: cornflowerblue;
+}
+.input2{
+  background-color: burlywood;
+}
+.show-section{
+  background-color: darkorange;
+  height: 300rpx;
+  width: 100%;
+}
+
+.num-section {
+  background-color: cornflowerblue;
+  height: 600rpx;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  position: fixed;
+  bottom: 0;
+}
+
+.inputBox {
+  height: 100%;
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+}
+
+.v2 {
+  font-size: 60rpx;
+  height: 400rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.op {
+  color: orange;
+  font-size: 60rpx;
+  height: 400rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.shadow1 {
+  font-size: 60rpx;
+}
+
+.shadow2 {
+  font-weight: 800;
+  color: orangered;
+}

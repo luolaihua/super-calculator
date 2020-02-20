@@ -1,2 +1,36 @@
 <!--miniprogram/pages/myMatrices/myMatrices.wxml-->
-<text>miniprogram/pages/myMatrices/myMatrices.wxml</text>
+<view class="input-section">
+<textarea class="input1" bindconfirm="input1" ></textarea>
+<view class="operator">test</view>
+<textarea class="input2" ></textarea>
+</view>
+
+
+
+<view class="show-section"></view>
+	<view class="num-section">
+		<view class="inputBox">
+			<view class="v2" id='{{id7}}' bindtap="inputBtn" hover-class="shadow2">7</view>
+			<view class="v2" id='{{id4}}' bindtap="inputBtn" hover-class="shadow2">4</view>
+			<view class="v2" id='{{id1}}' bindtap="inputBtn" hover-class="shadow2">1</view>
+			<view class="v2" bindtap="loveBtn" hover-class="shadow2">♡</view>
+		</view>
+		<view class="inputBox">
+			<view class="v2" id='{{id8}}' bindtap="inputBtn" hover-class="shadow2">8</view>
+			<view class="v2" id='{{id5}}' bindtap="inputBtn" hover-class="shadow2">5</view>
+			<view class="v2" id='{{id2}}' bindtap="inputBtn" hover-class="shadow2">2</view>
+			<view class="v2" id='{{id0}}' bindtap="inputBtn" hover-class="shadow2">0</view>
+		</view>
+		<view class="inputBox">
+			<view class="v2" id='{{id9}}' bindtap="inputBtn" hover-class="shadow2">9</view>
+			<view class="v2" id='{{id6}}' bindtap="inputBtn" hover-class="shadow2">6</view>
+			<view class="v2" id='{{id3}}' bindtap="inputBtn" hover-class="shadow2">3</view>
+			<view class="v2" id='{{id_dot}}' bindtap="inputBtn" hover-class="shadow2">.</view>
+		</view>
+		<view class="inputBox">
+			<view class="op" id='{{id_d}}' bindtap="inputBtn" hover-class="shadow2">←</view>
+			<view class="op" id='{{id_clear}}' bindtap="clearBtn" hover-class="shadow2">C</view>
+
+		</view>
+
+	</view>

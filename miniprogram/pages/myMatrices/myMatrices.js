@@ -1,32 +1,136 @@
 // miniprogram/pages/myMatrices/myMatrices.js
 var math = require('../util/math.min.js');
 
-
-const aaa = ['2', '0','-1','3','2', '0','-1','3','33']
-function arrTrans(num, arr) {
-  const newArr = [];
-  var i = 1
+ function arrTrans(num, arr) {
+  var newArr = [];
   while(arr.length > 0) {
     newArr.push(arr.splice(0, num));
-    console.log(i++)
-    console.log(arr.length+'jjjj')
-    console.log(arr+'')
   }
   return newArr;
 }
-var bbb = arrTrans(3,aaa)
-//console.log(aaa+'')
-console.log(bbb[2][2])
+console.log(math.evaluate('1/3+1/5').toFraction())
+var m1 = [11,22,33,44,55,66,77,88,999]
+var m2 = [1/5,45,45,1/5]
+var m3 = [1/3,10,10,1/3]
+
+console.log(m1)
+console.log(m2)
+//reshape整形
+var m4 =math.reshape(m1, [3,3])
+
+m1 = arrTrans(3,m1)
+m2 = arrTrans(2,m2)
+m3 = arrTrans(2,m3)
+console.info('m1,m2变换')
+console.log(m1)
+console.log(m4)
+console.log(m2)
+
+console.log('****************1')
+console.log(math.multiply(m2, m3))
+console.log('****************2')
+console.log(math.multiply(m3, m2))
+console.log('++++++++++++++++')
+console.log(math.add(m2, m3))
+
+console.log('-----------------')
+console.log(math.subtract(m2, m3))
 
 
-const a = math.matrix([7,1,-2,3,7,1,-2,3,2]) // Matrix, size [0],       []       
+
+var x = [1,3,5]
+var y = [6,5,8]
+
+console.info('计算两个向量的外积')
+console.log(math.cross(x, y))	//计算两个向量的外积
+
+console.info('计算两个向量的点积')
+console.log(math.dot(x, y))	//计算两个向量的点积
+
+console.info('计算共轭转置')
+console.log(math.ctranspose(m1))	//计算共轭转置
+
+console.info('计算转置')
+console.log(math.transpose(m1))	//计算共轭转置
+
+
+console.info('计算行列式')
+console.log(math.det(m2))	//计算行列式
+console.log(math.det(m1))	//计算行列式
+
+
+console.log(math.diag(m1))//返回对角数据
+
+//计算实对称矩阵的特征值和特征向量。--要数字
+console.log(math.eigs(m3))
+
+
+//把矩阵平坦化
+console.log(math.flatten(m1))
+//生成单位阵
+console.log(math.identity(3))
+ 
+//把逆矩阵
+console.log(math.inv(m2))
+
+// 矩阵的迹，对角元素之和
+console.log(math.trace(m2))
+
+//解方程  L * x = b
+var a = [[-2, 3,1], [2, 1,4], [2, 11,4]]   
+var b = [11, 9,5]
+var xx = math.lsolve(a, b)  // [[-5.5], [20]]
+console.log(xx)
+
+//LU分解
+var m = [[2, 1], [1, 4]]
+var r = math.lup(m)
+console.log(r.L[0])
+console.log(math.lup(m1))
+
+//LU解方程
+var mm = [[1, 0, 0, 0], [0, 2, 0, 0], [0, 0, 3, 0], [0, 0, 0, 4]]
+
+ x = math.lusolve(mm, [-1, -1, -1, -1])        // x = [[-1], [-0.5], [-1/3], [-0.25]]
+console.log(x)
+var f = math.lup(mm)
+var x1 = math.lusolve(f, [-1, -1, -1, -1])       // x1 = [[-1], [-0.5], [-1/3], [-0.25]]
+var x2 = math.lusolve(f, [1, 2, 1, -1])          // x2 = [[1], [1], [1/3], [-0.25]]
+console.log(x1)
+console.log(x2)
+ a = [[-2, 3], [2, 1]]
+ b = [11, 9]
+ x = math.lusolve(a, b)  // [[2], [5]]
+console.log(x)
+
+//QR分解
+ m = [
+  [1, -1,  4],
+  [1,  4, -2],
+  [1,  4,  2],
+  [1,  -1, 0]
+]
+var result = math.qr(m)
+console.log(result)
+
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    inputValue1:""
 
+  },
+
+  input1:function(e){
+    this.setData({
+      inputValue1:e.detail.value
+    })
+    var num = e.detail.value
+    num  = num.split('\n')
+    console.log(this.data.inputValue1)
   },
 
   /**

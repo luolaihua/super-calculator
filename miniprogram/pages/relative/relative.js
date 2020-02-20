@@ -71,7 +71,6 @@ Page({
       chain: result
     })
   },
-
   loveBtn: function (e) {
     if (app.globalData.isVibrate) {
       wx.vibrateShort({
@@ -133,8 +132,6 @@ Page({
     
 
   },
-
-
   /**
    * 点击按钮事件
    */

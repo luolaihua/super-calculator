@@ -15,6 +15,7 @@
 }
 
 .v1 {
+
   font-size: 40rpx;
   width: 200rpx;
   background-color: transparent;
