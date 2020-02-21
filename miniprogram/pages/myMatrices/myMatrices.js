@@ -1,14 +1,24 @@
 // miniprogram/pages/myMatrices/myMatrices.js
 var math = require('../util/math.min.js');
 
- function arrTrans(num, arr) {
+function arrTrans(num, arr) {
   var newArr = [];
-  while(arr.length > 0) {
+  while (arr.length > 0) {
     newArr.push(arr.splice(0, num));
   }
   return newArr;
 }
-console.log(math.evaluate('1/3+1/5').toFraction())
+
+var m2 = [
+  [1, -1, 4],
+  [1, 4, -2]
+]
+var m3 = [
+  [1, -1],
+  [1, 4],
+  [1, 4]
+]
+/* console.log(math.evaluate('1/3+1/5').toFraction())
 var m1 = [11,22,33,44,55,66,77,88,999]
 var m2 = [1/5,45,45,1/5]
 var m3 = [1/3,10,10,1/3]
@@ -112,25 +122,126 @@ console.log(x)
 ]
 var result = math.qr(m)
 console.log(result)
-
-
+ */
+const days = []
+for (let i = 1; i <= 5; i++) {
+  days.push(i)
+}
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    inputValue1:""
+    value1:[4],
+    value2:[4],
+    row:5,
+    coloum:5,
+    days: days,
+    size:'',
+    inputValue1: "",
+    res: '',
+    id_cTran: 'cTranspose',
+    id_tran: 'transpose',
+    id_LU: 'LU',
+    id_QR: 'QR',
+    id_det: 'det',
+    id_eigsValue: 'eigsValue',
+    id_eigsVector: 'eigsVector',
+    id_trace: 'trace',
+    id_clear: 'clear',
+    id_inverse: 'inverse',
 
   },
-
-  input1:function(e){
+  bindChange2:function(e){
+    console.log(e.detail.value)
     this.setData({
-      inputValue1:e.detail.value
+      coloum:e.detail.value[0]+1
     })
+    console.log(this.data.coloum)
+  },
+  bindChange1:function(e){
+    this.setData({
+      row:e.detail.value[0]+1,
+      value2:e.detail.value,
+      coloum:e.detail.value[0]+1
+    })
+  },
+  clickOperator: function (e) {
+    var id = e.target.id
+    switch (id) {
+      case 'transpose':
+        wx.showToast({
+          title: id,
+        })
+        break;
+      case 'cTranspose':
+        wx.showToast({
+          title: id,
+        })
+        break;
+      case 'det':
+        wx.showToast({
+          title: id,
+        })
+        break;
+      case 'inverse':
+        wx.showToast({
+          title: id,
+        })
+        break;
+      case 'trace':
+        wx.showToast({
+          title: id,
+        })
+        break;
+      case 'eigsValue':
+        wx.showToast({
+          title: id,
+        })
+        break;
+      case 'eigsVector':
+        wx.showToast({
+          title: id,
+        })
+        break;
+      case 'QR':
+        wx.showToast({
+          title: id,
+        })
+        break;
+      case 'LU':
+        wx.showToast({
+          title: id,
+        })
+        break;
+    }
+  },
+  show: function (e) {
+    var arr = this.data.inputValue1
+    var a2 = ''
+    while (arr.length > 0) {
+      a2 = a2 + arr.splice(0, 3) + '\n';
+    }
+    this.setData({
+      res: a2
+    })
+    console.log(a2)
+    console.log(this.data.size)
+  },
+
+  input1: function (e) {
+    
     var num = e.detail.value
-    num  = num.split('\n')
-    console.log(this.data.inputValue1)
+    
+    num = num.split(/\s|:|,/)
+    num = num.replace(/[\n]/g, ' ')
+    console.log(num)
+    console.log(size)
+    this.setData({
+      inputValue1: num,
+      size:size
+    })
   },
 
   /**
