@@ -18,7 +18,30 @@ var m3 = [
   [1, 4],
   [1, 4]
 ]
-/* console.log(math.evaluate('1/3+1/5').toFraction())
+var data_0 = [
+  [0, 0, 0, 0, 0, ],
+  [0, 0, 0, 0, 0, ],
+  [0, 0, 0, 0, 0, ],
+  [0, 0, 0, 0, 0, ],
+  [0, 0, 0, 0, 0, ]
+]
+//console.log(data)
+var data2 = [
+  [1, 2, 3, 0, 0, ],
+  [2, 1, 2, 3, 0, ],
+  [3, 2, 1, 2, 3, ],
+  [0, 3, 2, 1, 2, ],
+  [0, 0, 3, 2, 1, ]
+]
+
+
+
+
+
+
+
+/* 
+console.log(math.evaluate('1/3+1/5').toFraction())
 var m1 = [11,22,33,44,55,66,77,88,999]
 var m2 = [1/5,45,45,1/5]
 var m3 = [1/3,10,10,1/3]
@@ -45,9 +68,9 @@ console.log(math.add(m2, m3))
 
 console.log('-----------------')
 console.log(math.subtract(m2, m3))
+ */
 
-
-
+/* 
 var x = [1,3,5]
 var y = [6,5,8]
 
@@ -59,33 +82,24 @@ console.log(math.dot(x, y))	//计算两个向量的点积
 
 console.info('计算共轭转置')
 console.log(math.ctranspose(m1))	//计算共轭转置
-
-console.info('计算转置')
-console.log(math.transpose(m1))	//计算共轭转置
-
-
-console.info('计算行列式')
-console.log(math.det(m2))	//计算行列式
-console.log(math.det(m1))	//计算行列式
-
-
-console.log(math.diag(m1))//返回对角数据
-
+ */
+var m3 = [
+  [1, 2, 0],
+  [2, 1, 2],
+  [0, 2, 1]
+]
+console.log('eigs')
 //计算实对称矩阵的特征值和特征向量。--要数字
 console.log(math.eigs(m3))
+console.log(math.eigs(m3).values)
+console.log(math.eigs(m3).vectors)
 
 
-//把矩阵平坦化
-console.log(math.flatten(m1))
 //生成单位阵
 console.log(math.identity(3))
- 
-//把逆矩阵
-console.log(math.inv(m2))
 
-// 矩阵的迹，对角元素之和
-console.log(math.trace(m2))
 
+/* 
 //解方程  L * x = b
 var a = [[-2, 3,1], [2, 1,4], [2, 11,4]]   
 var b = [11, 9,5]
@@ -112,20 +126,28 @@ console.log(x2)
  b = [11, 9]
  x = math.lusolve(a, b)  // [[2], [5]]
 console.log(x)
-
+ */
 //QR分解
- m = [
-  [1, -1,  4],
-  [1,  4, -2],
-  [1,  4,  2],
-  [1,  -1, 0]
+var m = [
+  [1, -1, 4],
+  [1, 4, -2],
+  [1, 4, 2],
+  [1, -1, 0]
 ]
 var result = math.qr(m)
-console.log(result)
- */
-const days = []
-for (let i = 1; i <= 5; i++) {
-  days.push(i)
+console.log(math.format(result.Q, 10))
+
+
+
+function dataPro(data, row, coloum) {
+  var d = []
+  //切割数组
+  for (var i = 0; i < row; i++) {
+    d.push(data[i].slice(0, coloum))
+  }
+  console.log('切割完成')
+  console.log(d)
+  return d
 }
 Page({
 
@@ -133,14 +155,21 @@ Page({
    * 页面的初始数据
    */
   data: {
-    value1:[4],
-    value2:[4],
-    row:5,
-    coloum:5,
-    days: days,
-    size:'',
-    inputValue1: "",
+    isClear:true,
+    data: [
+      [0, 0, 0, 0, 0, ],
+      [0, 0, 0, 0, 0, ],
+      [0, 0, 0, 0, 0, ],
+      [0, 0, 0, 0, 0, ],
+      [0, 0, 0, 0, 0, ]
+    ],
+    value1: [2],
+    value2: [2],
+    row: 3,
+    coloum: 3,
+    days: [1, 2, 3, 4, 5],
     res: '',
+    det: 0,
     id_cTran: 'cTranspose',
     id_tran: 'transpose',
     id_LU: 'LU',
@@ -153,94 +182,189 @@ Page({
     id_inverse: 'inverse',
 
   },
-  bindChange2:function(e){
-    console.log(e.detail.value)
+  bindinput: function (e) {
+
+    var id = e.target.id
+    var index_row = parseInt(id / 10)
+    var index_coloum = parseInt(id % 10)
+    var value = e.detail.value
+    var data = this.data.data
+    //将当前input的数据放入指定位置
+    data[index_row][index_coloum] = Number(value)
+
     this.setData({
-      coloum:e.detail.value[0]+1
+      data: data
     })
-    console.log(this.data.coloum)
   },
-  bindChange1:function(e){
+  //行变化
+  bindChange1: function (e) {
     this.setData({
-      row:e.detail.value[0]+1,
-      value2:e.detail.value,
-      coloum:e.detail.value[0]+1
+      row: e.detail.value[0] + 1,
+      value2: e.detail.value,
+      coloum: e.detail.value[0] + 1
     })
+   // console.log(this.data.coloum + 'coloum\n' + this.data.row + 'row')
+    this.dataChange()
   },
+  //列变化
+  bindChange2: function (e) {
+    this.setData({
+      coloum: e.detail.value[0] + 1
+    })
+    //console.log(this.data.coloum + 'coloum\n' + this.data.row + 'row')
+    this.dataChange()
+  },
+  dataChange: function () {
+
+    for (var i = 0; i < this.data.row; i++) {
+      for (var j = 0; j < this.data.coloum; j++) {
+        data_0[i][j] = this.data.data[i][j]
+      }
+    }
+    this.setData({
+      data: data_0
+    })
+    data_0 = [
+      [0, 0, 0, 0, 0, ],
+      [0, 0, 0, 0, 0, ],
+      [0, 0, 0, 0, 0, ],
+      [0, 0, 0, 0, 0, ],
+      [0, 0, 0, 0, 0, ]
+    ]
+    /*     console.log('data33333')
+        console.log(this.data.data) */
+  },
+
   clickOperator: function (e) {
     var id = e.target.id
+    var data = this.data.data
+    var row = this.data.row
+    var coloum = this.data.coloum
+    var a2 = ''
+
+    //切割数组
+    var data333 = dataPro(data, row, coloum)
+
     switch (id) {
       case 'transpose':
-        wx.showToast({
-          title: id,
-        })
-        break;
-      case 'cTranspose':
-        wx.showToast({
-          title: id,
-        })
+        data333 = math.transpose(data333)
+        console.log('计算转置')
+        console.log(data333) //计算转置
+        //格式化输出
+        this.output(data333)
         break;
       case 'det':
-        wx.showToast({
-          title: id,
+        this.setData({
+          res: math.det(data333)
         })
         break;
       case 'inverse':
-        wx.showToast({
-          title: id,
-        })
+        if (math.det(data333) == 0) {
+          wx.showToast({
+            title: '不可逆！',
+          })
+        } else {
+          //格式化输出
+          this.output(math.inv(data333))
+        }
+
         break;
       case 'trace':
-        wx.showToast({
-          title: id,
+        this.setData({
+          res: math.trace(data333)
         })
         break;
       case 'eigsValue':
-        wx.showToast({
-          title: id,
-        })
+        //格式化输出
+        try {
+          this.output(math.eigs(data333).values)
+        } catch (e) {
+          wx.showToast({
+            title: '当前仅支持实对称矩阵',
+            icon: 'none'
+          })
+        }
+
         break;
       case 'eigsVector':
-        wx.showToast({
-          title: id,
-        })
+        //格式化输出
+        try {
+          this.output(math.eigs(data333).vectors)
+        } catch (e) {
+          wx.showToast({
+            title: '当前仅支持实对称矩阵',
+            icon: 'none'
+          })
+        }
         break;
-      case 'QR':
-        wx.showToast({
-          title: id,
-        })
+      case 'Q':
+        //格式化输出
+        this.output(math.qr(data333).Q)
         break;
-      case 'LU':
-        wx.showToast({
-          title: id,
+      case 'R':
+
+        //格式化输出
+        this.output(math.qr(data333).R)
+        break;
+      case 'L':
+
+        //格式化输出
+        this.output(math.lup(data333).L)
+        break;
+      case 'U':
+        //格式化输出
+        this.output(math.lup(data333).U)
+        break;
+      case 'clear':
+        this.setData({
+          data: [
+            [0, 0, 0, 0, 0, ],
+            [0, 0, 0, 0, 0, ],
+            [0, 0, 0, 0, 0, ],
+            [0, 0, 0, 0, 0, ],
+            [0, 0, 0, 0, 0, ]
+          ],
+          value1: [2],
+          value2: [2],
+          row: 3,
+          coloum: 3,
+          res: '',
+          isClear:false
+        })
+        this.setData({
+          isClear:true
         })
         break;
     }
+
   },
   show: function (e) {
-    var arr = this.data.inputValue1
+
+    var data22 = this.data.data
+    var row = this.data.row
+    var coloum = this.data.coloum
     var a2 = ''
-    while (arr.length > 0) {
-      a2 = a2 + arr.splice(0, 3) + '\n';
+    //切割数组
+    var data333 = dataPro(data22, row, coloum)
+    //格式化输出
+    this.output(data333)
+
+  },
+  output: function (data) {
+    math.format(data, 6)
+    var a2 = ''
+    var row = math.size(data)[0]
+    //console.log('size:')
+    //console.log(math.size(data))
+
+    //格式化输出
+    for (var i = 0; i < row; i++) {
+      a2 = a2 + math.format(data[i], 6) + '\n'
     }
+    //console.log('a2')
+    //console.log(a2)
     this.setData({
       res: a2
-    })
-    console.log(a2)
-    console.log(this.data.size)
-  },
-
-  input1: function (e) {
-    
-    var num = e.detail.value
-    
-    num = num.split(/\s|:|,/)
-    num = num.replace(/[\n]/g, ' ')
-    console.log(num)
-    console.log(size)
-    this.setData({
-      inputValue1: num,
-      size:size
     })
   },
 
