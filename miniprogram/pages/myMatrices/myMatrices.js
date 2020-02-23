@@ -1,143 +1,7 @@
 // miniprogram/pages/myMatrices/myMatrices.js
 var math = require('../util/math.min.js');
 
-function arrTrans(num, arr) {
-  var newArr = [];
-  while (arr.length > 0) {
-    newArr.push(arr.splice(0, num));
-  }
-  return newArr;
-}
-
-var m2 = [
-  [1, -1, 4],
-  [1, 4, -2]
-]
-var m3 = [
-  [1, -1],
-  [1, 4],
-  [1, 4]
-]
-var data_0 = [
-  [0, 0, 0, 0, 0, ],
-  [0, 0, 0, 0, 0, ],
-  [0, 0, 0, 0, 0, ],
-  [0, 0, 0, 0, 0, ],
-  [0, 0, 0, 0, 0, ]
-]
-//console.log(data)
-var data2 = [
-  [1, 2, 3, 0, 0, ],
-  [2, 1, 2, 3, 0, ],
-  [3, 2, 1, 2, 3, ],
-  [0, 3, 2, 1, 2, ],
-  [0, 0, 3, 2, 1, ]
-]
-
-
-
-
-
-
-
-/* 
-console.log(math.evaluate('1/3+1/5').toFraction())
-var m1 = [11,22,33,44,55,66,77,88,999]
-var m2 = [1/5,45,45,1/5]
-var m3 = [1/3,10,10,1/3]
-
-console.log(m1)
-console.log(m2)
-//reshape整形
-var m4 =math.reshape(m1, [3,3])
-
-m1 = arrTrans(3,m1)
-m2 = arrTrans(2,m2)
-m3 = arrTrans(2,m3)
-console.info('m1,m2变换')
-console.log(m1)
-console.log(m4)
-console.log(m2)
-
-console.log('****************1')
-console.log(math.multiply(m2, m3))
-console.log('****************2')
-console.log(math.multiply(m3, m2))
-console.log('++++++++++++++++')
-console.log(math.add(m2, m3))
-
-console.log('-----------------')
-console.log(math.subtract(m2, m3))
- */
-
-/* 
-var x = [1,3,5]
-var y = [6,5,8]
-
-console.info('计算两个向量的外积')
-console.log(math.cross(x, y))	//计算两个向量的外积
-
-console.info('计算两个向量的点积')
-console.log(math.dot(x, y))	//计算两个向量的点积
-
-console.info('计算共轭转置')
-console.log(math.ctranspose(m1))	//计算共轭转置
- */
-var m3 = [
-  [1, 2, 0],
-  [2, 1, 2],
-  [0, 2, 1]
-]
-console.log('eigs')
-//计算实对称矩阵的特征值和特征向量。--要数字
-console.log(math.eigs(m3))
-console.log(math.eigs(m3).values)
-console.log(math.eigs(m3).vectors)
-
-
-//生成单位阵
-console.log(math.identity(3))
-
-
-/* 
-//解方程  L * x = b
-var a = [[-2, 3,1], [2, 1,4], [2, 11,4]]   
-var b = [11, 9,5]
-var xx = math.lsolve(a, b)  // [[-5.5], [20]]
-console.log(xx)
-
-//LU分解
-var m = [[2, 1], [1, 4]]
-var r = math.lup(m)
-console.log(r.L[0])
-console.log(math.lup(m1))
-
-//LU解方程
-var mm = [[1, 0, 0, 0], [0, 2, 0, 0], [0, 0, 3, 0], [0, 0, 0, 4]]
-
- x = math.lusolve(mm, [-1, -1, -1, -1])        // x = [[-1], [-0.5], [-1/3], [-0.25]]
-console.log(x)
-var f = math.lup(mm)
-var x1 = math.lusolve(f, [-1, -1, -1, -1])       // x1 = [[-1], [-0.5], [-1/3], [-0.25]]
-var x2 = math.lusolve(f, [1, 2, 1, -1])          // x2 = [[1], [1], [1/3], [-0.25]]
-console.log(x1)
-console.log(x2)
- a = [[-2, 3], [2, 1]]
- b = [11, 9]
- x = math.lusolve(a, b)  // [[2], [5]]
-console.log(x)
- */
-//QR分解
-var m = [
-  [1, -1, 4],
-  [1, 4, -2],
-  [1, 4, 2],
-  [1, -1, 0]
-]
-var result = math.qr(m)
-console.log(math.format(result.Q, 10))
-
-
+var app = getApp()
 
 function dataPro(data, row, coloum) {
   var d = []
@@ -149,13 +13,20 @@ function dataPro(data, row, coloum) {
   console.log(d)
   return d
 }
+var data_0 = [
+  [0, 0, 0, 0, 0, ],
+  [0, 0, 0, 0, 0, ],
+  [0, 0, 0, 0, 0, ],
+  [0, 0, 0, 0, 0, ],
+  [0, 0, 0, 0, 0, ]
+]
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    isClear:true,
+    isClear: true,
     data: [
       [0, 0, 0, 0, 0, ],
       [0, 0, 0, 0, 0, ],
@@ -168,7 +39,7 @@ Page({
     row: 3,
     coloum: 3,
     days: [1, 2, 3, 4, 5],
-    res: '',
+    res: '=',
     det: 0,
     id_cTran: 'cTranspose',
     id_tran: 'transpose',
@@ -190,6 +61,12 @@ Page({
     var value = e.detail.value
     var data = this.data.data
     //将当前input的数据放入指定位置
+    try {
+      value = math.evaluate(value + '')
+    } catch (e) {
+      console.log(e)
+    }
+
     data[index_row][index_coloum] = Number(value)
 
     this.setData({
@@ -203,7 +80,7 @@ Page({
       value2: e.detail.value,
       coloum: e.detail.value[0] + 1
     })
-   // console.log(this.data.coloum + 'coloum\n' + this.data.row + 'row')
+    // console.log(this.data.coloum + 'coloum\n' + this.data.row + 'row')
     this.dataChange()
   },
   //列变化
@@ -236,6 +113,13 @@ Page({
   },
 
   clickOperator: function (e) {
+    if (app.globalData.isVibrate) {
+      wx.vibrateShort({
+        complete: (res) => {},
+      })
+    }
+
+
     var id = e.target.id
     var data = this.data.data
     var row = this.data.row
@@ -255,7 +139,7 @@ Page({
         break;
       case 'det':
         this.setData({
-          res: math.det(data333)
+          res: math.format(math.det(data333), 6)
         })
         break;
       case 'inverse':
@@ -328,13 +212,18 @@ Page({
           value2: [2],
           row: 3,
           coloum: 3,
-          res: '',
-          isClear:false
+          res: '=',
+          isClear: false
         })
         this.setData({
-          isClear:true
+          isClear: true
         })
         break;
+      case 'love':
+        wx.showToast({
+          title: '后续功能正在开发中',
+          icon: 'none'
+        })
     }
 
   },
