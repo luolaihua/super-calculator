@@ -1,7 +1,8 @@
 //app.js
 App({
   globalData:{
-    isVibrate:false
+    isVibrate:false,
+    precision:6
   },
 
   onLaunch: function () {

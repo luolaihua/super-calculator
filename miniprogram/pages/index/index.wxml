@@ -67,24 +67,25 @@
 <view class="float1 {{isRuleTrue?'isRuleShow':'isRuleHide'}}" bindtap='hideRule'>
 </view>
 <view class="{{isRuleTrue?'isRuleShow':'isRuleHide'}}">
-	<scroll-view class='floatContent'>
+	<scroll-view class='floatContent'  scroll-y="true">
+		<text decode="true" space="nbsp">
+			♡             --普通计算和科学计算切换
+			π              --长按可选择科学常数
+			a/b           --分数和小数切换 如 4÷6=2/3
+			A              --计算结果保存为A,如上次计算结果为2，则6+A=8
 
-<text decode="true" space="nbsp">
-♡             --普通计算和科学计算切换
-π              --长按可选择科学常数
-a/b           --分数和小数切换 如 4÷6=2/3
-A              --计算结果保存为A,如上次计算结果为2，则6+A=8
+			i              --复数，如(1+6i)(2-3i)=20+9i
+			°              --度 如sin(90°)=	sin(90)=0.894
+			^              --幂  如 2^3=8
+			X!             --阶乘  如 3！=6
+			log           --对数函数，通过逗号','可以求任意底的对数，如log(1000,10)=3,log(4,2)=2
 
-i              --复数，如(1+6i)(2-3i)=20+9i
-°              --度 如sin(90°)=1	sin(90)=0.894
-^              --幂  如 2^3=8
-X!             --阶乘  如 3！=6
-log           --对数函数，通过‘,’可以求任意底的对数，如log(1000,10)=3,log(4,2)=2
+			1/x           --倒数
+			√             --根号
+			%             --模、mod 如8%5=3
+			e              --数学常数e
 
-1/x           --倒数
-√             --根号
-%             --模、mod 如8%5=3
-e              --数学常数e
+			               点击阴影部分退出
 			</text>
 	</scroll-view>
 </view>

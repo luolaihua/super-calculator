@@ -127,6 +127,12 @@ Page({
     id_d: 'del',
     id_dot: '.'
   },
+  loveBtn:function(e){
+    wx.showToast({
+      title: '点击红字选择不同单位',
+      icon:'none'
+    })
+  },
   //清除按钮
   clearBtn: function (e) {
     if (app.globalData.isVibrate) {

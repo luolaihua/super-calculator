@@ -64,7 +64,7 @@ button::after{
   z-index: 2;
   top: 0;
   left: 0;
-  opacity: 0.1;
+  opacity: 0.3;
 }
 
 
@@ -92,7 +92,7 @@ button::after{
   z-index: 3;
   padding: 10rpx 0;
   width: 80%;
-  height: 900rpx;
+  height: 1000rpx;
   background: #fff;
   margin:10% auto;
   border-radius: 20rpx;

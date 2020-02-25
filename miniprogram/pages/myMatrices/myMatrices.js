@@ -9,8 +9,6 @@ function dataPro(data, rowA, coloumA) {
   for (var i = 0; i < rowA; i++) {
     d.push(data[i].slice(0, coloumA))
   }
-  console.log('切割完成')
-  console.log(d)
   return d
 }
 var data_0 = [
@@ -26,6 +24,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    isShowAbout:false,
     operator: '',
     isFraction: false,
     isClearA: true,
@@ -57,6 +56,16 @@ Page({
     det: 0,
     isChoose: true
   },
+  love:function(e){
+    this.setData({
+      isShowAbout:true
+    })
+  },
+  hideAbout:function(e){
+    this.setData({
+      isShowAbout:false
+    })
+  },
   choose: function (e) {
     if (this.data.isChoose) {
       this.setData({
@@ -77,10 +86,10 @@ Page({
     var data = this.data.dataA
 
     if (this.data.isFraction) {
-      try{
-              data[index_rowA][index_coloumA] = value+''
-      data = math.fraction(data)
-      }catch(e){
+      try {
+        data[index_rowA][index_coloumA] = value + ''
+        data = math.fraction(data)
+      } catch (e) {
         console.log(e)
       }
 
@@ -148,26 +157,26 @@ Page({
     var value = e.detail.value
     var data = this.data.dataB
 
-    if(this.data.isFraction){
-      try{
-              data[index_rowB][index_coloumB] = value+''
-      data = math.fraction(data)
-      }catch(e){
+    if (this.data.isFraction) {
+      try {
+        data[index_rowB][index_coloumB] = value + ''
+        data = math.fraction(data)
+      } catch (e) {
         console.log(e)
       }
 
-    }else{
-         //将当前input的数据放入指定位置
-    try {
-      value = math.evaluate(value + '')
-    } catch (e) {
-      console.log(e)
+    } else {
+      //将当前input的数据放入指定位置
+      try {
+        value = math.evaluate(value + '')
+      } catch (e) {
+        console.log(e)
+      }
+
+      data[index_rowB][index_coloumB] = Number(value)
+
     }
 
-    data[index_rowB][index_coloumB] = Number(value)
-
-    }
- 
     this.setData({
       dataB: data
     })
@@ -238,8 +247,8 @@ Page({
     //切割数组
     var data333 = dataPro(data22, row, coloum)
 
-    if(this.data.isFraction){
-     data333= math.fraction(data333)
+    if (this.data.isFraction) {
+      data333 = math.fraction(data333)
     }
 
 
@@ -267,9 +276,16 @@ Page({
         }
         break;
       case 'trace':
-        this.setData({
-          res: math.trace(data333).toFraction()
-        })
+        if (this.data.isFraction) {
+          this.setData({
+            res: math.trace(data333).toFraction()
+          })
+        } else {
+          this.setData({
+            res: math.trace(data333)
+          })
+        }
+
         break;
       case 'eigsValues':
         //格式化输出
@@ -295,13 +311,28 @@ Page({
         }
         break;
       case 'Q':
-        //格式化输出
-        this.output2(math.qr(data333).Q)
+        if (this.data.isFraction) {
+          wx.showToast({
+            title: 'QR分解不支持分数',
+            icon: 'none'
+          })
+        } else {
+          //格式化输出
+          this.output2(math.qr(data333).Q)
+        }
+
         break;
       case 'R':
+        if (this.data.isFraction) {
+          wx.showToast({
+            title: 'QR分解不支持分数',
+            icon: 'none'
+          })
+        } else {
+          //格式化输出
+          this.output2(math.qr(data333).R)
+        }
 
-        //格式化输出
-        this.output2(math.qr(data333).R)
         break;
       case 'L':
 
@@ -313,6 +344,26 @@ Page({
         this.output2(math.lup(data333).U)
         break;
       case 'pow':
+        if (this.data.isFraction) {
+          wx.showToast({
+            title: '幂计算不支持分数',
+            icon: 'none'
+          })
+        }
+        this.setData({
+          valueB1: [0],
+          valueB2: [0],
+          rowB: 1,
+          coloumB: 1,
+        })
+        break;
+      case 'dotPow':
+        if (this.data.isFraction) {
+          wx.showToast({
+            title: '幂计算不支持分数',
+            icon: 'none'
+          })
+        }
         this.setData({
           valueB1: [0],
           valueB2: [0],
@@ -343,8 +394,8 @@ Page({
         } else {
           this.setData({
             isFraction: true,
-            dataA:math.fraction(this.data.dataA),
-            dataB:math.fraction(this.data.dataB)
+            dataA: math.fraction(this.data.dataA),
+            dataB: math.fraction(this.data.dataB)
           })
           wx.showToast({
             title: '分式模式开启',
@@ -370,6 +421,7 @@ Page({
         rowA: 3,
         coloumA: 3,
         res: '=',
+        operator: '',
         isClearA: false
       })
       this.setData({
@@ -384,6 +436,7 @@ Page({
           [0, 0, 0, 0, 0, ],
           [0, 0, 0, 0, 0, ]
         ],
+        operator: '',
         valueB1: [2],
         valueB2: [2],
         rowB: 3,
@@ -424,6 +477,7 @@ Page({
       rowB: 3,
       coloumB: 3,
       res: '=',
+      operator: '',
       isClearB: false
     })
 
@@ -455,6 +509,7 @@ Page({
           res = dataB
         }
         break;
+
       case 'add':
         res = math.add(dataA, dataB)
         break;
@@ -474,15 +529,28 @@ Page({
         res = math.subtract(dataA, dataB)
         break;
       case 'pow':
-        res = math.pow(dataA, dataB[0][0])
+        if (this.data.isFraction) {
+          wx.showToast({
+            title: '幂计算不支持分数',
+            icon: 'none'
+          })
+        } else {
+          res = math.pow(dataA, dataB[0][0])
+        }
+        break;
+      case 'dotPow':
+        if (this.data.isFraction) {
+          wx.showToast({
+            title: '幂计算不支持分数',
+            icon: 'none'
+          })
+        } else {
+          res = math.dotPow(dataA, dataB[0][0])
+        }
         break;
       case 'solve':
         res = math.lusolve(dataA, dataB)
         break;
-
-
-
-
     }
 
 
@@ -496,7 +564,7 @@ Page({
   output: function (data) {
     var a2 = ''
     var row = math.size(data)[0]
-    var coloum =  math.size(data)[1]
+    var coloum = math.size(data)[1]
     //console.log('size:')
     //console.log(math.size(data))
 
@@ -504,7 +572,7 @@ Page({
 
     if (this.data.isFraction) {
       for (var i = 0; i < row; i++) {
-        for(var j=0;j<coloum;j++){
+        for (var j = 0; j < coloum; j++) {
           data[i][j] = data[i][j].toFraction()
         }
       }
@@ -527,14 +595,14 @@ Page({
   output2: function (data) {
     var a2 = ''
     var row = math.size(data)[0]
-    var coloum =  math.size(data)[1]
+    var coloum = math.size(data)[1]
     //console.log('size:')
     //console.log(math.size(data))
 
     //格式化输出
-      for (var i = 0; i < row; i++) {
-        a2 = a2 + math.format(data[i], 6) + '\n'
-      }
+    for (var i = 0; i < row; i++) {
+      a2 = a2 + math.format(data[i], 6) + '\n'
+    }
     //console.log('a2')
     //console.log(a2)
     this.setData({

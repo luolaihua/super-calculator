@@ -2,7 +2,7 @@
 <view class="page">
 
 	<view class="body">
-		<view class="AB"  bindtap="choose" style="background-color:{{isChoose?'lightsteelblue':'white'}}" >A</view>
+		<view class="AB" bindtap="choose" style="background-color:{{isChoose?'lightskyblue':'white'}}">A</view>
 		<view class="picker-section">
 			<view class="picker1">
 				<picker-view indicator-style="height: 50px;" style="width: 50rpx; height: 180rpx;" value="{{valueA1}}" bindchange="bindChangeA1">
@@ -64,41 +64,48 @@
 	</view>
 	<view class="op-section">
 		<view class="op-box">
-			<view class="opView" style="background-color:{{operator=='add'?'lightskyblue':'white'}}"  bindtap="clickOperator" id="add" hover-class="shadow2">+</view>
-			<view class="opView" style="background-color:{{operator=='subtract'?'lightskyblue':'white'}}"  bindtap="clickOperator" id="subtract"  hover-class="shadow2">-</view>
-			<view class="opView" style="background-color:{{operator=='det'?'lightskyblue':'white'}}"  bindtap="clickOperator" id="det" hover-class="shadow2">det</view>
-			<view class="opView" bindtap="clickOperator" style="background-color:{{operator=='Q'?'lightskyblue':'white'}}"  id="Q" hover-class="shadow2">QR-Q</view>
+			<view class="opView" style="background-color:{{operator=='add'?'lightskyblue':'white'}}" bindtap="clickOperator" id="add" >+</view>
+			<view class="opView" style="background-color:{{operator=='subtract'?'lightskyblue':'white'}}" bindtap="clickOperator" id="subtract" >-</view>
+			<view class="opView" style="background-color:{{operator=='det'?'lightskyblue':'white'}}" bindtap="clickOperator" id="det" >det</view>
+			<view class="opView" bindtap="clickOperator" style="background-color:{{operator=='Q'?'lightskyblue':'white'}}" id="Q" >QR-Q</view>
 		</view>
 		<view class="op-box">
-			<view class="opView" style="background-color:{{operator=='multiply'?'lightskyblue':'white'}}" id="multiply" bindtap="clickOperator" hover-class="shadow2">*</view>
-			<view class="opView" style="background-color:{{operator=='divide'?'lightskyblue':'white'}}" id="divide" bindtap="clickOperator" hover-class="shadow2">/</view>
-			<view class="opView" style="background-color:{{operator=='trace'?'lightskyblue':'white'}}" bindtap="clickOperator" id="trace" hover-class="shadow2">trace</view>
-			<view class="opView" style="background-color:{{operator=='R'?'lightskyblue':'white'}}" bindtap="clickOperator" id="R" hover-class="shadow2">QR-R</view>
+			<view class="opView" style="background-color:{{operator=='multiply'?'lightskyblue':'white'}}" id="multiply" bindtap="clickOperator" >*</view>
+			<view class="opView" style="background-color:{{operator=='divide'?'lightskyblue':'white'}}" id="divide" bindtap="clickOperator" >/</view>
+			<view class="opView" style="background-color:{{operator=='pow'?'lightskyblue':'white'}}" id="pow" bindtap="clickOperator" >^</view>
+
+			<view class="opView" style="background-color:{{operator=='R'?'lightskyblue':'white'}}" bindtap="clickOperator" id="R" >QR-R</view>
 
 		</view>
 		<view class="op-box">
-			<view class="opView" style="background-color:{{operator=='dotMultiply'?'lightskyblue':'white'}}"  bindtap="clickOperator" id="dotMultiply" hover-class="shadow2">.*</view>
-			<view class="opView" style="background-color:{{operator=='dotDivide'?'lightskyblue':'white'}}"  id="dotDivide"  bindtap="clickOperator" hover-class="shadow2">./</view>
-			<view class="opView" style="background-color:{{operator=='pow'?'lightskyblue':'white'}}" id="pow" bindtap="clickOperator"  hover-class="shadow2">^</view>
-			<view class="opView" style="background-color:{{operator=='L'?'lightskyblue':'white'}}"  bindtap="clickOperator" id="L" hover-class="shadow2">LU-L</view>
+			<view class="opView" style="background-color:{{operator=='dotMultiply'?'lightskyblue':'white'}}" bindtap="clickOperator" id="dotMultiply" >.*</view>
+			<view class="opView" style="background-color:{{operator=='dotDivide'?'lightskyblue':'white'}}" id="dotDivide" bindtap="clickOperator" >./</view>
+			<view class="opView" style="background-color:{{operator=='dotPow'?'lightskyblue':'white'}}" bindtap="clickOperator" id="dotPow" >.^</view>
+			<view class="opView" style="background-color:{{operator=='L'?'lightskyblue':'white'}}" bindtap="clickOperator" id="L" >LU-L</view>
 
 		</view>
 		<view class="op-box">
-			<view class="opView" bindtap="clear" bindlongtap="clearAll" id="clear" hover-class="shadow2">C</view>
-			<view class="opView" style="color:{{isFraction?'orange':'black'}}" id="fraction" bindtap="clickOperator"  hover-class="shadow2">分式</view>
-			<view class="opView" style="background-color:{{operator=='solve'?'lightskyblue':'white'}}"  bindtap="clickOperator" id="solve" hover-class="shadow2">A*X=b</view>
-			<view class="opView" style="background-color:{{operator=='U'?'lightskyblue':'white'}}"  bindtap="clickOperator" id="U" hover-class="shadow2">LU-U</view>
+			<view class="opView" style="color:{{isFraction?'orange':'black'}}" id="fraction" bindtap="clickOperator" >分式</view>
+			<view class="opView" style="background-color:{{operator=='solve'?'lightskyblue':'white'}}" bindtap="clickOperator" id="solve" >A*X=b</view>
+			<view class="opView" style="background-color:{{operator=='trace'?'lightskyblue':'white'}}" bindtap="clickOperator" id="trace" >trace</view>
+			<view class="opView" style="background-color:{{operator=='U'?'lightskyblue':'white'}}" bindtap="clickOperator" id="U" >LU-U</view>
 
 		</view>
 		<view class="op-box">
-			<view class="opView" style="background-color:{{operator=='transpose'?'lightskyblue':'white'}}"  bindtap="clickOperator" id="transpose" hover-class="shadow2">转置</view>
-			<view class="opView" style="background-color:{{operator=='inv'?'lightskyblue':'white'}}"  bindtap="clickOperator" id="inv" hover-class="shadow2">求逆</view>
-			<view class="opView" style="background-color:{{operator=='eigsValues'?'lightskyblue':'white'}}"  bindtap="clickOperator" id="eigsValues" hover-class="shadow2">特征值</view>
-			<view class="opView" style="background-color:{{operator=='eigsVectors'?'lightskyblue':'white'}}"  bindtap="clickOperator" id="eigsVectors" hover-class="shadow2">特征向量</view>
+			<view class="opView" style="background-color:{{operator=='transpose'?'lightskyblue':'white'}}" bindtap="clickOperator" id="transpose" >转置</view>
+			<view class="opView" style="background-color:{{operator=='inv'?'lightskyblue':'white'}}" bindtap="clickOperator" id="inv" >求逆</view>
+			<view class="opView" style="background-color:{{operator=='eigsValues'?'lightskyblue':'white'}}" bindtap="clickOperator" id="eigsValues" >特征值</view>
+			<view class="opView" style="background-color:{{operator=='eigsVectors'?'lightskyblue':'white'}}" bindtap="clickOperator" id="eigsVectors" >特征向量</view>
+		</view>
+		<view class="op-box">
+			<view class="opView" bindtap="love" hover-class="shadow">♡</view>
+			<view class="opView" bindtap="clear" bindlongtap="clearAll" id="clear"  hover-class="shadow">C</view>
+			<view class="opView" bindtap="show"  hover-class="shadow">=</view>
+
 		</view>
 	</view>
 	<view class="body">
-			<view class="AB" bindtap="choose" style="background-color:{{isChoose?'white':'lightsteelblue'}}" >B</view>
+		<view class="AB" bindtap="choose" style="background-color:{{isChoose?'white':'lightskyblue'}}">B</view>
 		<view class="picker-section">
 			<view class="picker1">
 				<picker-view indicator-style="height: 50px;" style="width: 50rpx; height: 180rpx;" value="{{valueB1}}" bindchange="bindChangeB1">
@@ -165,4 +172,61 @@
 			</text>
 		</view>
 	</view>
+</view>
+
+
+<view class="float1 {{isShowAbout?'isShow':'isHide'}}" bindtap='hideAbout'>
+</view>
+<view class="{{isShowAbout?'isShow':'isHide'}}">
+	<scroll-view class='floatContent' scroll-y="true">
+		<text decode="true" space="nbsp">
+					             --------------向上滑动--------------
+
+			 	 C               --清除,长按可复位A B 两个矩阵的数据
+				 A B             --选择需要计算数据的矩阵
+			  +-             --加减运算
+		 	 *              --乘法运算,须符合矩阵乘法规则：
+			                           [mn]*[nm]=[mm]
+			   /               -- a/b 等同于a*(b的逆矩阵)
+			   .*              --点乘运算
+			   ./              --点除运算
+			  ^               --幂运算  a^3 = a*a*a		
+			  .^              --点幂运算，a.^2  
+				                     为a中所有元素逐一做平方运算
+			  det              --行列式
+			  trace              --迹
+			  分式             --分数 / 小数模式切换
+			  A*X=b           --解方程,求X
+				                       A为[n*n]矩阵,b是一个[n]列向量
+			QR-Q              --QR分解，求Q
+			QR-Q              --QR分解，求R,
+				                       QR暂不支持分式分式运算
+			LU-L              --LU分解，求L
+			LU-U              --LU分解，求U
+
+			注：输入时可输入数学算式，如：2+3*5/9 等
+			准确的输入是计算准确的前提。
+			上下滑动3行3列可改变矩阵的行列数，目前最大支持5行5列矩阵。
+
+			     --------------点击阴影部分退出--------------
+
+			计算实例1：
+			        A = [[-2, 3], [2, 1]]
+			        b = [11, 9]
+			        A*x=b,则
+			        x = [[2], [5]]
+			计算实例2：
+			        A = [[9, 5], [6, 1]]
+			        B = [[3, 2], [5, 2]]
+			        X =A/B=[[1.75, 0.75], [-1.75, 2.25]]
+			        X =A./B=[[3, 2.5], [1.2, 0.5]]
+
+			        X =A*B=[[52, 28], [23, 14]]
+			        X =A.*B=[[27, 10], [30, 2]]
+													计算实例3：
+			        A = [[1, 2], [4, 3]]
+			        X =A^2=A*A=[[9, 8], [16, 17]]
+			        X =A.^2=[[1, 4], [16, 9]]
+			</text>
+	</scroll-view>
 </view>
