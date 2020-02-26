@@ -24,7 +24,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    isShowAbout:false,
+    isShowAbout: false,
     operator: '',
     isFraction: false,
     isClearA: true,
@@ -56,14 +56,14 @@ Page({
     det: 0,
     isChoose: true
   },
-  love:function(e){
+  love: function (e) {
     this.setData({
-      isShowAbout:true
+      isShowAbout: true
     })
   },
-  hideAbout:function(e){
+  hideAbout: function (e) {
     this.setData({
-      isShowAbout:false
+      isShowAbout: false
     })
   },
   choose: function (e) {
@@ -85,7 +85,7 @@ Page({
     var value = e.detail.value
     var data = this.data.dataA
 
-    if(value ==''){
+    if (value == '') {
       value = 0
     }
 
@@ -161,7 +161,7 @@ Page({
     var value = e.detail.value
     var data = this.data.dataB
 
-    if(value ==''){
+    if (value == '') {
       value = 0
     }
     if (this.data.isFraction) {
@@ -236,9 +236,12 @@ Page({
 
     var id = e.target.id
 
-    this.setData({
-      operator: id
-    })
+    if (id != 'fraction') {
+      this.setData({
+        operator: id
+      })
+    }
+
 
     if (this.data.isChoose) {
       var data22 = this.data.dataA
@@ -490,7 +493,7 @@ Page({
 
     this.setData({
       isClearB: true,
-      isClearA:true
+      isClearA: true
     })
   },
   show: function (e) {
@@ -506,6 +509,8 @@ Page({
     var coloum = ''
     var res = ''
 
+
+    //切割数据
     dataA = dataPro(dataA, rowA, coloumA)
     dataB = dataPro(dataB, rowB, coloumB)
 
@@ -517,7 +522,6 @@ Page({
           res = dataB
         }
         break;
-
       case 'add':
         res = math.add(dataA, dataB)
         break;
@@ -525,9 +529,17 @@ Page({
         res = math.multiply(dataA, dataB)
         break;
       case 'divide':
-        res = math.divide(dataA, dataB)
+        if (math.det(dataB) == 0) {
+          wx.showToast({
+            title: 'B矩阵不可逆',
+            icon: 'none'
+          })
+        } else {
+          res = math.divide(dataA, dataB)
+        }
         break;
       case 'dotDivide':
+
         res = math.dotDivide(dataA, dataB)
         break;
       case 'dotMultiply':
@@ -560,13 +572,11 @@ Page({
         res = math.lusolve(dataA, dataB)
         break;
     }
+    if (res != '') {
+      //格式化输出
+      this.output(res)
+    }
 
-
-
-
-
-    //格式化输出
-    this.output(res)
 
   },
   output: function (data) {
