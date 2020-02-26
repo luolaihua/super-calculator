@@ -85,6 +85,10 @@ Page({
     var value = e.detail.value
     var data = this.data.dataA
 
+    if(value ==''){
+      value = 0
+    }
+
     if (this.data.isFraction) {
       try {
         data[index_rowA][index_coloumA] = value + ''
@@ -157,6 +161,9 @@ Page({
     var value = e.detail.value
     var data = this.data.dataB
 
+    if(value ==''){
+      value = 0
+    }
     if (this.data.isFraction) {
       try {
         data[index_rowB][index_coloumB] = value + ''
@@ -482,7 +489,8 @@ Page({
     })
 
     this.setData({
-      isClearB: true
+      isClearB: true,
+      isClearA:true
     })
   },
   show: function (e) {
@@ -569,7 +577,8 @@ Page({
     //console.log(math.size(data))
 
     //格式化输出
-
+    console.log('data')
+    console.log(data)
     if (this.data.isFraction) {
       for (var i = 0; i < row; i++) {
         for (var j = 0; j < coloum; j++) {
@@ -587,7 +596,7 @@ Page({
     }
 
     //console.log('a2')
-    //console.log(a2)
+    console.log(a2)
     this.setData({
       res: a2
     })

@@ -1,8 +1,8 @@
 {
   "pages": [
-  
+      "pages/myMatrices/myMatrices",
     "pages/index/index",
-    "pages/myMatrices/myMatrices",
+
     "pages/aboutMatrix/aboutMatrix",
 
     "pages/scientificData/scientificData",
