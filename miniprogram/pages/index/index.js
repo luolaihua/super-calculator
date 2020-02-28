@@ -1,4 +1,6 @@
 //index.js
+//更新管理
+const updateManager = wx.getUpdateManager()
 var math = require('../util/math.min.js');
 var Fraction = require('../util/fraction.js');
 const parser = math.parser();
@@ -286,6 +288,8 @@ Page({
         condition: 'initial'
       })
     }
+
+
   },
   clearBtn: function (e) {
     //是否开启触摸反馈
@@ -299,6 +303,7 @@ Page({
       condition: 'initial',
       //fontsize: 100
     })
+
   },
   clickBtn: function (e) {
     //是否开启触摸反馈
@@ -362,9 +367,6 @@ Page({
         break;
 
     }
-
-
-
   },
   equal: function (e) {
     //是否开启触摸反馈
@@ -412,6 +414,7 @@ Page({
       })
     }
 
+  
 
   },
   toScientificData: function (e) {
@@ -499,11 +502,10 @@ Page({
   },
 
   onLoad: function () {
-    const updateManager = wx.getUpdateManager()
+
 
     updateManager.onCheckForUpdate(function (res) {
       // 请求完新版本信息的回调
-      console.log('!!!')
       console.log(res.hasUpdate)
     })
 
