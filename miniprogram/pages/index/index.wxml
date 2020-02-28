@@ -23,7 +23,7 @@
 		<button id='{{id_gen}}' bindtap="clickBtn" wx:if="{{isScientific}}" style="font-size:{{isScientific?40:60}}rpx">√</button>
 		<button class="c" id='{{id_c}}' bindtap="clearBtn" style="font-size:{{isScientific?40:60}}rpx">C</button>
 		<button class="c" id='{{id_d}}' bindtap="backBtn" style="font-size:{{isScientific?40:60}}rpx">←</button>
-		<button class="c" id='{{id_love}}' style="font-size:{{isScientific?40:60}}rpx" data-time="{{lastTapTime}}" data-title="标题" bindtap="loveBtn">♡</button>
+		<button class="c" id='{{id_love}}' style="font-size:{{isScientific?40:60}}rpx" data-time="{{lastTapTime}}" data-title="标题" bindtap="loveBtn" bindlongtap="longtap">♡</button>
 		<button class="brown" id='{{id_pow}}' bindtap="clickBtn" style="font-size:{{isScientific?40:60}}rpx">^</button>
 	</view>
 	<view class="btnbox" style="height:{{isScientific?100:150}}rpx">
@@ -70,6 +70,9 @@
 	<scroll-view class='floatContent'  scroll-y="true">
 		<text decode="true" space="nbsp">
 			♡             --普通计算和科学计算切换
+			                  长按开启/关闭语音模式
+
+
 			π              --长按可选择科学常数
 			a/b           --分数和小数切换 如 4÷6=2/3
 			A              --计算结果保存为A,如上次计算结果为2，则6+A=8
@@ -84,8 +87,9 @@
 			√             --根号
 			%             --模、mod 如8%5=3
 			e              --数学常数e
+			
 
-			               点击阴影部分退出
+			--------------点击阴影部分退出------------
 			</text>
 	</scroll-view>
 </view>

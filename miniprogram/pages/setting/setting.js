@@ -5,13 +5,31 @@ Page({
    * 页面的初始数据
    */
   data: {
+    path:''
 
+  },
+  test:function(e){
+   
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+/*     var that = this
+    wx.cloud.downloadFile({
+      fileID: 'cloud://luo-r5nle.6c75-luo-r5nle-1301210100/t1.jpg',
+      success: res => {
+        // get temp file path
+        console.log(res.tempFilePath)
+        that.setData({
+          path:res.tempFilePath
+        })
+      },
+      fail: err => {
+        // handle error
+      }
+    }) */
 
   },
 
