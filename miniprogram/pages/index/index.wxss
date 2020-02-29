@@ -22,14 +22,14 @@ button{
   display: flex;
   align-items: center;
   justify-content: center;
-  
-  
+ 
 }
 button::after{
   border-radius: 0;
-  border: solid;
+  border: none;
 }
 .brown{
+  border-radius: 0;
   background-color: brown;
 }
 .c{

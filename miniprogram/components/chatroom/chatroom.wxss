@@ -12,9 +12,9 @@
   border-bottom: 1px solid #ddd;
   padding: 20rpx 0 30rpx;
   font-size: 30rpx;
-  /* background: rgb(34, 187, 47);
-  color: rgba(255, 255, 255, 1) */
-  /* font-family: 'Microsoft YaHei' */
+  background: rgb(34, 187, 47);
+  color: rgba(255, 255, 255, 1) ;
+   font-family: 'Microsoft YaHei' 
 }
 
 .chatroom .header .left {
@@ -39,13 +39,14 @@
 }
 
 .body .message {
+  background-color:bisque ;
   display: flex;
   flex-direction: row;
   position: relative;
   margin: 12rpx 0;
 }
 
-.body .message.message__self {
+.body .message .message__self {
   flex-direction: row-reverse;
 }
 
@@ -65,7 +66,7 @@
   align-items: flex-start;
 }
 
-.body .message.message__self .main {
+.body .message .message__self .main {
   align-items: flex-end;
 }
 

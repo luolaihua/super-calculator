@@ -21,6 +21,7 @@ var touchMoveY = 0; // y轴方向移动的距离
 
 Page({
   data: {
+
     isSound: false,
     isScientific: false,
     isFraction: false,
@@ -75,7 +76,7 @@ Page({
     startTime: '',
     endTime: '',
     isLove: 'false',
-    lastTapTime: 0
+    lastTapTime: 0,
 
   },
 
@@ -281,6 +282,7 @@ Page({
       wx.showToast({
         title: '语音开启',
       })
+
     }
 
   },
@@ -479,24 +481,24 @@ Page({
         case ')':
           innerAudioContext.src = 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/wav/right.wav?sign=e5c8006901637a6dc421bdc52932add8&t=1582903269'
           break;
-          case 'π':
-            innerAudioContext.src = 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/wav/pi.wav?sign=a4d1af8a6b0c643f7c6248a6528621b3&t=1582903312'
-            break;
-          case '^':
-            innerAudioContext.src = 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/wav/npow.wav?sign=6b37e40286d6af08b6ab0df413d88833&t=1582903335'
-            break;
-            case '!':
-              innerAudioContext.src = 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/wav/n.wav?sign=7f49fe1d2a655f93d6b8e68cbc411046&t=1582903408'
-              break;
-            case '√(':
-              innerAudioContext.src = 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/wav/sqrt.wav?sign=882d1ca1eb3128c6c0d940b64d551400&t=1582903906'
-              break;
-              case '^(-1)':
-                innerAudioContext.src = 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/wav/inverse.wav?sign=b22b7ce4300f0b3fcaa5a9d6f4619a57&t=1582903888'
-                break;
-              case '%':
-                innerAudioContext.src = 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/wav/mod.wav?sign=41501bcde363db26363cbe75ff7aad45&t=1582903877'
-                break;
+        case 'π':
+          innerAudioContext.src = 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/wav/pi.wav?sign=a4d1af8a6b0c643f7c6248a6528621b3&t=1582903312'
+          break;
+        case '^':
+          innerAudioContext.src = 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/wav/npow.wav?sign=6b37e40286d6af08b6ab0df413d88833&t=1582903335'
+          break;
+        case '!':
+          innerAudioContext.src = 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/wav/n.wav?sign=7f49fe1d2a655f93d6b8e68cbc411046&t=1582903408'
+          break;
+        case '√(':
+          innerAudioContext.src = 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/wav/sqrt.wav?sign=882d1ca1eb3128c6c0d940b64d551400&t=1582903906'
+          break;
+        case '^(-1)':
+          innerAudioContext.src = 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/wav/inverse.wav?sign=b22b7ce4300f0b3fcaa5a9d6f4619a57&t=1582903888'
+          break;
+        case '%':
+          innerAudioContext.src = 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/wav/mod.wav?sign=41501bcde363db26363cbe75ff7aad45&t=1582903877'
+          break;
       }
 
       innerAudioContext.play()
@@ -653,6 +655,11 @@ Page({
   },
 
   onLoad: function () {
+
+
+
+
+
 
 
     updateManager.onCheckForUpdate(function (res) {

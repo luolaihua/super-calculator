@@ -1,5 +1,6 @@
 const FATAL_REBUILD_TOLERANCE = 10
 const SETDATA_SCROLL_TO_BOTTOM = {
+  //scrollTop 设置滚动条的位置，为零时在顶部，为很大时在底部
   scrollTop: 100000,
   scrollWithAnimation: true,
 }
@@ -38,6 +39,7 @@ Component({
     },
 
     mergeCommonCriteria(criteria) {
+      console.log(this.data,'***************')
       return {
         groupId: this.data.groupId,
         ...criteria,
@@ -47,14 +49,21 @@ Component({
     async initRoom() {
       this.try(async () => {
         await this.initOpenID()
-
+          //envId可以省略
+          //colection为集合名，也就是chatroom
         const { envId, collection } = this.properties
         const db = this.db = wx.cloud.database({
           env: envId,
         })
+
+        //指令都暴露在 db.command 对象上
         const _ = db.command
 
-        const { data: initList } = await db.collection(collection).where(this.mergeCommonCriteria()).orderBy('sendTimeTS', 'desc').get()
+        const { data: initList } = await db.collection(collection)
+        .where(
+          this.mergeCommonCriteria()
+          )
+          .orderBy('sendTimeTS', 'desc').get()
 
         console.log('init query chats', initList)
 
@@ -289,8 +298,8 @@ Component({
         }).exec()
       }).exec()
     },
-
-    async onScrollToUpper() {
+    //滚动到顶部时触发
+     async onScrollToUpper() {
       if (this.db && this.data.chats.length) {
         const { collection } = this.properties
         const _ = this.db.command
