@@ -1,8 +1,14 @@
 {
   "pages": [
-        "pages/index/index",
+    "pages/index/index",
+    "pages/im/im",
+   "pages/deployFunctions/deployFunctions",
+      "pages/addFunction/addFunction",
+   "pages/databaseGuide/databaseGuide",
+    "pages/storageConsole/storageConsole",
+     "pages/userConsole/userConsole", 
+        
     "pages/setting/setting",
-
     "pages/myMatrices/myMatrices",
     "pages/aboutMatrix/aboutMatrix",
     "pages/scientificData/scientificData",
@@ -10,17 +16,12 @@
     "pages/welcome/welcome",
     "pages/introduction/introduction",
     "pages/relative/relative",
-    "pages/userConsole/userConsole",
-    "pages/storageConsole/storageConsole",
-    "pages/databaseGuide/databaseGuide",
-    "pages/addFunction/addFunction",
-    "pages/deployFunctions/deployFunctions",
     "pages/chooseLib/chooseLib",
     "pages/openapi/openapi",
     "pages/openapi/serverapi/serverapi",
     "pages/openapi/callback/callback",
     "pages/openapi/cloudid/cloudid",
-    "pages/im/im",
+
     "pages/im/room/room"
   ],
   "window": {
