@@ -5,14 +5,14 @@
 		<view class="AB" bindtap="choose" style="background-color:{{isChoose?'lightskyblue':'white'}}">A</view>
 		<view class="picker-section">
 			<view class="picker1">
-				<picker-view indicator-style="height: 50px;" style="width: 50rpx; height: 180rpx;" value="{{valueA1}}" bindchange="bindChangeA1">
+				<picker-view indicator-style="height: 50px;" style="width: 50rpx; height: 180rpx;background-color:white" value="{{valueA1}}" bindchange="bindChangeA1">
 					<picker-view-column>
 						<view wx:for="{{days}}" wx:key='*this' style="line-height: 50px">{{item}}行</view>
 					</picker-view-column>
 				</picker-view>
 			</view>
 			<view class="picker2">
-				<picker-view indicator-style="height: 50px;" style="width: 50rpx; height: 180rpx;" value="{{valueA2}}" bindchange="bindChangeA2">
+				<picker-view indicator-style="height: 50px;" style="width: 50rpx; height: 180rpx;background-color:white" value="{{valueA2}}" bindchange="bindChangeA2">
 					<picker-view-column>
 						<view wx:for="{{days}}" wx:key='*this' style="line-height: 50px">{{item}}列</view>
 					</picker-view-column>

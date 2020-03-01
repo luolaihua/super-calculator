@@ -28,6 +28,8 @@
 
 .chatroom .header .right {
   flex: 1;
+  height: 20rpx;
+  width: 10rpx;
 }
 
 .chatroom .body {
@@ -94,7 +96,7 @@
   padding: 4px 10px;
   font-size: 30rpx;
   display: inline-block;
-  background-color: paleturquoise;
+  background-color: limegreen;
 }
 
 .body .message .text-wrapper {

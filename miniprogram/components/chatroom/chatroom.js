@@ -10,6 +10,7 @@ Component({
     envId: String,
     collection: String,
     groupId: String,
+    chatPeopleNum:Number,
     groupName: String,
     userInfo: Object,
     openId: String,
@@ -17,6 +18,9 @@ Component({
       type: Function,
     },
     getOpenID: {
+      type: Function,
+    },
+    refresh: {
       type: Function,
     },
   },
@@ -88,6 +92,24 @@ Component({
     getOpenID() {
 
       return this.properties.getOpenID()
+    },
+    //更新房间人数
+    refresh(){
+      var that = this
+      const db = wx.cloud.database()
+      db.collection('chatPeopleNum').doc('number').get({
+        success: function (res) {
+          // res.data 包含该记录的数据
+          that.setData({
+            chatPeopleNum: res.data.num
+          })
+          //console.log(res.data.num + 'res.data.num**********')
+        },
+        fail: function (res) {
+          console.log(res)
+        }
+      })
+
     },
 
     mergeCommonCriteria(criteria) {
