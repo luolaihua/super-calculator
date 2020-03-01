@@ -39,14 +39,13 @@
 }
 
 .body .message {
-  background-color:bisque ;
   display: flex;
   flex-direction: row;
   position: relative;
   margin: 12rpx 0;
 }
 
-.body .message .message__self {
+.body .message__self {
   flex-direction: row-reverse;
 }
 
@@ -66,7 +65,10 @@
   align-items: flex-start;
 }
 
-.body .message .message__self .main {
+.body .message__self .main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
   align-items: flex-end;
 }
 
@@ -85,7 +87,13 @@
   display: inline-block;
 }
 
-.body .message.message__self .text-content {
+.body  .message__self .text-content {
+  border: 1px solid transparent;
+  border-radius: 3px;
+  margin: 2px 0 0 0;
+  padding: 4px 10px;
+  font-size: 30rpx;
+  display: inline-block;
   background-color: paleturquoise;
 }
 
@@ -96,7 +104,7 @@
   max-width: 80%;
 }
 
-.body .message.message__self .text-wrapper .loading{
+.body .message .message__self .text-wrapper .loading{
   font-size: 16rpx;
   margin-right: 18rpx;
 }

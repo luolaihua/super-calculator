@@ -12,6 +12,7 @@ Component({
     groupId: String,
     groupName: String,
     userInfo: Object,
+    openId: String,
     onGetUserInfo: {
       type: Function,
     },
@@ -23,23 +24,74 @@ Component({
   data: {
     chats: [],
     textInputValue: '',
-    openId: '',
+    //openId: '',
     scrollTop: 0,
     scrollToMessage: '',
     hasKeyboard: false,
   },
 
   methods: {
+
+    delMsg(e) {
+      var id = Number(e.currentTarget.id)
+      var chat = this.data.chats
+      var msgType = chat[id].msgType
+      var _id = chat[id]._id
+      var textContent = chat[id].textContent
+      if (msgType == 'image') {
+        textContent = 'image'
+      }
+
+      const {
+        collection
+      } = this.properties
+      const db = this.db
+      const _ = db.command
+      var that = this
+
+
+      wx.showModal({
+        title: '删除该内容？',
+        content: textContent,
+        success(res) {
+          if (res.confirm) {
+            //console.log('用户点击确定')
+            db.collection(collection).doc(_id).remove({
+              success: function (res) {
+               // console.log(res, 'remove!')
+                that.initRoom()
+                wx.showToast({
+                  title: '删除成功！'
+                })
+              },
+              fail: function (res) {
+                wx.showToast({
+                  title: '无权限删除！',
+                  icon: 'none'
+                })
+              },
+            })
+          } else if (res.cancel) {
+            //console.log('用户点击取消')
+          }
+        }
+      })
+
+
+    },
+
+
     onGetUserInfo(e) {
       this.properties.onGetUserInfo(e)
     },
 
-    getOpenID() { 
-      return this.properties.getOpenID() 
+    getOpenID() {
+
+      return this.properties.getOpenID()
     },
 
     mergeCommonCriteria(criteria) {
-      console.log(this.data,'***************')
+      //console.log(this.data,'***************')
       return {
         groupId: this.data.groupId,
         ...criteria,
@@ -49,9 +101,12 @@ Component({
     async initRoom() {
       this.try(async () => {
         await this.initOpenID()
-          //envId可以省略
-          //colection为集合名，也就是chatroom
-        const { envId, collection } = this.properties
+        //envId可以省略
+        //colection为集合名，也就是chatroom
+        const {
+          envId,
+          collection
+        } = this.properties
         const db = this.db = wx.cloud.database({
           env: envId,
         })
@@ -59,11 +114,13 @@ Component({
         //指令都暴露在 db.command 对象上
         const _ = db.command
 
-        const { data: initList } = await db.collection(collection)
-        .where(
-          this.mergeCommonCriteria()
+        const {
+          data: initList
+        } = await db.collection(collection)
+          .where(
+            this.mergeCommonCriteria()
           )
-          .orderBy('sendTimeTS', 'desc').get()
+          .orderBy('sendTimeTS', 'desc').get() //order只能取 asc 或 desc,升序、降序
 
         console.log('init query chats', initList)
 
@@ -71,8 +128,9 @@ Component({
           chats: initList.reverse(),
           scrollTop: 10000,
         })
-
+        //一进入聊天室就监听最新的信息，当前
         this.initWatch(initList.length ? {
+          //最新的信息
           sendTimeTS: _.gt(initList[initList.length - 1].sendTimeTS),
         } : {})
       }, '初始化失败')
@@ -82,18 +140,21 @@ Component({
       return this.try(async () => {
         const openId = await this.getOpenID()
 
-        this.setData({
-          openId,
-        })
+
+        /*         this.setData({
+                  openId,
+                }) */
       }, '初始化 openId 失败')
     },
 
     async initWatch(criteria) {
       this.try(() => {
-        const { collection } = this.properties
+        const {
+          collection
+        } = this.properties
         const db = this.db
         const _ = db.command
-
+        //criteria为发送的时间
         console.warn(`开始监听`, criteria)
         this.messageListener = db.collection(collection).where(this.mergeCommonCriteria(criteria)).watch({
           onChange: this.onRealtimeMessageSnapshot.bind(this),
@@ -165,7 +226,9 @@ Component({
           return
         }
 
-        const { collection } = this.properties
+        const {
+          collection
+        } = this.properties
         const db = this.db
         const _ = db.command
 
@@ -191,6 +254,7 @@ Component({
             },
           ],
         })
+
         this.scrollToBottom(true)
 
         await db.collection(collection).add({
@@ -215,7 +279,10 @@ Component({
         count: 1,
         sourceType: ['album', 'camera'],
         success: async res => {
-          const { envId, collection } = this.properties
+          const {
+            envId,
+            collection
+          } = this.properties
           const doc = {
             _id: `${Math.random()}_${Date.now()}`,
             groupId: this.data.groupId,
@@ -260,7 +327,9 @@ Component({
             },
           })
 
-          uploadTask.onProgressUpdate(({ progress }) => {
+          uploadTask.onProgressUpdate(({
+            progress
+          }) => {
             this.setData({
               chats: this.data.chats.map(chat => {
                 if (chat._id === doc._id) {
@@ -299,11 +368,15 @@ Component({
       }).exec()
     },
     //滚动到顶部时触发
-     async onScrollToUpper() {
+    async onScrollToUpper() {
       if (this.db && this.data.chats.length) {
-        const { collection } = this.properties
+        const {
+          collection
+        } = this.properties
         const _ = this.db.command
-        const { data } = await this.db.collection(collection).where(this.mergeCommonCriteria({
+        const {
+          data
+        } = await this.db.collection(collection).where(this.mergeCommonCriteria({
           sendTimeTS: _.lt(this.data.chats[0].sendTimeTS),
         })).orderBy('sendTimeTS', 'desc').get()
         this.data.chats.unshift(...data.reverse())
@@ -315,7 +388,7 @@ Component({
       }
     },
 
-    async try(fn, title) {
+    async try (fn, title) {
       try {
         await fn()
       } catch (e) {

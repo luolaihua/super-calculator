@@ -2,6 +2,7 @@ const app = getApp()
 
 Page({
   data: {
+    openId:'',
     avatarUrl: './user-unlogin.png',
     userInfo: null,
     logged: false,
@@ -61,8 +62,12 @@ Page({
     const { result } = await wx.cloud.callFunction({
       name: 'login',
     })
+    console.log(result.userInfo.openId,'====openid')
+    this.setData({
+      openId:result.userInfo.openId
+    })
 
-    return result.openid
+    return result.userInfo.openid
   },
 
   onGetUserInfo: function(e) {
