@@ -1,8 +1,14 @@
 {
   "pages": [
+
+
+
+       "pages/myMatrices/myMatrices",
+   "pages/index/index",
+        "pages/im/im",
   "pages/im/room/room",
-    "pages/im/im",
-    "pages/index/index",
+
+
 
     "pages/deployFunctions/deployFunctions",
     "pages/addFunction/addFunction",
@@ -11,7 +17,7 @@
     "pages/userConsole/userConsole",
 
     "pages/setting/setting",
-    "pages/myMatrices/myMatrices",
+  
     "pages/aboutMatrix/aboutMatrix",
     "pages/scientificData/scientificData",
     "pages/unitTransfer/unitTransfer",

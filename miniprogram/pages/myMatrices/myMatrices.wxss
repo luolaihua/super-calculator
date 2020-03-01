@@ -1,4 +1,17 @@
 /* miniprogram/pages/myMatrices/myMatrices.wxss */
+@import "../../style/guide.wxss";
+
+.guide .counter {
+  margin-top: 50rpx;
+  display: flex;
+  flex-direction: row;
+  align-content: space-between;
+}
+.p1{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .page{
   height: 100%;
   width: 100%;
@@ -118,8 +131,8 @@
  
 .floatContent {
   z-index: 3;
-  width: 90%;
-  height: 1000rpx;
+  width: 80%;
+  height: 900rpx;
   background: #fff;
   margin-top: 10%;
   border-radius: 20rpx;
@@ -129,7 +142,7 @@
   align-items: center;
   position: fixed;
   top: 5rpx;
-  left: 5%;
+  left: 10%;
 }
 text{
   margin-left: 20rpx;

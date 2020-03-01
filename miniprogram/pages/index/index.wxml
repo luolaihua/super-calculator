@@ -5,56 +5,56 @@
 </view>
 
 <view class="btngroup">
-	<view class="btnbox" wx:if="{{isScientific}}" style="height:{{isScientific?100:150}}rpx">
+	<view class="btnbox" wx:if="{{isScientific}}" style="height:{{isScientific?100:120}}rpx">
 		<button id='{{id_sin}}' bindtap="clickBtn" style="font-size:{{isScientific?40:60}}rpx">sin(</button>
 		<button id='{{id_cos}}' bindtap="clickBtn" style="font-size:{{isScientific?40:60}}rpx">cos(</button>
 		<button id='{{id_tan}}' bindtap="clickBtn" style="font-size:{{isScientific?40:60}}rpx">tan(</button>
 		<button id='{{id_X}}' bindtap="clickBtn" style="font-size:{{isScientific?40:60}}rpx">X!</button>
 		<button class="brown" id='{{id_log}}' bindtap="clickBtn" style="font-size:{{isScientific?40:60}}rpx">log(</button>
 	</view>
-	<view class="btnbox" wx:if="{{isScientific}}" style="height:{{isScientific?100:150}}rpx">
+	<view class="btnbox" wx:if="{{isScientific}}" style="height:{{isScientific?100:120}}rpx">
 		<button id='{{id_asin}}' bindtap="clickBtn" style="font-size:{{isScientific?40:60}}rpx">asin(</button>
 		<button id='{{id_acos}}' bindtap="clickBtn" style="font-size:{{isScientific?40:60}}rpx">acos(</button>
 		<button id='{{id_atan}}' bindtap="clickBtn" style="font-size:{{isScientific?40:60}}rpx">atan(</button>
 		<button id='{{id_inverse}}' bindtap="clickBtn" style="font-size:{{isScientific?40:60}}rpx">1/x</button>
 		<button class="brown" id='{{id_dou}}' bindtap="clickBtn" style="font-size:{{isScientific?40:60}}rpx">,</button>
 	</view>
-	<view class="btnbox" style="height:{{isScientific?100:150}}rpx">
+	<view class="btnbox" style="height:{{isScientific?100:120}}rpx">
 		<button id='{{id_gen}}' bindtap="clickBtn" wx:if="{{isScientific}}" style="font-size:{{isScientific?40:60}}rpx">√</button>
 		<button class="c" id='{{id_c}}' bindtap="clearBtn" style="font-size:{{isScientific?40:60}}rpx">C</button>
 		<button class="c" id='{{id_d}}' bindtap="backBtn" style="font-size:{{isScientific?40:60}}rpx">←</button>
 		<button class="c" id='{{id_love}}' style="font-size:{{isScientific?40:60}}rpx" data-time="{{lastTapTime}}" data-title="标题" bindtap="loveBtn" bindlongtap="longtap">♡</button>
 		<button class="brown" id='{{id_pow}}' bindtap="clickBtn" style="font-size:{{isScientific?40:60}}rpx">^</button>
 	</view>
-	<view class="btnbox" style="height:{{isScientific?100:150}}rpx">
+	<view class="btnbox" style="height:{{isScientific?100:120}}rpx">
 		<button id='{{id_mod}}' bindtap="clickBtn" wx:if="{{isScientific}}" style="font-size:{{isScientific?40:60}}rpx">%</button>
 		<button bindtap="startFraction" style="font-size:{{isScientific?40:60}}rpx;color:{{isFraction?'brown':'white'}}">a/b</button>
 		<button id='{{id_left}}' bindtap="clickBtn" style="font-size:{{isScientific?40:60}}rpx">(</button>
 		<button id='{{id_right}}' bindtap="clickBtn" style="font-size:{{isScientific?40:60}}rpx">)</button>
 		<button class="brown" id='{{id_div}}' bindtap="clickBtn" style="font-size:{{isScientific?40:60}}rpx">÷</button>
 	</view>
-	<view class="btnbox" style="height:{{isScientific?100:150}}rpx">
+	<view class="btnbox" style="height:{{isScientific?100:120}}rpx">
 		<button id='{{id_deg}}' bindtap="clickBtn" wx:if="{{isScientific}}" style="font-size:{{isScientific?40:60}}rpx">°</button>
 		<button id='{{id7}}' bindtap="clickBtn" style="font-size:{{isScientific?40:60}}rpx">7</button>
 		<button id='{{id8}}' bindtap="clickBtn" style="font-size:{{isScientific?40:60}}rpx">8</button>
 		<button id='{{id9}}' bindtap="clickBtn" style="font-size:{{isScientific?40:60}}rpx">9</button>
 		<button class="brown" id='{{id_mult}}' bindtap="clickBtn" style="font-size:{{isScientific?40:60}}rpx">×</button>
 	</view>
-	<view class="btnbox" style="height:{{isScientific?100:150}}rpx">
+	<view class="btnbox" style="height:{{isScientific?100:120}}rpx">
 		<button id='{{id_i}}' bindtap="clickBtn" wx:if="{{isScientific}}" style="font-size:{{isScientific?40:60}}rpx">i</button>
 		<button id='{{id4}}' bindtap="clickBtn" style="font-size:{{isScientific?40:60}}rpx">4</button>
 		<button id='{{id5}}' bindtap="clickBtn" style="font-size:{{isScientific?40:60}}rpx">5</button>
 		<button id='{{id6}}' bindtap="clickBtn" style="font-size:{{isScientific?40:60}}rpx">6</button>
 		<button class="brown" id='{{id_sub}}' bindtap="clickBtn" style="font-size:{{isScientific?40:60}}rpx">－</button>
 	</view>
-	<view class="btnbox" style="height:{{isScientific?100:150}}rpx">
+	<view class="btnbox" style="height:{{isScientific?100:120}}rpx">
 		<button id='{{id_pi}}' bindtap="clickBtn" bindlongtap="toScientificData" wx:if="{{isScientific}}" style="font-size:{{isScientific?40:60}}rpx">π</button>
 		<button id='{{id1}}' bindtap="clickBtn" style="font-size:{{isScientific?40:60}}rpx">1</button>
 		<button id='{{id2}}' bindtap="clickBtn" style="font-size:{{isScientific?40:60}}rpx">2</button>
 		<button id='{{id3}}' bindtap="clickBtn" style="font-size:{{isScientific?40:60}}rpx">3</button>
 		<button class="brown" id='{{id_add}}' bindtap="clickBtn" style="font-size:{{isScientific?40:60}}rpx">＋</button>
 	</view>
-	<view class="btnbox" style="height:{{isScientific?100:150}}rpx">
+	<view class="btnbox" style="height:{{isScientific?100:120}}rpx">
 		<button id='{{id_e}}' bindtap="clickBtn" wx:if="{{isScientific}}" style="font-size:{{isScientific?40:60}}rpx">e</button>
 		<button id='{{id0}}' style="font-size:{{isScientific?40:60}}rpx" bindtap="clickBtn">0</button>
 		<button id='{{id_dot}}' bindtap="clickBtn" style="font-size:{{isScientific?40:60}}rpx">.</button>
@@ -67,29 +67,26 @@
 <view class="float1 {{isRuleTrue?'isRuleShow':'isRuleHide'}}" bindtap='hideRule'>
 </view>
 <view class="{{isRuleTrue?'isRuleShow':'isRuleHide'}}">
-	<scroll-view class='floatContent'  scroll-y="true">
-		<text decode="true" space="nbsp">
-			♡             --普通计算和科学计算切换
-			                  长按开启/关闭语音模式
+	<scroll-view class='floatContent' scroll-y="true">
+		<view class="guide">
+			<text class="headline">计算器功能简介</text>
+			<text class="p">♡--------单击普通计算和科学计算切换，长按开启/关闭语音模式</text>
+			<text class="p">π--------长按可选择科学常数</text>
+			<text class="p">a/b------分数和小数切换 如 4÷6=2/3</text>
+			<text class="p">A--------计算结果保存为A,如上次计算结果为2，则6+A=8</text>
+			<text class="p">i--------复数，如(1+6i)(2-3i)=20+9i</text>
+			<text class="p">°--------度 如sin(90°)=1，而sin(90)=0.894</text>
+			<text class="p">^--------幂  如 2^3=8</text>
+			<text class="p">X!-------阶乘  如 3！=6</text>
+			<text class="p">log------对数函数，通过逗号' , '可以求任意底的对数，如log(1000,10)=3,log(4,2)=2</text>
+			<text class="p">1/x------倒数</text>
+			<text class="p">√--------根号</text>
+			<text class="p">%--------模、mod，取余 如8%5=3</text>
+			<text class="p">e--------数学常数e</text>
+			<text class="p"> </text>
 
+			<text class="p">-----------点击阴影部分退出----------</text>
 
-			π              --长按可选择科学常数
-			a/b           --分数和小数切换 如 4÷6=2/3
-			A              --计算结果保存为A,如上次计算结果为2，则6+A=8
-
-			i              --复数，如(1+6i)(2-3i)=20+9i
-			°              --度 如sin(90°)=	sin(90)=0.894
-			^              --幂  如 2^3=8
-			X!             --阶乘  如 3！=6
-			log           --对数函数，通过逗号','可以求任意底的对数，如log(1000,10)=3,log(4,2)=2
-
-			1/x           --倒数
-			√             --根号
-			%             --模、mod 如8%5=3
-			e              --数学常数e
-			
-
-			--------------点击阴影部分退出------------
-			</text>
+		</view>
 	</scroll-view>
 </view>

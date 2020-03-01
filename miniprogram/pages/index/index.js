@@ -500,16 +500,7 @@ Page({
           innerAudioContext.src = 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/wav/mod.wav?sign=41501bcde363db26363cbe75ff7aad45&t=1582903877'
           break;
       }
-
       innerAudioContext.play()
-      innerAudioContext.onPlay(() => {
-        console.log('开始播放')
-      })
-
-      innerAudioContext.onError((res) => {
-        console.log(res.errMsg)
-        console.log(res.errCode)
-      })
     }
 
 
@@ -566,9 +557,11 @@ Page({
 
     //加音效
     //添加音效
+    if (this.data.isSound) {
     const innerAudioContext = wx.createInnerAudioContext()
     innerAudioContext.src = 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/wav/%E7%AD%89%E4%BA%8E.wav?sign=feec5bbb7a08686461a79ddcd655d293&t=1582898728'
     innerAudioContext.play()
+    }
   },
   toScientificData: function (e) {
 

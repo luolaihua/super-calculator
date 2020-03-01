@@ -1,3 +1,12 @@
+@import "../../style/guide.wxss";
+
+.guide .counter {
+  margin-top: 50rpx;
+  display: flex;
+  flex-direction: row;
+  align-content: space-between;
+}
+
 .btnbox{
   display: flex;
   bottom: 0rpx;
@@ -40,24 +49,14 @@ button::after{
   word-wrap: break-word;
   width: 100%;
   position: fixed;
-  bottom: 900rpx;
+  bottom: 800rpx;
   
 }
 .screen1 view{
   text-align: right;
   margin: 20rpx;
 }
-.screen2{
-  word-wrap: break-word;
-  width: 100%;
-  position: fixed;
-  bottom: 900rpx;
-  
-}
-.screen2 view{
-  text-align: right;
-  margin: 20rpx;
-}
+
 .about{
   height: 50rpx;
   width: 50rpx;
@@ -93,7 +92,7 @@ button::after{
   z-index: 3;
   padding: 10rpx 0;
   width: 80%;
-  height: 1000rpx;
+  height: 800rpx;
   background: #fff;
   margin:10% auto;
   border-radius: 20rpx;
@@ -102,7 +101,7 @@ button::after{
   justify-content: center;
   align-items: center;
   position: relative;
-  padding-left: 40rpx;
+  
 }
 text{
   margin-left: 20rpx;
