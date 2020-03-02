@@ -28,6 +28,11 @@ Page({
   onLoad: function () {
 
   },
+  copyLink:function(e){
+    wx.setClipboardData({
+      data: 'https://github.com/caizhenbo/BIM',
+    })
+  },
   clear:function(e){
     this.setData({
       inputValue:'',

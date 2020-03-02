@@ -108,6 +108,7 @@ Component({
           console.log(res)
         }
       })
+      this.initRoom()
 
     },
 

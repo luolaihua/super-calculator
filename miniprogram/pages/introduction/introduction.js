@@ -12,6 +12,11 @@ Page({
       url: '../relative/relative',
     })
   },
+  copyLink:function(e){
+    wx.setClipboardData({
+      data: 'https://github.com/mumuy/relationship',
+    })
+  },
 
   /**
    * 生命周期函数--监听页面加载

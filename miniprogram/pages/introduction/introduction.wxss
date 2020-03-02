@@ -1,4 +1,5 @@
 /* miniprogram/pages/introduction/introduction.wxss */
+@import "../../style/weui.wxss";
 .all{
   width: 100%;
   height: 100%;
