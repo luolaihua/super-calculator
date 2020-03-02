@@ -62,10 +62,9 @@ Page({
 
         break;
       case 5:
-        wx.showToast({
-          title: '该功能尚未开放，敬请期待',
-          icon:'none'
-        })
+          wx.navigateTo({
+            url: '../bmi/bmi',
+          })
         break;
     }
   },

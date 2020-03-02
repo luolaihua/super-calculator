@@ -1,10 +1,12 @@
 /**app.wxss**/
+
 .container {
-  display: flex;
-  flex-direction: column;
+  height: 100%;
   align-items: center;
-  box-sizing: border-box;
+  justify-content: center;
+
 } 
+
 
 button {
   background: initial;

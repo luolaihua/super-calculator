@@ -30,6 +30,7 @@
 				<picker wx:if="{{id}}=='length'" bindchange="bindPickerChange1" range="{{array}}" style="font-size:40rpx">
 					<view class="picker">
 						{{array[index1]}}
+						<text>></text>
 					</view>
 				</picker>
 			</view>
@@ -43,6 +44,7 @@
 				<picker wx:if="{{id}}=='length'" bindchange="bindPickerChange2" range="{{array}}" style="font-size:40rpx">
 					<view class="picker">
 						{{array[index2]}}
+						<text>></text>
 					</view>
 				</picker>
 			</view>
@@ -59,6 +61,7 @@
 				<picker wx:if="{{id}}=='length'" bindchange="bindPickerChange1" range="{{array}}" style="font-size:40rpx">
 					<view class="picker">
 						{{array[index1]}}
+						<text>></text>
 					</view>
 				</picker>
 			</view>
@@ -71,6 +74,7 @@
 				<picker wx:if="{{id}}=='length'" bindchange="bindPickerChange2" range="{{array}}" style="font-size:40rpx">
 					<view class="picker">
 						{{array[index2]}}
+						<text>></text>
 					</view>
 				</picker>
 			</view>
