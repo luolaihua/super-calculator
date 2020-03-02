@@ -24,7 +24,7 @@
   		<view class="weui-form__extra-area ">
 			<view class="weui-footer">
        <view class="weui-footer__links">
-            <view bindtap="copyLink" class="weui-footer__link">源自github开源项目</view>
+            <view bindtap="copyLink" class="weui-footer__link">源自GitHub开源项目</view>
           </view>
 				<text selectable="true" class="weui-footer__text">https://github.com/mumuy/relationship</text>
 			</view>
