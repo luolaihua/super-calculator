@@ -10,7 +10,7 @@
   display: flex;
   flex-direction: row;
   border-bottom: 1px solid #ddd;
-  padding: 20rpx 0 30rpx;
+  padding: 20rpx 0 20rpx;
   font-size: 30rpx;
   background: rgb(34, 187, 47);
   color: rgba(255, 255, 255, 1) ;
@@ -19,6 +19,7 @@
 
 .chatroom .header .left {
   flex: 1;
+  text-align: center;
 }
 
 .chatroom .header .middle {
@@ -28,8 +29,11 @@
 
 .chatroom .header .right {
   flex: 1;
-  height: 20rpx;
-  width: 10rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+
 }
 
 .chatroom .body {

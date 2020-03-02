@@ -79,6 +79,25 @@ Page({
     lastTapTime: 0,
 
   },
+  isSound:function(e){
+    if (this.data.isSound) {
+      this.setData({
+        //fontsize: 40,
+        isSound: false
+      })
+      wx.showToast({
+        title: '语音关闭',
+      })
+    } else {
+      this.setData({
+        //fontsize: 40,
+        isSound: true
+      })
+      wx.showToast({
+        title: '语音开启',
+      })
+    }
+  },
 
   //打开透明层
   showRule: function () {
@@ -264,26 +283,9 @@ Page({
     clearInterval(interval); // 清除setInterval 
     time = 0;
   },
-  //长按触发
+  //love btn长按触发
   longtap: function (e) {
-    if (this.data.isSound) {
-      this.setData({
-        //fontsize: 40,
-        isSound: false
-      })
-      wx.showToast({
-        title: '语音关闭',
-      })
-    } else {
-      this.setData({
-        //fontsize: 40,
-        isSound: true
-      })
-      wx.showToast({
-        title: '语音开启',
-      })
 
-    }
 
   },
   backBtn: function (e) {
@@ -657,7 +659,7 @@ Page({
 
     updateManager.onCheckForUpdate(function (res) {
       // 请求完新版本信息的回调
-      console.log(res.hasUpdate)
+      console.log('hasUpdate',res.hasUpdate)
     })
 
     updateManager.onUpdateReady(function () {

@@ -1,23 +1,19 @@
 {
   "pages": [
+  "pages/index/index",
+        "pages/menu/menu",
+    "pages/beijinghua/beijinghua",
 
-
-    "pages/menu/menu",
-       "pages/myMatrices/myMatrices",
-   "pages/index/index",
-        "pages/im/im",
-  "pages/im/room/room",
-
-
-
+    "pages/myMatrices/myMatrices",
+  
+    "pages/im/im",
+    "pages/im/room/room",
     "pages/deployFunctions/deployFunctions",
     "pages/addFunction/addFunction",
     "pages/databaseGuide/databaseGuide",
     "pages/storageConsole/storageConsole",
     "pages/userConsole/userConsole",
-
     "pages/setting/setting",
-  
     "pages/aboutMatrix/aboutMatrix",
     "pages/scientificData/scientificData",
     "pages/unitTransfer/unitTransfer",
@@ -29,9 +25,7 @@
     "pages/openapi/serverapi/serverapi",
     "pages/openapi/callback/callback",
     "pages/openapi/cloudid/cloudid"
-   
-
-  
+    
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
@@ -46,7 +40,8 @@
     "color": "#fff",
     "backgroundColor": "#000",
     "selectedColor": "#A52A2A",
-    "list": [{
+    "list": [
+      {
         "pagePath": "pages/index/index",
         "text": "普通计算"
       },

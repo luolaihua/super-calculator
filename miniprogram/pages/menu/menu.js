@@ -18,32 +18,21 @@ Page({
       },
       {
         name: '北京话生成',
-        url: '../../images/bj.png'
+        url: '../../images/laugh.png'
       },
       {
         name: '算姻缘',
         url: '../../images/l.png'
       }, {
-        name: '单位装换',
-        url: '../../images/ren.png'
-      },
-      {
-        name: '单位装换',
-        url: '../../images/ren.png'
-      },
-      {
-        name: '单位装换',
-        url: '../../images/ren.png'
-      }, {
-        name: '单位装换',
-        url: '../../images/ren.png'
-      },
+        name: 'BMI',
+        url: '../../images/h.png'
+      }
+
 
     ]
   },
   navigateTo: function (e) {
     var id = Number(e.currentTarget.id)
-    console.log(id)
     switch (id) {
       case 0:
         wx.navigateTo({
@@ -60,7 +49,24 @@ Page({
           url: '../im/room/room',
         })
         break;
+      case 3:
+        wx.navigateTo({
+          url: '../beijinghua/beijinghua',
+        })
+        break;
+      case 4:
+        wx.showToast({
+          title: '该功能尚未开放，敬请期待',
+          icon:'none'
+        })
 
+        break;
+      case 5:
+        wx.showToast({
+          title: '该功能尚未开放，敬请期待',
+          icon:'none'
+        })
+        break;
     }
   },
 

@@ -35,7 +35,7 @@ Component({
   },
 
   methods: {
-
+//删除消息
     delMsg(e) {
       var id = Number(e.currentTarget.id)
       var chat = this.data.chats
@@ -70,8 +70,7 @@ Component({
               },
               fail: function (res) {
                 wx.showToast({
-                  title: '无权限删除！',
-                  icon: 'none'
+                  title: '无权限删除！'
                 })
               },
             })

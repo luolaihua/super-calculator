@@ -5,8 +5,9 @@
 		<!-- room name -->
 		<view class="middle">{{groupName}}</view>
 		<!-- reserved -->
-		<view class="right"bindtap="refresh">
-		refresh
+		<view class="right">
+		<image bindtap="refresh" mode="aspectFit" src="../../images/refresh.png" style="width: 50rpx;height: 50rpx;" ></image>
+		
 		</view>
 		
 	</view>

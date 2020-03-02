@@ -69,7 +69,15 @@
 					"id": -1,
 					"name": "pages/index/index",
 					"pathName": "pages/index/index",
+					"query": "",
 					"scene": 1001
+				},
+				{
+					"id": 3,
+					"name": "test",
+					"pathName": "pages/index/index",
+					"query": "",
+					"scene": null
 				}
 			]
 		}

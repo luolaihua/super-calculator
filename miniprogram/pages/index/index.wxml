@@ -1,5 +1,6 @@
 <!--index.wxml-->
 <image bindtap="help" class="about" src="../../images/wen.png" mode="aspectFit"></image>
+<image bindtap="isSound" class="sound" src="{{isSound?'../../images/sss.png':'../../images/m.png'}}" mode="aspectFit"></image>
 <view class="screen1" style="font-size:{{fontsize}}rpx ">
 	<view id="result">{{res}}</view>
 </view>
@@ -70,7 +71,7 @@
 	<scroll-view class='floatContent' scroll-y="true">
 		<view class="guide">
 			<text class="headline">计算器功能简介</text>
-			<text class="p">♡--------单击普通计算和科学计算切换，长按开启/关闭语音模式</text>
+			<text class="p">♡--------单击普通计算和科学计算切换</text>
 			<text class="p">π--------长按可选择科学常数</text>
 			<text class="p">a/b------分数和小数切换 如 4÷6=2/3</text>
 			<text class="p">A--------计算结果保存为A,如上次计算结果为2，则6+A=8</text>

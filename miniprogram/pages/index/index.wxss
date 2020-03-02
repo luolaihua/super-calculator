@@ -64,9 +64,17 @@ button::after{
   z-index: 2;
   top: 0;
   left: 0;
-  opacity: 0.3;
+  opacity: 0.5;
 }
-
+.sound{
+  height: 50rpx;
+  width: 50rpx;
+  position: fixed;
+  z-index: 2;
+  top: 50rpx;
+  left: 0;
+  opacity: 0.5;
+}
 
   
 .isRuleShow {
