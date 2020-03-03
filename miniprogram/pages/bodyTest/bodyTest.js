@@ -8,6 +8,10 @@ var ring = null;
 var videoAd = null;
 Page({
   data: {
+    isAnalyze:false,
+    originGrade:[0,0,0,0,0,0],
+    categories: [['50m','前屈', '跳远',  '1000m', '肺活量', '引体向上'],
+    ['50m','前屈', '跳远',  '1000m', '肺活量', '仰卧起坐']],
     sex: '男',
     sexIndex: 0,
     grade: ['大一', '大二', '大三', '大四'],
@@ -35,6 +39,43 @@ Page({
     time: '00:00',
     color: "grey",
     modalhidden: true
+  },
+  dataAnalyze:function(e){
+    if(this.data.isAnalyze){
+          this.setData({
+      isAnalyze:false
+    })
+    }else{
+      this.setData({
+        isAnalyze:true
+      })
+    }
+
+    var windowWidth = 400;
+    try {
+        var res = wx.getSystemInfoSync();
+        windowWidth = res.windowWidth;
+    } catch (e) {
+        console.error('getSystemInfoSync failed!');
+    }
+
+   var radarChart = new wxCharts({
+        canvasId: 'radarCanvas',
+        type: 'radar',
+        categories: this.data.categories[this.data.sexIndex],
+        series: [{
+            name: '体测数据分析',
+            data: this.data.originGrade,
+            color:'#FF8C00'
+        }],
+        width: windowWidth,
+        height: 400,
+        extra: {
+            radar: {
+                max: 100
+            }
+        }
+    });
   },
 
   // 页面加载完毕回掉函数
@@ -68,7 +109,8 @@ Page({
     var finalGrade = cal.getCalGrade();
     this.setData({
       calGrade: parseInt(finalGrade.calGrade),
-      bmi: finalGrade.bmiunit
+      bmi: finalGrade.bmiunit,
+      originGrade:finalGrade.originGrade
     });
     this.drawGradeCircle();
 
@@ -261,7 +303,7 @@ Page({
 
   // 绘制图形
   drawGradeCircle: function () {
-    console.log(this.data.calGrade);
+    //console.log(this.data.calGrade);
     var one = this.data.calGrade;
     var two = 100 - this.data.calGrade;
     gradeCanvas = new wxCharts({

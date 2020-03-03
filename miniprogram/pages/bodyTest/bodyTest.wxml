@@ -1,14 +1,19 @@
-<canvas canvas-id="gradeCanvas" class="canvas" style="height:200px;width: {{canvasWidth}};background: #3667ec" bindtouchstart="navigateAbout"></canvas>
-<canvas canvas-id="BMICanvas" class="BMIcanvas" style="height:200px;width: {{canvasWidth}};background: #3667ec" bindtouchstart="touchHandler"></canvas>
+<canvas canvas-id="gradeCanvas" class="canvas" style="height:200px;width: {{canvasWidth}};" bindtap="dataAnalyze"></canvas>
+<canvas canvas-id="BMICanvas" class="BMIcanvas" style="height:200px;width: {{canvasWidth}};" bindtap="touchHandler"></canvas>
+
+<view class="dataAnalyze" wx:if='{{isAnalyze}}'>
+    <canvas style="height:800rpx;width:100%" canvas-id="radarCanvas" class="canvas" bindtouchstart="touchHandler"></canvas>
+</view>
+
 <view class="container">
 	<view class="input-container">
 		<view class="item no-border" bindtap="bindSexChange">
 			<text class="label">性别</text>
-<text class="unit" space="emsp">{{sex}} ></text>
+			<text class="unit" space="emsp">{{sex}} ></text>
 		</view>
 		<view class="item no-border">
 			<text class="label">年级</text>
-			<picker value="{{gradeIndex}}" range="{{grade}}"  bindchange="bindGradeChange" class="type_select">
+			<picker value="{{gradeIndex}}" range="{{grade}}" bindchange="bindGradeChange" class="type_select">
 				<view class="picker">
 					{{grade[gradeIndex]}}
 					<text>></text>

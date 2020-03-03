@@ -32,7 +32,7 @@ var sit_UpGrade = 0;
 var race800Grade = 0;
 var BMIGrade = 0;
 //-----------------------------------------
-
+var originGrade=[]
 
 // 初始化数据
 var race_50 = new Array(2);
@@ -152,6 +152,7 @@ function cal(sex, grade, heightIn, weightIn, capacityIn, sit_reach,
         console.log(standing_long_jump);
         console.log(capacity);
         console.log(bmi);
+        console.log('输入数据：');
         console.log("性别--------" + this.sex);
         console.log("50m-----" + this.race50Val);
         console.log("年级-------" + this.grade);
@@ -161,7 +162,7 @@ function cal(sex, grade, heightIn, weightIn, capacityIn, sit_reach,
         console.log("肺活量----------" + this.capacityVal);
         console.log("身高----------------" + this.height);
         console.log("体重----------------" + this.weight);
-        console.log("引体向上/仰卧起坐" + this.otherVal);
+        console.log("引体向上/仰卧起坐-----" + this.otherVal);
         var max = 0;
         // 计算50m
         for (var i = 0; i <= race_50[this.sex][this.grade].length - 2; i++) {
@@ -169,13 +170,18 @@ function cal(sex, grade, heightIn, weightIn, capacityIn, sit_reach,
             if (parseFloat(this.race50Val) > parseFloat(race_50[this.sex][this.grade][i]) && parseFloat(this.race50Val) <= parseFloat(race_50[this.sex][this.grade][i + 1])) {
                 max += parseFloat(commonscore[i+1]) * parseFloat(race_50weight);
                 console.log("50m" + parseFloat(commonscore[i + 1]) * parseFloat(race_50weight));
+                console.log("未加权分数：" + parseFloat(commonscore[i + 1]) );
+                originGrade.push(parseFloat(commonscore[i + 1]))    
                 break;
             } else if (parseFloat(this.race50Val) <= race_50[this.sex][this.grade][0]) {
                 max += parseFloat(commonscore[0]) * parseFloat(race_50weight);
                 console.log("50m" + parseFloat(commonscore[0]) * parseFloat(race_50weight));
+                console.log("50m未加权分数：" + parseFloat(commonscore[0]) );
+                originGrade.push(parseFloat(commonscore[0]))
                 break;
             } else if (parseFloat(this.race50Val) > race_50[this.sex][this.grade][race_50[this.sex][this.grade].length - 1]) {
                 console.log("50m" + 0);
+                originGrade.push(0)
                 break;
             }
         }
@@ -186,13 +192,18 @@ function cal(sex, grade, heightIn, weightIn, capacityIn, sit_reach,
             if (parseFloat(this.sit_and_reachVal) < parseFloat(sit_and_reach[this.sex][this.grade][i]) && parseFloat(this.sit_and_reachVal) >= parseFloat(sit_and_reach[this.sex][this.grade][i + 1])) {
                 max += parseFloat(commonscore[i+1]) * parseFloat(sit_and_reachweight);
                 console.log("坐体前屈" + parseFloat(commonscore[i + 1]) * parseFloat(sit_and_reachweight));
+                console.log("未加权分数：" + parseFloat(commonscore[i + 1]) );
+                originGrade.push(parseFloat(commonscore[i + 1]))
                 break;
             } else if (parseFloat(this.sit_and_reachVal) >= sit_and_reach[this.sex][this.grade][0]) {
                 max += parseFloat(commonscore[0]) * parseFloat(sit_and_reachweight);
                 console.log("坐体前屈" + parseFloat(commonscore[0]) * parseFloat(sit_and_reachweight));
+                console.log("未加权分数：" + parseFloat(commonscore[0]));
+                originGrade.push(parseFloat(commonscore[0]))
                 break;
             } else if (parseFloat(this.sit_and_reachVal) < sit_and_reach[this.sex][this.grade][sit_and_reach[this.sex][this.grade].length - 1]) {
                 console.log("坐体前屈" + '0');
+                originGrade.push(0)
                 break;
             }
         }
@@ -202,13 +213,18 @@ function cal(sex, grade, heightIn, weightIn, capacityIn, sit_reach,
             if (parseFloat(this.jumpVal) < parseFloat(standing_long_jump[this.sex][this.grade][i]) && parseFloat(this.jumpVal) >= parseFloat(standing_long_jump[this.sex][this.grade][i + 1])) {
                 max += parseFloat(commonscore[i]) * parseFloat(standing_long_jumpweight);
                 console.log("跳远" + parseFloat(commonscore[i]) * parseFloat(standing_long_jumpweight));
+                console.log("未加权分数：" + parseFloat(commonscore[i]) );
+                originGrade.push(parseFloat(commonscore[i]))
                 break;
             } else if (parseFloat(this.jumpVal) >= standing_long_jump[this.sex][this.grade][0]) {
                 max += parseFloat(commonscore[0]) * parseFloat(standing_long_jumpweight);
                 console.log("跳远" + parseFloat(commonscore[0]) * parseFloat(standing_long_jumpweight));
+                console.log("未加权分数：" + parseFloat(commonscore[0]));
+                originGrade.push(parseFloat(commonscore[0]))
                 break;
             } else if (parseFloat(this.jumpVal) < standing_long_jump[this.sex][this.grade][standing_long_jump[this.sex][this.grade].length - 1]) {
                 console.log("跳远" + 0);
+                originGrade.push(0)
                 break;
             }
         }
@@ -219,13 +235,18 @@ function cal(sex, grade, heightIn, weightIn, capacityIn, sit_reach,
             if (parseFloat(this.longRaceVal) > parseFloat(race_long[this.sex][this.grade][i]) && parseFloat(this.longRaceVal) <= parseFloat(race_long[this.sex][this.grade][i + 1])) {
                 max += parseFloat(commonscore[i + 1]) * parseFloat(race_longweight);
                 console.log("长跑" + parseFloat(commonscore[i+1]) * parseFloat(race_longweight));
+                console.log("未加权分数：" + parseFloat(commonscore[i + 1]) );
+                originGrade.push(parseFloat(commonscore[i + 1]))
                 break;
             } else if (parseFloat(this.longRaceVal) <= race_long[this.sex][this.grade][0]) {
                 max += parseFloat(commonscore[0]) * parseFloat(race_longweight);
                 console.log("长跑" + parseFloat(commonscore[0]) * parseFloat(race_longweight));
+                console.log("未加权分数：" + parseFloat(commonscore[0]));
+                originGrade.push(parseFloat(commonscore[0]))
                 break;
             } else if (parseFloat(this.longRaceVal) > race_long[this.sex][this.grade][race_long[this.sex][this.grade].length - 1]) {
                 console.log("长跑" + 0);
+                originGrade.push(0)
                 break;
             }
         }
@@ -235,13 +256,18 @@ function cal(sex, grade, heightIn, weightIn, capacityIn, sit_reach,
             if ((parseFloat(this.capacityVal) < parseFloat(capacity[this.sex][this.grade][i])) && (parseFloat(this.capacityVal) >= parseFloat(capacity[this.sex][this.grade][i + 1]))) {
                 max += parseFloat(commonscore[i + 1]) * parseFloat(capacityweight);
                 console.log("肺活量" + parseFloat(commonscore[i + 1]) * parseFloat(capacityweight));
+                originGrade.push(parseFloat(commonscore[i + 1]))
+                console.log("未加权分数：" + parseFloat(commonscore[i + 1]) );
                 break;
             } else if (parseFloat(this.capacityVal) >= capacity[this.sex][this.grade][0]) {
                 max += parseFloat(commonscore[0]) * parseFloat(capacityweight);
                 console.log("肺活量" + parseFloat(commonscore[0]) * parseFloat(capacityweight));
+                console.log("未加权分数：" + parseFloat(commonscore[0]));
+                originGrade.push(parseFloat(commonscore[0]))
                 break;
             } else if (parseFloat(this.capacityVal) < capacity[this.sex][this.grade][capacity[this.sex][this.grade].length - 1]) {
                 console.log("肺活量" + 0);
+                originGrade.push(0)
                 break;
             }
         }
@@ -253,13 +279,18 @@ function cal(sex, grade, heightIn, weightIn, capacityIn, sit_reach,
                 if (parseFloat(this.otherVal) == parseFloat(other[this.sex][this.grade][i])) {
                     max += parseFloat(commonscore[i]) * parseFloat(otherweight);
                     console.log("引体向上/仰卧起坐" + parseFloat(commonscore[i]) * parseFloat(otherweight));
+                    originGrade.push(parseFloat(commonscore[i]))
+                    console.log("未加权分数：" + parseFloat(commonscore[i]) );
                     break;
                 } else if (parseFloat(this.otherVal) >= other[this.sex][this.grade][0]) {
                     max += parseFloat(commonscore[0]) * parseFloat(otherweight);
                     console.log("引体向上/仰卧起坐" +parseFloat(commonscore[0]) * parseFloat(otherweight));
+                    console.log("未加权分数：" + parseFloat(commonscore[0]));
+                    originGrade.push(parseFloat(commonscore[0]))
                     break;
                 } else if (parseFloat(this.otherVal) < other[this.sex][this.grade][other[this.sex][this.grade].length - 1]) {
                     console.log("引体向上/仰卧起坐" +0);
+                    originGrade.push(0)
                     break;
                 }
             }
@@ -270,13 +301,17 @@ function cal(sex, grade, heightIn, weightIn, capacityIn, sit_reach,
                 if (parseFloat(this.otherVal) <= parseFloat(other[this.sex][this.grade][i]) && parseFloat(this.otherVal) >= parseFloat(other[this.sex][this.grade][i + 1])) {
                     max += parseFloat(commonscore[i]) * parseFloat(otherweight);
                     console.log("引体向上/仰卧起坐" +parseFloat(commonscore[i]) * parseFloat(otherweight));
-                    break;
+                    originGrade.push(parseFloat(commonscore[i]))
+                    console.log("未加权分数：" + parseFloat(commonscore[i]) );break;
                 } else if (parseFloat(this.otherVal) >= other[this.sex][this.grade][0]) {
                     max += parseFloat(commonscore[0]) * parseFloat(otherweight);
                     console.log("引体向上/仰卧起坐" +parseFloat(commonscore[0]) * parseFloat(otherweight));
+                    console.log("未加权分数：" + parseFloat(commonscore[0]));
+                    originGrade.push(parseFloat(commonscore[0]))
                     break;
                 } else if (parseFloat(this.otherVal) < other[this.sex][this.grade][other[this.sex][this.grade].length - 1]) {
                     console.log("引体向上/仰卧起坐" + 0);
+                    originGrade.push(0)
                     break;
                 }
             }
@@ -298,8 +333,9 @@ function cal(sex, grade, heightIn, weightIn, capacityIn, sit_reach,
             }
         }
         console.log(max);
+        console.log(originGrade+'');
         if(max>=100) {max = 100}
-        var calGrade = {"calGrade": max,"bmiunit": bmiunit.toFixed(1)};
+        var calGrade = {"calGrade": max,"bmiunit": bmiunit.toFixed(1),'originGrade':originGrade};
         return calGrade;
     }
 }
