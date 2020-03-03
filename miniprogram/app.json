@@ -1,11 +1,13 @@
 {
   "pages": [
+    
+    "pages/beijinghua/beijinghua",
         "pages/menu/menu",
     "pages/bodyTest/bodyTest",
 
     "pages/index/index",
     "pages/bmi/bmi",
-    "pages/beijinghua/beijinghua",
+   
     "pages/myMatrices/myMatrices",
     "pages/im/im",
     "pages/im/room/room",

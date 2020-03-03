@@ -66,7 +66,7 @@ Page({
         series: [{
             name: '体测数据分析',
             data: this.data.originGrade,
-            color:'#FF8C00'
+            color:'#FF4500'
         }],
         width: windowWidth,
         height: 400,

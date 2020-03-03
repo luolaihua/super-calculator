@@ -27,8 +27,8 @@ Page({
         name: 'BMI',
         url: '../../images/h.png'
       }, {
-        name: '大学体测成绩计算',
-        url: '../../images/h.png'
+        name: '体测成绩计算',
+        url: '../../images/bbb.png'
       }, {
         name: '字数统计',
         url: '../../images/h.png'

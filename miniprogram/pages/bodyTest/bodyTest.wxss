@@ -19,17 +19,17 @@
 }
 
 .item .label{
- width: 30%;
+ width: 25%;
  float: left;
  vertical-align: middle;
 }
 
 .item input{
- margin-left: 30%;
- margin-right: 10%;
+  width: 80%;
+ margin-right: 5%;
  text-align: right;
  padding-right: 8rpx;
- color:green;
+ color:skyblue;
 }
 
 .item .unit{
@@ -50,7 +50,7 @@ display: block;
 }
 
 .calcu_btn {
- background-color:green;
+ background-color:skyblue;
  color: #fff;
  font-weight: 400;
  width: 80vw;
@@ -67,5 +67,9 @@ display: block;
     position: absolute;
     top: 0;
     right: 0;
+    background-color: skyblue;
+}
+.canvas{
+  background-color: skyblue;
 }
 

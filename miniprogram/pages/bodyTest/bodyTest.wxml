@@ -2,7 +2,7 @@
 <canvas canvas-id="BMICanvas" class="BMIcanvas" style="height:200px;width: {{canvasWidth}};" bindtap="touchHandler"></canvas>
 
 <view class="dataAnalyze" wx:if='{{isAnalyze}}'>
-    <canvas style="height:800rpx;width:100%" canvas-id="radarCanvas" class="canvas" bindtouchstart="touchHandler"></canvas>
+    <canvas style="height:800rpx;width:100%" canvas-id="radarCanvas" class="canvas" bindtap="dataAnalyze"></canvas>
 </view>
 
 <view class="container">
