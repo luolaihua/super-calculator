@@ -20,39 +20,37 @@ Page({
   },
 
   onLoad: function () {
-    var that = this
 
-    const db = wx.cloud.database()
-    const _ = db.command
+      var that = this
+      const db = wx.cloud.database()
+      const _ = db.command
+      //这是一个异步函数，更新再获取
+      async function updateGet() {
+        //先执行完await中的updat函数，才会执行查询get
+        await db.collection('chatPeopleNum').doc('number').update({
+          data: {
+            // 表示指示数据库将字段自增 1
+            num: _.inc(1)
+          },
+          success: function (res) {
+            //console.log(res, '更新+1')
+          }
+        })
 
-
-    //这是一个异步函数，更新再获取
-    async function updateGet() {
-      //先执行完await中的updat函数，才会执行查询get
-      await db.collection('chatPeopleNum').doc('number').update({
-        data: {
-          // 表示指示数据库将字段自增 1
-          num: _.inc(1)
-        },
-        success: function (res) {
-          //console.log(res, '更新+1')
-        }
-      })
-
-      db.collection('chatPeopleNum').doc('number').get({
-        success: function (res) {
-          // res.data 包含该记录的数据
-          that.setData({
-            chatPeopleNum: res.data.num
-          })
-          //console.log(res.data.num + 'res.data.num**********')
-        },
-        fail: function (res) {
-          console.log(res)
-        }
-      })
-    }
-    updateGet()
+        db.collection('chatPeopleNum').doc('number').get({
+          success: function (res) {
+            // res.data 包含该记录的数据
+            that.setData({
+              chatPeopleNum: res.data.num
+            })
+            //console.log(res.data.num + 'res.data.num**********')
+          },
+          fail: function (res) {
+            console.log(res)
+          }
+        })
+      }
+      updateGet()
 
     //console.log(this.data.chatPeopleNum+'+++++')
 
@@ -94,8 +92,8 @@ Page({
     })
   },
   onUnload: function () {
-   // console.log(this.data.chatPeopleNum + '离开')
-   // console.log('bye !')
+    // console.log(this.data.chatPeopleNum + '离开')
+    // console.log('bye !')
     const db = wx.cloud.database()
     const _ = db.command
     db.collection('chatPeopleNum').doc('number').update({
@@ -104,7 +102,7 @@ Page({
         num: _.inc(-1)
       },
       success: function (res) {
-       // console.log(res, '更新-1')
+        // console.log(res, '更新-1')
       }
     })
 
