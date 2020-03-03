@@ -8,3 +8,10 @@ page,.page{height:100%;}
   word-wrap: break-word;
 
 }
+.weui-form__opr-area {
+  margin-bottom: 58px
+}
+
+.weui-form__opr-area:last-child {
+  margin-bottom: 80px
+}
