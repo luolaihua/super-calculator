@@ -72,4 +72,9 @@ display: block;
 .canvas{
   background-color: skyblue;
 }
-
+.weui-footer{
+  margin-top: 40rpx;
+}
+.weui-form__extra-area{
+  margin-bottom: 0;
+}

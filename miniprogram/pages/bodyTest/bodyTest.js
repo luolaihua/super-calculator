@@ -40,6 +40,11 @@ Page({
     color: "grey",
     modalhidden: true
   },
+  copyLink:function(e){
+    wx.setClipboardData({
+      data: 'https://github.com/Mayandev/execal',
+    })
+  },
   dataAnalyze:function(e){
     if(this.data.isAnalyze){
           this.setData({

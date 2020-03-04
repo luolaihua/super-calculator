@@ -79,6 +79,12 @@
 			</picker>
 		</view>
 		<button style="width:90vw" class="calcu_btn" bindtap="calGrade">开始计算</button>
+				<view class="weui-form__extra-area ">
+			<view class="weui-footer">
+				<view class="weui-footer__text">两个圆可以点击</view>
+				<text bindlongpress="copyLink" class="weui-footer__text" selectable="true">项目源自https://github.com/Mayandev/execal</text>
+			</view>
+		</view>
 	</view>
 
 

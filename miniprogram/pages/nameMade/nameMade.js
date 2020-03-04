@@ -73,6 +73,17 @@ Page({
       }
     })
   },
+  cancelChoose:function(e){
+    wx.setStorage({
+      key: 'myName',
+      data: '',
+      success (res) {
+        wx.showToast({
+          title: '已取消',
+        })
+      }
+    })
+  },
 
   /**
    * 生命周期函数--监听页面加载
