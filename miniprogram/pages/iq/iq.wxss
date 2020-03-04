@@ -1,0 +1,5 @@
+/* miniprogram/pages/iq/iq.wxss */
+button{
+  position: fixed;
+  bottom: 0;
+}

@@ -1,0 +1,4 @@
+<!--miniprogram/pages/iq/iq.wxml-->
+<view class="body">
+  <button type="primary" bindtap="iq" style="width:100vw">提高智商</button>
+</view>

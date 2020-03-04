@@ -1,8 +1,9 @@
 {
   "pages": [
-      "pages/menu/menu",
+       "pages/menu/menu", 
+    "pages/iq/iq",
+
     "pages/nameMade/nameMade",
-  
     "pages/beijinghua/beijinghua",
     "pages/bodyTest/bodyTest",
     "pages/index/index",

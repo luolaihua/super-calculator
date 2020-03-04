@@ -1,5 +1,5 @@
 // miniprogram/pages/menu/menu.js
-var re = /[\u4E00-\u9FA5]/g;
+/* var re = /[\u4E00-\u9FA5]/g;
 //g代表可多次匹配正则
 
 var reg = /[\u3002|\uff1f|\uff01|\uff0c|\u3001|\uff1b|\uff1a|\u201c|\u201d|\u2018|\u2019|\uff08|\uff09|\u300a|\u300b|\u3008|\u3009|\u3010|\u3011|\u300e|\u300f|\u300c|\u300d|\ufe43|\ufe44|\u3014|\u3015|\u2026|\u2014|\uff5e|\ufe4f|\uffe5]/g;
@@ -28,7 +28,7 @@ if (txt !== "") {
   }
 }
 console.log(len1, len2, len3, len4)
-
+ */
 
 
 
@@ -66,8 +66,8 @@ Page({
         name: '洋气网名生成',
         url: '../../images/l.png'
       }, {
-        name: '字数统计',
-        url: '../../images/c.png'
+        name: '色环电阻',
+        url: '../../images/dian.png'
       }, {
         name: '智商提高',
         url: '../../images/zhi.png'
@@ -113,6 +113,11 @@ Page({
           url: '../bodyTest/bodyTest',
         })
         break;
+        case 8:
+          wx.navigateTo({
+            url: '../iq/iq',
+          })
+          break;
     }
   },
 
