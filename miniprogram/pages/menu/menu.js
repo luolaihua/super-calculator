@@ -4,9 +4,10 @@ var re = /[\u4E00-\u9FA5]/g;
 
 var reg = /[\u3002|\uff1f|\uff01|\uff0c|\u3001|\uff1b|\uff1a|\u201c|\u201d|\u2018|\u2019|\uff08|\uff09|\u300a|\u300b|\u3008|\u3009|\u3010|\u3011|\u300e|\u300f|\u300c|\u300d|\ufe43|\ufe44|\u3014|\u3015|\u2026|\u2014|\uff5e|\ufe4f|\uffe5]/g;
 var txt='你好，this is a test? 123456789'
-      var re1=/\d/g;
-      var re2=/[a-zA-Z]/g;
-      var re3=/[\u4e00-\u9fa5]/g;
+      var re1=/\d/g; // 数字
+      var re2=/[a-zA-Z]/g;//字母
+      var re3=/[\u4e00-\u9fa5]/g;//汉字
+      //字符
       var reg = /[\u3002|\uff1f|\uff01|\uff0c|\u3001|\uff1b|\uff1a|\u201c|\u201d|\u2018|\u2019|\uff08|\uff09|\u300a|\u300b|\u3008|\u3009|\u3010|\u3011|\u300e|\u300f|\u300c|\u300d|\ufe43|\ufe44|\u3014|\u3015|\u2026|\u2014|\uff5e|\ufe4f|\uffe5]/g;
  var len1=0,len2=0,len3=0,len4=0;
   if(txt!==""){
@@ -47,24 +48,26 @@ Page({
         url: '../../images/chat.png'
       },
       {
+        name: '体测成绩计算',
+        url: '../../images/bbb.png'
+      },
+      {
+        name: 'BMI',
+        url: '../../images/h.png'
+      },
+      {
         name: '翻译机',
         url: '../../images/laugh.png'
       },
       {
-        name: '算姻缘',
+        name: '洋气网名生成',
         url: '../../images/l.png'
       }, {
-        name: 'BMI',
-        url: '../../images/h.png'
-      }, {
-        name: '体测成绩计算',
-        url: '../../images/bbb.png'
-      }, {
         name: '字数统计',
-        url: '../../images/h.png'
+        url: '../../images/c.png'
       }, {
         name: '智商提高',
-        url: '../../images/h.png'
+        url: '../../images/zhi.png'
       }
 
     ]
@@ -87,24 +90,22 @@ Page({
           url: '../im/room/room',
         })
         break;
-      case 3:
+      case 5:
         wx.navigateTo({
           url: '../beijinghua/beijinghua',
         })
         break;
-      case 4:
-        wx.showToast({
-          title: '该功能尚未开放，敬请期待',
-          icon:'none'
+      case 6:
+        wx.navigateTo({
+          url: '../nameMade/nameMade',
         })
-
         break;
-      case 5:
+      case 4:
           wx.navigateTo({
             url: '../bmi/bmi',
           })
         break;
-        case 6:
+        case 3:
           wx.navigateTo({
             url: '../bodyTest/bodyTest',
           })
@@ -130,6 +131,16 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    wx.getStorage({
+      key: 'myName',
+      success (res) {
+        //console.log(res.data)
+        wx.showToast({
+          title:'你好呀，'+ res.data,
+          icon:'none'
+        })
+      }
+    })
 
   },
 

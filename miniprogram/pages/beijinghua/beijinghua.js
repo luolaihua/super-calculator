@@ -61,7 +61,7 @@ Page({
     if (moveX <= moveY && touchMoveY != 0) { // 上下
       // 向上滑动
       if (touchMoveY - touchStartY <= -80 && time < 10) {
-        console.log("向上滑动" + touchMoveY + '  |  ' + touchStartY + 'up')
+        //console.log("向上滑动" + touchMoveY + '  |  ' + touchStartY + 'up')
 
         if (index == length - 1) {
           index = 0
@@ -72,7 +72,7 @@ Page({
       }
       // 向下滑动 
       if (touchMoveY - touchStartY >= 80 && time < 10) {
-        console.log('向下滑动 ' + touchMoveY + '   |  ' + touchStartY);
+       // console.log('向下滑动 ' + touchMoveY + '   |  ' + touchStartY);
 
         if (index == 0) {
           index = length - 1
@@ -84,7 +84,7 @@ Page({
     } else if (touchMoveX != 0) { // 左右
       // 向左滑动
       if (touchMoveX - touchStartX <= -80 && time < 10) {
-        console.log("左滑页面" + touchMoveX + '  |  ' + touchStartX + 'left')
+        //console.log("左滑页面" + touchMoveX + '  |  ' + touchStartX + 'left')
         if (index == 0) {
           index = length - 1
         } else {
@@ -94,7 +94,7 @@ Page({
       }
       // 向右滑动 
       if (touchMoveX - touchStartX >= 80 && time < 10) {
-        console.log('向右滑动' + touchMoveX + '  |  ' + touchStartX + 'left');
+      //  console.log('向右滑动' + touchMoveX + '  |  ' + touchStartX + 'left');
 
         if (index == length - 1) {
           index = 0
