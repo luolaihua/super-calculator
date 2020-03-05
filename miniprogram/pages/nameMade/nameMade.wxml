@@ -11,7 +11,7 @@
 				<view class="weui-cells weui-cells_form">
 					<view class="weui-cell">
 						<view class="weui-cell__bd">
-							<input class="weui-input" value="{{input}}" maxlength='3' placeholder="收起键盘即可转换" bindconfirm="confirm" bindblur='confirm' />
+							<input class="weui-input" value="{{input}}" maxlength='3' placeholder="收起键盘即生成" bindconfirm="confirm" bindblur='confirm' />
 						</view>
 					</view>
 				</view>

@@ -59,16 +59,17 @@ Page({
         url: '../../images/h.png'
       },
       {
-        name: '翻译机',
-        url: '../../images/laugh.png'
+        name: '色环电阻',
+        url: '../../images/dian.png'
       },
       {
         name: '洋气网名生成',
         url: '../../images/l.png'
-      }, {
-        name: '色环电阻',
-        url: '../../images/dian.png'
-      }, {
+      }, 
+      {
+        name: '翻译机',
+        url: '../../images/laugh.png'
+      },{
         name: '智商提高',
         url: '../../images/zhi.png'
       }
@@ -93,7 +94,7 @@ Page({
           url: '../im/room/room',
         })
         break;
-      case 5:
+      case 7:
         wx.navigateTo({
           url: '../beijinghua/beijinghua',
         })
@@ -113,6 +114,11 @@ Page({
           url: '../bodyTest/bodyTest',
         })
         break;
+        case 5:
+          wx.navigateTo({
+            url: '../resistance/resistance',
+          })
+          break;
         case 8:
           wx.navigateTo({
             url: '../iq/iq',

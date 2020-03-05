@@ -79,7 +79,7 @@ Page({
     lastTapTime: 0,
 
   },
-  isSound:function(e){
+  isSound: function (e) {
     if (this.data.isSound) {
       this.setData({
         //fontsize: 40,
@@ -560,9 +560,9 @@ Page({
     //加音效
     //添加音效
     if (this.data.isSound) {
-    const innerAudioContext = wx.createInnerAudioContext()
-    innerAudioContext.src = 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/wav/%E7%AD%89%E4%BA%8E.wav?sign=feec5bbb7a08686461a79ddcd655d293&t=1582898728'
-    innerAudioContext.play()
+      const innerAudioContext = wx.createInnerAudioContext()
+      innerAudioContext.src = 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/wav/%E7%AD%89%E4%BA%8E.wav?sign=feec5bbb7a08686461a79ddcd655d293&t=1582898728'
+      innerAudioContext.play()
     }
   },
   toScientificData: function (e) {
@@ -651,15 +651,9 @@ Page({
 
   onLoad: function () {
 
-
-
-
-
-
-
     updateManager.onCheckForUpdate(function (res) {
       // 请求完新版本信息的回调
-      console.log('hasUpdate',res.hasUpdate)
+      console.log('hasUpdate', res.hasUpdate)
     })
 
     updateManager.onUpdateReady(function () {

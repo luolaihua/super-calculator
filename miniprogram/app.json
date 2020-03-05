@@ -1,13 +1,13 @@
 {
   "pages": [
-    
-    "pages/resistance/resistance",
-    "pages/menu/menu",
+    "pages/index/index",
+        "pages/menu/menu",
+        "pages/resistance/resistance",
+    "pages/aboutResistance/aboutResistance",
     "pages/iq/iq",
     "pages/nameMade/nameMade",
     "pages/beijinghua/beijinghua",
     "pages/bodyTest/bodyTest",
-    "pages/index/index",
     "pages/bmi/bmi",
     "pages/myMatrices/myMatrices",
     "pages/im/im",
