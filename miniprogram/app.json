@@ -1,10 +1,8 @@
 {
   "pages": [
+        "pages/menu/menu",
     "pages/unitTransfer/unitTransfer",
         "pages/index/index",
-    "pages/menu/menu",
-
-
         "pages/resistance/resistance",
     "pages/aboutResistance/aboutResistance",
     "pages/iq/iq",
