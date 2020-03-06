@@ -3,8 +3,8 @@
 const updateManager = wx.getUpdateManager()
 var math = require('../util/math.min.js');
 var Fraction = require('../util/fraction.js');
-const parser = math.parser();
 
+const parser = math.parser();
 String.prototype.replaceAll = function (search, replacement) {
   var target = this;
   return target.replace(new RegExp(search, 'g'), replacement);

@@ -1,7 +1,10 @@
 {
   "pages": [
-    "pages/index/index",
-        "pages/menu/menu",
+    "pages/unitTransfer/unitTransfer",
+        "pages/index/index",
+    "pages/menu/menu",
+
+
         "pages/resistance/resistance",
     "pages/aboutResistance/aboutResistance",
     "pages/iq/iq",
@@ -20,7 +23,7 @@
     "pages/setting/setting",
     "pages/aboutMatrix/aboutMatrix",
     "pages/scientificData/scientificData",
-    "pages/unitTransfer/unitTransfer",
+
     "pages/welcome/welcome",
     "pages/introduction/introduction",
     "pages/relative/relative",

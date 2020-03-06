@@ -49,9 +49,11 @@ console.log(math.evaluate('1ps to hp') + '')
 console.log(math.evaluate('1week to ns') + '')
 
  */
-
-
- const app = getApp()
+/* console.log(parseInt('10',16))
+console.log(parseInt('1',16))
+console.log(parseInt('F',16))
+ */
+const app = getApp()
 Page({
 
   /**
@@ -127,10 +129,10 @@ Page({
     id_d: 'del',
     id_dot: '.'
   },
-  loveBtn:function(e){
+  loveBtn: function (e) {
     wx.showToast({
       title: '点击红字选择不同单位',
-      icon:'none'
+      icon: 'none'
     })
   },
   //清除按钮
@@ -160,6 +162,9 @@ Page({
 
     //获取当前按钮id值
     var btnValue = e.target.id
+
+
+
     //判断是输入到res1还是res2中，如果isChoose为true则输入到res1
     if (this.data.isChoose) {
       //获取当前res1的数据
@@ -173,11 +178,19 @@ Page({
         }
       } else {
         //如果按下数字按钮
-        if (res1 == '0' || this.data.condition == 'choose') {
+
+        //处理进制输入按钮的范围：
+        if (this.data.showWhichSection == 'jinzhi') {
+          btnValue = this.processJinzhiBtnValue(btnValue, this.data.index1)+''
+        }
+
+
+        if ((res1 == '0' || this.data.condition == 'choose') ) {
           res1 = btnValue
         } else {
           res1 = res1 + btnValue
         }
+
       }
 
       //按一次按钮做一次运算----11111
@@ -235,7 +248,12 @@ Page({
           res2 = res2.substr(0, res2.length - 1)
         }
       } else {
-        if (res2 == '0' || this.data.condition == 'choose') {
+        //处理进制输入按钮的范围：
+        if (this.data.showWhichSection == 'jinzhi') {
+          btnValue = this.processJinzhiBtnValue(btnValue, this.data.index2)+''
+        }
+
+        if ((res2 == '0' || this.data.condition == 'choose')) {
           res2 = btnValue
         } else {
           res2 = res2 + btnValue
@@ -796,45 +814,52 @@ Page({
 
     return ChineseStr;
   },
+  processJinzhiNum: function (m1) {
+    m1 = Number(m1)
+    switch (m1) {
+      case 0:
+        m1 = 2;
+        break;
+      case 1:
+        m1 = 8;
+        break;
+      case 2:
+        m1 = 10;
+        break;
+      case 3:
+        m1 = 16;
+        break;
+      default:
+        m1 = m1 - 2
+    }
+    return m1
+  },
+  //控制进制数字按钮的使用，当为2进制时只能按0,1，三进制只能按0,1,2，以此类推，传入按钮键值和当前进制的index
+  processJinzhiBtnValue: function (btnValue, index) {
+    btnValue = btnValue+''
+    var btnValue = parseInt(btnValue, 16)
+    var index = this.processJinzhiNum(index)
+    //console.log(btnValue,index,'btnValue,index,')
+    if (btnValue < index) {
+      console.log(btnValue,index,'btnValue,index,')
+      return btnValue
+    } else {
+      wx.showToast({
+        title: '键值须小于进制！',
+        icon:'none'
+      })
+      return ''
+    }
+
+
+  },
   jinzhiTransfer: function (num, m, n) {
     num = num.replace(/\s/g, "")
-    m = Number(m)
-    n = Number(n)
-    switch (m) {
-      case 0:
-        m = 2;
-        break;
-      case 1:
-        m = 8;
-        break;
-      case 2:
-        m = 10;
-        break;
-      case 3:
-        m = 16;
-        break;
-      default:
-        m = m - 2
 
-    }
-    switch (n) {
-      case 0:
-        n = 2;
-        break;
-      case 1:
-        n = 8;
-        break;
-      case 2:
-        n = 10;
-        break;
-      case 3:
-        n = 16;
-        break;
-      default:
-        n = n - 2
-    }
-    //console.log(m + "---m")
-    //console.log(n + "---n")
+    m = this.processJinzhiNum(m)
+    n = this.processJinzhiNum(n)
+    // console.log(m + "---m")
+    // console.log(n + "---n")
     //var s = num + '';
     var result = parseInt(num, m).toString(n);
     return result;

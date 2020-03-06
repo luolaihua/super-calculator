@@ -30,6 +30,17 @@ if (txt !== "") {
 console.log(len1, len2, len3, len4)
  */
 
+var result = parseInt(11111, 2).toString(8);
+
+console.log((123&234).toString(2),'&&&')
+console.log((123).toString(2))
+console.log((234).toString(2))
+console.log((89).toString(2))
+console.log(123|234,' |')
+console.log(123^234,' 异或')
+console.log(~123,' 取反')
+console.log((8>>1).toString(2),'++')
+
 
 
 
