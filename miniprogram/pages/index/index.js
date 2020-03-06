@@ -672,6 +672,7 @@ Page({
     updateManager.onUpdateFailed(function () {
       // 新版本下载失败
     })
-
+ 
   },
+
 })

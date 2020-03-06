@@ -1,9 +1,10 @@
 {
   "pages": [
-        "pages/menu/menu",
+    "pages/index/index",
+    "pages/menu/menu",
     "pages/unitTransfer/unitTransfer",
-        "pages/index/index",
-        "pages/resistance/resistance",
+
+    "pages/resistance/resistance",
     "pages/aboutResistance/aboutResistance",
     "pages/iq/iq",
     "pages/nameMade/nameMade",
@@ -44,8 +45,7 @@
     "color": "#fff",
     "backgroundColor": "#000",
     "selectedColor": "#A52A2A",
-    "list": [
-      {
+    "list": [{
         "pagePath": "pages/index/index",
         "text": "普通计算"
       },
