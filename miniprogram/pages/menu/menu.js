@@ -75,7 +75,7 @@ Page({
       },
       {
         name: '洋气网名生成',
-        url: '../../images/l.png'
+        url: '../../images/tushe.png'
       }, 
       {
         name: '翻译机',
@@ -83,6 +83,9 @@ Page({
       },{
         name: '智商提高',
         url: '../../images/zhi.png'
+      },{
+        name: '小偏心大转盘',
+        url: '../../images/l.png'
       }
 
     ]
@@ -135,6 +138,11 @@ Page({
             url: '../iq/iq',
           })
           break;
+          case 9:
+            wx.navigateTo({
+              url: '../bigWheel/bigWheel',
+            })
+            break;
     }
   },
 
