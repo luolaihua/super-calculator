@@ -86,6 +86,9 @@ Page({
       },{
         name: '小偏心大转盘',
         url: 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/l.png?sign=b0771e17f0466b51de37266784bc51fc&t=1583810797'
+      },{
+        name: '智力闯关',
+        url: 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/math.png?sign=1261d5d036cd39ca8d2314219e969249&t=1583851184'
       }
 
     ]
