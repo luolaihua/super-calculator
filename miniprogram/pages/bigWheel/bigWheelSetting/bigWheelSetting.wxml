@@ -2,7 +2,7 @@
 <view class="container">
 	<view class="modules_box">
 		<view class="modules_icon_box">
-			<image class="modules_icon" mode="scaleToFill" src="../../../images/l.png"></image>
+			<image class="modules_icon" mode="scaleToFill" src="https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/l.png?sign=97d924e426a8559946635fa89a2275b4&t=1583812979"></image>
 		</view>
 		<view class="modules_title_box">偏心</view>
 		<view class="modules_switch_box">
@@ -11,7 +11,7 @@
 	</view>
 	<view class="modules_box">
 		<view class="modules_icon_box">
-			<image class="modules_icon" mode="scaleToFill" src="/images/icon_set_sound_60.png"></image>
+			<image class="modules_icon" mode="scaleToFill" src="https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/wheel_sound.png?sign=50249b336ba1600f96606c294ba93efb&t=1583813049"></image>
 		</view>
 		<view class="modules_title_box">声音</view>
 		<view class="modules_switch_box">
@@ -20,7 +20,7 @@
 	</view>
 	<view class="modules_box">
 		<view class="modules_icon_box">
-			<image class="modules_icon" mode="scaleToFill" src="/images/icon_set_no_repetition_select_60.png"></image>
+			<image class="modules_icon" mode="scaleToFill" src="https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/wheel_repeat.png?sign=fc3ac1caece119d74c05153310113cce&t=1583813082"></image>
 		</view>
 		<view class="modules_title_box">不重复抽取</view>
 		<view class="modules_switch_box">
@@ -32,7 +32,7 @@
 
 <view class="modules_box">
 		<view class="modules_icon_box">
-			<image class="modules_icon" mode="scaleToFill" src="/images/icon_set_fast_select_60.png"></image>
+			<image class="modules_icon" mode="scaleToFill" src="https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/wheel_speed.png?sign=b31e129dbbabfafad57460e8b3027b5d&t=1583813109"></image>
 		</view>
     <view class="slider-box">
       <text class="slider-title">转动速度</text>

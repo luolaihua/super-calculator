@@ -13,16 +13,16 @@
 
 
 				<view bindtap="officialQToControl" class="official_question_control_box question_control_box" data-index="{{index}}">
-					<image class="question_control" mode="scaleToFill" src="{{index==item.num?'https://gamesdata.oss-cn-hangzhou.aliyuncs.com/xiaojueding/icon_list_close_60.png':'https://gamesdata.oss-cn-hangzhou.aliyuncs.com/xiaojueding/icon_list_open_60.png'}}"></image>
+					<image class="question_control" mode="scaleToFill" src="{{index==item.num?'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/icon_list_close_60.png?sign=deb4759d173f8d1020611e648ef83266&t=1583816078':'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/icon_list_open_60.png?sign=3f759095c1fc38f656a21ec00e9b13d7&t=1583816109'}}"></image>
 				</view>
 				<view class="official_question_btn_box question_btn_box" style="display:{{index==item.num?'flex':'none'}};">
 
 					<button bindtap="officialQToRevise" class="question_btn_cell btn_boder_right" data-index="{{index}}" hoverClass="none">
-						<image class="question_btn_icon" mode="scaleToFill" src="https://gamesdata.oss-cn-hangzhou.aliyuncs.com/xiaojueding/icon_list_revise_60.png"></image>
+						<image class="question_btn_icon" mode="scaleToFill" src="https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/icon_list_revise_60.png?sign=04ee8b51cf3a71ce115b9fb4a93cd746&t=1583817816"></image>
 						<view class="question_btn_title">编辑</view>
 					</button>
 					<button bindtap="officialQToKeep" class="question_btn_cell btn_boder_right" data-index="{{index}}" hoverClass="none">
-						<image class="question_btn_icon" mode="scaleToFill" src="https://gamesdata.oss-cn-hangzhou.aliyuncs.com/xiaojueding/icon_list_keep_60.png"></image>
+						<image class="question_btn_icon" mode="scaleToFill" src="https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/icon_list_keep_60.png?sign=a296b9a2b29d06e2796511fd69443182&t=1583817841"></image>
 						<view class="question_btn_title">收藏</view>
 					</button>
 
@@ -35,17 +35,17 @@
 			<view class="personal_question_list_cell question_list_cell" wx:for="{{myxiaojueding}}" wx:key="unique">
 				<view bindtap="personalQToRun" class="personal_question question" data-id="{{item.id}}" data-index="{{index}}">{{item.option}}</view>
 				<view bindtap="personalQToControl" class="personal_question_control_box question_control_box" data-index="{{index}}">
-					<image class="question_control" mode="scaleToFill" src="{{index==item.num1?'https://gamesdata.oss-cn-hangzhou.aliyuncs.com/xiaojueding/icon_list_close_60.png':'https://gamesdata.oss-cn-hangzhou.aliyuncs.com/xiaojueding/icon_list_open_60.png'}}"></image>
+					<image class="question_control" mode="scaleToFill" src="{{index==item.num1?'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/icon_list_close_60.png?sign=deb4759d173f8d1020611e648ef83266&t=1583816078':'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/icon_list_open_60.png?sign=3f759095c1fc38f656a21ec00e9b13d7&t=1583816109'}}"></image>
 				</view>
 
 				<view class="personal_question_btn_box question_btn_box" style="display:{{index==item.num1?'flex':'none'}};">
 
 					<button bindtap="personalQToRevise" class="question_btn_cell btn_boder_right" data-index="{{index}}" hoverClass="none">
-						<image class="question_btn_icon" mode="scaleToFill" src="https://gamesdata.oss-cn-hangzhou.aliyuncs.com/xiaojueding/icon_list_revise_60.png"></image>
+						<image class="question_btn_icon" mode="scaleToFill" src="https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/icon_list_revise_60.png?sign=3c3407c78f134c66a8453584e3b7ae69&t=1583817608"></image>
 						<view class="question_btn_title">编辑</view>
 					</button>
 					<button bindtap="personalQToDelete" class="question_btn_cell btn_boder_right" data-index="{{index}}" hoverClass="none">
-						<image class="question_btn_icon" mode="scaleToFill" src="https://gamesdata.oss-cn-hangzhou.aliyuncs.com/xiaojueding/icon_list_delete_60.png"></image>
+						<image class="question_btn_icon" mode="scaleToFill" src="https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/icon_list_delete_60.png?sign=73448d9f849ca56bea34d07d371fde4a&t=1583817633"></image>
 						<view class="question_btn_title">删除</view>
 					</button>
 
@@ -54,7 +54,7 @@
 
 			<view bindtap="addPersonalQ" class="personal_question_add_cell question_list_cell">
 				<view class="question_add_box">
-					<image class="question_add_icon" mode="scaleToFill" src="https://gamesdata.oss-cn-hangzhou.aliyuncs.com/xiaojueding/icon_list_add_60.png"></image>
+					<image class="question_add_icon" mode="scaleToFill" src="https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/icon_list_add_60.png?sign=ffe72b0c137de147a229f87ca17a47e1&t=1583817702"></image>
 				</view>
 			</view>
 		</view>
@@ -64,5 +64,5 @@
 
 </view>
 	<view class="sticky">
-		<image bindtap="toWheel" class="question_btn_icon sticky_item" src="../../../images/zhuanpan.png" mode="aspectFit" style="width:80rpx;height:80rpx" class="swithchItem"></image>
+		<image bindtap="toWheel" class="question_btn_icon sticky_item" src="https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/zhuanpan.png?sign=8c12f2119635d0bb59153e035b68a8c8&t=1583811901" mode="aspectFit" style="width:80rpx;height:80rpx" class="swithchItem"></image>
 	</view>

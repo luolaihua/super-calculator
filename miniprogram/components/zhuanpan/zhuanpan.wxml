@@ -28,8 +28,8 @@
    </view>
 
    <!-- 转盘中间的按钮 -->
-   <image bindtap="_zhuan" src='https://gamesdata.oss-cn-hangzhou.aliyuncs.com/xiaojueding/canvas_button_go_unclick.png' style='width:{{size.h/4.4}}rpx;position:absolute;left:41%;top:38%;margin-top:-11rpx;z-index:9999;display:{{block1}}' mode='widthFix'></image>
-   <image src='https://gamesdata.oss-cn-hangzhou.aliyuncs.com/xiaojueding/canvas_button_go_click.png' style='width:{{size.h/4.4}}rpx;position:absolute;left:41%;top:38%;margin-top:-11rpx;z-index:9999;display:{{block2}}' mode='widthFix'></image>
-   <image bindtap="reset" src='https://gamesdata.oss-cn-hangzhou.aliyuncs.com/xiaojueding/canvas_button_reset_unclick.png' style='width:{{size.h/4.4}}rpx;left:41%;top:38%;position: absolute;margin-top:-11rpx;z-index:9999;display:{{block3}}' mode='widthFix'></image>
-   <image src='https://gamesdata.oss-cn-hangzhou.aliyuncs.com/xiaojueding/canvas_button_reset_click.png' style='width:{{size.h/4.4}}rpx;position:absolute;left:41%;top:38%;margin-top:-11rpx;z-index:9999;display:{{block4}}' mode='widthFix'></image>
+   <image bindtap="_zhuan" src='https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/canvas_button_go_unclick.png?sign=c71f31a564ec9140671841311c04b37c&t=1583815413' style='width:{{size.h/4.4}}rpx;position:absolute;left:41%;top:38%;margin-top:-11rpx;z-index:9999;display:{{block1}}' mode='widthFix'></image>
+   <image src='https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/canvas_button_go_click.png?sign=8e6fa74c734179685d5295c961476660&t=1583815445' style='width:{{size.h/4.4}}rpx;position:absolute;left:41%;top:38%;margin-top:-11rpx;z-index:9999;display:{{block2}}' mode='widthFix'></image>
+   <image bindtap="reset" src='https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/canvas_button_reset_unclick.png?sign=d46bf913c96fbc7c2a62624ad6b9ebb1&t=1583815563' style='width:{{size.h/4.4}}rpx;left:41%;top:38%;position: absolute;margin-top:-11rpx;z-index:9999;display:{{block3}}' mode='widthFix'></image>
+   <image src='https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/canvas_button_reset_click.png?sign=78c36d22ada157e033a79c02e9b53dbb&t=1583815602' style='width:{{size.h/4.4}}rpx;position:absolute;left:41%;top:38%;margin-top:-11rpx;z-index:9999;display:{{block4}}' mode='widthFix'></image>
 </view>
