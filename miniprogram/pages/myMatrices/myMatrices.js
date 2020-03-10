@@ -682,6 +682,16 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
+    return {
+       title: '我发现了一款功能很全的矩阵计算器~',
+       path: '/pages/myMatrices/myMatrices',
+       success: function (res) {
+          console.log('成功进入分享==========', res);
 
-  }
+       },
+       fail: function (res) {
+          console.log('进入分享失败==========', res);
+       }
+    }
+ },
 })

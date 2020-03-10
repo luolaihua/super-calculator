@@ -126,9 +126,9 @@ Page({
   onShareAppMessage: function () {
     // 用户点击右上角分享  
     return {
-      title: '点击算算我的体测成绩🏃‍', // 分享标题  
-      desc: '点击算算我的体测成绩🏃‍', // 分享描述  
-      path: 'pages/index/index' // 分享路径  
+      title: '我的体测成绩算好啦🏃‍', // 分享标题  
+      desc: '点击算算你的体测成绩🏃‍', // 分享描述  
+      path: 'pages/bodyTest/bodyTest' // 分享路径  
     }
   },
 
@@ -278,34 +278,6 @@ Page({
 
   },
 
-  // // blurDraw
-  // blurDraw: function() {
-  //     if(this.data.currentPage == 1) {
-  //         this.drawBMICircle();
-  //     } else {
-  //         this.drawGradeCircle();
-  //     }
-  // },
-
-  // // 顶部swiper滑动事件
-  // swiperChange: function(e) {
-  //     // this.setData({
-  //     //     currentPage: e.detail.current       
-  //     // });
-  //     // console.log(currentPage);
-  //     // if(e.detail.current == 1) {
-  //     //     this.drawBMICircle();
-  //     // } else {
-  //     //     this.drawGradeCircle();
-  //     // }
-  // },
-
-  // bindTimeChange: function (e) {
-  //     this.setData({
-  //         time: e.detail.value
-  //     })
-  // },
-
   // 绘制图形
   drawGradeCircle: function () {
     //console.log(this.data.calGrade);
@@ -418,34 +390,6 @@ Page({
 
     })
   },
-  bindconfirm: function (e) {
-    this.setData({
-      modalhidden: true
-    })
-  },
-  iconTap: function (e) {
-    this.setData({
-      color: " #3667ec"
-    })
-  },
-  iconTouchCancle: function (e) {
-    console.log(e);
-    this.setData({
-      color: "grey"
-    })
-  },
-  navigateAbout: function (e) {
-    wx.navigateTo({
-      url: '/pages/about/about',
-    })
-  },
 
-  // 打赏开发者
-  givieMoney: function (e) {
-    wx.navigateToMiniProgram({
-      appId: 'wx18a2ac992306a5a4',
-      path: 'pages/apps/largess/detail?accountId=3118640'
-    })
-  }
 
 })

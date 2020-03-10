@@ -197,7 +197,19 @@ wx.navigateTo({
          }, 500)
       }
    },
-
+   onShareAppMessage: function () {
+      return {
+         title: '小偏心，大转盘~',
+         path: '/pages/bigWheel/bigWheel',
+         success: function (res) {
+            console.log('成功进入分享==========', res);
+  
+         },
+         fail: function (res) {
+            console.log('进入分享失败==========', res);
+         }
+      }
+   },
 
 
 

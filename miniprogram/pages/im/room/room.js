@@ -137,7 +137,7 @@ Page({
 
   onShareAppMessage() {
     return {
-      title: '即时通信 Demo',
+      title: '一个网路聊天室，大家都能发言，你也来试试吧',
       path: '/pages/im/room/room',
     }
   },

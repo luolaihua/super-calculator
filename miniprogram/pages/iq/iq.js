@@ -103,6 +103,16 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
+    return {
+       title: '哈哈~来提高智商叭~',
+       path: '/pages/iq/iq',
+       success: function (res) {
+          console.log('成功进入分享==========', res);
 
-  }
+       },
+       fail: function (res) {
+          console.log('进入分享失败==========', res);
+       }
+    }
+ },
 })

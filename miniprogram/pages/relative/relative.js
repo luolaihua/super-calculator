@@ -241,5 +241,18 @@ Page({
         }
         */
 
-  }
+  },
+  onShareAppMessage: function () {
+    return {
+       title: '很有趣的亲戚计算器，一起来玩叭~',
+       path: '/pages/relative/relative',
+       success: function (res) {
+          console.log('成功进入分享==========', res);
+
+       },
+       fail: function (res) {
+          console.log('进入分享失败==========', res);
+       }
+    }
+ },
 })

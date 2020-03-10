@@ -126,5 +126,18 @@ Page({
       danger: this.dangerConfig[value],
       conditionColor:this.data.color[value]
     })
-  }
+  },
+  onShareAppMessage: function () {
+    return {
+       title: '来测测你的BMI叭~',
+       path: '/pages/bmi/bmi',
+       success: function (res) {
+          console.log('成功进入分享==========', res);
+
+       },
+       fail: function (res) {
+          console.log('进入分享失败==========', res);
+       }
+    }
+ },
 })

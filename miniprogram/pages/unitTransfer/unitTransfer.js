@@ -928,6 +928,11 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-
-  }
+    // 用户点击右上角分享  
+    return {
+      title: '功能很全的单位转换小程序', // 分享标题  
+    desc: '一起来玩叭~', // 分享描述  
+      path: 'pages/unitTransfer/unitTransfer' // 分享路径  
+    }
+  },
 })

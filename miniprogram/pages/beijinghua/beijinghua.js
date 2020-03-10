@@ -247,6 +247,16 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
+    return {
+       title: '一款全能的翻译机~',
+       path: '/pages/beijinghua/beijinghua',
+       success: function (res) {
+          console.log('成功进入分享==========', res);
 
-  }
+       },
+       fail: function (res) {
+          console.log('进入分享失败==========', res);
+       }
+    }
+ },
 })
