@@ -1,7 +1,8 @@
 {
   "pages": [
-   
     "pages/menu/menu",
+    "pages/iq/iq",
+   
     "pages/bigWheel/bigWheel",
     "pages/bigWheel/edit/edit",
  "pages/bigWheel/chooseItem/chooseItem",
@@ -11,7 +12,6 @@
 
     "pages/resistance/resistance",
     "pages/aboutResistance/aboutResistance",
-    "pages/iq/iq",
     "pages/nameMade/nameMade",
     "pages/beijinghua/beijinghua",
     "pages/bodyTest/bodyTest",

@@ -79,7 +79,7 @@ Page({
       }, 
       {
         name: '翻译机',
-        url: 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/transfer.png?sign=edeb58a44f21734ed1e9fcd0f70fddb1&t=1583810753'
+        url: 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/laugh.png?sign=c967f9a3732781aac35db6247aa5b126&t=1583833459'
       },{
         name: '智商提高',
         url: 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/zhishang.png?sign=93f2e91128fb2b9e9bb9b87de7472b2a&t=1583810771'

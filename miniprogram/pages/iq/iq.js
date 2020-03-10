@@ -1,29 +1,33 @@
 // miniprogram/pages/iq/iq.js
+
+var date = new Date()
+var today =date.getDate()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    isLight:''
 
   },
   iq: function (e) {
-    var date = new Date()
-    var today = date.getDate()
+
 
     try {
       var day = wx.getStorageSync('today')
       if (day != today) {
-        wx.setStorage({
-          data: today,
-          key: 'today',
+        wx.setStorageSync('today', today)
+        wx.setStorageSync('isLight', true)
+        this.setData({
+          isLight:true
         })
         wx.showToast({
-          title: '智商已提高！',
+          title: 'IQ已提高！',
         })
       } else {
         wx.showToast({
-          title: '今日智商已提高，请明日再来',
+          title: '今日IQ已提高，请明日再来',
           icon: 'none'
         })
       }
@@ -37,6 +41,19 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var day = wx.getStorageSync('today')
+    if (day != today) {
+      wx.setStorageSync('isLight', false)
+        this.setData({
+          isLight:false
+        })
+       // console.log('???')
+    }else{
+      var isLight =wx.getStorageSync('isLight')
+      this.setData({
+        isLight:isLight
+      })
+    }
 
   },
 
