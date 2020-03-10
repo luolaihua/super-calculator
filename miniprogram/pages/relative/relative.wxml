@@ -1,4 +1,4 @@
-<image  bindtap="introduction" class="about" src="../../images/wen3.png" mode="aspectFit"></image>
+<image  bindtap="introduction" class="about" src="https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/wen_orange.png?sign=0f64024342fb44e2a0aa0252eeb95dfe&t=1583810924" mode="aspectFit"></image>
  <block wx:if="{{isShowScreen}}">
  	<view class="text">{{screenData}}</view>
  	<!-- 用来显示结果 -->

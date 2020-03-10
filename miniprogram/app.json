@@ -1,9 +1,10 @@
 {
   "pages": [
+   
     "pages/menu/menu",
     "pages/bigWheel/bigWheel",
     "pages/bigWheel/edit/edit",
-    "pages/bigWheel/chooseItem/chooseItem",
+ "pages/bigWheel/chooseItem/chooseItem",
     "pages/bigWheel/bigWheelSetting/bigWheelSetting",
     "pages/index/index",
     "pages/unitTransfer/unitTransfer",

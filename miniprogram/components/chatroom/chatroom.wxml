@@ -6,7 +6,7 @@
 		<view class="middle">{{groupName}}</view>
 		<!-- reserved -->
 		<view class="right">
-		<image bindtap="refresh" mode="aspectFit" src="../../images/refresh.png" style="width: 50rpx;height: 50rpx;" ></image>
+		<image bindtap="refresh" mode="aspectFit" src="https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/refresh.png?sign=d98841c7b62c384fc0c3351677604eb2&t=1583811083" style="width: 50rpx;height: 50rpx;" ></image>
 		
 		</view>
 		

@@ -21,12 +21,13 @@ height:40rpx !important;
 
 */
 .about{
-  height: 70rpx;
-  width: 70rpx;
+  height: 60rpx;
+  width: 60rpx;
   position: fixed;
   z-index: 2;
   bottom: 630rpx;
   right: 0;
+  margin-right: 10rpx;
 }
 
 .inputBox{

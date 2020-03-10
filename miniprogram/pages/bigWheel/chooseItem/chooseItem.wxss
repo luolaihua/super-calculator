@@ -212,3 +212,11 @@ button::after {
 .personal_question_add_cell:hover .question_add_icon {
   animation: btn_rotate 0.3s 0s linear 1 normal;
 }
+
+.sticky {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: sticky;
+  bottom: 0;
+}

@@ -12,6 +12,11 @@ Page({
   onLoad: function (options) {
 
   },
+  toWheel:function(e){
+    wx.redirectTo({
+      url: '../bigWheel',
+    })
+  },
   onShow: function () {
 
     var myJueding = wx.getStorageSync('myJueding');

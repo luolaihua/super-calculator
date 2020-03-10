@@ -52,40 +52,40 @@ Page({
   data: {
     grids: [{
         name: '亲戚计算',
-        url: '../../images/ren.png'
+        url: 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/ren.png?sign=d3d51b6cd80337305ecbaa681651ca1b&t=1583810614'
       },
       {
         name: '单位装换',
-        url: '../../images/transfer.png'
+        url: 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/transfer.png?sign=1e1cd7308864eef93c7aca19794ccaee&t=1583810636'
       }, {
         name: '聊天室',
-        url: '../../images/chat.png'
+        url: 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/chat.png?sign=e997ce067a2b221c69f8df23c36ea74d&t=1583810662'
       },
       {
         name: '体测成绩计算',
-        url: '../../images/bbb.png'
+        url: 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/tice.png?sign=4377add665517649836f45cdeb025d84&t=1583810682'
       },
       {
         name: 'BMI',
-        url: '../../images/h.png'
+        url: 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/bmi_heart.png?sign=0ce03487b7fc0209cd34cc99a0d8eb73&t=1583810706'
       },
       {
         name: '色环电阻',
-        url: '../../images/dian.png'
+        url: 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/dianzu.png?sign=13107795a86da836e239ddcbb9eeb764&t=1583810720'
       },
       {
         name: '洋气网名生成',
-        url: '../../images/tushe.png'
+        url: 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/tushe.png?sign=c1d696b5abf791809d1827df41b0041c&t=1583810736'
       }, 
       {
         name: '翻译机',
-        url: '../../images/laugh.png'
+        url: 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/transfer.png?sign=edeb58a44f21734ed1e9fcd0f70fddb1&t=1583810753'
       },{
         name: '智商提高',
-        url: '../../images/zhi.png'
+        url: 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/zhishang.png?sign=93f2e91128fb2b9e9bb9b87de7472b2a&t=1583810771'
       },{
         name: '小偏心大转盘',
-        url: '../../images/l.png'
+        url: 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/l.png?sign=b0771e17f0466b51de37266784bc51fc&t=1583810797'
       }
 
     ]
