@@ -4,6 +4,9 @@ var app = getApp();
 var xiaojuedingArr = require('../util/xiaojueding')
 wx.setStorageSync('all', xiaojuedingArr);
 
+
+
+
 //当 sort() 函数比较两个值时，会将值发送到比较函数，并根据所返回的值（负、零或正值）对这些值进行排序
 //下面正负随机出现，也就是每比较一次，按照随机的正序逆序
 function randomsort(a, b) {
@@ -17,6 +20,7 @@ var page = {
          w: 599,
          h: 600
       },
+      resAnimation:{},
       isBigWheel: true,
       musicflg: false,
       rotateTime: 3000,
@@ -107,7 +111,19 @@ wx.navigateTo({
          zhuanflg: e.detail ? true : false
       })
       //console.log(this.data.zhuanflg,'index.js')
+      if(!e.detail){
+         var animation = wx.createAnimation({
+            duration: 500,
+            timingFunction: 'ease',
+          })
+         
+          animation.scale(2,2).rotate(360).step();
 
+          animation.scale(1).step()
+          this.setData({
+            resAnimation:animation.export()
+          })
+      }
    },
 
    onLoad: function (options) {
@@ -139,8 +155,8 @@ wx.navigateTo({
          all = wx.getStorageSync('all'),
          xiaojuedingArr = that.data.xiaojuedingArr,
          myJueding = wx.getStorageSync('myJueding')
-      console.log(all)
-      console.log(myJueding)
+     // console.log(all)
+     // console.log(myJueding)
 
 
       //判断从热门小决定 还是个人小决定跳转过来的 还是编辑页面跳过来的
@@ -164,9 +180,9 @@ wx.navigateTo({
       //跳转过来的
       if (!util.isNull(id_fromChoose)) {
 
-         wx.showLoading({
+/*           wx.showLoading({
             title: '加载中',
-         })
+         })  */
          setTimeout(function () {
             for (let i in all) {
                if (all[i].id == id_fromChoose) {
@@ -177,7 +193,7 @@ wx.navigateTo({
                   break;
                }
             }
-            wx.hideLoading();
+          //  wx.hideLoading();
          }, 500)
       }
    },

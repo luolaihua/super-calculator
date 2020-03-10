@@ -63,6 +63,6 @@
 	</view>
 
 </view>
-	<view class="sticky">
-		<image bindtap="toWheel" class="question_btn_icon sticky_item" src="https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/zhuanpan.png?sign=8c12f2119635d0bb59153e035b68a8c8&t=1583811901" mode="aspectFit" style="width:80rpx;height:80rpx" class="swithchItem"></image>
+	<view class="sticky" bindtap="toWheel">
+		<image  class="question_btn_icon sticky_item" src="https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/zhuanpan.png?sign=8c12f2119635d0bb59153e035b68a8c8&t=1583811901" mode="aspectFit" style="width:80rpx;height:80rpx" class="swithchItem"></image>
 	</view>

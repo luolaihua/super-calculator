@@ -1,13 +1,13 @@
 <!--miniprogram/pages/bigWheel/bigWheel.wxml-->
 <view style="height:100%;" bindtap="reset">
-	<view style='width:100%;margin:0 auto;text-align:center;font-size:34rpx;margin-bottom:15rpx;'>{{awardsConfig.option}}</view>
-	<view style='width:100%;margin:0 auto;text-align:center;margin-bottom:30rpx;color:#1078e7;font-size:45rpx'>{{s_awards}}</view>
+	<view style='width:100%;margin:10rpx auto;text-align:center;font-size:34rpx;margin-bottom:15rpx;'>{{awardsConfig.option}}</view>
+	<view animation="{{resAnimation}}" style='width:100%;margin:0 auto;text-align:center;margin-bottom:30rpx;color:#1078e7;font-size:50rpx'>{{s_awards}}</view>
 
 	<!-- myAwards就是当被子组件触发时的函数 size:转盘大小 -->
 	<zhuanpan id='zhuanpan' bind:myData='getData' bind:myAwards="getAwards" bind:startZhuan="startZhuan" size='{{size}}' musicflg='{{musicflg}}' isLove='{{isLove}}' repeat='{{repeat}}' rotateTime='{{rotateTime}}' zhuanpanArr='{{xiaojuedingArr}}' awardsConfig='{{awardsConfig}}'>
 	</zhuanpan>
 
-	<view style='margin-top:60rpx'></view>
+	<view style='margin-top:50rpx'></view>
 
 	<view class='juedinoption' wx:for='{{myJueding}}' wx:key='key' wx:if='{{index<4 && share}}' bindtap='xiaojueding' data-idx='{{index}}'>{{item.option}}</view>
 
@@ -19,10 +19,10 @@
 
 <view class="switchBtn">
 	<view class="switchItem" bindtap="toChoose">
-		<image src="https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/edit.png?sign=9580519505e59fd548b17fd9ac3e110b&t=1583811461" mode="aspectFit" style="width:80rpx;height:80rpx" class="swithchItem"></image>
+		<image src="https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/edit_circle.png?sign=216e346de00503334d592647863a2ada&t=1583830791" mode="aspectFit" style="width:80rpx;height:80rpx" class="swithchItem"></image>
 	</view>
 	<view class="switchItem" bindtap="setting">
-		<image src="https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/setting2.png?sign=9a3b841e2500e84adb75cfa2975c4bac&t=1583811402" mode="aspectFit" style="width:80rpx;height:80rpx" class="swithchItem"></image>
+		<image src="https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/set.png?sign=8b30a637f9dabb1b193e156c7292e42b&t=1583830955" mode="aspectFit" style="width:80rpx;height:80rpx" class="swithchItem"></image>
 	</view>
 
 </view>

@@ -59,6 +59,8 @@
   text-align: center;
   border-style: solid;
   border-color: lightskyblue;
+  border-radius: 5%;
+  border-width: 2rpx;
   margin:10rpx;
 }
 
@@ -66,6 +68,8 @@
 .show-section{
   border-style: solid;
   border-color: lightskyblue;
+  border-radius: 2%;
+  border-width: 2rpx;
   font-size: 40rpx;
   height: 300rpx;
   width: 620rpx;

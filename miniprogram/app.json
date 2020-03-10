@@ -52,15 +52,21 @@
     "selectedColor": "#A52A2A",
     "list": [{
         "pagePath": "pages/index/index",
-        "text": "普通计算"
+        "text": "",
+        "iconPath":"images/cacu_white.png",
+        "selectedIconPath":"images/cacu_red.png"
       },
       {
         "pagePath": "pages/myMatrices/myMatrices",
-        "text": "矩阵计算"
+        "text": "",
+        "iconPath":"images/juzhen_white.png",
+        "selectedIconPath":"images/juzhen_blue.png"
       },
       {
         "pagePath": "pages/menu/menu",
-        "text": "菜单"
+        "text": "",
+        "iconPath":"images/menu_white.png",
+        "selectedIconPath":"images/menu_orange.png"
       }
     ]
   }

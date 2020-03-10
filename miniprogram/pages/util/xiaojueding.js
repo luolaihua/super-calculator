@@ -1,63 +1,6 @@
-module.exports = [{
+module.exports = [
+   {
       id: 0,
-      option: '真心话大冒险？',
-      awards: [{
-            probability: 1,
-            name: "描述经历过最尴尬的事",
-            color: '#EE534F'
-         },
-         {
-            probability: 1,
-            name: "今天穿什么颜色的内裤",
-            color: '#DA70D6'
-         },
-
-         {
-            probability: 1,
-            name: "做过最疯狂的事是什么",
-            color: '#5C6BC0'
-         },
-         {
-            probability: 1,
-            name: "单身的感觉好吗",
-            color: '#42A5F6'
-         },
-
-         {
-            probability: 1,
-            name: "多久没看书了",
-            color: '#FF7F50'
-         }
-      ]
-   },
-   {
-      id: 1,
-      option: '下个节日让我男票给我买什么礼物？',
-      awards: [{
-            probability: 1,
-            name: "SixGod香水",
-            color: '#EE534F'
-         },
-
-         {
-            probability: 1,
-            name: "YSL52号口红",
-            color: '#FFC928'
-         },
-         {
-            probability: 1,
-            name: "AJ1篮球鞋",
-            color: '#66BB6A'
-         },
-         {
-            probability: 1,
-            name: "SK-ll神仙水",
-            color: '#FF7F50'
-         }
-      ]
-   },
-   {
-      id: 2,
       option: '中午吃什么？',
       awards: [{
             probability: 1,
@@ -97,89 +40,7 @@ module.exports = [{
       ]
    },
    {
-      id: 3,
-      option: '抽取狼人杀身份牌',
-      awards: [{
-            probability: 1,
-            index: 0,
-            name: "预言家",
-            color: '#EE534F'
-         },
-         {
-            probability: 1,
-            index: 1,
-            name: "狼人",
-            color: '#FF7F50'
-         },
-         {
-            probability: 1,
-            index: 2,
-            name: "村民",
-            color: '#FFC928'
-         },
-         {
-            probability: 1,
-            index: 3,
-            name: "狼人",
-            color: '#66BB6A'
-         },
-         {
-            probability: 1,
-            index: 4,
-            name: "村民",
-            color: '#42A5F6'
-         },
-         {
-            probability: 1,
-            index: 5,
-            name: "狼人",
-            color: '#AA47BC'
-         },
-         {
-            probability: 1,
-            index: 6,
-            name: "村民",
-            color: '#EC407A'
-         },
-         {
-            probability: 1,
-            index: 7,
-            name: "狼人",
-            color: '#EE534F'
-         },
-         {
-            probability: 1,
-            index: 8,
-            name: "村民",
-            color: '#FFC928'
-         },
-         {
-            probability: 1,
-            index: 9,
-            name: "猎人",
-            color: '#66BB6A'
-         },
-         {
-            probability: 1,
-            index: 10,
-            name: "女巫",
-            color: '#42A5F6'
-         },
-         {
-            probability: 1,
-            index: 11,
-            name: "丘比特",
-            color: '#5C6BC0'
-         },
-         {
-            probability: 1,
-            name: "白痴",
-            color: '#FFC928'
-         }
-      ]
-   },
-   {
-      id: 4,
+      id: 1,
       option: '是什么激励我努力学习？',
       awards: [{
             probability: 1,
@@ -199,39 +60,7 @@ module.exports = [{
       ]
    },
    {
-      id: 5,
-      option: '我该答应谁的约会？',
-      awards: [{
-            probability: 1,
-            name: "胡歌",
-            color: '#EE534F'
-         },
-         {
-            probability: 1,
-            name: "黄渤",
-            color: '#FF7F50'
-         },
-         {
-            probability: 1,
-            name: "岳云鹏",
-            color: '#42A5F6'
-         },
-
-         {
-            probability: 1,
-            name: "吴彦祖",
-            color: '#EC407A'
-         },
-
-         {
-            probability: 1,
-            name: "刘德华",
-            color: '#5C6BC0'
-         },
-      ]
-   },
-   {
-      id: 6,
+      id: 2,
       option: '周末做什么好？',
       awards: [{
             probability: 1,
@@ -268,125 +97,247 @@ module.exports = [{
       ]
    },
    {
-      id: 7,
-      option: '十一国庆去哪玩',
+      id: 3,
+      option: '一点点找好茶~',
       awards: [{
             probability: 1,
-            name: "凤凰古城",
+            name: "茉莉绿茶",
             color: '#EE534F'
          },
          {
             probability: 1,
-            name: "张家界",
+            name: "阿萨姆红茶",
             color: '#FF7F50'
          },
          {
             probability: 1,
-            name: "乌镇",
+            name: "四季春茶",
             color: '#FFC928'
          },
          {
             probability: 1,
-            name: "鼓浪屿",
+            name: "冻顶乌龙茶",
             color: '#66BB6A'
          },
          {
             probability: 1,
-            name: "千岛湖",
+            name: "翡翠柠檬",
             color: '#42A5F6'
          },
          {
             probability: 1,
-            name: "稻城",
+            name: "蜂蜜绿",
             color: '#5C6BC0'
          },
          {
             probability: 1,
-            name: "大理",
+            name: "梅果绿",
             color: '#AA47BC'
          },
          {
             probability: 1,
-            name: "丽江",
+            name: "8冰绿",
             color: '#EC407A'
          },
 
       ]
    },
    {
-      id: 8,
-      option: '我要买什么品牌的手机',
+      id: 4,
+      option: '一点点找奶茶~',
       awards: [{
             probability: 1,
-            name: "华为",
+            name: "奶茶/奶绿",
             color: '#EE534F'
          },
          {
             probability: 1,
-            name: "OPPO",
+            name: "乌龙奶茶",
             color: '#FF7F50'
          },
          {
             probability: 1,
-            name: "一加",
+            name: "焦糖奶茶",
             color: '#FFC928'
          },
          {
             probability: 1,
-            name: "vivo",
+            name: "红茶玛奇朵",
             color: '#66BB6A'
          },
          {
             probability: 1,
-            name: "酷派",
+            name: "乌龙玛奇朵",
             color: '#42A5F6'
          },
          {
             probability: 1,
-            name: "诺基亚",
+            name: "阿华田",
             color: '#5C6BC0'
          },
          {
             probability: 1,
-            name: "小米",
+            name: "可可芭蕾",
             color: '#AA47BC'
          },
          {
             probability: 1,
-            name: "努比亚",
+            name: "红茶拿铁鲜奶茶",
+            color: '#EC407A'
+         },
+
+      ]
+   },
+   {
+      id: 5,
+      option: '一点点找新鲜~',
+      awards: [{
+            probability: 1,
+            name: "柠檬汁",
+            color: '#EE534F'
+         },
+         {
+            probability: 1,
+            name: "金桔柠檬",
+            color: '#FF7F50'
+         },
+         {
+            probability: 1,
+            name: "柠檬蜜",
+            color: '#FFC928'
+         },
+         {
+            probability: 1,
+            name: "柠檬梅子",
+            color: '#66BB6A'
+         },
+         {
+            probability: 1,
+            name: "柠檬养乐多",
+            color: '#42A5F6'
+         },
+         {
+            probability: 1,
+            name: "蜜茶",
+            color: '#5C6BC0'
+         },
+         {
+            probability: 1,
+            name: "8冰茶",
+            color: '#AA47BC'
+         },
+
+      ]
+   },
+   {
+      id: 6,
+      option: '一点点找口感~',
+      awards: [{
+            probability: 1,
+            name: "波霸奶茶",
+            color: '#EE534F'
+         },
+         {
+            probability: 1,
+            name: "波霸奶绿",
+            color: '#FF7F50'
+         },
+         {
+            probability: 1,
+            name: "波霸红/绿",
+            color: '#FFC928'
+         },
+         {
+            probability: 1,
+            name: "珍珠奶茶",
+            color: '#66BB6A'
+         },
+         {
+            probability: 1,
+            name: "珍珠奶绿",
+            color: '#42A5F6'
+         },
+         {
+            probability: 1,
+            name: "珍珠红/绿",
+            color: '#5C6BC0'
+         },
+         {
+            probability: 1,
+            name: "椰果奶茶",
+            color: '#AA47BC'
+         },
+         {
+            probability: 1,
+            name: "仙草奶冻",
             color: '#EC407A'
          },
          {
             probability: 1,
-            name: "三星",
-            color: '#EE534F'
+            name: "红豆QQ奶",
+            color: '#DA70D6'
          },
-
          {
             probability: 1,
-            name: "魅族",
+            name: "燕麦奶茶",
+            color: '#FFA827'
+         },
+         {
+            probability: 1,
+            name: "布丁奶茶",
+            color: '#AA47BC'
+         },
+      ]
+   },
+   {
+      id: 7,
+      option: '爱不爱我',
+      awards: [{
+            probability: 1,
+            name: "爱",
+            color: '#EE534F'
+         },
+         {
+            probability: 1,
+            name: "不爱",
+            color: '#FF7F50'
+         },
+
+      ]
+   },
+   {
+      id: 8,
+      option: '掷骰子~',
+      awards: [{
+            probability: 1,
+            name: "1",
+            color: '#EE534F'
+         },
+         {
+            probability: 1,
+            name: "2",
+            color: '#FF7F50'
+         },
+         {
+            probability: 1,
+            name: "3",
             color: '#FFC928'
          },
          {
             probability: 1,
-            name: "iPhone",
+            name: "4",
             color: '#66BB6A'
          },
          {
             probability: 1,
-            name: "锤子",
+            name: "5",
             color: '#42A5F6'
          },
          {
             probability: 1,
-            name: "HTC",
+            name: "6",
             color: '#5C6BC0'
          },
-         {
-            probability: 1,
-            name: "索尼",
-            color: '#AA47BC'
-         }
       ]
-   }
+   },
 ]

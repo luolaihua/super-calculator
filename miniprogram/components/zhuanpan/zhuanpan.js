@@ -1,10 +1,10 @@
 // components/zhuanpan/zhuanpan.js
 //创建并返回内部 audio 上下文 innerAudioContext 对象
 const start = wx.createInnerAudioContext();
-const mid = wx.createInnerAudioContext();
 const stop = wx.createInnerAudioContext();
 
-var app = getApp(), timer = null;
+var app = getApp(),
+   timer = null;
 
 Component({
    options: {
@@ -16,9 +16,9 @@ Component({
     * 用于组件自定义设置   组件的对外属性
     */
    properties: {
-      myProperty: {    // 属性名        myProperty2: String, 简化的定义方式
+      myProperty: { // 属性名        myProperty2: String, 简化的定义方式
          type: String, // 类型（必填），目前接受的类型包括：String, Number, Boolean, Object, Array, null（表示任意类型）
-         value: '',    // 属性默认 初始值（可选），如果未指定则会根据类型选择一个
+         value: '', // 属性默认 初始值（可选），如果未指定则会根据类型选择一个
          observer: function (newVal, oldVal, changedPath) {
             // 属性被改变时执行的函数（可选），也可以写成在methods段中定义的方法名字符串, 如：'_propertyChange'
             // 通常 newVal 就是新设置的数据， oldVal 是旧数据
@@ -59,26 +59,23 @@ Component({
 
       zhuanpanArr: { // 可以切换的转盘选项, 支持多个
          type: Array,
-         value: [
-            {
-               id: 0,
-               option: '转盘的标题名称',
-               awards: [
-                  {
-                     id: 0,
-                     name: "最多17个选项", // 选项名
-                     color: 'red',        // 选项的背景颜色
-                     probability: 0       // 概率
-                  },
-                  {
-                     id: 1,
-                     name: "选项最多填13字", // 超过9个字时字体会变小点
-                     color: 'green',
-                     probability: 0
-                  }
-               ],
-            }
-         ]
+         value: [{
+            id: 0,
+            option: '转盘的标题名称',
+            awards: [{
+                  id: 0,
+                  name: "最多17个选项", // 选项名
+                  color: 'red', // 选项的背景颜色
+                  probability: 0 // 概率
+               },
+               {
+                  id: 1,
+                  name: "选项最多填13字", // 超过9个字时字体会变小点
+                  color: 'green',
+                  probability: 0
+               }
+            ],
+         }]
       },
 
       // 限制：最多17个选项， 单个选项最多填10-13个字, 选项名称最多21个字
@@ -86,8 +83,7 @@ Component({
          type: Object,
          value: {
             option: '我的小决定？',
-            awards: [
-               {
+            awards: [{
                   id: 0,
                   name: "最多17个选项",
                   color: 'red',
@@ -111,10 +107,10 @@ Component({
     */
    data: {
       animationData: {}, // 转盘动画
-      zhuanflg: false,   // 转盘是否可以点击切换的标志位
-      fastTime: 7600,    // 转盘快速转动的时间
-      slowTime: 3900,    // 转盘慢速转动的时间
-      block1: 'block',   // 转盘中心的图片标志位，用来显示隐藏
+      zhuanflg: false, // 转盘是否可以点击切换的标志位
+      fastTime: 7600, // 转盘快速转动的时间
+      slowTime: 3900, // 转盘慢速转动的时间
+      block1: 'block', // 转盘中心的图片标志位，用来显示隐藏
       block2: 'none',
       block3: 'none',
       block4: 'none',
@@ -122,15 +118,14 @@ Component({
 
    //组件生命周期函数，在组件实例进入页面节点树时执行，注意此时不能调用 setData
    created: function () {
-      console.log('==========created==========');
+      //console.log('==========created==========');
    },
 
    // 组件生命周期函数，在组件实例进入页面节点树时执行
    attached: function () {
-      console.log('==========attached==========');
-      start.src = 'https://gamesdata.oss-cn-hangzhou.aliyuncs.com/xiaojueding/start.mp3'; // 转盘开始转动的音乐
-      mid.src = 'https://gamesdata.oss-cn-hangzhou.aliyuncs.com/xiaojueding/mid.mp3';     // 快速决定时，转盘开始转动的音乐
-      stop.src = 'https://gamesdata.oss-cn-hangzhou.aliyuncs.com/xiaojueding/stop.mp3';   // 转盘停止转动的音乐
+      //console.log('==========attached==========');
+      start.src = 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/bigWheel/start.mp3?sign=78d9488063292fde1ef297f94f9837bd&t=1583823211'; // 转盘开始转动的音乐
+      stop.src = 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/bigWheel/stop.mp3?sign=0ffea2c3265182becc8b9963673d62a2&t=1583823233'; // 转盘停止转动的音乐
 
       this.setData({
          awardsConfig: this.data.zhuanpanArr[0]
@@ -157,12 +152,15 @@ Component({
 
       //初始化数据
       initAdards() {
-         var that = this, awardsConfig = that.data.awardsConfig;
-         var t = awardsConfig.awards.length;  // 选项长度
-         var e = 1 / t, i = 360 / t, r = i - 90;
+         var that = this,
+            awardsConfig = that.data.awardsConfig;
+         var t = awardsConfig.awards.length; // 选项长度
+         var e = 1 / t,
+            i = 360 / t,
+            r = i - 90;
 
          for (var g = 0; g < t; g++) {
-            awardsConfig.awards[g].item2Deg = g * i + 90 - i / 2 + "deg";//当前下标 * 360/长度 + 90 - 360/长度/2
+            awardsConfig.awards[g].item2Deg = g * i + 90 - i / 2 + "deg"; //当前下标 * 360/长度 + 90 - 360/长度/2
             awardsConfig.awards[g].afterDeg = r + "deg";
          }
 
@@ -171,12 +169,13 @@ Component({
             awardsConfig: awardsConfig,
          })
 
-         that._change();//向父组件传出当前转盘的初始数据
+         that._change(); //向父组件传出当前转盘的初始数据
       },
 
       //重置转盘
       reset() {
-         var that = this, awardsConfig = that.data.awardsConfig;
+         var that = this,
+            awardsConfig = that.data.awardsConfig;
          console.log(awardsConfig);
          var animation = wx.createAnimation({
             duration: 1,
@@ -224,7 +223,6 @@ Component({
             this.reset();
             clearTimeout(timer);
             start.stop();
-            mid.stop();
             stop.stop();
             wx.removeStorageSync('repeatArr');
          }
@@ -233,10 +231,10 @@ Component({
 
 
       /*
-      * 内部私有方法建议以下划线开头
-      * triggerEvent 用于触发事件,过triggerEvent来给父组件传递信息的
-      * 写法： this.triggerEvent('cancelEvent', { num: 1 })  // 可以将num通过参数的形式传递给父组件
-      */
+       * 内部私有方法建议以下划线开头
+       * triggerEvent 用于触发事件,过triggerEvent来给父组件传递信息的
+       * 写法： this.triggerEvent('cancelEvent', { num: 1 })  // 可以将num通过参数的形式传递给父组件
+       */
 
       // GO转盘开始转动
       _zhuan() {
@@ -300,14 +298,14 @@ Component({
                }
             }
 
-                        //转盘停止后的音乐
-                        !that.data.musicflg ? '' : start.stop();
+            //转盘停止后的音乐
+            !that.data.musicflg ? '' : start.stop();
             //转盘停止后的音乐
             !that.data.musicflg ? '' : stop.play();
 
             that.setData({
                animationData: {},
-               s_awards: awardsConfig.awards[r].name,//最终选中的结果
+               s_awards: awardsConfig.awards[r].name, //最终选中的结果
                awardsConfig: awardsConfig,
                block1: 'none',
                block2: 'none',
@@ -325,7 +323,9 @@ Component({
       // 传 1-100 的数 来设置选项的权重  
       // 传入0的话就永远摇不到这个选项
       _openProbability() {
-         var that = this, awards = that.data.awardsConfig.awards, arr = [];
+         var that = this,
+            awards = that.data.awardsConfig.awards,
+            arr = [];
          //5, 5, 20, 10 ,30 ,30, 0
          for (let i in awards) {
             if (awards[i].probability != 0) {
@@ -342,12 +342,17 @@ Component({
       //不重复抽取
       //r:随机数 当前选项进行随机
       _queryRepeat(r) {
-         var that = this, flag = true, repeatArr = wx.getStorageSync('repeatArr'), repeatArr2 = [], awardsConfig = that.data.awardsConfig;
+         var that = this,
+            flag = true,
+            repeatArr = wx.getStorageSync('repeatArr'),
+            repeatArr2 = [],
+            awardsConfig = that.data.awardsConfig;
          if (that.isNull(repeatArr)) {
             repeatArr2.push(r), wx.setStorageSync('repeatArr', repeatArr2);
             return r;
          } else {
-            var len = awardsConfig.awards.length, r = Math.random() * len >>> 0;
+            var len = awardsConfig.awards.length,
+               r = Math.random() * len >>> 0;
             for (let i in repeatArr) {
                if (r == repeatArr[i]) {
                   flag = false;
@@ -356,7 +361,7 @@ Component({
                      repeatArr2.push(r), wx.setStorageSync('repeatArr', repeatArr2);
                      return r;
                   } else {
-                     return that._queryRepeat();//递归调用
+                     return that._queryRepeat(); //递归调用
                   }
                }
             }
@@ -369,15 +374,15 @@ Component({
 
       //初始化数据时向外传的参
       _change() {
-         this.triggerEvent('myData', this.data.awardsConfig);// 向父组件传出当前决定的数组数据
+         this.triggerEvent('myData', this.data.awardsConfig); // 向父组件传出当前决定的数组数据
       },
 
       //当前转盘的结果   e:转盘什么时候能点击的标志位
       _myAwards(e) {
-         this.triggerEvent('myAwards',
-            {
-               s_awards: this.data.s_awards, end: e
-            });
+         this.triggerEvent('myAwards', {
+            s_awards: this.data.s_awards,
+            end: e
+         });
       },
 
       //转盘开始转动或者结速转动后的要传的值
