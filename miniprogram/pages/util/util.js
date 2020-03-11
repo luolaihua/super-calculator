@@ -84,9 +84,14 @@ const isNull = str => {
         return false;
     }
 }
-
+function randomsort(a, b) {
+    //return a - b   从大到小，正序
+    return Math.random() > .5 ? -1 : 1;
+ }
+ 
 
 module.exports = {
+    randomsort:randomsort,
   formatTime: formatTime,
   randomJudgeDo: randomJudgeDo,
   getRandomCode: getRandomCode,

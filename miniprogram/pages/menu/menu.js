@@ -89,6 +89,9 @@ Page({
       },{
         name: '智力闯关',
         url: 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/math.png?sign=1261d5d036cd39ca8d2314219e969249&t=1583851184'
+      },{
+        name: 'Robot小炮',
+        url: 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/robot2.png?sign=887fbe785832601321b5a29d9f48e26d&t=1583915103'
       }
 
     ]
@@ -146,6 +149,11 @@ Page({
               url: '../bigWheel/bigWheel',
             })
             break;
+            case 11:
+              wx.navigateTo({
+                url: '../myRobot/myRobot',
+              })
+              break;
     }
   },
 

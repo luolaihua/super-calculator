@@ -9,11 +9,11 @@ wx.setStorageSync('all', xiaojuedingArr);
 
 //当 sort() 函数比较两个值时，会将值发送到比较函数，并根据所返回的值（负、零或正值）对这些值进行排序
 //下面正负随机出现，也就是每比较一次，按照随机的正序逆序
-function randomsort(a, b) {
+/* function randomsort(a, b) {
    //return a - b   从大到小，正序
    return Math.random() > .5 ? -1 : 1;
 }
-
+ */
 var page = {
    data: {
       size: { //转盘大小可配置
@@ -26,7 +26,7 @@ var page = {
       rotateTime: 3000,
       isLove: true,
       repeat: false,
-      xiaojuedingArr: xiaojuedingArr.sort(randomsort),
+      xiaojuedingArr: xiaojuedingArr.sort(util.randomsort),
       s_awards: '???', //结果
       myJueding: [],
       share: true,
