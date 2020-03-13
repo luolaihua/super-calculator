@@ -1,8 +1,9 @@
 {
   "pages": [
-    
     "pages/iqGame/iqGame",
+    "pages/iqGame/iqGameInfo/iqGameInfo",
     "pages/menu/menu",
+
     "pages/myRobot/myRobot",
     "pages/iq/iq",
     "pages/bigWheel/bigWheel",

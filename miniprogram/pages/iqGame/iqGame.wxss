@@ -11,11 +11,31 @@
   align-items: center;
   justify-content: center;
 }
+.infoIcon{
+  height: 5vh;
+  width: 5vh;
+  position: fixed;
+  z-index: 2;
+  top: 1vh;
+  right: 10rpx;
+  opacity: 1;
+}
+
 
 .count {
   height: 6vh;
   font-size: 40rpx;
   border-style: solid;
+}
+.nandu {
+  font-size: larger;
+  height: 5vh;
+  width: 5vh;
+  position: fixed;
+  z-index: 2;
+  top: 1vh;
+  left: 10rpx;
+  opacity: 1;
 }
 
 .time-box {
@@ -72,7 +92,7 @@
 .restart{
   height: 10vh;
   float: left;
-  font-size: 60rpx;
+  font-size: 40 rpx;
   padding-left: 20rpx;
 }
 .next{

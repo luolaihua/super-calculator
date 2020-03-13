@@ -1,4 +1,4 @@
-{
+{ "navigationBarTitleText": "聊天机器人",
   "usingComponents": {
     "chat": "plugin://myPlugin/chat",
     "customTextMessage": "../../components/customTextMessage/customTextMessage",
