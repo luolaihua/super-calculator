@@ -28,6 +28,22 @@ Page({
      var isSound = wx.getStorageSync('isSound')
      var isLove = wx.getStorageSync('isLove')
      var speed = wx.getStorageSync('speed')
+     if (isRepeat == '') {
+      wx.setStorageSync('isRepeat', false)
+      isRepeat = false
+    }
+    if (isSound == '') {
+      wx.setStorageSync('isSound', false)
+      isSound = false
+    }
+    if (isLove == '') {
+      wx.setStorageSync('isLove', false)
+      isLove = false
+    }
+    if (speed == '') {
+      wx.setStorageSync('speed', 3)
+      speed = 3
+    }
     this.setData({
       isSound:isSound,
       isLove:isLove,

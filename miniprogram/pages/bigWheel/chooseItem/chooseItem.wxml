@@ -2,7 +2,7 @@
 <view class="container">
 	<view class="question_tab_box">
 		<view bindtap="tabSwitch" class="question_tab {{tab_index==1?'question_tab_selected':''}}" data-flg="1">热门小决定</view>
-		<view bindtap="tabSwitch" class="question_tab {{tab_index==2?'question_tab_selected':''}}" data-flg="2">个人小决定</view>
+		<view bindtap="tabSwitch" class="question_tab {{tab_index==2?'question_tab_selected':''}}" data-flg="2">我的小决定</view>
 	</view>
 	<view class="question_list_box">
 

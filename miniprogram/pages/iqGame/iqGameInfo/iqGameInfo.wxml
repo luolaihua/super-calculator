@@ -33,7 +33,7 @@
 			<image class="modules_icon" mode="scaleToFill" src="https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/star.png?sign=20d8f647a4d81962496b30a2619b917a&t=1584072850"></image>
 		</view>
     <view class="slider-box">
-      <text class="slider-title">难度系数</text>
+      <text class="slider-title">答题时间</text>
       <view class="slider-view">
         <slider bindchange="sliderChange" min="3" max="10" value="{{downTime}}" show-value />
       </view>

@@ -22,9 +22,6 @@ Page({
         this.setData({
           isLight:true
         })
-        wx.showToast({
-          title: 'IQ已提高！',
-        })
       } else {
         wx.showToast({
           title: '今日IQ已提高，请明日再来',

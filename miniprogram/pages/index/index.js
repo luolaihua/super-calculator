@@ -199,16 +199,16 @@ Page({
         this.setData({
           isScientific: false
         })
-        wx.showToast({
+/*         wx.showToast({
           title: '普通计算',
-        })
+        }) */
       } else {
         this.setData({
           isScientific: true
         })
-        wx.showToast({
+/*         wx.showToast({
           title: '科学计算',
-        })
+        }) */
       }
     }
 

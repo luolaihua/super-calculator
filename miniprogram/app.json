@@ -1,8 +1,11 @@
 {
   "pages": [
+
+    "pages/index/index",
+    "pages/menu/menu",
     "pages/iqGame/iqGame",
     "pages/iqGame/iqGameInfo/iqGameInfo",
-    "pages/menu/menu",
+
 
     "pages/myRobot/myRobot",
     "pages/iq/iq",
@@ -10,7 +13,7 @@
     "pages/bigWheel/edit/edit",
     "pages/bigWheel/chooseItem/chooseItem",
     "pages/bigWheel/bigWheelSetting/bigWheelSetting",
-    "pages/index/index",
+
     "pages/unitTransfer/unitTransfer",
     "pages/resistance/resistance",
     "pages/aboutResistance/aboutResistance",
