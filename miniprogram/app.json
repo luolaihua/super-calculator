@@ -1,7 +1,12 @@
 {
   "pages": [
-
-    "pages/index/index",
+  "pages/index/index",
+    "pages/myMatrices/myMatrices",
+    "pages/bigWheel/bigWheel",
+    "pages/bodyTest/bodyTest",
+    "pages/unitTransfer/unitTransfer",
+    "pages/relative/relative",
+  
     "pages/menu/menu",
     "pages/iqGame/iqGame",
     "pages/iqGame/iqGameInfo/iqGameInfo",
@@ -9,19 +14,19 @@
 
     "pages/myRobot/myRobot",
     "pages/iq/iq",
-    "pages/bigWheel/bigWheel",
+
     "pages/bigWheel/edit/edit",
     "pages/bigWheel/chooseItem/chooseItem",
     "pages/bigWheel/bigWheelSetting/bigWheelSetting",
 
-    "pages/unitTransfer/unitTransfer",
+  
     "pages/resistance/resistance",
     "pages/aboutResistance/aboutResistance",
     "pages/nameMade/nameMade",
     "pages/beijinghua/beijinghua",
-    "pages/bodyTest/bodyTest",
+  
     "pages/bmi/bmi",
-    "pages/myMatrices/myMatrices",
+
     "pages/im/im",
     "pages/im/room/room",
     "pages/deployFunctions/deployFunctions",
@@ -34,7 +39,7 @@
     "pages/scientificData/scientificData",
     "pages/welcome/welcome",
     "pages/introduction/introduction",
-    "pages/relative/relative",
+
     "pages/chooseLib/chooseLib",
     "pages/openapi/openapi",
     "pages/openapi/serverapi/serverapi",

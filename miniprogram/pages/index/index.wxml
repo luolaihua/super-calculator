@@ -2,66 +2,67 @@
 <image bindtap="help" class="about" src="https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/wen_black.png?sign=0ad92b2c63f9ea67b8a2a1f719f0f3bb&t=1583811721" mode="aspectFit"></image>
 <image bindtap="isSound" class="sound" 
 src="{{isSound?'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/cacu_sound.png?sign=13d8d7d4049a51db489cee49b7fa1887&t=1583811768':'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/cacu_mute.png?sign=ac76e56c21b8e005e889ed19eb445ced&t=1583811803'}}" mode="aspectFit"></image>
-<view class="screen1" style="font-size:{{fontsize}}rpx ">
-	<view id="result">{{res}}</view>
-</view>
+<scroll-view enable-flex scroll-top="{{scrollTop}}px" scroll-y class="screen1" style="font-size:{{fontsize}}rpx;height:{{isScientific?36:40}}vh ">
+	<view class="res" id="result">{{res}}</view>
+</scroll-view>
 
 <view class="btngroup">
-	<view class="btnbox" wx:if="{{isScientific}}" style="height:{{isScientific?100:120}}rpx">
-		<button id='{{id_sin}}' bindtap="clickBtn" style="font-size:{{isScientific?40:60}}rpx">sin(</button>
-		<button id='{{id_cos}}' bindtap="clickBtn" style="font-size:{{isScientific?40:60}}rpx">cos(</button>
-		<button id='{{id_tan}}' bindtap="clickBtn" style="font-size:{{isScientific?40:60}}rpx">tan(</button>
-		<button id='{{id_X}}' bindtap="clickBtn" style="font-size:{{isScientific?40:60}}rpx">X!</button>
-		<button class="brown" id='{{id_log}}' bindtap="clickBtn" style="font-size:{{isScientific?40:60}}rpx">log(</button>
+	<view class="btnbox" wx:if="{{isScientific}}"  style="height:{{isScientific?8:10}}vh">
+		<button id='{{id_sin}}' bindtap="clickBtn" style="font-size:{{isScientific?40:60}}rpx;height:{{isScientific?8:10}}vh;width:{{isScientific?20:25}}vw">sin(</button>
+		<button id='{{id_cos}}' bindtap="clickBtn" style="font-size:{{isScientific?40:60}}rpx;height:{{isScientific?8:10}}vh;width:{{isScientific?20:25}}vw">cos(</button>
+		<button id='{{id_tan}}' bindtap="clickBtn" style="font-size:{{isScientific?40:60}}rpx;height:{{isScientific?8:10}}vh;width:{{isScientific?20:25}}vw">tan(</button>
+		<button id='{{id_X}}' bindtap="clickBtn" style="font-size:{{isScientific?40:60}}rpx;height:{{isScientific?8:10}}vh;width:{{isScientific?20:25}}vw">X!</button>
+		<button class="brown" id='{{id_log}}' bindtap="clickBtn" style="font-size:{{isScientific?40:60}}rpx;height:{{isScientific?8:10}}vh;width:{{isScientific?20:25}}vw">log(</button>
 	</view>
-	<view class="btnbox" wx:if="{{isScientific}}" style="height:{{isScientific?100:120}}rpx">
-		<button id='{{id_asin}}' bindtap="clickBtn" style="font-size:{{isScientific?40:60}}rpx">asin(</button>
-		<button id='{{id_acos}}' bindtap="clickBtn" style="font-size:{{isScientific?40:60}}rpx">acos(</button>
-		<button id='{{id_atan}}' bindtap="clickBtn" style="font-size:{{isScientific?40:60}}rpx">atan(</button>
-		<button id='{{id_inverse}}' bindtap="clickBtn" style="font-size:{{isScientific?40:60}}rpx">1/x</button>
-		<button class="brown" id='{{id_dou}}' bindtap="clickBtn" style="font-size:{{isScientific?40:60}}rpx">,</button>
+	<view class="btnbox" wx:if="{{isScientific}}"  style="height:{{isScientific?8:10}}vh">
+		<button id='{{id_asin}}' bindtap="clickBtn" style="font-size:{{isScientific?40:60}}rpx;height:{{isScientific?8:10}}vh;width:{{isScientific?20:25}}vw">asin(</button>
+		<button id='{{id_acos}}' bindtap="clickBtn" style="font-size:{{isScientific?40:60}}rpx;height:{{isScientific?8:10}}vh;width:{{isScientific?20:25}}vw">acos(</button>
+		<button id='{{id_atan}}' bindtap="clickBtn" style="font-size:{{isScientific?40:60}}rpx;height:{{isScientific?8:10}}vh;width:{{isScientific?20:25}}vw">atan(</button>
+		<button id='{{id_inverse}}' bindtap="clickBtn" style="font-size:{{isScientific?40:60}}rpx;height:{{isScientific?8:10}}vh;width:{{isScientific?20:25}}vw">1/x</button>
+		<button class="brown" id='{{id_dou}}' bindtap="clickBtn" style="font-size:{{isScientific?40:60}}rpx;height:{{isScientific?8:10}}vh;width:{{isScientific?20:25}}vw">,</button>
 	</view>
-	<view class="btnbox" style="height:{{isScientific?100:120}}rpx">
-		<button id='{{id_gen}}' bindtap="clickBtn" wx:if="{{isScientific}}" style="font-size:{{isScientific?40:60}}rpx">√</button>
-		<button class="c" id='{{id_c}}' bindtap="clearBtn" style="font-size:{{isScientific?40:60}}rpx">C</button>
-		<button class="c" id='{{id_d}}' bindtap="backBtn" style="font-size:{{isScientific?40:60}}rpx">←</button>
-		<button class="c" id='{{id_love}}' style="font-size:{{isScientific?40:60}}rpx" data-time="{{lastTapTime}}" data-title="标题" bindtap="loveBtn" bindlongtap="longtap">♡</button>
-		<button class="brown" id='{{id_pow}}' bindtap="clickBtn" style="font-size:{{isScientific?40:60}}rpx">^</button>
+	<view class="btnbox"  style="height:{{isScientific?8:10}}vh">
+		<button id='{{id_gen}}' bindtap="clickBtn" wx:if="{{isScientific}}" style="font-size:{{isScientific?40:60}}rpx;height:{{isScientific?8:10}}vh;width:{{isScientific?20:25}}vw">√</button>
+
+				<button class="c" id='{{id_love}}' style="font-size:{{isScientific?40:60}}rpx;height:{{isScientific?8:10}}vh;width:{{isScientific?20:25}}vw" data-time="{{lastTapTime}}" data-title="标题" bindtap="loveBtn" bindlongtap="longtap">♡</button>
+		<button class="c" id='{{id_d}}' bindtap="backBtn" style="font-size:{{isScientific?40:60}}rpx;height:{{isScientific?8:10}}vh;width:{{isScientific?20:25}}vw">←</button>
+		<button class="c" id='{{id_c}}' bindtap="clearBtn" style="font-size:{{isScientific?40:60}}rpx;height:{{isScientific?8:10}}vh;width:{{isScientific?20:25}}vw">C</button>
+		<button class="brown" id='{{id_pow}}' bindtap="clickBtn" style="font-size:{{isScientific?40:60}}rpx;height:{{isScientific?8:10}}vh;width:{{isScientific?20:25}}vw">^</button>
 	</view>
-	<view class="btnbox" style="height:{{isScientific?100:120}}rpx">
-		<button id='{{id_mod}}' bindtap="clickBtn" wx:if="{{isScientific}}" style="font-size:{{isScientific?40:60}}rpx">%</button>
-		<button bindtap="startFraction" style="font-size:{{isScientific?40:60}}rpx;color:{{isFraction?'brown':'white'}}">a/b</button>
-		<button id='{{id_left}}' bindtap="clickBtn" style="font-size:{{isScientific?40:60}}rpx">(</button>
-		<button id='{{id_right}}' bindtap="clickBtn" style="font-size:{{isScientific?40:60}}rpx">)</button>
-		<button class="brown" id='{{id_div}}' bindtap="clickBtn" style="font-size:{{isScientific?40:60}}rpx">÷</button>
+	<view class="btnbox"  style="height:{{isScientific?8:10}}vh">
+		<button id='{{id_mod}}' bindtap="clickBtn" wx:if="{{isScientific}}" style="font-size:{{isScientific?40:60}}rpx;height:{{isScientific?8:10}}vh;width:{{isScientific?20:25}}vw">%</button>
+		<button bindtap="startFraction" style="font-size:{{isScientific?40:60}}rpx;color:{{isFraction?'brown':'white'}};height:{{isScientific?8:10}}vh;width:{{isScientific?20:25}}vw">a/b</button>
+		<button id='{{id_left}}' bindtap="clickBtn" style="font-size:{{isScientific?40:60}}rpx;height:{{isScientific?8:10}}vh;width:{{isScientific?20:25}}vw">(</button>
+		<button id='{{id_right}}' bindtap="clickBtn" style="font-size:{{isScientific?40:60}}rpx;height:{{isScientific?8:10}}vh;width:{{isScientific?20:25}}vw">)</button>
+		<button class="brown" id='{{id_div}}' bindtap="clickBtn" style="font-size:{{isScientific?40:60}}rpx;height:{{isScientific?8:10}}vh;width:{{isScientific?20:25}}vw">÷</button>
 	</view>
-	<view class="btnbox" style="height:{{isScientific?100:120}}rpx">
-		<button id='{{id_deg}}' bindtap="clickBtn" wx:if="{{isScientific}}" style="font-size:{{isScientific?40:60}}rpx">°</button>
-		<button id='{{id7}}' bindtap="clickBtn" style="font-size:{{isScientific?40:60}}rpx">7</button>
-		<button id='{{id8}}' bindtap="clickBtn" style="font-size:{{isScientific?40:60}}rpx">8</button>
-		<button id='{{id9}}' bindtap="clickBtn" style="font-size:{{isScientific?40:60}}rpx">9</button>
-		<button class="brown" id='{{id_mult}}' bindtap="clickBtn" style="font-size:{{isScientific?40:60}}rpx">×</button>
+	<view class="btnbox"  style="height:{{isScientific?8:10}}vh">
+		<button id='{{id_deg}}' bindtap="clickBtn" wx:if="{{isScientific}}" style="font-size:{{isScientific?40:60}}rpx;height:{{isScientific?8:10}}vh;width:{{isScientific?20:25}}vw">°</button>
+		<button id='{{id7}}' bindtap="clickBtn" style="font-size:{{isScientific?40:60}}rpx;height:{{isScientific?8:10}}vh;width:{{isScientific?20:25}}vw">7</button>
+		<button id='{{id8}}' bindtap="clickBtn" style="font-size:{{isScientific?40:60}}rpx;height:{{isScientific?8:10}}vh;width:{{isScientific?20:25}}vw">8</button>
+		<button id='{{id9}}' bindtap="clickBtn" style="font-size:{{isScientific?40:60}}rpx;height:{{isScientific?8:10}}vh;width:{{isScientific?20:25}}vw">9</button>
+		<button class="brown" id='{{id_mult}}' bindtap="clickBtn" style="font-size:{{isScientific?40:60}}rpx;height:{{isScientific?8:10}}vh;width:{{isScientific?20:25}}vw">×</button>
 	</view>
-	<view class="btnbox" style="height:{{isScientific?100:120}}rpx">
-		<button id='{{id_i}}' bindtap="clickBtn" wx:if="{{isScientific}}" style="font-size:{{isScientific?40:60}}rpx">i</button>
-		<button id='{{id4}}' bindtap="clickBtn" style="font-size:{{isScientific?40:60}}rpx">4</button>
-		<button id='{{id5}}' bindtap="clickBtn" style="font-size:{{isScientific?40:60}}rpx">5</button>
-		<button id='{{id6}}' bindtap="clickBtn" style="font-size:{{isScientific?40:60}}rpx">6</button>
-		<button class="brown" id='{{id_sub}}' bindtap="clickBtn" style="font-size:{{isScientific?40:60}}rpx">－</button>
+	<view class="btnbox"  style="height:{{isScientific?8:10}}vh">
+		<button id='{{id_i}}' bindtap="clickBtn" wx:if="{{isScientific}}" style="font-size:{{isScientific?40:60}}rpx;height:{{isScientific?8:10}}vh;width:{{isScientific?20:25}}vw">i</button>
+		<button id='{{id4}}' bindtap="clickBtn" style="font-size:{{isScientific?40:60}}rpx;height:{{isScientific?8:10}}vh;width:{{isScientific?20:25}}vw">4</button>
+		<button id='{{id5}}' bindtap="clickBtn" style="font-size:{{isScientific?40:60}}rpx;height:{{isScientific?8:10}}vh;width:{{isScientific?20:25}}vw">5</button>
+		<button id='{{id6}}' bindtap="clickBtn" style="font-size:{{isScientific?40:60}}rpx;height:{{isScientific?8:10}}vh;width:{{isScientific?20:25}}vw">6</button>
+		<button class="brown" id='{{id_sub}}' bindtap="clickBtn" style="font-size:{{isScientific?40:60}}rpx;height:{{isScientific?8:10}}vh;width:{{isScientific?20:25}}vw">－</button>
 	</view>
-	<view class="btnbox" style="height:{{isScientific?100:120}}rpx">
-		<button id='{{id_pi}}' bindtap="clickBtn" bindlongtap="toScientificData" wx:if="{{isScientific}}" style="font-size:{{isScientific?40:60}}rpx">π</button>
-		<button id='{{id1}}' bindtap="clickBtn" style="font-size:{{isScientific?40:60}}rpx">1</button>
-		<button id='{{id2}}' bindtap="clickBtn" style="font-size:{{isScientific?40:60}}rpx">2</button>
-		<button id='{{id3}}' bindtap="clickBtn" style="font-size:{{isScientific?40:60}}rpx">3</button>
-		<button class="brown" id='{{id_add}}' bindtap="clickBtn" style="font-size:{{isScientific?40:60}}rpx">＋</button>
+	<view class="btnbox"  style="height:{{isScientific?8:10}}vh">
+		<button id='{{id_pi}}' bindtap="clickBtn" bindlongtap="toScientificData" wx:if="{{isScientific}}" style="font-size:{{isScientific?40:60}}rpx;height:{{isScientific?8:10}}vh;width:{{isScientific?20:25}}vw">π</button>
+		<button id='{{id1}}' bindtap="clickBtn" style="font-size:{{isScientific?40:60}}rpx;height:{{isScientific?8:10}}vh;width:{{isScientific?20:25}}vw">1</button>
+		<button id='{{id2}}' bindtap="clickBtn" style="font-size:{{isScientific?40:60}}rpx;height:{{isScientific?8:10}}vh;width:{{isScientific?20:25}}vw">2</button>
+		<button id='{{id3}}' bindtap="clickBtn" style="font-size:{{isScientific?40:60}}rpx;height:{{isScientific?8:10}}vh;width:{{isScientific?20:25}}vw">3</button>
+		<button class="brown" id='{{id_add}}' bindtap="clickBtn" style="font-size:{{isScientific?40:60}}rpx;height:{{isScientific?8:10}}vh;width:{{isScientific?20:25}}vw">＋</button>
 	</view>
-	<view class="btnbox" style="height:{{isScientific?100:120}}rpx">
-		<button id='{{id_e}}' bindtap="clickBtn" wx:if="{{isScientific}}" style="font-size:{{isScientific?40:60}}rpx">e</button>
-		<button id='{{id0}}' style="font-size:{{isScientific?40:60}}rpx" bindtap="clickBtn">0</button>
-		<button id='{{id_dot}}' bindtap="clickBtn" style="font-size:{{isScientific?40:60}}rpx">.</button>
-		<button id='{{id_ans}}' bindtap="clickBtn" style="font-size:{{isScientific?40:60}}rpx">A</button>
-		<button class="brown" id='{{id_equal}}' bindtap="equal" style="font-size:{{isScientific?40:60}}rpx">＝</button>
+	<view class="btnbox"  style="height:{{isScientific?8:10}}vh">
+		<button id='{{id_e}}' bindtap="clickBtn" wx:if="{{isScientific}}" style="font-size:{{isScientific?40:60}}rpx;height:{{isScientific?8:10}}vh;width:{{isScientific?20:25}}vw">e</button>
+		<button id='{{id0}}' style="font-size:{{isScientific?40:60}}rpx;height:{{isScientific?8:10}}vh;width:{{isScientific?20:25}}vw" bindtap="clickBtn">0</button>
+		<button id='{{id_dot}}' bindtap="clickBtn" style="font-size:{{isScientific?40:60}}rpx;height:{{isScientific?8:10}}vh;width:{{isScientific?20:25}}vw">.</button>
+		<button id='{{id_ans}}' bindtap="clickBtn" style="font-size:{{isScientific?40:60}}rpx;height:{{isScientific?8:10}}vh;width:{{isScientific?20:25}}vw">A</button>
+		<button class="brown" id='{{id_equal}}' bindtap="equal" style="font-size:{{isScientific?40:60}}rpx;height:{{isScientific?8:10}}vh;width:{{isScientific?20:25}}vw">＝</button>
 	</view>
 </view>
 

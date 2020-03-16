@@ -21,7 +21,7 @@ var touchMoveY = 0; // y轴方向移动的距离
 
 Page({
   data: {
-
+    scrollTop:100,
     isSound: false,
     isScientific: false,
     isFraction: false,
@@ -29,7 +29,7 @@ Page({
     poet: '',
     isRuleTrue: false,
     imageUrl: '',
-    fontsize: 100,
+    fontsize: 120,
     res: "0", //结果
     res_ed: '',
     id_sin: 'sin(',
@@ -375,6 +375,8 @@ Page({
 
 
         this.setData({
+          //显示内容增加时滑动到底部---动态
+          scrollTop:result.length*150,
           res: result,
           condition: 'clicked'
         });

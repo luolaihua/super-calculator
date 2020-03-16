@@ -1,6 +1,6 @@
 <!--miniprogram/pages/unitTransfer/unitTransfer.wxml-->
 <view class="body">
-	<swiper>
+	<swiper style="height:18vh">
 		<swiper-item>
 			<view class="viewGroup">
 				<view class="viewBox">

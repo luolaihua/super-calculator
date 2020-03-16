@@ -9,7 +9,9 @@
 
 .btnbox{
   display: flex;
-  bottom: 0rpx;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   border: none;
   
@@ -20,18 +22,16 @@
 }
 .btngroup{
   background-color: black;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
+
+  width: 100vw;
 }
 button{
   background-color: black;
   color: aliceblue;
-  border-radius: 0%;
   display: flex;
   align-items: center;
   justify-content: center;
- 
+  border-radius: 0;
 }
 button::after{
   border-radius: 0;
@@ -46,15 +46,20 @@ button::after{
 }
 
 .screen1{
-  word-wrap: break-word;
+
   width: 100%;
-  position: fixed;
-  bottom: 800rpx;
-  
+  height: 18vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+ 
 }
-.screen1 view{
+.res{
+  line-height: 1;
+  word-wrap: break-word;
   text-align: right;
-  margin: 20rpx;
+  margin-left: 45rpx;
+  margin-right: 20rpx;
 }
 
 .about{
@@ -100,7 +105,7 @@ button::after{
   z-index: 3;
   padding: 10rpx 0;
   width: 80%;
-  height: 800rpx;
+  height: 80vh;
   background: #fff;
   margin:10% auto;
   border-radius: 20rpx;
@@ -108,8 +113,9 @@ button::after{
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  position: relative;
-  
+  position: fixed;
+  top: 0;
+  left: 10vw;
 }
 text{
   margin-left: 20rpx;

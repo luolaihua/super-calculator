@@ -21,13 +21,11 @@ height:40rpx !important;
 
 */
 .about{
-  height: 60rpx;
-  width: 60rpx;
-  position: fixed;
-  z-index: 2;
-  bottom: 630rpx;
-  right: 0;
-  margin-right: 10rpx;
+  height: 5vh;
+  width: 5vh;
+  margin-right: 20rpx;
+  margin-bottom: 2vh;
+  margin-top: 3vh;
 }
 
 .inputBox{
@@ -77,40 +75,36 @@ height:40rpx !important;
   color: white;
   font-size: 40rpx;
   width: auto;
-  height: 300rpx;
-  margin: 40rpx;
-  margin-top: 50rpx;
+  height: 20vh;
+  margin-left: 50rpx;
+  margin-top: 2vh;
 
 }
 
 .result {
-  height: 100rpx;
+  height: 10vh;
   background-color: transparent;
   color:orange;
   font-size: 70rpx;
   text-align: right;
   width: auto;
-  margin: 20rpx
+  margin-left: 20rpx
 }
 
 .btnBox {
-  z-index: 9;
   display: flex;
-  height: 150rpx;
-  bottom: 0rpx;
+  height: 15vh;
   width: 100%;
   border: none;
 }
 
 .btngroup {
-  position: fixed;
-  bottom: 0;
+
   width: 100%;
 }
 
 .btn {
   background-color: white;
-  width: 25%;
   margin: 0rpx;
   border-radius: 0px;
   text-align: center;
