@@ -57,10 +57,11 @@ Page({
       {
         name: '单位装换',
         url: 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/transfer.png?sign=1e1cd7308864eef93c7aca19794ccaee&t=1583810636'
-      }, {
+      },
+      /*  {
         name: '聊天室',
         url: 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/chat.png?sign=e997ce067a2b221c69f8df23c36ea74d&t=1583810662'
-      },
+      }, */
       {
         name: '体测成绩计算',
         url: 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/tice.png?sign=4377add665517649836f45cdeb025d84&t=1583810682'
@@ -109,52 +110,52 @@ Page({
           url: '../unitTransfer/unitTransfer',
         })
         break;
-      case 2:
+/*       case 2:
         wx.navigateTo({
           url: '../im/room/room',
         })
-        break;
-      case 7:
+        break; */
+      case 6:
         wx.navigateTo({
           url: '../beijinghua/beijinghua',
         })
         break;
-      case 6:
+      case 5:
         wx.navigateTo({
           url: '../nameMade/nameMade',
         })
         break;
-      case 4:
+      case 3:
         wx.navigateTo({
           url: '../bmi/bmi',
         })
         break;
-      case 3:
+      case 2:
         wx.navigateTo({
           url: '../bodyTest/bodyTest',
         })
         break;
-        case 5:
+        case 4:
           wx.navigateTo({
             url: '../resistance/resistance',
           })
           break;
-        case 8:
+        case 7:
           wx.navigateTo({
             url: '../iq/iq',
           })
           break;
-          case 9:
+          case 8:
             wx.navigateTo({
               url: '../bigWheel/bigWheel',
             })
             break;
-            case 10:
+            case 9:
               wx.navigateTo({
                 url: '../iqGame/iqGame',
               })
               break;
-            case 11:
+            case 10:
               wx.navigateTo({
                 url: '../myRobot/myRobot',
               })
