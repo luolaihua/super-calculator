@@ -1,11 +1,2 @@
-{ "navigationBarTitleText": "聊天机器人",
-  "usingComponents": {
-    "chat": "plugin://myPlugin/chat",
-    "customTextMessage": "../../components/customTextMessage/customTextMessage",
-    "customWeatherMessage": "../../components/customWeatherMessage/customWeatherMessage",
-    "costomImageMessage": "../../components/costomImageMessage/costomImageMessage",
-    "customGuideCard": "../../components/customGuideCard/customGuideCard",
-    "customQuery": "../../components/customQuery/customQuery",
-    "customoperateCard": "../../components/customoperateCard/customoperateCard"
-  }
+{ "navigationBarTitleText": "聊天机器人"
 }

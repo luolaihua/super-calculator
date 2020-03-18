@@ -55,7 +55,7 @@ Page({
         url: 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/ren.png?sign=d3d51b6cd80337305ecbaa681651ca1b&t=1583810614'
       },
       {
-        name: '单位装换',
+        name: '单位转换',
         url: 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/transfer.png?sign=1e1cd7308864eef93c7aca19794ccaee&t=1583810636'
       },
       /*  {
@@ -67,11 +67,11 @@ Page({
         url: 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/tice.png?sign=4377add665517649836f45cdeb025d84&t=1583810682'
       },
       {
-        name: 'BMI',
+        name: 'BMI计算',
         url: 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/bmi_heart.png?sign=0ce03487b7fc0209cd34cc99a0d8eb73&t=1583810706'
       },
       {
-        name: '色环电阻',
+        name: '色环电阻计算',
         url: 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/dianzu.png?sign=13107795a86da836e239ddcbb9eeb764&t=1583810720'
       },
       {
@@ -90,10 +90,10 @@ Page({
       },{
         name: '数学闯关',
         url: 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/math.png?sign=1261d5d036cd39ca8d2314219e969249&t=1583851184'
-      },{
+      },/* {
         name: 'Robot',
         url: 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/robot2.png?sign=887fbe785832601321b5a29d9f48e26d&t=1583915103'
-      }
+      } */
 
     ]
   },
@@ -155,11 +155,11 @@ Page({
                 url: '../iqGame/iqGame',
               })
               break;
-            case 10:
+  /*           case 10:
               wx.navigateTo({
                 url: '../myRobot/myRobot',
               })
-              break;
+              break; */
     }
   },
 

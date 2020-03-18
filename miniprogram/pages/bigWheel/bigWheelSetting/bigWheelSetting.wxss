@@ -92,5 +92,6 @@ page {
   
 } 
 .slider-view{
- padding-left: 0;
+ margin-left: -10rpx;
 }
+

@@ -1,7 +1,7 @@
 //index.js
 //获取应用实例
 const app = getApp()
-var plugin = requirePlugin("myPlugin");
+//var plugin = requirePlugin("myPlugin");
 Page({
   data: {
   },

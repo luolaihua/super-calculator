@@ -46,19 +46,6 @@
     "pages/openapi/callback/callback",
     "pages/openapi/cloudid/cloudid"
   ],
-  "plugins": {
-    "WechatSI": {
-      "version": "0.3.3",
-      "provider": "wx069ba97219f66d99"
-    },
-    "myPlugin": {
-      "version": "1.1.13",
-      "provider": "wx8c631f7e9f2465e1"
-    }
-  },
-  "requiredBackgroundModes": [
-    "audio"
-  ],
   "window": {
     "backgroundColor": "#F6F6F6",
     "backgroundTextStyle": "light",
