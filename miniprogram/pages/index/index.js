@@ -3,12 +3,38 @@
 const updateManager = wx.getUpdateManager()
 var math = require('../util/math.min.js');
 var Fraction = require('../util/fraction.js');
-
 const parser = math.parser();
 String.prototype.replaceAll = function (search, replacement) {
   var target = this;
   return target.replace(new RegExp(search, 'g'), replacement);
 };
+
+/* console.log(math.simplify('3 + 2 / 4').toString())              // '7 / 2'
+console.log(math.simplify('2x + 3x').toString())                // '5 * x'
+console.log(math.simplify('x^2 + x + 3 + x^2').toString())      // '2 * x ^ 2 + x + 3'
+console.log(math.simplify('x * y * -x / (x ^ 2)').toString())   // '-y
+var testRes = math.rationalize('(2x+1)^6').toString()
+console.log(testRes)
+var testRes = math.simplify('(2x+1)^6').toString()
+console.log(testRes)
+var testRes = math.derivative('(2x+1)^6', 'x').toString()
+console.log(testRes)  */
+/* console.log(math.simplify('x -x / (x ^ 2)+3').toString()) // '-y
+var testRes = math.rationalize('(x - y) ^2').toString()
+console.log(testRes)
+console.log(math.simplify(testRes).toString()) // '-y
+console.log(math.simplify('asin(x)+3sin(x) + 2 / 4sin(x)').toString())
+var testRes = math.derivative('log(2x,e)', 'x').toString()
+console.log(testRes)
+console.log(math.simplify('4 / (4 * x)').toString())
+
+const f = math.parse('-x / (x ^ 2)')
+const simplified = math.simplify(f)
+console.log(simplified.toString()) // '3 * x'
+console.log(simplified.evaluate({
+  x: 4
+})) // 12 */
+
 //获取应用实例
 const app = getApp()
 var touchStartX = 0; //触摸时的原点 
@@ -21,15 +47,15 @@ var touchMoveY = 0; // y轴方向移动的距离
 
 Page({
   data: {
-    scrollTop:100,
+    scrollTop: 100,
     isSound: false,
-    isScientific: false,
+    isScientific: true,
     isFraction: false,
     ANS: '0',
     poet: '',
     isRuleTrue: false,
     imageUrl: '',
-    fontsize: 120,
+    fontsize: 150,
     res: "0", //结果
     res_ed: '',
     id_sin: 'sin(',
@@ -60,24 +86,88 @@ Page({
     id_d: 'del',
     id_love: 'love',
     id_div: '÷',
+    id_div_sp: '/',
     id_inverse: '^(-1)',
     id_left: '(',
     id_right: ')',
     id_pow: '^',
     id_mult: '×',
+    id_mult_sp: '*',
     id_sub: '-',
     id_add: '+',
     id_equal: 'equal',
     id0: '0',
     id_ans: 'A',
     id_dot: '.',
+    id_x: 'x',
+    id_y: 'y',
+    id_z: 'z',
     condition: 'initial',
     justOne: false,
     startTime: '',
     endTime: '',
     isLove: 'false',
     lastTapTime: 0,
+    isOpenSpecial: false,
+    indexOfSpecialList: 2,
+    indexOfdevirativeList: 0,
+    specialOperatorList: [{
+        name: '多项式化简',
+        content: '多项式化简如：x^2 + x + 3 + x^2'
+      },
+      {
+        name: '多项式求导',
+        content: '多项式求导^2 + x + 3 + x^2'
+      },
+      {
+        name: '取消',
+        content: ''
+      }
+    ],
+    /*     devirativeList: [{
+          name: 'x',
+          isRed: true
+        }, {
+          name: 'y',
+          isRed: false
+        }, {
+          name: 'z',
+          isRed: false
+        }, {
+          name: 'i',
+          isRed: false
+        }] */
 
+  },
+  /*   chooseXYZ: function (e) {
+      var id = e.currentTarget.id
+      var devirativeList = this.data.devirativeList
+      for (let index = 0; index < devirativeList.length; index++) {
+        if (index == id) {
+          devirativeList[index].isRed = true
+        } else {
+          devirativeList[index].isRed = false
+        }
+      }
+      this.setData({
+        devirativeList,
+        indexOfdevirativeList: id
+      })
+    }, */
+  specialOp: function (e) {
+    var id = e.currentTarget.id
+    if (id == 2) {
+      this.clearBtn()
+    }
+    this.setData({
+      indexOfSpecialList: id,
+      isOpenSpecial: false,
+    })
+  },
+  isOpenSpecial: function (e) {
+    this.setData({
+      isOpenSpecial: !this.data.isOpenSpecial
+    })
   },
   isSound: function (e) {
     if (this.data.isSound) {
@@ -135,14 +225,18 @@ Page({
       wx.showToast({
         title: '普通运算',
       })
-      try {
-        res = new Fraction(res).toString()
-      } catch (e) {
-        console.log(e)
-        wx.showToast({
-          title: '格式错误！',
-        })
+      //indexOfSpecialList == 2说明已取消特别计算模式
+      if (this.data.indexOfSpecialList == 2) {
+        try {
+          res = new Fraction(res).toString()
+        } catch (e) {
+          console.log(e)
+          wx.showToast({
+            title: '格式错误！',
+          })
+        }
       }
+
 
       if (!isNaN(res)) {
         this.setData({
@@ -199,16 +293,16 @@ Page({
         this.setData({
           isScientific: false
         })
-/*         wx.showToast({
-          title: '普通计算',
-        }) */
+        /*         wx.showToast({
+                  title: '普通计算',
+                }) */
       } else {
         this.setData({
           isScientific: true
         })
-/*         wx.showToast({
-          title: '科学计算',
-        }) */
+        /*         wx.showToast({
+                  title: '科学计算',
+                }) */
       }
     }
 
@@ -373,19 +467,20 @@ Page({
           result = result + btnValue;
         }
 
-
+        
         this.setData({
           //显示内容增加时滑动到底部---动态
-          scrollTop:result.length*150,
+          scrollTop: result.length * 150,
           res: result,
           condition: 'clicked'
         });
+        
         break;
 
       case 'equaled':
 
 
-        if (isNaN(btnValue) && btnValue != 'A') {
+        if (isNaN(btnValue) && btnValue != 'A' && btnValue != 'x' && btnValue != 'y' && btnValue != 'z' && btnValue != 'i') {
           result = result + btnValue;
           this.setData({
             res: result,
@@ -403,6 +498,7 @@ Page({
         break;
 
     }
+    this.changeFontSize(result)
 
 
     //加音效
@@ -519,44 +615,86 @@ Page({
         complete: (res) => {},
       })
     }
+
+    var index = this.data.indexOfSpecialList
     var result = this.data.res;
     var ans = this.data.ANS;
 
     result = this.dataPre(result)
     ans = this.dataPre(ans)
 
-    parser.evaluate('A = ' + ans)
+    //index==0 说明是化简有理化
+    if (index == 0) {
+      try {
+        var res = math.rationalize(result).toString()
 
-
-    try {
-      //计算结果
-      var res = parser.evaluate(result)
-      //将精度设为16
-      res = math.format(res, {
-        precision: 16
-      })
-
-      //如果是分式计算
-      if (this.data.isFraction) {
-        res = new Fraction(res).toFraction()
+        //如果是分式计算
+        if (this.data.isFraction) {
+          res = math.simplify(res, {}, {
+            exactFractions: true
+          }).toString()
+        } else {
+          res = math.simplify(res).toString()
+        }
+      } catch (e) {
+        console.log(e)
+        wx.showToast({
+          title: '表达式错误,请重新输入',
+          icon: 'none'
+        })
       }
-      //数字谐音解析
-      this.showlove(res)
-      //把deg转成°
-      res = res.toString().replace(' deg', '°');
-      this.setData({
-        res: res,
-        ANS: res,
-        condition: 'equaled'
-      })
-      //console.log(res)
-    } catch (e) {
-      console.log(e)
-      wx.showToast({
-        title: '表达式错误,请重新输入',
-        icon: 'none'
-      })
     }
+    //求导
+    if (index == 1) {
+      try {
+        var res = math.derivative(result, 'x').toString()
+
+      } catch (e) {
+        console.log(e)
+        wx.showToast({
+          title: '表达式错误,请重新输入',
+          icon: 'none'
+        })
+      }
+
+      // console.log(res, 'res')
+      // console.log(result, 'result')
+    }
+
+    if (index == 2) {
+      try {
+        parser.evaluate('A = ' + ans)
+        //计算结果
+        var res = parser.evaluate(result)
+        //将精度设为16
+        res = math.format(res, {
+          precision: 16
+        })
+
+        //如果是分式计算
+        if (this.data.isFraction) {
+          res = new Fraction(res).toFraction()
+        }
+        //数字谐音解析
+        this.showlove(res)
+        //把deg转成°
+        res = res.toString().replace(' deg', '°');
+
+        //console.log(res)
+      } catch (e) {
+        console.log(e)
+        wx.showToast({
+          title: '表达式错误,请重新输入',
+          icon: 'none'
+        })
+      }
+    }
+    this.setData({
+      res: res,
+      ANS: res,
+      condition: 'equaled'
+    })
+    this.changeFontSize(result)
 
 
     //加音效
@@ -650,6 +788,21 @@ Page({
     return result
 
   },
+  changeFontSize:function(res){
+    var length = res.length,fontsize
+
+    if(length<20){
+      fontsize=150
+    }else if(length<30){
+      fontsize=120
+    }else{
+      fontsize=100
+    }
+    this.setData({
+      fontsize
+    })
+  
+  },
 
   onLoad: function () {
 
@@ -674,20 +827,20 @@ Page({
     updateManager.onUpdateFailed(function () {
       // 新版本下载失败
     })
- 
+
   },
   onShareAppMessage: function () {
     return {
-       title: '一起来玩超级计算器T3000叭~',
-       path: '/pages/index/index',
-       success: function (res) {
-          console.log('成功进入分享==========', res);
+      title: '一起来玩超级计算器T3000叭~',
+      path: '/pages/index/index',
+      success: function (res) {
+        console.log('成功进入分享==========', res);
 
-       },
-       fail: function (res) {
-          console.log('进入分享失败==========', res);
-       }
+      },
+      fail: function (res) {
+        console.log('进入分享失败==========', res);
+      }
     }
- },
+  },
 
 })

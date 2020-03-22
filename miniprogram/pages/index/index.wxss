@@ -46,20 +46,57 @@ button::after{
 }
 
 .screen1{
-
   width: 100%;
-  height: 18vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  padding-bottom: 1vh;
  
 }
 .res{
+  height: 100%;
   line-height: 1;
   word-wrap: break-word;
   text-align: right;
   margin-left: 45rpx;
   margin-right: 20rpx;
+}
+.specialOperator-box{
+  position: fixed;
+  top: 10vh;
+
+  z-index: 3;
+  width: 30vw;
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+}
+.specialOperator{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 5vh;
+  border-style: solid;
+  border-radius: 5%;
+  border-width: thin;
+  margin-bottom: 1vh;
+}
+.showSpecial,.devirative-box{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.devirative{
+
+  border-right: solid 1px gray;
+  padding-left: 30rpx;
+  padding-right: 30rpx;
+  font-size: 60rpx;
+}
+.question_control {
+  width: 30px;
+  height: 30px;
+  margin: 10px;
 }
 
 .about{
