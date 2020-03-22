@@ -13,7 +13,7 @@
 </view>
 <view class="showSpecial">
 	<image wx:if="{{isScientific}}" bindtap="isOpenSpecial" class="question_control" mode="scaleToFill" src="{{!isOpenSpecial?'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/openTop.png?sign=ed9c720b8050634ff72a7e86d9e40efe&t=1584690522':'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/closeDown.png?sign=d2da5d5ed8656807dcfd874df8786a34&t=1584690551'}}"></image>
-	<view>{{specialOperatorList[indexOfSpecialList].content}}</view>
+	<view wx:if="{{isScientific}}" bindtap='chooseContent'>{{specialOperatorList[indexOfSpecialList].content}}</view>
 
 </view>
 <view class="btngroup">
@@ -114,11 +114,15 @@ x * y * -x / (x ^ 2) = -y</text>
 (-20*x^4+28*x^3+104*x^2+6*x-12)
 /(6*x^2+5*x-4)</text>
 			<text class="p"> 多项式求导实例：</text>
+			<text class="p"> 注：求导目前仅限于一个未知数</text>
 			<text class="code-dark">2x^2+3x+4 => 4*x + 3
 
 sin(2x) => 2*cos(2*x)
 
 x^2 + x => 2 * x + 1</text>
+<text class="p"> 注1：多项式化简支持展开幂多项式，幂次须小于5</text>
+<text class="p"> 注2：多项式化简支持分母有理化，可进行通分</text>
+<text class="p"> 注3：求导目前仅限于一个未知数</text>
 		</view>
 	</scroll-view>
 </view>

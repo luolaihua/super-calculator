@@ -4,31 +4,37 @@ var app = getApp()
 
 Page({
 
-   data: {
-     speed:1,
-      isSound: '',
-      isRepeat:'' ,
-      isLove: '',
-      gdhw: [ //更多好玩的参数设置死的
-         { 
-            
-         }
-      ]
-   },
-   sliderChange:function(e){
-      var value = e.detail.value
-      wx.setStorageSync('speed', value)
-      this.setData({
-        speed:value
-      })
-   },
+  data: {
+    speed: 1,
+    isSound: '',
+    isRepeat: '',
+    isLove: '',
+    isShowPianxin: '',
+    gdhw: [ //更多好玩的参数设置死的
+      {
 
-   onLoad: function (options) {
-     var isRepeat = wx.getStorageSync('isRepeat')
-     var isSound = wx.getStorageSync('isSound')
-     var isLove = wx.getStorageSync('isLove')
-     var speed = wx.getStorageSync('speed')
-     if (isRepeat == '') {
+      }
+    ]
+  },
+  sliderChange: function (e) {
+    var value = e.detail.value
+    wx.setStorageSync('speed', value)
+    this.setData({
+      speed: value
+    })
+  },
+
+  onLoad: function (options) {
+    var isRepeat = wx.getStorageSync('isRepeat')
+    var isSound = wx.getStorageSync('isSound')
+    var isLove = wx.getStorageSync('isLove')
+    var speed = wx.getStorageSync('speed')
+    var isShowPianxin = wx.getStorageSync('isShowPianxin')
+    if (isShowPianxin === '') {
+      wx.setStorageSync('isShowPianxin', true)
+      isShowPianxin = true
+    }
+    if (isRepeat == '') {
       wx.setStorageSync('isRepeat', false)
       isRepeat = false
     }
@@ -45,45 +51,75 @@ Page({
       speed = 3
     }
     this.setData({
-      isSound:isSound,
-      isLove:isLove,
-      isRepeat:isRepeat,
-      speed:speed
+      isSound: isSound,
+      isLove: isLove,
+      isRepeat: isRepeat,
+      speed: speed,
+      isShowPianxin
     })
-   },
+  },
 
-   //声音
-   switchChangeSound() {
-    
-      var isSound = this.data.isSound
-      isSound = isSound ? false : true;
-      wx.setStorageSync('isSound', isSound)
-      this.setData({
-        isSound:isSound,
+  //声音
+  switchChangeSound() {
+
+    var isSound = this.data.isSound
+    isSound = isSound ? false : true;
+    wx.setStorageSync('isSound', isSound)
+    this.setData({
+      isSound: isSound,
+    })
+  },
+
+  //偏心
+  switchChangeFastSelect() {
+    var that = this
+    var isLove = this.data.isLove
+    var isShowPianxin = this.data.isShowPianxin
+    isLove = isLove ? false : true;
+    if (isLove && isShowPianxin) {
+      wx.showModal({
+        title: '偏心模式',
+        content: '偏心模式开启后可以在编辑中设置每个选项的偏心指数，就是设置权重，权重越大，被选中的概率就越大',
+        cancelText: '不再提醒',
+        confirmText: '我知道了',
+        confirmColor: '#3CC51F',
+        success(res) {
+          if (res.confirm) {
+            console.log('用户点击确定')
+          } else if (res.cancel) {
+            console.log('用户点击取消')
+            isShowPianxin = false    
+            console.log(isShowPianxin)
+            that.setData({
+              isShowPianxin
+            })
+            wx.setStorageSync('isShowPianxin', isShowPianxin)
+          }
+        },
+        fail: function (res) {},
+        complete: function (res) {},
       })
-   },
+      
+    }
 
-   //快速决定
-   switchChangeFastSelect() {
-      var isLove = this.data.isLove
-      isLove = isLove ? false : true;
-      wx.setStorageSync('isLove', isLove)
-      this.setData({
-        isLove:isLove
-      })
-   },
+    wx.setStorageSync('isLove', isLove)
+    this.setData({
+      isLove: isLove,
+      isShowPianxin
+    })
+  },
 
-   //不重复抽取
-   switchChangeNoRepetitionSelect() {
-      var isRepeat = this.data.isRepeat
-      isRepeat = isRepeat ? false : true;
-      wx.setStorageSync('isRepeat', isRepeat)
-      this.setData({
-        isRepeat:isRepeat
-      })
-   },
+  //不重复抽取
+  switchChangeNoRepetitionSelect() {
+    var isRepeat = this.data.isRepeat
+    isRepeat = isRepeat ? false : true;
+    wx.setStorageSync('isRepeat', isRepeat)
+    this.setData({
+      isRepeat: isRepeat
+    })
+  },
 
-   onShareAppMessage: function () {
+  onShareAppMessage: function () {
 
-   }
+  }
 })

@@ -139,23 +139,23 @@ Page({
         }] */
 
   },
-  /*   chooseXYZ: function (e) {
-      var id = e.currentTarget.id
-      var devirativeList = this.data.devirativeList
-      for (let index = 0; index < devirativeList.length; index++) {
-        if (index == id) {
-          devirativeList[index].isRed = true
-        } else {
-          devirativeList[index].isRed = false
-        }
-      }
-      this.setData({
-        devirativeList,
-        indexOfdevirativeList: id
-      })
-    }, */
+  chooseContent: function (e) {
+
+    var id = this.data.indexOfSpecialList,
+      content
+
+    if (id == 0) {
+      content = '(x+3)^3'
+    } else if (id == 1) {
+      content = 'x^4 + x + 3 + x^2'
+    }
+
+    this.setData({
+      res: content
+    })
+  },
   specialOp: function (e) {
-    var id = e.currentTarget.id
+    var id = Number(e.currentTarget.id)
     if (id == 2) {
       this.clearBtn()
     }
@@ -467,14 +467,14 @@ Page({
           result = result + btnValue;
         }
 
-        
+
         this.setData({
           //显示内容增加时滑动到底部---动态
           scrollTop: result.length * 150,
           res: result,
           condition: 'clicked'
         });
-        
+
         break;
 
       case 'equaled':
@@ -689,8 +689,8 @@ Page({
         })
       }
     }
-     this.changeFontSize(res)
-   
+    this.changeFontSize(res)
+
     this.setData({
       res: res,
       ANS: res,
@@ -789,20 +789,21 @@ Page({
     return result
 
   },
-  changeFontSize:function(res){
-    var length = res.length,fontsize
+  changeFontSize: function (res) {
+    var length = res.length,
+      fontsize
 
-    if(length<14){
-      fontsize=150
-    }else if(length<26){
-      fontsize=120
-    }else{
-      fontsize=100
+    if (length < 14) {
+      fontsize = 150
+    } else if (length < 26) {
+      fontsize = 120
+    } else {
+      fontsize = 100
     }
     this.setData({
       fontsize
     })
-  
+
   },
 
   onLoad: function () {
