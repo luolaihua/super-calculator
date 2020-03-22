@@ -113,11 +113,11 @@ Page({
     indexOfdevirativeList: 0,
     specialOperatorList: [{
         name: '多项式化简',
-        content: '多项式化简如：x^2 + x + 3 + x^2'
+        content: '多项式化简如：(x+3)^3'
       },
       {
         name: '多项式求导',
-        content: '多项式求导^2 + x + 3 + x^2'
+        content: '多项式求导如：x^4 + x + 3 + x^2'
       },
       {
         name: '取消',
@@ -689,12 +689,13 @@ Page({
         })
       }
     }
+     this.changeFontSize(res)
+   
     this.setData({
       res: res,
       ANS: res,
       condition: 'equaled'
     })
-    this.changeFontSize(result)
 
 
     //加音效
@@ -791,9 +792,9 @@ Page({
   changeFontSize:function(res){
     var length = res.length,fontsize
 
-    if(length<20){
+    if(length<14){
       fontsize=150
-    }else if(length<30){
+    }else if(length<26){
       fontsize=120
     }else{
       fontsize=100

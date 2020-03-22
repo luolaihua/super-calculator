@@ -6,6 +6,9 @@
   flex-direction: row;
   align-content: space-between;
 }
+.guide{
+  height: 80vh;
+}
 
 .btnbox{
   display: flex;
@@ -77,7 +80,7 @@ button::after{
   align-items: center;
   height: 5vh;
   border-style: solid;
-  border-radius: 5%;
+  border-radius: 3%;
   border-width: thin;
   margin-bottom: 1vh;
 }
@@ -94,9 +97,9 @@ button::after{
   font-size: 60rpx;
 }
 .question_control {
-  width: 30px;
-  height: 30px;
-  margin: 10px;
+  width: 4vh;
+  height: 4vh;
+  margin: 1vh;
 }
 
 .about{

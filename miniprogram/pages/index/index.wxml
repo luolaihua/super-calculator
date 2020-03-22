@@ -1,7 +1,7 @@
 <!--index.wxml-->
 <image bindtap="help" class="about" src="https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/wen_black.png?sign=0ad92b2c63f9ea67b8a2a1f719f0f3bb&t=1583811721" mode="aspectFit"></image>
 <image bindtap="isSound" class="sound" src="{{isSound?'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/cacu_sound.png?sign=13d8d7d4049a51db489cee49b7fa1887&t=1583811768':'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/cacu_mute.png?sign=ac76e56c21b8e005e889ed19eb445ced&t=1583811803'}}" mode="aspectFit"></image>
-<scroll-view enable-flex scroll-top="{{scrollTop}}px" scroll-y class="screen1" style="height:{{isScientific?35:39}}vh ">
+<scroll-view enable-flex scroll-top="{{scrollTop}}px" scroll-y class="screen1" style="height:{{isScientific?29:39}}vh ">
 	<view class="res" id="result" style="font-size:{{fontsize}}rpx;">{{res}}</view>
 </scroll-view>
 
@@ -22,7 +22,7 @@
 		<button id='{{id_cos}}' bindtap="clickBtn" style="font-size:{{isScientific?40:60}}rpx;height:{{isScientific?8:10}}vh;width:{{isScientific?(indexOfSpecialList!=2?80/3:20):25}}vw">cos</button>
 		<button id='{{id_tan}}' bindtap="clickBtn" style="font-size:{{isScientific?40:60}}rpx;height:{{isScientific?8:10}}vh;width:{{isScientific?(indexOfSpecialList!=2?80/3:20):25}}vw">tan</button>
 		<button wx:if="{{indexOfSpecialList==2}}" id='{{id_X}}' bindtap="clickBtn" style="font-size:{{isScientific?40:60}}rpx;height:{{isScientific?8:10}}vh;width:{{isScientific?20:25}}vw">X!</button>
-		<button class="brown" id='{{id_log}}' bindtap="clickBtn" style="font-size:{{isScientific?40:60}}rpx;height:{{isScientific?8:10}}vh;width:{{isScientific?20:25}}vw">log(</button>
+		<button class="brown" id='{{id_log}}' bindtap="clickBtn" style="font-size:{{isScientific?40:60}}rpx;height:{{isScientific?8:10}}vh;width:{{isScientific?20:25}}vw">log</button>
 	</view>
 	<view class="btnbox" wx:if="{{isScientific}}" style="height:{{isScientific?8:10}}vh">
 		<button id='{{id_asin}}' bindtap="clickBtn" style="font-size:{{isScientific?40:60}}rpx;height:{{isScientific?8:10}}vh;width:{{isScientific?(indexOfSpecialList!=2?80/3:20):25}}vw">asin</button>
@@ -96,7 +96,29 @@
 			<text class="p"> </text>
 
 			<text class="p">-----------点击阴影部分退出----------</text>
+			<text class="p"> 多项式化简实例1：</text>
+			<text class="code-dark">3 + 2 / 4 =  '7 / 2'
+2x + 3x = 5 * x
+x^2 + x + 3 + x^2 = 2*x^2+x+3
+x * y * -x / (x ^ 2) = -y</text>
+			<text class="p"> 多项式化简实例2：</text>
+			<text class="code-dark">2x/y - y/(x+1)
+=(2*x^2-y^2+2*x)/(x*y+y)
 
+(2x+1)^6
+=64*x^6+192*x^5+240*x^4
++160*x^3+60*x^2+12*x+1
+
+2x/((2x-1)/(3x+2))
+-5x/((3x+4)/(2x^2-5))+3=
+(-20*x^4+28*x^3+104*x^2+6*x-12)
+/(6*x^2+5*x-4)</text>
+			<text class="p"> 多项式求导实例：</text>
+			<text class="code-dark">2x^2+3x+4 => 4*x + 3
+
+sin(2x) => 2*cos(2*x)
+
+x^2 + x => 2 * x + 1</text>
 		</view>
 	</scroll-view>
 </view>
