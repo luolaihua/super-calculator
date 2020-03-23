@@ -5,3 +5,8 @@
   padding: 20rpx;
   border-bottom: 1px solid #e2e2e2;
 }
+.clearBtn{
+  position: fixed;
+  bottom: 0;
+  left: 5vw;
+}

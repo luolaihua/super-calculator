@@ -1,0 +1,34 @@
+<!--miniprogram/pages/solveFormula/solveFormula.wxml-->
+<view class="picker-section">
+	<view class="picker1">
+		<picker-view mask-class='mask' indicator-class='indicator' class="picker" value="{{valueA1}}" bindchange="bindChangeA1">
+			<picker-view-column>
+				<view class="pickerContent" wx:for="{{days}}" wx:key='*this' style="line-height: 50px">{{item}}元</view>
+			</picker-view-column>
+		</picker-view>
+	</view>
+	<view class="picker1">
+		<picker-view mask-class='mask' indicator-class='indicator' class="picker" value="{{valueA1}}" bindchange="bindChangeA1">
+			<picker-view-column>
+				<view class="pickerContent" wx:for="{{days}}" wx:key='*this' style="line-height: 50px">{{item}}次</view>
+			</picker-view-column>
+		</picker-view>
+	</view>
+</view>
+<view class="formula-box">
+	<view class="showFormula">
+		{{formulaList[0]}}
+	</view>
+	<view class="showFormula">
+		{{formulaList[1]}}
+	</view>
+	<view class="showFormula">
+		{{formulaList[2]}}
+	</view>
+	<view class="showFormula">
+		{{formulaList[3]}}
+	</view>
+	<view class="showFormula">
+		{{formulaList[1]}}
+	</view>
+</view>

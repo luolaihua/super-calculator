@@ -1,0 +1,36 @@
+/* miniprogram/pages/solveFormula/solveFormula.wxss */
+
+.picker{
+  background-color: white;
+  height: 10vh;
+  width: 200rpx;
+}
+
+.pickerContent{
+  font-size: 50rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.picker-section,.showFormula{
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.formula-box{
+  width: 100%;
+  height: 30vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.showFormula{
+  width: 100%;
+  height: 30vh;
+  font-size: 60rpx;
+  border-top:1px solid gainsboro ;
+}
+
