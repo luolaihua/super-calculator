@@ -67,7 +67,7 @@ button::after{
 .specialOperator-box{
   position: fixed;
   top: 10vh;
-
+left: 50rpx;
   z-index: 3;
   width: 30vw;
   display: flex;
@@ -117,6 +117,15 @@ button::after{
   position: fixed;
   z-index: 2;
   top: 50rpx;
+  left: 0;
+  opacity: 0.5;
+}
+.history{
+  height: 50rpx;
+  width: 50rpx;
+  position: fixed;
+  z-index: 2;
+  top: 100rpx;
   left: 0;
   opacity: 0.5;
 }

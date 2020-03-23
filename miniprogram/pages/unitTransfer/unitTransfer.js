@@ -130,6 +130,12 @@ Page({
     id_dot: '.'
   },
   loveBtn: function (e) {
+    //是否开启触摸反馈
+    if (app.globalData.isVibrate) {
+      wx.vibrateShort({
+        complete: (res) => {},
+      })
+    }
     wx.showToast({
       title: '点击红字选择不同单位',
       icon: 'none'
@@ -137,6 +143,12 @@ Page({
   },
   //清除按钮
   clearBtn: function (e) {
+    //是否开启触摸反馈
+    if (app.globalData.isVibrate) {
+      wx.vibrateShort({
+        complete: (res) => {},
+      })
+    }
     if (app.globalData.isVibrate) {
       wx.vibrateShort({
         complete: (res) => {},
@@ -153,6 +165,12 @@ Page({
   },
   //输入数字按钮
   inputBtn: function (e) {
+    //是否开启触摸反馈
+    if (app.globalData.isVibrate) {
+      wx.vibrateShort({
+        complete: (res) => {},
+      })
+    }
     if (app.globalData.isVibrate) {
       wx.vibrateShort({
         complete: (res) => {},
@@ -315,6 +333,12 @@ Page({
 
   //选择单位
   chooseUnit: function (e) {
+    //是否开启触摸反馈
+    if (app.globalData.isVibrate) {
+      wx.vibrateShort({
+        complete: (res) => {},
+      })
+    }
     if (app.globalData.isVibrate) {
       wx.vibrateShort({
         complete: (res) => {},

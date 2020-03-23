@@ -6,7 +6,8 @@ var time = 0; // 时间记录，用于滑动时且时间小于1s则执行左右�
 var interval = ""; // 记录/清理时间记录 
 var touchMoveX = 0; // x轴方向移动的距离
 var touchMoveY = 0; // y轴方向移动的距离
-
+//获取应用实例
+const app = getApp()
 Page({
 
   /**
@@ -21,6 +22,12 @@ Page({
 
   },
   switchLang: function (e) {
+    //是否开启触摸反馈
+    if (app.globalData.isVibrate) {
+      wx.vibrateShort({
+        complete: (res) => {},
+      })
+    }
     var index = this.data.index
     var length = this.data.language.length
     if (length - 1 == index) {
@@ -72,7 +79,7 @@ Page({
       }
       // 向下滑动 
       if (touchMoveY - touchStartY >= 80 && time < 10) {
-       // console.log('向下滑动 ' + touchMoveY + '   |  ' + touchStartY);
+        // console.log('向下滑动 ' + touchMoveY + '   |  ' + touchStartY);
 
         if (index == 0) {
           index = length - 1
@@ -94,7 +101,7 @@ Page({
       }
       // 向右滑动 
       if (touchMoveX - touchStartX >= 80 && time < 10) {
-      //  console.log('向右滑动' + touchMoveX + '  |  ' + touchStartX + 'left');
+        //  console.log('向右滑动' + touchMoveX + '  |  ' + touchStartX + 'left');
 
         if (index == length - 1) {
           index = 0
@@ -110,6 +117,12 @@ Page({
     })
   },
   confirm: function (e) {
+    //是否开启触摸反馈
+    if (app.globalData.isVibrate) {
+      wx.vibrateShort({
+        complete: (res) => {},
+      })
+    }
     var value = e.detail.value
     var content = ''
 
@@ -248,15 +261,15 @@ Page({
    */
   onShareAppMessage: function () {
     return {
-       title: '一款全能的翻译机~',
-       path: '/pages/beijinghua/beijinghua',
-       success: function (res) {
-          console.log('成功进入分享==========', res);
+      title: '一款全能的翻译机~',
+      path: '/pages/beijinghua/beijinghua',
+      success: function (res) {
+        console.log('成功进入分享==========', res);
 
-       },
-       fail: function (res) {
-          console.log('进入分享失败==========', res);
-       }
+      },
+      fail: function (res) {
+        console.log('进入分享失败==========', res);
+      }
     }
- },
+  },
 })

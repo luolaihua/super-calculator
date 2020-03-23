@@ -43,7 +43,8 @@ console.log((8>>1).toString(2),'++')
 
  */
 
-
+//获取应用实例
+const app = getApp()
 Page({
 
   /**
@@ -77,27 +78,37 @@ Page({
       {
         name: '洋气网名生成',
         url: 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/tushe.png?sign=c1d696b5abf791809d1827df41b0041c&t=1583810736'
-      }, 
+      },
       {
         name: '翻译机',
         url: 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/laugh.png?sign=c967f9a3732781aac35db6247aa5b126&t=1583833459'
-      },{
+      }, {
         name: '智商提高',
         url: 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/zhishang.png?sign=93f2e91128fb2b9e9bb9b87de7472b2a&t=1583810771'
-      },{
+      }, {
         name: '小偏心大转盘',
         url: 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/l.png?sign=b0771e17f0466b51de37266784bc51fc&t=1583810797'
-      },{
+      }, {
         name: '数学闯关',
         url: 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/math.png?sign=1261d5d036cd39ca8d2314219e969249&t=1583851184'
-      },/* {
-        name: 'Robot',
-        url: 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/robot2.png?sign=887fbe785832601321b5a29d9f48e26d&t=1583915103'
-      } */
+      }, {
+        name: '解方程',
+        url: 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/formula2.png?sign=4bb677a8286994c9ac7f65c197d4b451&t=1584948328'
+      },
+      /* {
+              name: 'Robot',
+              url: 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/robot2.png?sign=887fbe785832601321b5a29d9f48e26d&t=1583915103'
+            } */
 
     ]
   },
   navigateTo: function (e) {
+    //是否开启触摸反馈
+    if (app.globalData.isVibrate) {
+      wx.vibrateShort({
+        complete: (res) => {},
+      })
+    }
     var id = Number(e.currentTarget.id)
     switch (id) {
       case 0:
@@ -110,11 +121,11 @@ Page({
           url: '../unitTransfer/unitTransfer',
         })
         break;
-/*       case 2:
-        wx.navigateTo({
-          url: '../im/room/room',
-        })
-        break; */
+        /*       case 2:
+                wx.navigateTo({
+                  url: '../im/room/room',
+                })
+                break; */
       case 6:
         wx.navigateTo({
           url: '../beijinghua/beijinghua',
@@ -135,31 +146,31 @@ Page({
           url: '../bodyTest/bodyTest',
         })
         break;
-        case 4:
-          wx.navigateTo({
-            url: '../resistance/resistance',
-          })
-          break;
-        case 7:
-          wx.navigateTo({
-            url: '../iq/iq',
-          })
-          break;
-          case 8:
-            wx.navigateTo({
-              url: '../bigWheel/bigWheel',
-            })
-            break;
-            case 9:
-              wx.navigateTo({
-                url: '../iqGame/iqGame',
-              })
-              break;
-  /*           case 10:
-              wx.navigateTo({
-                url: '../myRobot/myRobot',
-              })
-              break; */
+      case 4:
+        wx.navigateTo({
+          url: '../resistance/resistance',
+        })
+        break;
+      case 7:
+        wx.navigateTo({
+          url: '../iq/iq',
+        })
+        break;
+      case 8:
+        wx.navigateTo({
+          url: '../bigWheel/bigWheel',
+        })
+        break;
+      case 9:
+        wx.navigateTo({
+          url: '../iqGame/iqGame',
+        })
+        break;
+        /*           case 10:
+                    wx.navigateTo({
+                      url: '../myRobot/myRobot',
+                    })
+                    break; */
     }
   },
 
@@ -229,15 +240,15 @@ Page({
    */
   onShareAppMessage: function () {
     return {
-       title: '一起来玩超级计算器T3000叭~',
-       path: '/pages/menu/menu',
-       success: function (res) {
-          console.log('成功进入分享==========', res);
+      title: '一起来玩超级计算器T3000叭~',
+      path: '/pages/menu/menu',
+      success: function (res) {
+        console.log('成功进入分享==========', res);
 
-       },
-       fail: function (res) {
-          console.log('进入分享失败==========', res);
-       }
+      },
+      fail: function (res) {
+        console.log('进入分享失败==========', res);
+      }
     }
- },
+  },
 })

@@ -1,4 +1,6 @@
 // miniprogram/pages/resistance/resistance.js
+//获取应用实例
+const app = getApp()
 Page({
 
   /**
@@ -25,6 +27,12 @@ Page({
 
   },
   clear:function(e){
+        //是否开启触摸反馈
+        if (app.globalData.isVibrate) {
+          wx.vibrateShort({
+            complete: (res) => {},
+          })
+        }
     this.setData({
       huan: '五环',
       res: 0,
@@ -43,6 +51,12 @@ Page({
     })
   },
   changeHuan: function (e) {
+    //是否开启触摸反馈
+    if (app.globalData.isVibrate) {
+      wx.vibrateShort({
+        complete: (res) => {},
+      })
+    }
     if (this.data.huan == '五环') {
       this.setData({
         huan: '四环'
@@ -54,6 +68,12 @@ Page({
     }
   },
   equalBtn: function (e) {
+    //是否开启触摸反馈
+    if (app.globalData.isVibrate) {
+      wx.vibrateShort({
+        complete: (res) => {},
+      })
+    }
     var c1 = this.data.colorArray.indexOf(this.data.color1)
     var c2 = this.data.colorArray.indexOf(this.data.color2)
     var c3 = this.data.colorArray.indexOf(this.data.color3)
@@ -109,6 +129,12 @@ Page({
     })
   },
   colorChoose: function (e) {
+    //是否开启触摸反馈
+    if (app.globalData.isVibrate) {
+      wx.vibrateShort({
+        complete: (res) => {},
+      })
+    }
     var id = Number(e.currentTarget.id)
     switch (this.data.colorId) {
       case '0':

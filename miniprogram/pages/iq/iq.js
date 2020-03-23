@@ -1,26 +1,32 @@
 // miniprogram/pages/iq/iq.js
-
+//获取应用实例
+const app = getApp()
 var date = new Date()
-var today =date.getDate()
+var today = date.getDate()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    isLight:''
+    isLight: ''
 
   },
   iq: function (e) {
 
-
+    //是否开启触摸反馈
+    if (app.globalData.isVibrate) {
+      wx.vibrateShort({
+        complete: (res) => {},
+      })
+    }
     try {
       var day = wx.getStorageSync('today')
       if (day != today) {
         wx.setStorageSync('today', today)
         wx.setStorageSync('isLight', true)
         this.setData({
-          isLight:true
+          isLight: true
         })
       } else {
         wx.showToast({
@@ -41,14 +47,14 @@ Page({
     var day = wx.getStorageSync('today')
     if (day != today) {
       wx.setStorageSync('isLight', false)
-        this.setData({
-          isLight:false
-        })
-       // console.log('???')
-    }else{
-      var isLight =wx.getStorageSync('isLight')
       this.setData({
-        isLight:isLight
+        isLight: false
+      })
+      // console.log('???')
+    } else {
+      var isLight = wx.getStorageSync('isLight')
+      this.setData({
+        isLight: isLight
       })
     }
 
@@ -101,15 +107,15 @@ Page({
    */
   onShareAppMessage: function () {
     return {
-       title: '哈哈~来提高智商叭~',
-       path: '/pages/iq/iq',
-       success: function (res) {
-          console.log('成功进入分享==========', res);
+      title: '哈哈~来提高智商叭~',
+      path: '/pages/iq/iq',
+      success: function (res) {
+        console.log('成功进入分享==========', res);
 
-       },
-       fail: function (res) {
-          console.log('进入分享失败==========', res);
-       }
+      },
+      fail: function (res) {
+        console.log('进入分享失败==========', res);
+      }
     }
- },
+  },
 })

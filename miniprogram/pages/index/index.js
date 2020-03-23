@@ -47,6 +47,7 @@ var touchMoveY = 0; // y轴方向移动的距离
 
 Page({
   data: {
+    isShowHistory:false,
     scrollTop: 100,
     isSound: false,
     isScientific: true,
@@ -140,7 +141,12 @@ Page({
 
   },
   chooseContent: function (e) {
-
+    //是否开启触摸反馈
+    if (app.globalData.isVibrate) {
+      wx.vibrateShort({
+        complete: (res) => {},
+      })
+    }
     var id = this.data.indexOfSpecialList,
       content
 
@@ -155,6 +161,12 @@ Page({
     })
   },
   specialOp: function (e) {
+    //是否开启触摸反馈
+    if (app.globalData.isVibrate) {
+      wx.vibrateShort({
+        complete: (res) => {},
+      })
+    }
     var id = Number(e.currentTarget.id)
     if (id == 2) {
       this.clearBtn()
@@ -165,11 +177,23 @@ Page({
     })
   },
   isOpenSpecial: function (e) {
+    //是否开启触摸反馈
+    if (app.globalData.isVibrate) {
+      wx.vibrateShort({
+        complete: (res) => {},
+      })
+    }
     this.setData({
       isOpenSpecial: !this.data.isOpenSpecial
     })
   },
   isSound: function (e) {
+    //是否开启触摸反馈
+    if (app.globalData.isVibrate) {
+      wx.vibrateShort({
+        complete: (res) => {},
+      })
+    }
     if (this.data.isSound) {
       this.setData({
         //fontsize: 40,
@@ -663,6 +687,18 @@ Page({
 
     if (index == 2) {
       try {
+        //历史记录
+       var historyArr = wx.getStorageSync('historyArr')
+       if(historyArr==''){
+         var arr = []
+         arr.push(result)
+        wx.setStorageSync('historyArr', arr)
+       }else{
+        historyArr.push(result)
+        wx.setStorageSync('historyArr', historyArr)
+       }
+
+
         parser.evaluate('A = ' + ans)
         //计算结果
         var res = parser.evaluate(result)
@@ -694,7 +730,8 @@ Page({
     this.setData({
       res: res,
       ANS: res,
-      condition: 'equaled'
+      condition: 'equaled',
+      isShowHistory:true
     })
 
 
@@ -706,6 +743,30 @@ Page({
       innerAudioContext.play()
     }
   },
+  toHistory:function(e){
+    var that = this
+
+    wx.navigateTo({
+      //传参格式：参数与路径之间使用 ?分隔，参数键与参数值用 = 相连，
+      //不同参数用 & 分隔；如 '/pages/index/index?value1=hello&value2=world'
+      url: '../scientificData/scientificData',
+      // 为指定事件添加一个监听器，获取被打开页面传送到当前页面的数据
+      events: {
+        getHistoryData: function (data) {
+          that.setData({
+            res: data.data,
+            condition: 'clicked'
+          })
+        }
+      },
+      success: function (res) {
+        // 通过eventChannel向被打开页面传送数据
+        res.eventChannel.emit('acceptDataFromOpenerPage', {
+          data: 'history'
+        })
+      }
+    })
+  },
   toScientificData: function (e) {
 
     //这一步特别牛，先把全局对象存起来，后面全局对象可能会改变，所以that可以代替this作为全局对象
@@ -715,6 +776,7 @@ Page({
       //传参格式：参数与路径之间使用 ?分隔，参数键与参数值用 = 相连，
       //不同参数用 & 分隔；如 '/pages/index/index?value1=hello&value2=world'
       url: '../scientificData/scientificData',
+      // 为指定事件添加一个监听器，获取被打开页面传送到当前页面的数据
       events: {
         getScientifiData: function (data) {
           that.setData({
@@ -724,7 +786,12 @@ Page({
           })
         }
       },
-      success: function (res) {}
+      success: function (res) {
+        // 通过eventChannel向被打开页面传送数据
+        res.eventChannel.emit('acceptDataFromOpenerPage', {
+          data: 'scientificData'
+        })
+      }
     })
   },
   help: function (e) {
@@ -807,6 +874,15 @@ Page({
   },
 
   onLoad: function () {
+    //历史记录
+    var isShowHistory = true
+    var historyArr = wx.getStorageSync('historyArr')
+    if(historyArr==''){
+        isShowHistory = false
+    }
+     this.setData({
+        isShowHistory
+      })
 
     updateManager.onCheckForUpdate(function (res) {
       // 请求完新版本信息的回调

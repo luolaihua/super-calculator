@@ -1,6 +1,7 @@
 /* miniprogram/pages/scientificData/scientificData.wxss */
 .data{
   font-size: 40rpx;
-  margin-top: 20rpx;
-  
+  word-wrap: break-word;
+  padding: 20rpx;
+  border-bottom: 1px solid #e2e2e2;
 }

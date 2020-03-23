@@ -1,6 +1,7 @@
 <!--index.wxml-->
 <image bindtap="help" class="about" src="https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/wen_black.png?sign=0ad92b2c63f9ea67b8a2a1f719f0f3bb&t=1583811721" mode="aspectFit"></image>
 <image bindtap="isSound" class="sound" src="{{isSound?'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/cacu_sound.png?sign=13d8d7d4049a51db489cee49b7fa1887&t=1583811768':'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/cacu_mute.png?sign=ac76e56c21b8e005e889ed19eb445ced&t=1583811803'}}" mode="aspectFit"></image>
+<image bindtap="toHistory" wx:if="{{isShowHistory&&(isScientific?indexOfSpecialList==2:'true')}}" class="history" src="https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/history.png?sign=627eb085551cfd0bb1e5b31d8fd82f17&t=1584949902" mode="aspectFit"></image>
 <scroll-view enable-flex scroll-top="{{scrollTop}}px" scroll-y class="screen1" style="height:{{isScientific?29:39}}vh ">
 	<view class="res" id="result" style="font-size:{{fontsize}}rpx;">{{res}}</view>
 </scroll-view>
@@ -123,6 +124,7 @@ x^2 + x => 2 * x + 1</text>
 <text class="p"> 注1：多项式化简支持展开幂多项式，幂次须小于5</text>
 <text class="p"> 注2：多项式化简支持分母有理化，可进行通分</text>
 <text class="p"> 注3：求导目前仅限于一个未知数</text>
+<text class="p"> 注4：历史记录功能暂不支持多项式化简和求导</text>
 		</view>
 	</scroll-view>
 </view>

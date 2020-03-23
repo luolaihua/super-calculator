@@ -1,4 +1,6 @@
 // miniprogram/pages/beijinghua/beijinghua.js
+//获取应用实例
+const app = getApp()
 Page({
 
   /**
@@ -29,6 +31,13 @@ Page({
 
   },
   confirm: function (e) {
+    
+        //是否开启触摸反馈
+        if (app.globalData.isVibrate) {
+          wx.vibrateShort({
+            complete: (res) => {},
+          })
+        }
     var value = e.detail.value
     if (value == '') {
       wx.showToast({
@@ -47,6 +56,12 @@ Page({
   },
 
   switchName: function (e) {
+    //是否开启触摸反馈
+    if (app.globalData.isVibrate) {
+      wx.vibrateShort({
+        complete: (res) => {},
+      })
+    }
     if (this.data.content == '') {
       wx.showToast({
         title: '请输入姓氏',
@@ -62,6 +77,12 @@ Page({
     }
   },
   chooseIt:function(e){
+    //是否开启触摸反馈
+    if (app.globalData.isVibrate) {
+      wx.vibrateShort({
+        complete: (res) => {},
+      })
+    }
     var data = this.data.content
     wx.setStorage({
       key: 'myName',
@@ -74,6 +95,12 @@ Page({
     })
   },
   cancelChoose:function(e){
+    //是否开启触摸反馈
+    if (app.globalData.isVibrate) {
+      wx.vibrateShort({
+        complete: (res) => {},
+      })
+    }
     wx.setStorage({
       key: 'myName',
       data: '',

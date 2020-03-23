@@ -7,6 +7,8 @@ var success = wx.createInnerAudioContext()
 var fail = wx.createInnerAudioContext()
 var anjian = wx.createInnerAudioContext()
 var countDownTime = 5
+//获取应用实例
+const app = getApp()
 Page({
 
   /**
@@ -34,12 +36,24 @@ Page({
 
   },
   myAwards: function (e) {
+    //是否开启触摸反馈
+    if (app.globalData.isVibrate) {
+      wx.vibrateShort({
+        complete: (res) => {},
+      })
+    }
     if (this.data.isSound) {
       anjian.play()
     }
 
   },
   toInfo: function (e) {
+    //是否开启触摸反馈
+    if (app.globalData.isVibrate) {
+      wx.vibrateShort({
+        complete: (res) => {},
+      })
+    }
     if (this.data.isSound) {
       anjian.play()
     }
@@ -57,6 +71,12 @@ Page({
   },
   next: function (e) {
 
+    //是否开启触摸反馈
+    if (app.globalData.isVibrate) {
+      wx.vibrateShort({
+        complete: (res) => {},
+      })
+    }
     if (this.data.condition == 'right') {
       var successNum = this.data.successNum + 1
       this.gradeMake(successNum)
@@ -70,6 +90,12 @@ Page({
   },
   restart: function (e) {
 
+    //是否开启触摸反馈
+    if (app.globalData.isVibrate) {
+      wx.vibrateShort({
+        complete: (res) => {},
+      })
+    }
 
     if (this.data.condition == 'wrong') {
       this.resetTime()
@@ -78,6 +104,13 @@ Page({
 
   },
   answerBtn: function (e) {
+
+    //是否开启触摸反馈
+    if (app.globalData.isVibrate) {
+      wx.vibrateShort({
+        complete: (res) => {},
+      })
+    }
     var id = e.currentTarget.id
     var ans = this.data.ans
     var ansArr = this.data.ansArr
