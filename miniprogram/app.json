@@ -1,8 +1,8 @@
 {
   "pages": [
-        "pages/index/index",
+    
     "pages/solveFormula/solveFormula",
-
+    "pages/index/index",
     "pages/myMatrices/myMatrices",
     "pages/bigWheel/bigWheel",
     "pages/bodyTest/bodyTest",

@@ -1,39 +1,13 @@
 //index.js
 //更新管理
 const updateManager = wx.getUpdateManager()
-var math = require('../util/math.min.js');
-var Fraction = require('../util/fraction.js');
+const math = require('../util/math.min.js');
+const Fraction = require('../util/fraction.js');
 const parser = math.parser();
 String.prototype.replaceAll = function (search, replacement) {
   var target = this;
   return target.replace(new RegExp(search, 'g'), replacement);
 };
-
-/* console.log(math.simplify('3 + 2 / 4').toString())              // '7 / 2'
-console.log(math.simplify('2x + 3x').toString())                // '5 * x'
-console.log(math.simplify('x^2 + x + 3 + x^2').toString())      // '2 * x ^ 2 + x + 3'
-console.log(math.simplify('x * y * -x / (x ^ 2)').toString())   // '-y
-var testRes = math.rationalize('(2x+1)^6').toString()
-console.log(testRes)
-var testRes = math.simplify('(2x+1)^6').toString()
-console.log(testRes)
-var testRes = math.derivative('(2x+1)^6', 'x').toString()
-console.log(testRes)  */
-/* console.log(math.simplify('x -x / (x ^ 2)+3').toString()) // '-y
-var testRes = math.rationalize('(x - y) ^2').toString()
-console.log(testRes)
-console.log(math.simplify(testRes).toString()) // '-y
-console.log(math.simplify('asin(x)+3sin(x) + 2 / 4sin(x)').toString())
-var testRes = math.derivative('log(2x,e)', 'x').toString()
-console.log(testRes)
-console.log(math.simplify('4 / (4 * x)').toString())
-
-const f = math.parse('-x / (x ^ 2)')
-const simplified = math.simplify(f)
-console.log(simplified.toString()) // '3 * x'
-console.log(simplified.evaluate({
-  x: 4
-})) // 12 */
 
 //获取应用实例
 const app = getApp()

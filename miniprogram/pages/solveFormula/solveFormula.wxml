@@ -1,34 +1,41 @@
 <!--miniprogram/pages/solveFormula/solveFormula.wxml-->
 <view class="picker-section">
 	<view class="picker1">
-		<picker-view mask-class='mask' indicator-class='indicator' class="picker" value="{{valueA1}}" bindchange="bindChangeA1">
+		<picker-view mask-class='mask' indicator-class='indicator' class="picker" value="{{NumOfYuan}}" bindchange="bindChangeYuan">
 			<picker-view-column>
-				<view class="pickerContent" wx:for="{{days}}" wx:key='*this' style="line-height: 50px">{{item}}元</view>
+				<view class="pickerContent" wx:for="{{yuan}}" wx:key='*this' style="line-height: 50px">{{item}}元</view>
 			</picker-view-column>
 		</picker-view>
 	</view>
 	<view class="picker1">
-		<picker-view mask-class='mask' indicator-class='indicator' class="picker" value="{{valueA1}}" bindchange="bindChangeA1">
+		<picker-view mask-class='mask' indicator-class='indicator' class="picker" value="{{NumOfCi}}" bindchange="bindChangeCi">
 			<picker-view-column>
-				<view class="pickerContent" wx:for="{{days}}" wx:key='*this' style="line-height: 50px">{{item}}次</view>
+				<view class="pickerContent" wx:for="{{ci}}" wx:key='*this' style="line-height: 50px">{{item}}次</view>
 			</picker-view-column>
 		</picker-view>
 	</view>
 </view>
 <view class="formula-box">
 	<view class="showFormula">
-		{{formulaList[0]}}
+		{{formulaList[indexOfShow]}}
 	</view>
-	<view class="showFormula">
-		{{formulaList[1]}}
-	</view>
-	<view class="showFormula">
-		{{formulaList[2]}}
-	</view>
-	<view class="showFormula">
-		{{formulaList[3]}}
-	</view>
-	<view class="showFormula">
-		{{formulaList[1]}}
-	</view>
+</view>
+<view class="para-box">
+	<block wx:for="{{paraList}}" wx:key="index">
+		<view class="paraInput-box borderTop" wx:if="{{indexOfShow+2>index}}">
+			<text class="paraText"> {{item.name}} = </text>
+			<input value="{{item.value==0?'':item.value}}" class="paraInput" placeholder="0" bindinput="inputPara" id="{{index}}"></input>
+			<image id="{{index}}" bindtap="paraDelete" class="paraDelete" src="https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/delete.png?sign=07fe7c6506fcf1edacf83f3f207d8c84&t=1585050844" mode="aspectFit"></image>
+		</view>
+	</block>
+
+</view>
+<button type="primary" style="width:80vw" bindtap="solve">解</button>
+<view class="result-box">
+	<text>{{result}}</text>
+	<!-- <view>{{result_fraction}}</view> -->
+</view>
+<view class="process-box">
+	<text class="title">解题过程</text>
+	<text class="content">{{process}}</text>
 </view>

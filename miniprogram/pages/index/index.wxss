@@ -6,29 +6,33 @@
   flex-direction: row;
   align-content: space-between;
 }
-.guide{
+
+.guide {
   height: 80vh;
 }
 
-.btnbox{
+.btnbox {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   width: 100%;
   border: none;
-  
+
 }
-.test{
+
+.test {
   position: fixed;
   bottom: 0;
 }
-.btngroup{
+
+.btngroup {
   background-color: black;
 
   width: 100vw;
 }
-button{
+
+button {
   background-color: black;
   color: aliceblue;
   display: flex;
@@ -36,27 +40,31 @@ button{
   justify-content: center;
   border-radius: 0;
 }
-button::after{
+
+button::after {
   border-radius: 0;
   border: none;
 }
-.brown{
+
+.brown {
   border-radius: 0;
   background-color: brown;
 }
-.c{
+
+.c {
   color: brown;
 }
 
-.screen1{
+.screen1 {
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding-bottom: 1vh;
- 
+
 }
-.res{
+
+.res {
   height: 100%;
   line-height: 1;
   word-wrap: break-word;
@@ -64,17 +72,19 @@ button::after{
   margin-left: 45rpx;
   margin-right: 20rpx;
 }
-.specialOperator-box{
+
+.specialOperator-box {
   position: fixed;
   top: 10vh;
-left: 50rpx;
+  left: 50rpx;
   z-index: 3;
   width: 30vw;
   display: flex;
   flex-direction: column;
   margin: 10px;
 }
-.specialOperator{
+
+.specialOperator {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -84,25 +94,29 @@ left: 50rpx;
   border-width: thin;
   margin-bottom: 1vh;
 }
-.showSpecial,.devirative-box{
+
+.showSpecial,
+.devirative-box {
   display: flex;
   flex-direction: row;
   align-items: center;
 }
-.devirative{
+
+.devirative {
 
   border-right: solid 1px gray;
   padding-left: 30rpx;
   padding-right: 30rpx;
   font-size: 60rpx;
 }
+
 .question_control {
   width: 4vh;
   height: 4vh;
   margin: 1vh;
 }
 
-.about{
+.about {
   height: 50rpx;
   width: 50rpx;
   position: fixed;
@@ -111,7 +125,8 @@ left: 50rpx;
   left: 0;
   opacity: 0.5;
 }
-.sound{
+
+.sound {
   height: 50rpx;
   width: 50rpx;
   position: fixed;
@@ -120,7 +135,8 @@ left: 50rpx;
   left: 0;
   opacity: 0.5;
 }
-.history{
+
+.history {
   height: 50rpx;
   width: 50rpx;
   position: fixed;
@@ -130,33 +146,33 @@ left: 50rpx;
   opacity: 0.5;
 }
 
-  
+
 .isRuleShow {
   display: block;
 }
- 
+
 .isRuleHide {
   display: none;
 }
- 
+
 .float1 {
   height: 100%;
   width: 100%;
   position: fixed;
-  background-color: rgb(0, 0, 0,0.5);
+  background-color: rgb(0, 0, 0, 0.5);
   z-index: 2;
   top: 0;
   left: 0;
 }
 
- 
+
 .floatContent {
   z-index: 3;
   padding: 10rpx 0;
   width: 80%;
   height: 80vh;
   background: #fff;
-  margin:10% auto;
+  margin: 10% auto;
   border-radius: 20rpx;
   display: flex;
   flex-direction: column;
@@ -166,6 +182,7 @@ left: 50rpx;
   top: 0;
   left: 10vw;
 }
-text{
+
+text {
   margin-left: 20rpx;
 }
