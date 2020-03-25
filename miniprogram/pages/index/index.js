@@ -114,6 +114,15 @@ Page({
         }] */
 
   },
+  toDeg:function(e){
+   var res = this.data.res
+   if(!isNaN(res)){
+     res = res*180/Math.PI+''
+   }
+   this.setData({
+     res
+   })
+  },
   chooseContent: function (e) {
     //是否开启触摸反馈
     if (app.globalData.isVibrate) {

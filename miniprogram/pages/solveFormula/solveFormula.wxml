@@ -31,11 +31,12 @@
 
 </view>
 <button type="primary" style="width:80vw" bindtap="solve">解</button>
+<button type="default" style="width:80vw" bindtap="clear">清除</button>
 <view class="result-box">
 	<text>{{result}}</text>
 	<!-- <view>{{result_fraction}}</view> -->
 </view>
 <view class="process-box">
-	<text class="title">解题过程</text>
-	<text class="content">{{process}}</text>
+	<text class="title" wx:if="{{process!=''}}">解题过程</text>
+	<text class="content" decode="true" space="ensp" selectable="true">{{process}}</text>
 </view>

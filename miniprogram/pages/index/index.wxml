@@ -47,7 +47,7 @@
 		<button class="brown" id='{{indexOfSpecialList!=2?id_div_sp:id_div}}' bindtap="clickBtn" style="font-size:{{isScientific?40:60}}rpx;height:{{isScientific?8:10}}vh;width:{{isScientific?20:25}}vw">{{indexOfSpecialList!=2?'/':'÷'}}</button>
 	</view>
 	<view class="btnbox" style="height:{{isScientific?8:10}}vh">
-		<button id='{{indexOfSpecialList!=2?id_z:id_deg}}' bindtap="clickBtn" wx:if="{{isScientific}}" style="font-size:{{isScientific?40:60}}rpx;height:{{isScientific?8:10}}vh;width:{{isScientific?20:25}}vw">{{indexOfSpecialList!=2?'z':'°'}}</button>
+		<button id='{{indexOfSpecialList!=2?id_z:id_deg}}' bindtap="clickBtn" wx:if="{{isScientific}}" style="font-size:{{isScientific?40:60}}rpx;height:{{isScientific?8:10}}vh;width:{{isScientific?20:25}}vw" bindlongtap="{{indexOfSpecialList!=2?'':'toDeg'}}">{{indexOfSpecialList!=2?'z':'°'}}</button>
 		<button id='{{id7}}' bindtap="clickBtn" style="font-size:{{isScientific?40:60}}rpx;height:{{isScientific?8:10}}vh;width:{{isScientific?20:25}}vw">7</button>
 		<button id='{{id8}}' bindtap="clickBtn" style="font-size:{{isScientific?40:60}}rpx;height:{{isScientific?8:10}}vh;width:{{isScientific?20:25}}vw">8</button>
 		<button id='{{id9}}' bindtap="clickBtn" style="font-size:{{isScientific?40:60}}rpx;height:{{isScientific?8:10}}vh;width:{{isScientific?20:25}}vw">9</button>
@@ -87,6 +87,7 @@
 			<text class="p">A--------计算结果保存为A,如上次计算结果为2，则6+A=8</text>
 			<text class="p">i--------复数，如(1+6i)(2-3i)=20+9i</text>
 			<text class="p">°--------度 如sin(90°)=1，而sin(90)=0.894</text>
+			<text class="p">此计算器默认为弧度制,长按" ° "可将当前结果转为角度</text>
 			<text class="p">^--------幂  如 2^3=8</text>
 			<text class="p">X!-------阶乘  如 3！=6</text>
 			<text class="p">log------对数函数，通过逗号' , '可以求任意底的对数，如log(1000,10)=3,log(4,2)=2</text>
