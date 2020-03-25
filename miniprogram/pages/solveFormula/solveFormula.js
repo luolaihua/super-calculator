@@ -2,10 +2,21 @@
 const math = require('../util/math.min.js');
 const PRECISION = 6
 //console.log(math.evaluate('sqrt(-4)+3').toString())
-//console.log(math.evaluate('9^(5/2)').toString())
+/* 
+console.log(math.evaluate('a+b',scope) .toString())
+console.log(math.norm(math.evaluate('5+10i')).toString()) */
+
 math.config({
   number: 'number'
 })
+/* let scope = {
+  a: 3,
+  b: '4'
+}
+ const parser = math.parser()
+parser.set('h', math.complex('3'))
+console.log(parser.evaluate('h / 2+a',scope).toString())
+ */
 Page({
 
   /**
@@ -17,24 +28,24 @@ Page({
     result: 'X1=66666' + "\nX2=55555",
     NumOfYuan: [0],
     NumOfCi: [0],
-    indexOfShow: 2,
+    indexOfShow: 3,
     indexOfYuan: 0,
     indexOfCi: 0,
     paraList: [{
       name: 'a',
-      value: 0
+      value: 1
     }, {
       name: 'b',
-      value: 0
+      value: 2
     }, {
       name: 'c',
-      value: 0
+      value: 3
     }, {
       name: 'd',
-      value: 0
+      value: 4
     }, {
       name: 'e',
-      value: 0
+      value: -52
     }, ],
 
     yuan: ['一', '二', '三', '四', '五'],
@@ -113,7 +124,7 @@ Page({
       d: d,
       e: e
     }
-    console.log(scope)
+    //  console.log(scope)
 
 
     switch (indexOfShow) {
@@ -121,132 +132,19 @@ Page({
       case 0:
         result = this.solve1Equaltion(scope).result
         process = this.solve1Equaltion(scope).process
-        /*         result = math.evaluate('-b / a ', scope)
-                result = "X = " + math.format(result, PRECISION).toString()
-                process = '① ' + a + ' * X + ' + b + '= 0\n' +
-                  '② ' + a + ' * X = ' + -b + '\n' +
-                  '③ ' + result */
         break;
         // one yuan two ci
       case 1:
         result = this.solve2Equaltion(scope).result
         process = this.solve2Equaltion(scope).process
-        /* 
-                delta = math.evaluate('sqrt(b * b - 4 * a * c)', scope)
-                //由于精确度问题。等于零的情况需要改进
-                if (math.larger(delta, -1e-10) && math.smaller(delta, 1e-10)) {
-                  delta = 0
-                }
-                scope.delta = delta
-
-                // console.log(scope)
-                if (delta == 0) {
-                  result = math.evaluate('-b / a / 2', scope)
-                  result = 'X₁=X₂= ' + math.format(result, PRECISION).toString()
-
-                  process = '① ' + a + ' * X² + ' + b + ' * X + ' + c + '= 0\n' +
-                    '②  △ = b² - 4ac = ' + b * b + ' - ' + 4 * a * c + ' = 0\n' +
-                    '③ ' + result + ' = -b/2a'
-
-                } else {
-                  x1 = math.evaluate('(-b+delta)/2/a', scope)
-                  x2 = math.evaluate('(-b-delta)/2/a', scope)
-
-                  result = '   X₁= ' + math.format(x1, PRECISION).toString() +
-                    '\n   X₂= ' + math.format(x2, PRECISION).toString()
-                  if (b * b - 4 * a * c > 0) {
-
-                    process = '① ' + a + ' * X² + ' + b + ' * X + ' + c + '= 0\n' +
-                      '② △ = b²- 4ac = ' + b * b + ' - ' + 4 * a * c + ' > 0\n' +
-                      '③ √△ = ' + math.format(delta, PRECISION).toString() + '\n' +
-                      '④ 有实数解：\n' + result
-                  } else {
-                    process = '① ' + a + ' * X² + ' + b + ' * X + ' + c + '= 0\n' +
-                      '② △ = b²- 4ac = ' + b * b + ' - ' + 4 * a * c + ' < 0\n' +
-                      '③ √△ = ' + math.format(delta, PRECISION).toString() + '\n' +
-                      '④ 有复数解：\n' + result
-                  }
-
-                } */
-
         break;
       case 2:
         result = this.solve3Equaltion(scope).result
         process = this.solve3Equaltion(scope).process
-/*         var A = math.evaluate('b*b-3*a*c', scope).toString()
-        var B = math.evaluate('b*c-9*a*d', scope).toString()
-        var C = math.evaluate('c*c-3*b*d', scope).toString()
-        scope.A = A
-        scope.B = B
-        scope.C = C
-        delta = math.evaluate('B*B-4*A*C', scope)
-        delta = math.format(delta, PRECISION).toString()
-        if (math.larger(delta, -1e-10) && math.smaller(delta, 1e-10)) {
-          delta = 0
-        }
-
-        process = '① 重根判别式：\n   A = b²-3ac = ' + A + '\n   B = bc-9ad = ' + B + '\n   C = c²-3bd = ' + C +
-          '\n② 总判别式：\n' + '   △ = B²-4AC = ' + delta
-
-        if (Number(delta) > 0) {
-          process = process + ' > 0'
-        } else if (Number(delta) < 0) {
-          process = process + ' < 0'
-        }
-        // A=B=0,用盛金公式1
-        if (A == B && A == '0') {
-          console.log(A, B, C, delta)
-          var res = '\n③ 由于A=B=0,有三重实根,\n   根据盛金公式1：\n'
-          result = math.evaluate('-b / a / 3', scope)
-          result = 'X₁=X₂=X₃= ' + math.format(result, PRECISION).toString()
-          process = process + res + '   -b/3/a = -c/b = -3d/c \n   =' + result
-
-        } else if (Number(delta) == 0) {
-          var X1 = math.evaluate('-b/a + B/A', scope)
-          var X2 = math.evaluate('-B/A/2', scope)
-          var res = '\n③ 有三个实根,其中有一个两重根,\n   根据盛金公式3：\n   X1 = -b/a + B/A\n   X2 = -B/A/2\n'
-          result = '   X₁= ' + math.format(X1, PRECISION).toString() +
-            '\n   X₂=X₃= ' + math.format(X2, PRECISION).toString()
-          process = process + res + result
-        } else if (Number(delta) > 0) {
-          var Y1 = math.evaluate('A*b+3/2*a*(-B + sqrt(B*B-4*A*C))', scope)
-          var Y2 = math.evaluate('A*b+3/2*a*(-B - sqrt(B*B-4*A*C))', scope)
-          scope.Y1 = Y1
-          scope.Y2 = Y2
-
-          var X1 = math.evaluate('(-b-cbrt(Y1)-cbrt(Y2))/3/a', scope)
-          var X2 = math.evaluate('(-2*b+cbrt(Y1)+cbrt(Y2)+sqrt(3)*(cbrt(Y1)-cbrt(Y2))*i)/6/a', scope)
-          var X3 = math.evaluate('(-2*b+cbrt(Y1)+cbrt(Y2)-sqrt(3)*(cbrt(Y1)-cbrt(Y2))*i)/6/a', scope)
-
-          var res = '\n③ 有一个实根和一对共轭虚根,\n   根据盛金公式2：\n' +
-            '   Y₁ = ' + math.format(Y1, PRECISION).toString() +
-            '\n   Y₂ = ' + math.format(Y2, PRECISION).toString() + '\n'
-
-          result = '   X₁ = ' + math.format(X1, PRECISION).toString() +
-            '\n   X₂ = ' + math.format(X2, PRECISION).toString() +
-            '\n   X₃ = ' + math.format(X3, PRECISION).toString()
-          process = process + res + result
-        } else if (Number(delta) < 0) {
-          var T = math.evaluate('(2*A*b-3*a*B)/(2*(A^(3/2)))', scope)
-          scope.T = T
-          var theta = math.evaluate('acos(T)', scope)
-
-          scope.theta = theta
-          console.log(T.toString(), scope.theta.toString())
-          var X1 = math.evaluate('(-b-2*sqrt(A)*cos(theta/3))/3/a', scope)
-          var X2 = math.evaluate('(-b+sqrt(A)*(cos(theta/3)+sqrt(3)*sin(theta/3)))/3/a', scope)
-          var X3 = math.evaluate('(-b+sqrt(A)*(cos(theta/3)-sqrt(3)*sin(theta/3)))/3/a', scope)
-
-          var res = '\n③ 有三个不相等的实根,\n   根据盛金公式2：\n' +
-            '   T = ' + math.format(T, PRECISION).toString() +
-            '\n   θ = ' + math.format(theta, PRECISION).toString() + ' = ' + math.format(theta * 180 / Math.PI, PRECISION).toString() + '°\n'
-
-          result = '   X₁ = ' + math.format(X1, PRECISION).toString() +
-            '\n   X₂ = ' + math.format(X2, PRECISION).toString() +
-            '\n   X₃ = ' + math.format(X3, PRECISION).toString()
-          process = process + res + result
-        } */
-
+        break;
+      case 3:
+        // result = this.solve4Equaltion(scope).result
+        process = this.solve4Equaltion(scope).process
         break;
       default:
         break;
@@ -408,6 +306,118 @@ Page({
     RES.result = result
     RES.process = process
     return RES
+  },
+  solve4Equaltion: function (scope) {
+    const parser = math.parser()
+    //console.log(parser.evaluate('h / 2').toString())
+    var a = scope.a
+    var b = scope.b
+    var c = scope.c
+    var d = scope.d
+    var e = scope.e
+    parser.set('a', a)
+    parser.set('b', b)
+    parser.set('c', c)
+    parser.set('d', d)
+    parser.set('e', e)
+    parser.set('w', math.complex(parser.evaluate('-0.5+sqrt(3)/2*i').toString()))
+    var result = 0,
+      process
+    var res = {}
+    var P = math.complex(parser.evaluate('(c*c+12*a*e-3*b*d)/9').toString())
+    var Q = math.complex(parser.evaluate('(27*a*d*d+2*c*c*c+27*b*b*e-72*a*c*e-9*b*c*d)/54').toString())
+    parser.set('Q', Q)
+    parser.set('P', P)
+    var D = math.complex(parser.evaluate('sqrt(Q*Q-P*P*P)').toString())
+
+    parser.set('D', D)
+
+    console.log('Q', Q)
+    console.log('P', P)
+    console.log('D', D)
+    console.log('w', parser.get('w'))
+    var u1 = math.norm(parser.evaluate('Q+D')).toString()
+    var u2 = math.norm(parser.evaluate('Q-D')).toString(),
+      u, v, k, m, S, T
+      console.log('u1', u1)
+      console.log('u2', u2)
+
+
+    if (math.larger(u1, u2)) {
+      u = parser.evaluate('cbrt(Q+D)').toString()
+    } else {
+      u = parser.evaluate('cbrt(Q-D)').toString()
+    }
+    parser.set('u', math.complex(u))
+    console.log('u', u)
+    if (math.isZero(u)) {
+      v = 0
+    } else {
+      v = parser.evaluate('P/u').toString()
+    }
+    parser.set('v', math.complex(v))
+    console.log('v', v)
+
+
+    var m1 = math.norm(parser.evaluate('sqrt(b*b-8/3*a*c+4*a*(u+w*w*w*v))'))
+    var m2 = math.norm(parser.evaluate('sqrt(b*b-8/3*a*c+4*a*(w*u+w*w*v))'))
+    var m3 = math.norm(parser.evaluate('sqrt(b*b-8/3*a*c+4*a*(w*w*u+w*v))'))
+    console.log(m1, m2, m3)
+    console.log(math.max(m2, m1, m3))
+
+    if (math.max(m2, m1, m3) == 0) {
+      m = 0
+      S = parser.evaluate('b*b-8/3*a*c')
+      T = 0
+    } else {
+      if (math.max(m2, m1, m3) == m1) {
+        k = 1
+
+      } else if (math.max(m2, m1, m3) == m2) {
+        k = 2
+      } else {
+        k = 3
+      }
+      k = 3
+      m=math.max(m2, m1, m3)
+      parser.set('m', m)
+      parser.set('k', k)
+      console.log('m', m)
+      console.log('k', k)
+      S = parser.evaluate('2*b*b-16/3*a*c-4*a*(w^(k-1)*u+v*w^(4-k))')
+      T = parser.evaluate('(8*a*b*c-16*a*a*d-2*b*b*b)/m')
+    }
+      parser.set('m', m)
+    parser.set('S', S)
+    parser.set('T', T)
+    console.log(S)
+    console.log(T.toString())
+
+    var X1 = parser.evaluate('(-b+(-1)^(1/2)*m+(-1)^2*sqrt(S+(-1)^(1/2)*T))/4/a').toString()
+    var X2 = parser.evaluate('(-b+(-1)^(2/2)*m+(-1)^3*sqrt(S+(-1)^(2/2)*T))/4/a').toString()
+    var X3 = parser.evaluate('(-b+(-1)^(3/2)*m+(-1)^4*sqrt(S+(-1)^(3/2)*T))/4/a').toString()
+    var X4 = parser.evaluate('(-b+(-1)^(4/2)*m+(-1)^5*sqrt(S+(-1)^(4/2)*T))/4/a').toString()
+    console.log(X1,X2,X3,X4)
+
+    /*     var A = math.evaluate('D*D-3*F', scope).toString()
+        var B = math.evaluate('F*D-9*E*E', scope).toString()
+        var C = math.evaluate('F*F-3*D*E*E', scope).toString()
+        scope.A = A
+        scope.B = B
+        scope.C = C
+        delta = math.evaluate('B*B-4*A*C', scope)
+        delta = math.format(delta, PRECISION).toString()
+        if (math.larger(delta, -1e-10) && math.smaller(delta, 1e-10)) {
+          delta = 0
+        } */
+
+    /*     process = '① 重根判别式：\n   P = ' + P + '\n   Q = ' + Q + '\n   D = ' + D 
+        +'\n   u1 = ' + u1 + '\n   u2 = ' + u2 + '\n   u = ' + u 
+
+     */
+    res.result = result
+    res.process = process
+    return res
   },
   inputPara: function (e) {
     var id = e.target.id

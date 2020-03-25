@@ -69,8 +69,8 @@
 	</view>
 	<view class="btnbox" style="height:{{isScientific?8:10}}vh">
 		<button id='{{id_e}}' bindtap="clickBtn" wx:if="{{isScientific}}" style="font-size:{{isScientific?40:60}}rpx;height:{{isScientific?8:10}}vh;width:{{isScientific?20:25}}vw">e</button>
-		<button id='{{id0}}' style="font-size:{{isScientific?40:60}}rpx;height:{{isScientific?8:10}}vh;width:{{isScientific?20:25}}vw" bindtap="clickBtn">0</button>
 		<button id='{{id_dot}}' bindtap="clickBtn" style="font-size:{{isScientific?40:60}}rpx;height:{{isScientific?8:10}}vh;width:{{isScientific?20:25}}vw">.</button>
+		<button id='{{id0}}' style="font-size:{{isScientific?40:60}}rpx;height:{{isScientific?8:10}}vh;width:{{isScientific?20:25}}vw" bindtap="clickBtn">0</button>
 		<button id='{{id_ans}}' bindtap="clickBtn" style="font-size:{{isScientific?40:60}}rpx;height:{{isScientific?8:10}}vh;width:{{isScientific?20:25}}vw">A</button>
 		<button class="brown" id='{{id_equal}}' bindtap="equal" style="font-size:{{isScientific?40:60}}rpx;height:{{isScientific?8:10}}vh;width:{{isScientific?20:25}}vw">＝</button>
 	</view>
