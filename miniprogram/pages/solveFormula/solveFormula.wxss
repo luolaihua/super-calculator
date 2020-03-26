@@ -79,7 +79,7 @@ page{
 
 .result-box {
 
-  height: 15vh;
+  height: 18vh;
   margin-top: 3vh;
   border-bottom: 1px solid gainsboro;
   border-top: 1px solid gainsboro;
