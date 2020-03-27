@@ -166,11 +166,11 @@ Page({
           url: '../iqGame/iqGame',
         })
         break;
-        /*           case 10:
-                    wx.navigateTo({
-                      url: '../myRobot/myRobot',
-                    })
-                    break; */
+      case 10:
+        wx.navigateTo({
+          url: '../solveFormula/solveFormula',
+        })
+        break;
     }
   },
 

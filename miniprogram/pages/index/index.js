@@ -24,7 +24,7 @@ Page({
     isShowHistory:false,
     scrollTop: 100,
     isSound: false,
-    isScientific: true,
+    isScientific: false,
     isFraction: false,
     ANS: '0',
     poet: '',
@@ -428,7 +428,7 @@ Page({
     this.setData({
       res: '0',
       condition: 'initial',
-      //fontsize: 100
+      fontsize: 150
     })
 
     //加音效
@@ -732,7 +732,7 @@ Page({
     wx.navigateTo({
       //传参格式：参数与路径之间使用 ?分隔，参数键与参数值用 = 相连，
       //不同参数用 & 分隔；如 '/pages/index/index?value1=hello&value2=world'
-      url: '../scientificData/scientificData',
+      url: '../scientificData/scientificData?value='+'history',
       // 为指定事件添加一个监听器，获取被打开页面传送到当前页面的数据
       events: {
         getHistoryData: function (data) {
@@ -740,6 +740,7 @@ Page({
             res: data.data,
             condition: 'clicked'
           })
+          that.changeFontSize(data.data)
         }
       },
       success: function (res) {
@@ -758,7 +759,7 @@ Page({
     wx.navigateTo({
       //传参格式：参数与路径之间使用 ?分隔，参数键与参数值用 = 相连，
       //不同参数用 & 分隔；如 '/pages/index/index?value1=hello&value2=world'
-      url: '../scientificData/scientificData',
+      url: '../scientificData/scientificData?value='+'scientificData',
       // 为指定事件添加一个监听器，获取被打开页面传送到当前页面的数据
       events: {
         getScientifiData: function (data) {
@@ -767,6 +768,7 @@ Page({
             condition: 'clicked'
 
           })
+          that.changeFontSize(data.data)
         }
       },
       success: function (res) {
@@ -843,12 +845,14 @@ Page({
     var length = res.length,
       fontsize
 
-    if (length < 14) {
+    if (length < 8) {
       fontsize = 150
-    } else if (length < 26) {
-      fontsize = 120
+    } else if (length < 14) {
+      fontsize = 130
+    } else if (length < 28) {
+      fontsize = 110
     } else {
-      fontsize = 100
+      fontsize = 90
     }
     this.setData({
       fontsize

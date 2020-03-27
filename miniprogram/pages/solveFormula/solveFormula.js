@@ -25,30 +25,30 @@ Page({
   data: {
     process: '',
     result_fraction: 0,
-    result: 'X1=66666' + "\nX2=55555",
+    result: '',
     NumOfYuan: [0],
     NumOfCi: [0],
-    indexOfShow: 3,
+    indexOfShow: 0,
     indexOfYuan: 0,
     indexOfCi: 0,
     paraList: [{
       name: 'a',
-      value: 1
+      value: 0
     }, {
       name: 'b',
-      value: 2
+      value: 0
     }, {
       name: 'c',
-      value: 3
+      value: 0
     }, {
       name: 'd',
-      value: 4
+      value: 0
     }, {
       name: 'e',
-      value: -52
+      value: 0
     }, ],
 
-    yuan: ['一', '二', '三', '四', '五'],
+    yuan: ['一'],
     ci: ['一', '二', '三', '四'],
     formulaList: ['aX+b=0', 'aX²+bX+c=0', 'aX³+bX²+cX+d=0', 'aX⁴+bX³+cX²+dX+e=0', ]
   },
@@ -89,7 +89,7 @@ Page({
     var paraList = this.data.paraList
     for (let index = 0; index < paraList.length; index++) {
       try {
-        paraList[index].value = math.evaluate(paraList[index].value + '')
+        paraList[index].value = math.evaluate(paraList[index].value + '').toString()
       } catch (e) {
         console.log(e)
         wx.showToast({
@@ -243,7 +243,9 @@ Page({
     if (math.larger(delta, -1e-10) && math.smaller(delta, 1e-10)) {
       delta = 0
     }
-
+    A = math.format(A, PRECISION).toString()
+    B = math.format(B, PRECISION).toString()
+    C = math.format(C, PRECISION).toString()
     process = '① 重根判别式：\n   A = b²-3ac = ' + A + '\n   B = bc-9ad = ' + B + '\n   C = c²-3bd = ' + C +
       '\n② 总判别式：\n' + '   Δ = B²-4AC = ' + delta
 
@@ -350,14 +352,21 @@ Page({
     if (math.larger(delta, -1e-10) && math.smaller(delta, 1e-10)) {
       delta = 0
     }
-    console.log('D', D)
-    console.log('E', E)
-    console.log('F', F)
-    console.log('A', A)
-    console.log('B', B)
-    console.log('C', C)
-    console.log('delta', delta)
-
+    /*     console.log('D', D)
+        console.log('E', E)
+        console.log('F', F)
+        console.log('A', A)
+        console.log('B', B)
+        console.log('C', C)
+        console.log('delta', delta)
+     */
+    A = math.format(A, PRECISION).toString()
+    B = math.format(B, PRECISION).toString()
+    C = math.format(C, PRECISION).toString()
+    D = math.format(D, PRECISION).toString()
+    E = math.format(E, PRECISION).toString()
+    F = math.format(F, PRECISION).toString()
+    delta = math.format(delta, PRECISION).toString()
     process = '① 重根判别式：\n   D = ' + D + '\n   E = ' + E + '\n   F = ' + F +
       '\n   A = ' + A + '\n   B = ' + B + '\n   C = ' + C +
       '\n② 总判别式：\n' + '   Δ = B²-4AC = ' + delta
@@ -406,13 +415,13 @@ Page({
         '\n   X₃=X₄= ' + math.format(X3, PRECISION).toString()
       process = process + '\n③方程有一对二重实根；若AB>0，则其余两根为不等实根；若AB<0，则其余两根为共轭虚根。\n' + result
 
-    }else if (delta > 0) {
+    } else if (delta > 0) {
       //55555555555
       var z1 = parser.evaluate('A*D+3/2*(-B+sqrt(B*B-4*A*C))')
       var z2 = parser.evaluate('A*D+3/2*(-B-sqrt(B*B-4*A*C))')
       parser.set('z1', z1)
       parser.set('z2', z2)
-  
+
       var z = parser.evaluate('D*D-D*(cbrt(z1)+cbrt(z2))+(cbrt(z1)+cbrt(z2))^2-3*A')
       parser.set('z', z)
 
@@ -425,11 +434,11 @@ Page({
       console.log('X3', X3)
       console.log('X4', X4)
       result = '   X₁= ' + math.format(X1, PRECISION).toString() + '\n   X₂= ' + math.format(X2, PRECISION).toString() +
-        '\n   X₃= ' + math.format(X3, PRECISION).toString()+
+        '\n   X₃= ' + math.format(X3, PRECISION).toString() +
         '\n   X₄= ' + math.format(X4, PRECISION).toString()
       process = process + '\n③当Δ>0时，方程有两个不等实根和一对共轭虚根。\n' + result
 
-    }else if (delta < 0) {
+    } else if (delta < 0) {
       //66666666666
       var theta = parser.evaluate('acos((3*B-2*A*D)/2/A/sqrt(A))')
       parser.set('theta', theta)
@@ -439,33 +448,33 @@ Page({
       parser.set('y1', y1)
       parser.set('y2', y2)
       parser.set('y3', y3)
-  
-      if(E==0&&D>0&&F>0){
+
+      if (E == 0 && D > 0 && F > 0) {
         //若E=0,D>0,F>0
         var X1 = parser.evaluate('(-b+sqrt(D+2*sqrt(F)))/4/a')
         var X2 = parser.evaluate('(-b-sqrt(D+2*sqrt(F)))/4/a')
         var X3 = parser.evaluate('(-b+sqrt(D-2*sqrt(F)))/4/a')
         var X4 = parser.evaluate('(-b-sqrt(D-2*sqrt(F)))/4/a')
-      }else if(E==0&&D<0&&F>0){
+      } else if (E == 0 && D < 0 && F > 0) {
         //若E=0,D<0,F>0，
         var X1 = parser.evaluate('(-b+i*sqrt(-D+2*sqrt(F)))/4/a')
         var X2 = parser.evaluate('(-b-i*sqrt(-D+2*sqrt(F)))/4/a')
         var X3 = parser.evaluate('(-b+i*sqrt(-D-2*sqrt(F)))/4/a')
         var X4 = parser.evaluate('(-b-i*sqrt(-D-2*sqrt(F)))/4/a')
-      }else if(E==0&&F<0){
+      } else if (E == 0 && F < 0) {
         //若E=0,F<0
         var X1 = parser.evaluate('(-2*b+sqrt(2*D+2*sqrt(A-F))+i*sqrt(-2*D+2*sqrt(A-F)))/8/a')
         var X2 = parser.evaluate('(-2*b+sqrt(2*D+2*sqrt(A-F))-i*sqrt(-2*D+2*sqrt(A-F)))/8/a')
         var X3 = parser.evaluate('(-2*b-sqrt(2*D+2*sqrt(A-F))+i*sqrt(-2*D+2*sqrt(A-F)))/8/a')
         var X4 = parser.evaluate('(-2*b-sqrt(2*D+2*sqrt(A-F))-i*sqrt(-2*D+2*sqrt(A-F)))/8/a')
-      }else if(E!=0){
+      } else if (E != 0) {
         //若E≠0
-        if(D>0&&F>0){
+        if (D > 0 && F > 0) {
           var X1 = parser.evaluate('(-b+sgnE*sqrt(y1)+(sqrt(y2)+sqrt(y3)))/4/a')
           var X2 = parser.evaluate('(-b+sgnE*sqrt(y1)-(sqrt(y2)+sqrt(y3)))/4/a')
           var X3 = parser.evaluate('(-b-sgnE*sqrt(y1)+(sqrt(y2)-sqrt(y3)))/4/a')
           var X4 = parser.evaluate('(-b-sgnE*sqrt(y1)-(sqrt(y2)-sqrt(y3)))/4/a')
-        }else{
+        } else {
           var X1 = parser.evaluate('(-b-sqrt(y2)+(sgnE*sqrt(-y1)+sqrt(-y3))*i)/4/a')
           var X2 = parser.evaluate('(-b-sqrt(y2)-(sgnE*sqrt(-y1)+sqrt(-y3))*i)/4/a')
           var X3 = parser.evaluate('(-b+sqrt(y2)+(sgnE*sqrt(-y1)-sqrt(-y3))*i)/4/a')
@@ -475,112 +484,19 @@ Page({
       }
 
 
-      console.log('X1', X1)
-      console.log('X2', X2)
-      console.log('X3', X3)
-      console.log('X4', X4)
+      /*       console.log('X1', X1)
+            console.log('X2', X2)
+            console.log('X3', X3)
+            console.log('X4', X4) */
       result = '   X₁= ' + math.format(X1, PRECISION).toString() + '\n   X₂= ' + math.format(X2, PRECISION).toString() +
-        '\n   X₃= ' + math.format(X3, PRECISION).toString()+
+        '\n   X₃= ' + math.format(X3, PRECISION).toString() +
         '\n   X₄= ' + math.format(X4, PRECISION).toString()
       process = process + '\n③当Δ<0时，若D与F均为正数，则方程有四个不等实根；否则方程有两对不等共轭虚根\n' + result
 
     }
-   
-
     res.result = result
     res.process = process
     return res
-    /*    var P = math.complex(parser.evaluate('(c*c+12*a*e-3*b*d)/9').toString())
-        var Q = math.complex(parser.evaluate('(27*a*d*d+2*c*c*c+27*b*b*e-72*a*c*e-9*b*c*d)/54').toString())
-        parser.set('Q', Q)
-        parser.set('P', P)
-        var D = math.complex(parser.evaluate('sqrt(Q*Q-P*P*P)').toString())
-
-        parser.set('D', D)
-
-         console.log('Q', Q)
-        console.log('P', P)
-        console.log('D', D)
-        console.log('w', parser.get('w'))
-        var u1 = math.norm(parser.evaluate('Q+D')).toString()
-        var u2 = math.norm(parser.evaluate('Q-D')).toString(),
-          u, v, k, m, S, T
-          console.log('u1', u1)
-          console.log('u2', u2)
-
-
-        if (math.larger(u1, u2)) {
-          u = parser.evaluate('cbrt(Q+D)').toString()
-        } else {
-          u = parser.evaluate('cbrt(Q-D)').toString()
-        }
-        parser.set('u', math.complex(u))
-        console.log('u', u)
-        if (math.isZero(u)) {
-          v = 0
-        } else {
-          v = parser.evaluate('P/u').toString()
-        }
-        parser.set('v', math.complex(v))
-        console.log('v', v)
-
-
-        var m1 = math.norm(parser.evaluate('sqrt(b*b-8/3*a*c+4*a*(u+w*w*w*v))'))
-        var m2 = math.norm(parser.evaluate('sqrt(b*b-8/3*a*c+4*a*(w*u+w*w*v))'))
-        var m3 = math.norm(parser.evaluate('sqrt(b*b-8/3*a*c+4*a*(w*w*u+w*v))'))
-        console.log(m1, m2, m3)
-        console.log(math.max(m2, m1, m3))
-
-        if (math.max(m2, m1, m3) == 0) {
-          m = 0
-          S = parser.evaluate('b*b-8/3*a*c')
-          T = 0
-        } else {
-          if (math.max(m2, m1, m3) == m1) {
-            k = 1
-
-          } else if (math.max(m2, m1, m3) == m2) {
-            k = 2
-          } else {
-            k = 3
-          }
-          m=math.max(m2, m1, m3)
-          parser.set('m', m)
-          parser.set('k', k)
-          console.log('m', m)
-          console.log('k', k)
-          S = parser.evaluate('2*b*b-16/3*a*c-4*a*(w^(k-1)*u+v*w^(4-k))')
-          T = parser.evaluate('(8*a*b*c-16*a*a*d-2*b*b*b)/m')
-        }
-          parser.set('m', m)
-        parser.set('S', S)
-        parser.set('T', T)
-        console.log(S)
-        console.log(T.toString())
-
-        var X1 = parser.evaluate('(-b+(-1)^(1/2)*m+(-1)^2*sqrt(S+(-1)^(1/2)*T))/4/a').toString()
-        var X2 = parser.evaluate('(-b+(-1)^(2/2)*m+(-1)^3*sqrt(S+(-1)^(2/2)*T))/4/a').toString()
-        var X3 = parser.evaluate('(-b+(-1)^(3/2)*m+(-1)^4*sqrt(S+(-1)^(3/2)*T))/4/a').toString()
-        var X4 = parser.evaluate('(-b+(-1)^(4/2)*m+(-1)^5*sqrt(S+(-1)^(4/2)*T))/4/a').toString()
-        console.log(X1,X2,X3,X4) */
-
-    /*     var A = math.evaluate('D*D-3*F', scope).toString()
-        var B = math.evaluate('F*D-9*E*E', scope).toString()
-        var C = math.evaluate('F*F-3*D*E*E', scope).toString()
-        scope.A = A
-        scope.B = B
-        scope.C = C
-        delta = math.evaluate('B*B-4*A*C', scope)
-        delta = math.format(delta, PRECISION).toString()
-        if (math.larger(delta, -1e-10) && math.smaller(delta, 1e-10)) {
-          delta = 0
-        } */
-
-    /*     process = '① 重根判别式：\n   P = ' + P + '\n   Q = ' + Q + '\n   D = ' + D 
-        +'\n   u1 = ' + u1 + '\n   u2 = ' + u2 + '\n   u = ' + u 
-
-     */
-
   },
   inputPara: function (e) {
     var id = e.target.id
@@ -595,7 +511,7 @@ Page({
       paraList
     })
     // console.log(id, value)
-    console.log(paraList)
+    //console.log(paraList)
   },
   bindChangeYuan: function (e) {
     var indexOfYuan = e.detail.value[0]

@@ -121,23 +121,26 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function () {
+  onLoad: function (option) {
+    //console.log(option)
     var that = this
-    var message = ''
+    var message = option.value
     var dataArr = ''
     const eventChannel = this.getOpenerEventChannel()
     eventChannel.on('acceptDataFromOpenerPage', function (data) {
-      console.log(data.data)
-      message = data.data
+      //console.log(data.data)
+     // message = data.data
       that.setData({
         message: data.data
       })
     })
-
+//console.log(message,'???---')
     if (message == 'history') {
       dataArr = wx.getStorageSync('historyArr')
+     // console.log('???')
     } else {
       dataArr = scientificData
+     // console.log('------')
     }
     this.setData({
       array: dataArr
