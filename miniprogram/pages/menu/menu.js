@@ -95,10 +95,10 @@ Page({
         name: '解方程',
         url: 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/formula2.png?sign=4bb677a8286994c9ac7f65c197d4b451&t=1584948328'
       },
-      /* {
-              name: 'Robot',
-              url: 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/robot2.png?sign=887fbe785832601321b5a29d9f48e26d&t=1583915103'
-            } */
+      {
+        name: '宠物年龄计算',
+        url: 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/dog.png?sign=8308889b4d9f08aba9c4b1209116dc95&t=1585277948'
+      }
 
     ]
   },
