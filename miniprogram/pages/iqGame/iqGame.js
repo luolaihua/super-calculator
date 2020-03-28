@@ -396,6 +396,16 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
+    return {
+       title:'我已经闯过了'+this.data.successNum+ '关，看看你能过几关~',
+       path: '/pages/solveFormula/solveFormula',
+       success: function (res) {
+          console.log('成功进入分享==========', res);
 
-  }
+       },
+       fail: function (res) {
+          console.log('进入分享失败==========', res);
+       }
+    }
+ },
 })

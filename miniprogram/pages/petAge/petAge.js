@@ -15,52 +15,21 @@ Page({
       url: 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/animalsPic/cat2.png?sign=8231aeb1281fb01a15bbc05f1382b381&t=1585290101'
     },
     {
-      name: '猪',
-      url: 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/tice.png?sign=4377add665517649836f45cdeb025d84&t=1583810682'
-    },
-    {
       name: '仓鼠',
-      url: 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/bmi_heart.png?sign=0ce03487b7fc0209cd34cc99a0d8eb73&t=1583810706'
+      url: 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/animalsPic/cangshu.png?sign=bbc89fe72017dd2dbfe3dd359fc550a5&t=1585359084'
     },
     {
       name: '龙猫',
-      url: 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/dianzu.png?sign=13107795a86da836e239ddcbb9eeb764&t=1583810720'
+      url: 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/animalsPic/longmao.png?sign=ad2626eb2214a0017b0ef40c74f0a5ec&t=1585359171'
     },
     {
       name: '兔子',
-      url: 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/tushe.png?sign=c1d696b5abf791809d1827df41b0041c&t=1583810736'
+      url: 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/animalsPic/rabbit.png?sign=ccc71b81c5eb30c96073c106a584e916&t=1585359281'
     },
-    {
-      name: '乌龟',
-      url: 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/laugh.png?sign=c967f9a3732781aac35db6247aa5b126&t=1583833459'
-    }, {
-      name: '豚鼠',
-      url: 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/zhishang.png?sign=93f2e91128fb2b9e9bb9b87de7472b2a&t=1583810771'
-    }, {
-      name: '鱼',
-      url: 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/l.png?sign=b0771e17f0466b51de37266784bc51fc&t=1583810797'
-    }, {
-      name: '马',
-      url: 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/math.png?sign=1261d5d036cd39ca8d2314219e969249&t=1583851184'
-    }, {
-      name: '牛',
-      url: 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/formula2.png?sign=4bb677a8286994c9ac7f65c197d4b451&t=1584948328'
-    },
-    {
-      name: '羊',
-      url: 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/dog.png?sign=8308889b4d9f08aba9c4b1209116dc95&t=1585277948'
-    }, {
-      name: '鸡',
-      url: 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/math.png?sign=1261d5d036cd39ca8d2314219e969249&t=1583851184'
-    }, {
-      name: '鸭',
-      url: 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/formula2.png?sign=4bb677a8286994c9ac7f65c197d4b451&t=1584948328'
-    },
-    {
-      name: '鹅',
-      url: 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/dog.png?sign=8308889b4d9f08aba9c4b1209116dc95&t=1585277948'
-    }
-
+/*     {
+      name: '关于',
+      url: 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/animalsPic/human.png?sign=f1be6b14b63398f1293a42dc626ab3a8&t=1585308592'
+    } */
   ]
   },
   navigateTo: function (e) {
@@ -74,39 +43,23 @@ Page({
     var id = Number(e.currentTarget.id)
     switch (id) {
       case 0:
-        which = '狗狗'
+        which = '狗狗&index=0'
 
         break;
       case 1:
-        which = '猫猫'
-
-        break;
-      case 6:
-
-        break;
-      case 5:
-
-        break;
-      case 3:
-
+        which = '猫猫&index=1'
         break;
       case 2:
-
+        which = '仓鼠&index=2'
+        break;
+      case 3:
+        which = '龙猫&index=3'
         break;
       case 4:
-
+        which = '兔兔&index=4'
         break;
-      case 7:
-
-        break;
-      case 8:
-
-        break;
-      case 9:
-
-        break;
-      case 10:
-
+      case 5:
+        which = 'about&index=5'
         break;
     }
     wx.navigateTo({
@@ -167,6 +120,16 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
+    return {
+       title: '来算一算你家宠物几岁啦~',
+       path: '/pages/petAge/petAge',
+       success: function (res) {
+          console.log('成功进入分享==========', res);
 
-  }
+       },
+       fail: function (res) {
+          console.log('进入分享失败==========', res);
+       }
+    }
+ },
 })

@@ -1,19 +1,44 @@
 // miniprogram/pages/petAge/ageCalculate/ageCalculate.js
 const calcuPetAge = require('../../util/calcuPetAge')
-console.log(Math.round(0.264))
+//console.log(Math.round(0.264))
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    petName:'test',
-    petUrl:'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/dog.png?sign=8308889b4d9f08aba9c4b1209116dc95&t=1585277948',
+    petName: 'test',
+    petUrl: 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/dog.png?sign=8308889b4d9f08aba9c4b1209116dc95&t=1585277948',
     year: 0,
     month: 0,
     isShowHumanAge: false,
     human2PetAge: 0,
     pet2humanAge: 0,
+    grids: [{
+      name: '狗',
+      url: 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/animalsPic/dog2.png?sign=e41ffa5cbb8aa43b13871514ff0b36b6&t=1585289910'
+    },
+    {
+      name: '猫',
+      url: 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/animalsPic/cat2.png?sign=8231aeb1281fb01a15bbc05f1382b381&t=1585290101'
+    },
+    {
+      name: '仓鼠',
+      url: 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/animalsPic/cangshu.png?sign=bbc89fe72017dd2dbfe3dd359fc550a5&t=1585359084'
+    },
+    {
+      name: '龙猫',
+      url: 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/animalsPic/longmao.png?sign=ad2626eb2214a0017b0ef40c74f0a5ec&t=1585359171'
+    },
+    {
+      name: '兔子',
+      url: 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/animalsPic/rabbit.png?sign=ccc71b81c5eb30c96073c106a584e916&t=1585359281'
+    },
+    {
+      name: '关于',
+      url: 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/animalsPic/human.png?sign=f1be6b14b63398f1293a42dc626ab3a8&t=1585308592'
+    }
+  ]
 
   },
   isShowHumanAge: function (e) {
@@ -26,22 +51,35 @@ Page({
     //处理输入数据
     var year = Number(this.data.year)
     var month = Number(this.data.month)
-    year = Number((year +month / 12).toFixed(2))
+    year = Number((year + month / 12).toFixed(2))
     //console.log(Math.round(0.564))
-    var petName = this.data.petName,res={}
-    res = calcuPetAge.tuZiAge(month,year)
-/*     switch (petName) {
+    var petName = this.data.petName,
+      res = {}
+    //res = calcuPetAge.tuZiAge(month, year)
+    switch (petName) {
       case '狗狗':
         res = calcuPetAge.dogAge(year)
         console.log('wangwang')
         break;
-        case '猫猫':
-          res = calcuPetAge.catAge(year)
-          console.log('miaomiao')
-          break;
+      case '猫猫':
+        res = calcuPetAge.catAge(year)
+        console.log('miaomiao')
+        break;
+      case '仓鼠':
+        res = calcuPetAge.cangShuAge(month, year)
+        //console.log('miaomiao')
+        break;
+      case '龙猫':
+        res = calcuPetAge.longMaoAge(year)
+        //console.log('miaomiao')
+        break;
+      case '兔兔':
+        res = calcuPetAge.tuZiAge(month, year)
+        
+        break;
       default:
         break;
-    } */
+    }
     var pet2humanAge = res.pet2humanAge
     var human2PetAge = res.human2PetAge
 
@@ -85,9 +123,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options.value)
+    var index = Number(options.index)
+    var petUrl = this.data.grids[index].url
+    //console.log(options.value)
+   // console.log(options.index)
     this.setData({
-      petName:options.value
+      petName: options.value,
+      petUrl
     })
   },
 
@@ -137,6 +179,16 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
+    return {
+       title: '来算一算你家'+this.data.petName+'几岁啦~',
+       path: '/pages/petAge/ageCalculate/ageCalculate',
+       success: function (res) {
+          console.log('成功进入分享==========', res);
 
-  }
+       },
+       fail: function (res) {
+          console.log('进入分享失败==========', res);
+       }
+    }
+ },
 })

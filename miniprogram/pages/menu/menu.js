@@ -171,6 +171,11 @@ Page({
           url: '../solveFormula/solveFormula',
         })
         break;
+        case 11:
+          wx.navigateTo({
+            url: '../petAge/petAge',
+          })
+          break;
     }
   },
 
