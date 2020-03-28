@@ -1,11 +1,10 @@
 {
   "pages": [
+      "pages/index/index",  
+    "pages/boringTime/boringTime",
 
-        "pages/index/index",
-     "pages/petAge/petAge",   
+    "pages/petAge/petAge",
     "pages/petAge/ageCalculate/ageCalculate",
-
-
     "pages/solveFormula/solveFormula",
     "pages/myMatrices/myMatrices",
     "pages/bigWheel/bigWheel",

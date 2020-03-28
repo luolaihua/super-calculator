@@ -98,6 +98,10 @@ Page({
       {
         name: '宠物年龄计算',
         url: 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/dog.png?sign=8308889b4d9f08aba9c4b1209116dc95&t=1585277948'
+      },
+      {
+        name: '无聊计算',
+        url: 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/laugh3.png?sign=04ee9551d37b49da8f003b861189e5f5&t=1585366101'
       }
 
     ]
@@ -176,6 +180,11 @@ Page({
             url: '../petAge/petAge',
           })
           break;
+          case 12:
+            wx.navigateTo({
+              url: '../boringTime/boringTime',
+            })
+            break;
     }
   },
 

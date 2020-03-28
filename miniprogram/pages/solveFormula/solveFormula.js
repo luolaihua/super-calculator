@@ -543,7 +543,30 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var isShowSolveFormula = wx.getStorageSync('isShowSolveFormula')
+    if(isShowSolveFormula===''){
+      wx.setStorageSync('isShowSolveFormula', true)
+      isShowSolveFormula = true
+    }
+    if(isShowSolveFormula){
+      wx.showModal({
+        title: '解方程',
+        content: '此计算器可以解一元一次至一元四次方程，上下滑动标题可切换方程',
+        cancelText: '不再提醒',
+        confirmText: '我知道了',
+        confirmColor: '#3CC51F',
+        success(res) {
+          if (res.confirm) {
+            console.log('用户点击确定')
+          } else if (res.cancel) {
+            console.log('用户点击取消')
+            wx.setStorageSync('isShowSolveFormula', false)
+          }
+        },
+        fail: function (res) {},
+        complete: function (res) {},
+      })
+    }
   },
 
   /**

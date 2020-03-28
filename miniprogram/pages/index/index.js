@@ -677,7 +677,8 @@ Page({
          arr.push(result)
         wx.setStorageSync('historyArr', arr)
        }else{
-        historyArr.push(result)
+        
+        historyArr.unshift(result)
         wx.setStorageSync('historyArr', historyArr)
        }
 

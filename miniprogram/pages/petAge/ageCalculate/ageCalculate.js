@@ -131,6 +131,31 @@ Page({
       petName: options.value,
       petUrl
     })
+
+    var isShowPetAge = wx.getStorageSync('isShowPetAge')
+    if(isShowPetAge===''){
+      wx.setStorageSync('isShowPetAge', true)
+      isShowPetAge = true
+    }
+    if(isShowPetAge){
+      wx.showModal({
+        title: '宠物年龄计算',
+        content: '宠物头像可以点击，切换人类和宠物年龄',
+        cancelText: '不再提醒',
+        confirmText: '我知道了',
+        confirmColor: '#3CC51F',
+        success(res) {
+          if (res.confirm) {
+            console.log('用户点击确定')
+          } else if (res.cancel) {
+            console.log('用户点击取消')
+            wx.setStorageSync('isShowPetAge', false)
+          }
+        },
+        fail: function (res) {},
+        complete: function (res) {},
+      })
+    }
   },
 
   /**
