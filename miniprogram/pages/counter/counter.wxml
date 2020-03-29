@@ -1,0 +1,19 @@
+<!--miniprogram/pages/counter/counter.wxml-->
+<view class="content" hover-class="opBtn-hover2" bindlongtap="clear">{{num}}</view>
+<view class="btn-box">
+	<button class="opBtn" hover-class="opBtn-hover1" style="height:25vh;width:25vh">
+		<image bindtap="sub" class="opImg" mode="aspectFit" src="https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/%E8%AE%A1%E6%95%B0%E5%99%A8%E5%87%8F.png?sign=1600f1f4d6542a553e7a455bfdddf3fd&t=1585486405"></image>
+	</button>
+	<button class="opBtn" hover-class="opBtn-hover2" style="height:25vh;width:25vh;">
+		<image bindtap="add" class="opImg" mode="aspectFit" src="https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/%E8%AE%A1%E6%95%B0%E5%99%A8%E5%8A%A0.png?sign=950a89f6247501e936a0c091ec0b8ee0&t=1585484785"></image>
+	</button>
+</view>
+<view class="setting-box " bindtouchstart="touchStart" bindtouchmove="touchMove" bindtouchend="touchEnd">
+	<view  class="setting-box1  {{!isOpen?'left':'right'}}">
+		<image bindtap="setting" class="setting" src="https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/wen_black.png?sign=0ad92b2c63f9ea67b8a2a1f719f0f3bb&t=1583811721" mode="aspectFit"></image>
+		<image bindtap="setting" class="setting" src="{{isSound?'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/cacu_sound.png?sign=13d8d7d4049a51db489cee49b7fa1887&t=1583811768':'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/cacu_mute.png?sign=ac76e56c21b8e005e889ed19eb445ced&t=1583811803'}}" mode="aspectFit"></image>
+		<image bindtap="setting" class="setting" src="{{isSound?'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/cacu_sound.png?sign=13d8d7d4049a51db489cee49b7fa1887&t=1583811768':'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/cacu_mute.png?sign=ac76e56c21b8e005e889ed19eb445ced&t=1583811803'}}" mode="aspectFit"></image>
+		<image bindtap="setting" class="setting" src="{{isSound?'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/cacu_sound.png?sign=13d8d7d4049a51db489cee49b7fa1887&t=1583811768':'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/cacu_mute.png?sign=ac76e56c21b8e005e889ed19eb445ced&t=1583811803'}}" mode="aspectFit"></image>
+
+	</view>
+</view>

@@ -558,9 +558,6 @@ Page({
         case '×':
           innerAudioContext.src = 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/wav/%E4%B9%98.wav?sign=d6400ce05da72f732bf429ca98d5ef39&t=1582898529'
           break;
-        case '×':
-          innerAudioContext.src = ''
-          break;
         case 'sin(':
           innerAudioContext.src = 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/wav/sin.wav?sign=b25c6ed7f78535a5edfb151bc1837ec7&t=1582903026'
           break;

@@ -102,6 +102,14 @@ Page({
       {
         name: '无聊计算',
         url: 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/laugh3.png?sign=04ee9551d37b49da8f003b861189e5f5&t=1585366101'
+      },
+      {
+        name: '数数器',
+        url: 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/%E6%95%B0%E5%AD%97.png?sign=2d788745a5546fe58fa62bc1cf237443&t=1585481895'
+      },
+      {
+        name: '二维码生成',
+        url: 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/qrcode.png?sign=55badb58d9a0f80593a553d81f92f408&t=1585483105'
       }
 
     ]
