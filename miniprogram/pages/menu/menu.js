@@ -183,16 +183,21 @@ Page({
           url: '../solveFormula/solveFormula',
         })
         break;
-        case 11:
-          wx.navigateTo({
-            url: '../petAge/petAge',
-          })
-          break;
-          case 12:
-            wx.navigateTo({
-              url: '../boringTime/boringTime',
-            })
-            break;
+      case 11:
+        wx.navigateTo({
+          url: '../petAge/petAge',
+        })
+        break;
+      case 12:
+        wx.navigateTo({
+          url: '../boringTime/boringTime',
+        })
+        break;
+      case 13:
+        wx.navigateTo({
+          url: '../counter/counter',
+        })
+        break;
     }
   },
 

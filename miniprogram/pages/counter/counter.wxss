@@ -53,4 +53,7 @@ background-color: lightblue;
 .right{
   width: 0vw;
 }
+.noVibrate{
+  opacity: 0.2;
+}
 
