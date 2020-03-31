@@ -1,72 +1,144 @@
 <!--miniprogram/pages/myMatrices/myMatrices.wxml-->
 <view class="page">
 
-	<view class="body">
-		<view class="AB" bindtap="choose" style="background-color:{{isChoose?'lightskyblue':'white'}}">A</view>
-		<view class="picker-section">
-			<view class="picker1">
-				<picker-view indicator-style="height: 50px;" style="width: 50rpx; height: 180rpx;background-color:white" value="{{valueA1}}" bindchange="bindChangeA1">
-					<picker-view-column>
-						<view wx:for="{{days}}" wx:key='*this' style="line-height: 50px">{{item}}行</view>
-					</picker-view-column>
-				</picker-view>
+	<swiper indicator-dots indicator-active-color="#87cefa" bindchange="changeSwiper" current="current_index">
+		<swiper-item>
+			<view class="body">
+				<view class="AB">A</view>
+				<view class="input-section" wx:if="{{isClearA}}">
+					<view class="input-box">
+						<input class="input" placeholder="0" bindinput="bindinputA" id="{{0}}"></input>
+						<input class="input" placeholder="0" bindinput="bindinputA" id="{{10}}" wx:if="{{rowA>1}}"></input>
+						<input class="input" placeholder="0" bindinput="bindinputA" id="{{20}}" wx:if="{{rowA>2}}"></input>
+						<input class="input" placeholder="0" bindinput="bindinputA" id="{{30}}" wx:if="{{rowA>3}}"></input>
+						<input class="input" placeholder="0" bindinput="bindinputA" id="{{40}}" wx:if="{{rowA>4}}"></input>
+
+					</view>
+					<view class="input-box" wx:if="{{coloumA>1}}">
+						<input class="input" placeholder="0" bindinput="bindinputA" id="{{01}}"></input>
+						<input class="input" placeholder="0" bindinput="bindinputA" id="{{11}}" wx:if="{{rowA>1}}"></input>
+						<input class="input" placeholder="0" bindinput="bindinputA" id="{{21}}" wx:if="{{rowA>2}}"></input>
+						<input class="input" placeholder="0" bindinput="bindinputA" id="{{31}}" wx:if="{{rowA>3}}"></input>
+						<input class="input" placeholder="0" bindinput="bindinputA" id="{{41}}" wx:if="{{rowA>4}}"></input>
+
+					</view>
+					<view class="input-box" wx:if="{{coloumA>2}}">
+						<input class="input" placeholder="0" bindinput="bindinputA" id="{{02}}"></input>
+						<input class="input" placeholder="0" bindinput="bindinputA" id="{{12}}" wx:if="{{rowA>1}}"></input>
+						<input class="input" placeholder="0" bindinput="bindinputA" id="{{22}}" wx:if="{{rowA>2}}"></input>
+						<input class="input" placeholder="0" bindinput="bindinputA" id="{{32}}" wx:if="{{rowA>3}}"></input>
+						<input class="input" placeholder="0" bindinput="bindinputA" id="{{42}}" wx:if="{{rowA>4}}"></input>
+
+					</view>
+					<view class="input-box" wx:if="{{coloumA>3}}">
+						<input class="input" placeholder="0" bindinput="bindinputA" id="{{03}}"></input>
+						<input class="input" placeholder="0" bindinput="bindinputA" id="{{13}}" wx:if="{{rowA>1}}"></input>
+						<input class="input" placeholder="0" bindinput="bindinputA" id="{{23}}" wx:if="{{rowA>2}}"></input>
+						<input class="input" placeholder="0" bindinput="bindinputA" id="{{33}}" wx:if="{{rowA>3}}"></input>
+						<input class="input" placeholder="0" bindinput="bindinputA" id="{{43}}" wx:if="{{rowA>4}}"></input>
+					</view>
+					<view class="input-box" wx:if="{{coloumA>4}}">
+						<input class="input" placeholder="0" bindinput="bindinputA" id="{{04}}"></input>
+						<input class="input" placeholder="0" bindinput="bindinputA" id="{{14}}" wx:if="{{rowA>1}}"></input>
+						<input class="input" placeholder="0" bindinput="bindinputA" id="{{24}}" wx:if="{{rowA>2}}"></input>
+						<input class="input" placeholder="0" bindinput="bindinputA" id="{{34}}" wx:if="{{rowA>3}}"></input>
+						<input class="input" placeholder="0" bindinput="bindinputA" id="{{44}}" wx:if="{{rowA>4}}"></input>
+
+					</view>
+
+				</view>
+
+				<view class="picker-section">
+					<view class="picker1">
+						<picker-view indicator-class="indicator" class="picker" value="{{valueA1}}" bindchange="bindChangeA1">
+							<picker-view-column>
+								<view class="picker-show" wx:for="{{days}}" wx:key='*this'>{{item}}行</view>
+							</picker-view-column>
+						</picker-view>
+					</view>
+					<view class="picker2">
+						<picker-view class="picker" value="{{valueA2}}" bindchange="bindChangeA2">
+							<picker-view-column>
+								<view class="picker-show" wx:for="{{days}}" wx:key='*this' style="line-height: 50px">{{item}}列</view>
+							</picker-view-column>
+						</picker-view>
+					</view>
+				</view>
 			</view>
-			<view class="picker2">
-				<picker-view indicator-style="height: 50px;" style="width: 50rpx; height: 180rpx;background-color:white" value="{{valueA2}}" bindchange="bindChangeA2">
-					<picker-view-column>
-						<view wx:for="{{days}}" wx:key='*this' style="line-height: 50px">{{item}}列</view>
-					</picker-view-column>
-				</picker-view>
-			</view>
-		</view>
-		<view class="input-section" wx:if="{{isClearA}}">
-			<view class="input-box">
-				<input class="input" placeholder="0" bindinput="bindinputA" id="{{0}}"></input>
-				<input class="input" placeholder="0" bindinput="bindinputA" id="{{10}}" wx:if="{{rowA>1}}"></input>
-				<input class="input" placeholder="0" bindinput="bindinputA" id="{{20}}" wx:if="{{rowA>2}}"></input>
-				<input class="input" placeholder="0" bindinput="bindinputA" id="{{30}}" wx:if="{{rowA>3}}"></input>
-				<input class="input" placeholder="0" bindinput="bindinputA" id="{{40}}" wx:if="{{rowA>4}}"></input>
+		</swiper-item>
+		<swiper-item>
+			<view class="body">
+				<view class="AB" >B</view>
+				<view class="input-section" wx:if="{{isClearB}}">
+					<view class="input-box">
+						<input class="input" placeholder="0" bindinput="bindinputB" id="{{0}}"></input>
+						<input class="input" placeholder="0" bindinput="bindinputB" id="{{10}}" wx:if="{{rowB>1}}"></input>
+						<input class="input" placeholder="0" bindinput="bindinputB" id="{{20}}" wx:if="{{rowB>2}}"></input>
+						<input class="input" placeholder="0" bindinput="bindinputB" id="{{30}}" wx:if="{{rowB>3}}"></input>
+						<input class="input" placeholder="0" bindinput="bindinputB" id="{{40}}" wx:if="{{rowB>4}}"></input>
+
+					</view>
+					<view class="input-box" wx:if="{{coloumB>1}}">
+						<input class="input" placeholder="0" bindinput="bindinputB" id="{{01}}"></input>
+						<input class="input" placeholder="0" bindinput="bindinputB" id="{{11}}" wx:if="{{rowB>1}}"></input>
+						<input class="input" placeholder="0" bindinput="bindinputB" id="{{21}}" wx:if="{{rowB>2}}"></input>
+						<input class="input" placeholder="0" bindinput="bindinputB" id="{{31}}" wx:if="{{rowB>3}}"></input>
+						<input class="input" placeholder="0" bindinput="bindinputB" id="{{41}}" wx:if="{{rowB>4}}"></input>
+
+					</view>
+					<view class="input-box" wx:if="{{coloumB>2}}">
+						<input class="input" placeholder="0" bindinput="bindinputB" id="{{02}}"></input>
+						<input class="input" placeholder="0" bindinput="bindinputB" id="{{12}}" wx:if="{{rowB>1}}"></input>
+						<input class="input" placeholder="0" bindinput="bindinputB" id="{{22}}" wx:if="{{rowB>2}}"></input>
+						<input class="input" placeholder="0" bindinput="bindinputB" id="{{32}}" wx:if="{{rowB>3}}"></input>
+						<input class="input" placeholder="0" bindinput="bindinputB" id="{{42}}" wx:if="{{rowB>4}}"></input>
+
+					</view>
+					<view class="input-box" wx:if="{{coloumB>3}}">
+						<input class="input" placeholder="0" bindinput="bindinputB" id="{{03}}"></input>
+						<input class="input" placeholder="0" bindinput="bindinputB" id="{{13}}" wx:if="{{rowB>1}}"></input>
+						<input class="input" placeholder="0" bindinput="bindinputB" id="{{23}}" wx:if="{{rowB>2}}"></input>
+						<input class="input" placeholder="0" bindinput="bindinputB" id="{{33}}" wx:if="{{rowB>3}}"></input>
+						<input class="input" placeholder="0" bindinput="bindinputB" id="{{43}}" wx:if="{{rowB>4}}"></input>
+					</view>
+					<view class="input-box" wx:if="{{coloumB>4}}">
+						<input class="input" placeholder="0" bindinput="bindinputB" id="{{04}}"></input>
+						<input class="input" placeholder="0" bindinput="bindinputB" id="{{14}}" wx:if="{{rowB>1}}"></input>
+						<input class="input" placeholder="0" bindinput="bindinputB" id="{{24}}" wx:if="{{rowB>2}}"></input>
+						<input class="input" placeholder="0" bindinput="bindinputB" id="{{34}}" wx:if="{{rowB>3}}"></input>
+						<input class="input" placeholder="0" bindinput="bindinputB" id="{{44}}" wx:if="{{rowB>4}}"></input>
+
+					</view>
+
+				</view>
+
+				<view class="picker-section">
+					<view class="picker1">
+						<picker-view class="picker" value="{{valueB1}}" bindchange="bindChangeB1">
+							<picker-view-column>
+								<view class="picker-show" wx:for="{{days}}" wx:key='*this'>{{item}}行</view>
+							</picker-view-column>
+						</picker-view>
+					</view>
+					<view class="picker2">
+						<picker-view class="picker" value="{{valueB2}}" bindchange="bindChangeB2">
+							<picker-view-column>
+								<view class="picker-show" wx:for="{{days}}" wx:key='*this'>{{item}}列</view>
+							</picker-view-column>
+						</picker-view>
+					</view>
+				</view>
 
 			</view>
-			<view class="input-box" wx:if="{{coloumA>1}}">
-				<input class="input" placeholder="0" bindinput="bindinputA" id="{{01}}"></input>
-				<input class="input" placeholder="0" bindinput="bindinputA" id="{{11}}" wx:if="{{rowA>1}}"></input>
-				<input class="input" placeholder="0" bindinput="bindinputA" id="{{21}}" wx:if="{{rowA>2}}"></input>
-				<input class="input" placeholder="0" bindinput="bindinputA" id="{{31}}" wx:if="{{rowA>3}}"></input>
-				<input class="input" placeholder="0" bindinput="bindinputA" id="{{41}}" wx:if="{{rowA>4}}"></input>
+		</swiper-item>
+	</swiper>
 
-			</view>
-			<view class="input-box" wx:if="{{coloumA>2}}">
-				<input class="input" placeholder="0" bindinput="bindinputA" id="{{02}}"></input>
-				<input class="input" placeholder="0" bindinput="bindinputA" id="{{12}}" wx:if="{{rowA>1}}"></input>
-				<input class="input" placeholder="0" bindinput="bindinputA" id="{{22}}" wx:if="{{rowA>2}}"></input>
-				<input class="input" placeholder="0" bindinput="bindinputA" id="{{32}}" wx:if="{{rowA>3}}"></input>
-				<input class="input" placeholder="0" bindinput="bindinputA" id="{{42}}" wx:if="{{rowA>4}}"></input>
-
-			</view>
-			<view class="input-box" wx:if="{{coloumA>3}}">
-				<input class="input" placeholder="0" bindinput="bindinputA" id="{{03}}"></input>
-				<input class="input" placeholder="0" bindinput="bindinputA" id="{{13}}" wx:if="{{rowA>1}}"></input>
-				<input class="input" placeholder="0" bindinput="bindinputA" id="{{23}}" wx:if="{{rowA>2}}"></input>
-				<input class="input" placeholder="0" bindinput="bindinputA" id="{{33}}" wx:if="{{rowA>3}}"></input>
-				<input class="input" placeholder="0" bindinput="bindinputA" id="{{43}}" wx:if="{{rowA>4}}"></input>
-			</view>
-			<view class="input-box" wx:if="{{coloumA>4}}">
-				<input class="input" placeholder="0" bindinput="bindinputA" id="{{04}}"></input>
-				<input class="input" placeholder="0" bindinput="bindinputA" id="{{14}}" wx:if="{{rowA>1}}"></input>
-				<input class="input" placeholder="0" bindinput="bindinputA" id="{{24}}" wx:if="{{rowA>2}}"></input>
-				<input class="input" placeholder="0" bindinput="bindinputA" id="{{34}}" wx:if="{{rowA>3}}"></input>
-				<input class="input" placeholder="0" bindinput="bindinputA" id="{{44}}" wx:if="{{rowA>4}}"></input>
-
-			</view>
-
-		</view>
-	</view>
 	<view class="op-section">
 		<view class="op-box">
 			<view class="opView" style="background-color:{{operator=='add'?'lightskyblue':'white'}}" bindtap="clickOperator" id="add">+</view>
 			<view class="opView" style="background-color:{{operator=='subtract'?'lightskyblue':'white'}}" bindtap="clickOperator" id="subtract">-</view>
-			<view class="opView" style="background-color:{{operator=='det'?'lightskyblue':'white'}}" bindtap="clickOperator" id="det">det</view>
+						<view class="opView" style="background-color:{{operator=='solve'?'lightskyblue':'white'}}" bindtap="clickOperator" id="solve">A*X=b</view>
+
 			<view class="opView" bindtap="clickOperator" style="background-color:{{operator=='Q'?'lightskyblue':'white'}}" id="Q">QR-Q</view>
 		</view>
 		<view class="op-box">
@@ -86,8 +158,8 @@
 		</view>
 		<view class="op-box">
 			<view class="opView" style="color:{{isFraction?'orange':'black'}}" id="fraction" bindtap="clickOperator">分式</view>
-			<view class="opView" style="background-color:{{operator=='solve'?'lightskyblue':'white'}}" bindtap="clickOperator" id="solve">A*X=b</view>
-			<view class="opView" style="background-color:{{operator=='trace'?'lightskyblue':'white'}}" bindtap="clickOperator" id="trace">trace</view>
+			<view class="opView" style="background-color:{{operator=='det'?'lightskyblue':'white'}}" bindtap="clickOperator" id="det">行列式</view>
+			<view class="opView" style="background-color:{{operator=='trace'?'lightskyblue':'white'}}" bindtap="clickOperator" id="trace">迹</view>
 			<view class="opView" style="background-color:{{operator=='U'?'lightskyblue':'white'}}" bindtap="clickOperator" id="U">LU-U</view>
 
 		</view>
@@ -104,67 +176,7 @@
 
 		</view>
 	</view>
-	<view class="body">
-		<view class="AB" bindtap="choose" style="background-color:{{isChoose?'white':'lightskyblue'}}">B</view>
-		<view class="picker-section">
-			<view class="picker1">
-				<picker-view indicator-style="height: 50px;" style="width: 50rpx; height: 180rpx;" value="{{valueB1}}" bindchange="bindChangeB1">
-					<picker-view-column>
-						<view wx:for="{{days}}" wx:key='*this' style="line-height: 50px">{{item}}行</view>
-					</picker-view-column>
-				</picker-view>
-			</view>
-			<view class="picker2">
-				<picker-view indicator-style="height: 50px;" style="width: 50rpx; height: 180rpx;" value="{{valueB2}}" bindchange="bindChangeB2">
-					<picker-view-column>
-						<view wx:for="{{days}}" wx:key='*this' style="line-height: 50px">{{item}}列</view>
-					</picker-view-column>
-				</picker-view>
-			</view>
-		</view>
-		<view class="input-section" wx:if="{{isClearB}}">
-			<view class="input-box">
-				<input class="input" placeholder="0" bindinput="bindinputB" id="{{0}}"></input>
-				<input class="input" placeholder="0" bindinput="bindinputB" id="{{10}}" wx:if="{{rowB>1}}"></input>
-				<input class="input" placeholder="0" bindinput="bindinputB" id="{{20}}" wx:if="{{rowB>2}}"></input>
-				<input class="input" placeholder="0" bindinput="bindinputB" id="{{30}}" wx:if="{{rowB>3}}"></input>
-				<input class="input" placeholder="0" bindinput="bindinputB" id="{{40}}" wx:if="{{rowB>4}}"></input>
 
-			</view>
-			<view class="input-box" wx:if="{{coloumB>1}}">
-				<input class="input" placeholder="0" bindinput="bindinputB" id="{{01}}"></input>
-				<input class="input" placeholder="0" bindinput="bindinputB" id="{{11}}" wx:if="{{rowB>1}}"></input>
-				<input class="input" placeholder="0" bindinput="bindinputB" id="{{21}}" wx:if="{{rowB>2}}"></input>
-				<input class="input" placeholder="0" bindinput="bindinputB" id="{{31}}" wx:if="{{rowB>3}}"></input>
-				<input class="input" placeholder="0" bindinput="bindinputB" id="{{41}}" wx:if="{{rowB>4}}"></input>
-
-			</view>
-			<view class="input-box" wx:if="{{coloumB>2}}">
-				<input class="input" placeholder="0" bindinput="bindinputB" id="{{02}}"></input>
-				<input class="input" placeholder="0" bindinput="bindinputB" id="{{12}}" wx:if="{{rowB>1}}"></input>
-				<input class="input" placeholder="0" bindinput="bindinputB" id="{{22}}" wx:if="{{rowB>2}}"></input>
-				<input class="input" placeholder="0" bindinput="bindinputB" id="{{32}}" wx:if="{{rowB>3}}"></input>
-				<input class="input" placeholder="0" bindinput="bindinputB" id="{{42}}" wx:if="{{rowB>4}}"></input>
-
-			</view>
-			<view class="input-box" wx:if="{{coloumB>3}}">
-				<input class="input" placeholder="0" bindinput="bindinputB" id="{{03}}"></input>
-				<input class="input" placeholder="0" bindinput="bindinputB" id="{{13}}" wx:if="{{rowB>1}}"></input>
-				<input class="input" placeholder="0" bindinput="bindinputB" id="{{23}}" wx:if="{{rowB>2}}"></input>
-				<input class="input" placeholder="0" bindinput="bindinputB" id="{{33}}" wx:if="{{rowB>3}}"></input>
-				<input class="input" placeholder="0" bindinput="bindinputB" id="{{43}}" wx:if="{{rowB>4}}"></input>
-			</view>
-			<view class="input-box" wx:if="{{coloumB>4}}">
-				<input class="input" placeholder="0" bindinput="bindinputB" id="{{04}}"></input>
-				<input class="input" placeholder="0" bindinput="bindinputB" id="{{14}}" wx:if="{{rowB>1}}"></input>
-				<input class="input" placeholder="0" bindinput="bindinputB" id="{{24}}" wx:if="{{rowB>2}}"></input>
-				<input class="input" placeholder="0" bindinput="bindinputB" id="{{34}}" wx:if="{{rowB>3}}"></input>
-				<input class="input" placeholder="0" bindinput="bindinputB" id="{{44}}" wx:if="{{rowB>4}}"></input>
-
-			</view>
-
-		</view>
-	</view>
 	<view class="show-body">
 		<view class="show-section" bindtap="show">
 			<text>

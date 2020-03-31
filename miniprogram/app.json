@@ -1,14 +1,17 @@
 {
   "pages": [
-    
+
+
+        "pages/myMatrices/myMatrices",
+      "pages/index/index",  
     "pages/qrCode/qrCode",
-    "pages/index/index",
+
     "pages/counter/counter",
     "pages/boringTime/boringTime",
     "pages/petAge/petAge",
     "pages/petAge/ageCalculate/ageCalculate",
     "pages/solveFormula/solveFormula",
-    "pages/myMatrices/myMatrices",
+
     "pages/bigWheel/bigWheel",
     "pages/bodyTest/bodyTest",
     "pages/unitTransfer/unitTransfer",

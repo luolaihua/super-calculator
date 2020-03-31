@@ -54,7 +54,15 @@ Page({
     days: [1, 2, 3, 4, 5],
     res: '=',
     det: 0,
-    isChoose: true
+    isChoose: true,
+    current_index: 0
+  },
+  changeSwiper: function (e) {
+    var current_index = e.detail.current
+    //console.log(current_index)
+    this.setData({
+      current_index
+    })
   },
   love: function (e) {
     this.setData({
@@ -114,6 +122,7 @@ Page({
   },
   //行变化
   bindChangeA1: function (e) {
+    console.log(e.detail.value)
     this.setData({
       rowA: e.detail.value[0] + 1,
       coloumA: e.detail.value[0] + 1,
@@ -128,7 +137,8 @@ Page({
   //列变化
   bindChangeA2: function (e) {
     this.setData({
-      coloumA: e.detail.value[0] + 1
+      coloumA: e.detail.value[0] + 1,
+      coloumB: e.detail.value[0] + 1,
     })
     this.dataChangeA()
   },
@@ -140,7 +150,8 @@ Page({
       }
     }
     this.setData({
-      dataA: data_0
+      dataA: data_0,
+      operator: ''
     })
     data_0 = [
       [0, 0, 0, 0, 0, ],
@@ -205,14 +216,14 @@ Page({
     this.dataChangeB()
   },
   dataChangeB: function () {
-
     for (var i = 0; i < this.data.rowB; i++) {
       for (var j = 0; j < this.data.coloumB; j++) {
         data_0[i][j] = this.data.dataB[i][j]
       }
     }
     this.setData({
-      dataB: data_0
+      dataB: data_0,
+      operator: ''
     })
     data_0 = [
       [0, 0, 0, 0, 0, ],
@@ -243,16 +254,33 @@ Page({
     }
 
 
-    if (this.data.isChoose) {
+    if (this.data.current_index == 0) {
       var data22 = this.data.dataA
       var row = this.data.rowA
       var coloum = this.data.coloumA
+      if (id == 'add' || id == 'subtract' || id == 'divide' || id == 'dotMultiply' || id == 'dotDivide') {
+        this.setData({
+          rowB: row,
+          coloumB: coloum,
+          valueB1: [row - 1],
+          valueB2: [coloum - 1],
+        })
+      }
+
     } else {
       var data22 = this.data.dataB
       var row = this.data.rowB
       var coloum = this.data.coloumB
+      if (id == 'add' || id == 'subtract' || id == 'divide' || id == 'dotMultiply' || id == 'dotDivide') {
+        this.setData({
+          rowA: row,
+          coloumA: coloum,
+          valueA1: [row - 1],
+          valueA2: [coloum - 1],
+        })
+      }
+
     }
-    var a2 = ''
 
     //切割数组
     var data333 = dataPro(data22, row, coloum)
@@ -261,163 +289,177 @@ Page({
       data333 = math.fraction(data333)
     }
 
-
-    switch (id) {
-      case 'transpose':
-        data333 = math.transpose(data333)
-        console.log('计算转置')
-        console.log(data333) //计算转置
-        //格式化输出
-        this.output(data333)
-        break;
-      case 'det':
-        this.setData({
-          res: math.format(math.det(data333), 6)
-        })
-        break;
-      case 'inv':
-        if (math.det(data333) == 0) {
-          wx.showToast({
-            title: '不可逆！',
-          })
-        } else {
+    try {
+      switch (id) {
+        case 'transpose':
+          data333 = math.transpose(data333)
+          console.log('计算转置')
+          console.log(data333) //计算转置
           //格式化输出
-          this.output(math.inv(data333))
-        }
-        break;
-      case 'trace':
-        if (this.data.isFraction) {
+          this.output(data333)
+          break;
+        case 'det':
           this.setData({
-            res: math.trace(data333).toFraction()
+            res: math.format(math.det(data333), 6)
           })
-        } else {
-          this.setData({
-            res: math.trace(data333)
-          })
-        }
+          break;
+        case 'inv':
+          if (row != coloum) {
+            wx.showToast({
+              title: '矩阵须为方阵',
+              icon: 'none'
+            })
+          } else if (math.det(data333) == 0) {
+            wx.showToast({
+              title: '不可逆！',
+              icon: 'none'
+            })
+          } else {
+            //格式化输出
+            this.output(math.inv(data333))
+          }
+          break;
+        case 'trace':
+          if (this.data.isFraction) {
+            this.setData({
+              res: math.trace(data333).toFraction()
+            })
+          } else {
+            this.setData({
+              res: math.trace(data333)
+            })
+          }
 
-        break;
-      case 'eigsValues':
-        //格式化输出
-        try {
-          this.output(math.eigs(data333).values)
-        } catch (e) {
-          wx.showToast({
-            title: '当前仅支持实对称矩阵',
-            icon: 'none'
-          })
-        }
-
-        break;
-      case 'eigsVectors':
-        //格式化输出
-        try {
-          this.output(math.eigs(data333).vectors)
-        } catch (e) {
-          wx.showToast({
-            title: '当前仅支持实对称矩阵',
-            icon: 'none'
-          })
-        }
-        break;
-      case 'Q':
-        if (this.data.isFraction) {
-          wx.showToast({
-            title: 'QR分解不支持分数',
-            icon: 'none'
-          })
-        } else {
+          break;
+        case 'eigsValues':
           //格式化输出
-          this.output2(math.qr(data333).Q)
-        }
+          try {
+            this.output(math.eigs(data333).values)
+          } catch (e) {
+            wx.showToast({
+              title: '当前仅支持实对称矩阵',
+              icon: 'none'
+            })
+          }
 
-        break;
-      case 'R':
-        if (this.data.isFraction) {
-          wx.showToast({
-            title: 'QR分解不支持分数',
-            icon: 'none'
-          })
-        } else {
+          break;
+        case 'eigsVectors':
           //格式化输出
-          this.output2(math.qr(data333).R)
-        }
+          try {
+            this.output(math.eigs(data333).vectors)
+          } catch (e) {
+            wx.showToast({
+              title: '当前仅支持实对称矩阵',
+              icon: 'none'
+            })
+          }
+          break;
+        case 'Q':
+          if (this.data.isFraction) {
+            wx.showToast({
+              title: 'QR分解不支持分数',
+              icon: 'none'
+            })
+          } else {
+            //格式化输出
+            this.output(math.qr(data333).Q)
+          }
 
-        break;
-      case 'L':
+          break;
+        case 'R':
+          if (this.data.isFraction) {
+            wx.showToast({
+              title: 'QR分解不支持分数',
+              icon: 'none'
+            })
+          } else {
+            //格式化输出
+            this.output(math.qr(data333).R)
+          }
 
-        //格式化输出
-        this.output2(math.lup(data333).L)
-        break;
-      case 'U':
-        //格式化输出
-        this.output2(math.lup(data333).U)
-        break;
-      case 'pow':
-        if (this.data.isFraction) {
-          wx.showToast({
-            title: '幂计算不支持分数',
-            icon: 'none'
-          })
-        }
-        this.setData({
-          valueB1: [0],
-          valueB2: [0],
-          rowB: 1,
-          coloumB: 1,
-        })
-        break;
-      case 'dotPow':
-        if (this.data.isFraction) {
-          wx.showToast({
-            title: '幂计算不支持分数',
-            icon: 'none'
-          })
-        }
-        this.setData({
-          valueB1: [0],
-          valueB2: [0],
-          rowB: 1,
-          coloumB: 1,
-        })
-        break;
-      case 'solve':
-        this.setData({
-          valueB1: this.data.valueA1,
-          valueB2: [0],
-          rowB: this.data.rowA,
-          coloumB: 1,
-        })
-        break;
-      case 'fraction':
-        if (this.data.isFraction) {
+          break;
+        case 'L':
+
+          //格式化输出
+          this.output(math.lup(data333).L)
+          break;
+        case 'U':
+          //格式化输出
+          this.output(math.lup(data333).U)
+          break;
+        case 'pow':
+          if (this.data.isFraction) {
+            wx.showToast({
+              title: '幂计算不支持分数',
+              icon: 'none'
+            })
+          }
           this.setData({
-            isFraction: false,
-            dataA: math.number(this.data.dataA),
-            dataB: math.number(this.data.dataB)
-
+            valueB1: [0],
+            valueB2: [0],
+            rowB: 1,
+            coloumB: 1,
           })
-          wx.showToast({
-            title: '分式模式关闭',
-            icon: 'none'
-          })
-        } else {
+          break;
+        case 'dotPow':
+          if (this.data.isFraction) {
+            wx.showToast({
+              title: '幂计算不支持分数',
+              icon: 'none'
+            })
+          }
           this.setData({
-            isFraction: true,
-            dataA: math.fraction(this.data.dataA),
-            dataB: math.fraction(this.data.dataB)
+            valueB1: [0],
+            valueB2: [0],
+            rowB: 1,
+            coloumB: 1,
           })
-          wx.showToast({
-            title: '分式模式开启',
-            icon: 'none'
+          break;
+        case 'solve':
+          this.setData({
+            valueB1: this.data.valueA1,
+            valueB2: [0],
+            rowB: this.data.rowA,
+            coloumB: 1,
           })
-        }
-        break;
+          break;
+        case 'fraction':
+          if (this.data.isFraction) {
+            this.setData({
+              isFraction: false,
+              dataA: math.number(this.data.dataA),
+              dataB: math.number(this.data.dataB)
+
+            })
+            wx.showToast({
+              title: '分式模式关闭',
+              icon: 'none'
+            })
+          } else {
+            this.setData({
+              isFraction: true,
+              dataA: math.fraction(this.data.dataA),
+              dataB: math.fraction(this.data.dataB)
+            })
+            wx.showToast({
+              title: '分式模式开启',
+              icon: 'none'
+            })
+          }
+          break;
+      }
+    } catch (e) {
+      console.log(e)
+      wx.showToast({
+        title: '输入有误，请检查矩阵格式再输入',
+        icon: 'none'
+      })
     }
+
 
   },
   clear: function (e) {
-    if (this.data.isChoose) {
+    if (this.data.current_index == 0) {
       this.setData({
         dataA: [
           [0, 0, 0, 0, 0, ],
@@ -496,6 +538,7 @@ Page({
       isClearA: true
     })
   },
+  //功能为等于号
   show: function (e) {
     var dataA = this.data.dataA
     var rowA = this.data.rowA
@@ -514,64 +557,82 @@ Page({
     dataA = dataPro(dataA, rowA, coloumA)
     dataB = dataPro(dataB, rowB, coloumB)
 
-    switch (operator) {
-      case '':
-        if (this.data.isChoose) {
-          res = dataA
-        } else {
-          res = dataB
-        }
-        break;
-      case 'add':
-        res = math.add(dataA, dataB)
-        break;
-      case 'multiply':
-        res = math.multiply(dataA, dataB)
-        break;
-      case 'divide':
-        if (math.det(dataB) == 0) {
-          wx.showToast({
-            title: 'B矩阵不可逆',
-            icon: 'none'
-          })
-        } else {
-          res = math.divide(dataA, dataB)
-        }
-        break;
-      case 'dotDivide':
+    try {
+      switch (operator) {
+        case '':
+          if (this.data.current_index == 0) {
+            res = dataA
+          } else {
+            res = dataB
+          }
+          break;
+        case 'add':
+          res = math.add(dataA, dataB)
+          break;
+        case 'multiply':
+          res = math.multiply(dataA, dataB)
+          break;
+        case 'divide':
+          if (math.det(dataB) == 0) {
+            wx.showToast({
+              title: 'B矩阵不可逆',
+              icon: 'none'
+            })
+          } else if (rowB != coloumB) {
+            wx.showToast({
+              title: '矩阵须为方阵',
+              icon: 'none'
+            })
+          } else {
+            res = math.divide(dataA, dataB)
+          }
+          break;
+        case 'dotDivide':
 
-        res = math.dotDivide(dataA, dataB)
-        break;
-      case 'dotMultiply':
-        res = math.dotMultiply(dataA, dataB)
-        break;
-      case 'subtract':
-        res = math.subtract(dataA, dataB)
-        break;
-      case 'pow':
-        if (this.data.isFraction) {
-          wx.showToast({
-            title: '幂计算不支持分数',
-            icon: 'none'
-          })
-        } else {
-          res = math.pow(dataA, dataB[0][0])
-        }
-        break;
-      case 'dotPow':
-        if (this.data.isFraction) {
-          wx.showToast({
-            title: '幂计算不支持分数',
-            icon: 'none'
-          })
-        } else {
-          res = math.dotPow(dataA, dataB[0][0])
-        }
-        break;
-      case 'solve':
-        res = math.lusolve(dataA, dataB)
-        break;
+          res = math.dotDivide(dataA, dataB)
+          break;
+        case 'dotMultiply':
+          res = math.dotMultiply(dataA, dataB)
+          break;
+        case 'subtract':
+          res = math.subtract(dataA, dataB)
+          break;
+        case 'pow':
+          if (this.data.isFraction) {
+            wx.showToast({
+              title: '幂计算不支持分数',
+              icon: 'none'
+            })
+          } else {
+            res = math.pow(dataA, dataB[0][0])
+          }
+          break;
+        case 'dotPow':
+          if (this.data.isFraction) {
+            wx.showToast({
+              title: '幂计算不支持分数',
+              icon: 'none'
+            })
+          } else {
+            res = math.dotPow(dataA, dataB[0][0])
+          }
+          break;
+        case 'solve':
+          res = math.lusolve(dataA, dataB)
+          break;
+      }
+
+    } catch (e) {
+      console.log(e)
+      wx.showToast({
+        title: '输入有误，请检查矩阵格式再输入',
+        icon: 'none'
+      })
     }
+
+
+
+
     if (res != '') {
       //格式化输出
       this.output(res)
@@ -604,7 +665,6 @@ Page({
         a2 = a2 + math.format(data[i], 6) + '\n'
       }
     }
-
     //console.log('a2')
     console.log(a2)
     this.setData({
@@ -627,6 +687,15 @@ Page({
     this.setData({
       res: a2
     })
+  },
+  checkSize: function () {
+    var rowA = this.data.rowA
+    var rowB = this.data.rowB
+    var coloumB = this.data.coloumB
+    var coloumA = this.data.coloumA
+
+
+
   },
 
   /**
@@ -683,15 +752,15 @@ Page({
    */
   onShareAppMessage: function () {
     return {
-       title: '我发现了一款功能很全的矩阵计算器~',
-       path: '/pages/myMatrices/myMatrices',
-       success: function (res) {
-          console.log('成功进入分享==========', res);
+      title: '我发现了一款功能很全的矩阵计算器~',
+      path: '/pages/myMatrices/myMatrices',
+      success: function (res) {
+        console.log('成功进入分享==========', res);
 
-       },
-       fail: function (res) {
-          console.log('进入分享失败==========', res);
-       }
+      },
+      fail: function (res) {
+        console.log('进入分享失败==========', res);
+      }
     }
- },
+  },
 })

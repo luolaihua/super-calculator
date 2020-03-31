@@ -198,6 +198,11 @@ Page({
           url: '../counter/counter',
         })
         break;
+      case 14:
+        wx.navigateTo({
+          url: '../qrCode/qrCode',
+        })
+        break;
     }
   },
 

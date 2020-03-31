@@ -8,8 +8,8 @@
 .input-box{
   width: 90vw;
   height: 12vh;
-  margin-top: 10vh;
-  margin-bottom: 10vh;
+  margin-top: 8vh;
+  margin-bottom: 8vh;
 
   display: flex;
 justify-content: center;
