@@ -7,4 +7,4 @@
 	</view>
 	<text animation="{{animation}}" class="show">{{boringTime}} </text>
 </view>
-<text class="max" wx:if="{{boringTimeMax!=0}}">{{boringTimeMax}}</text>
+<text class="max" wx:if="{{boringTimeMax!=0}}" bindtap="showMax">{{boringTimeMax}}</text>

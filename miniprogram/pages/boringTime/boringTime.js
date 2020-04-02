@@ -54,6 +54,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    boringTimeMax_cloud:0,
     boringTimeMax: 0,
     boringTime: 0,
     startTime: 0,
@@ -61,6 +62,63 @@ Page({
     time: 0,
     num: 0,
     imgUrl: imageUrl.sort(util.randomsort),
+
+  },
+  showMax(){
+    
+    var that = this
+    var boringTimeMax = this.data.boringTimeMax
+    const db = wx.cloud.database()
+    //存在时延
+    var boringTimeMax_cloud
+    //存在时延 ,不是同步进行的，云端操作需要时间，本地操作会先完成
+    //方法1是设置时延，但是时延时间不好确定
+    //方法2是 异步函数
+
+    //这是一个异步函数，获取再更新
+    async function updateGet() {
+      //先执行完await中的get函数，才会执行更新
+      await db.collection('maxNum').doc('boringMax').get().then(res => {
+        var maxCloud = res.data.maxNum
+        if (boringTimeMax >= maxCloud) {
+          //iqMaxNum = res.data.maxNum
+          // console.log('iqMaxNum > res.data.maxNum')
+          boringTimeMax_cloud = boringTimeMax
+          db.collection('maxNum').doc('boringMax').update({
+            data: {
+              maxNum: boringTimeMax
+            },
+            success: function (res) {
+              console.log(res, '更新+1')
+            }
+          })
+        } else {
+          // console.log('iqMaxNum > res.data.maxNum')
+          boringTimeMax_cloud = maxCloud
+        }
+        // console.log(maxCloud)
+        //console.log(iqMaxNum)
+
+      })
+
+      if(boringTimeMax_cloud==boringTimeMax){
+        var content = '真棒！您已是全服最无聊的网友~'
+      }else{
+        var content = '全服最无聊：'+boringTimeMax_cloud
+      }
+      wx.showModal({
+        title: 'SoBoring',
+        content: content,
+        showCancel:false,
+        confirmText: '我知道了',
+        confirmColor: '#3CC51F',
+      })
+      that.setData({
+        boringTimeMax_cloud
+      })
+    }
+    updateGet()
+
 
   },
   bindtap(e) {
@@ -146,6 +204,8 @@ Page({
         complete: function (res) {},
       })
     }
+
+
     this.setData({
       boringTimeMax
     })

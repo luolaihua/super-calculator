@@ -9,6 +9,7 @@ var anjian = wx.createInnerAudioContext()
 var countDownTime = 5
 //获取应用实例
 const app = getApp()
+
 Page({
 
   /**
@@ -272,6 +273,9 @@ Page({
     fail.src = 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/wav/duang.wav?sign=f7ddd538430936c353da1694e718c1d4&t=1583985538'
     anjian.src = 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/wav/beng.wav?sign=b77ec195753a28f05d0adfe0278c93f8&t=1583997189'
 
+
+ 
+
   },
 
   /**
@@ -397,15 +401,15 @@ Page({
    */
   onShareAppMessage: function () {
     return {
-       title:'我已经闯过了'+this.data.successNum+ '关，看看你能过几关~',
-       path: '/pages/solveFormula/solveFormula',
-       success: function (res) {
-          console.log('成功进入分享==========', res);
+      title: '我已经闯过了' + this.data.successNum + '关，看看你能过几关~',
+      path: '/pages/solveFormula/solveFormula',
+      success: function (res) {
+        console.log('成功进入分享==========', res);
 
-       },
-       fail: function (res) {
-          console.log('进入分享失败==========', res);
-       }
+      },
+      fail: function (res) {
+        console.log('进入分享失败==========', res);
+      }
     }
- },
+  },
 })

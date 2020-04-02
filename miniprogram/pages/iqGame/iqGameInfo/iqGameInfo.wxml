@@ -6,10 +6,10 @@
 		</view>
 		<view class="modules_title_box">游戏等级</view>
 		<view class="modules_text_box">
-		<view>{{grade}}年级</view>
+			<view>{{grade}}年级</view>
 		</view>
 	</view>
-  	<view class="modules_box">
+	<view class="modules_box">
 		<view class="modules_icon_box">
 			<image class="modules_icon" mode="scaleToFill" src="https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/music.png?sign=47291c08dd5a2dc1f4e7b1f952aaf6dd&t=1584072804"></image>
 		</view>
@@ -28,15 +28,24 @@
 		</view>
 	</view>
 
-<view class="modules_box">
+	<view class="modules_box">
 		<view class="modules_icon_box">
 			<image class="modules_icon" mode="scaleToFill" src="https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/star.png?sign=20d8f647a4d81962496b30a2619b917a&t=1584072850"></image>
 		</view>
-    <view class="slider-box">
-      <text class="slider-title">答题时间</text>
-      <view class="slider-view">
-        <slider bindchange="sliderChange" min="3" max="10" value="{{downTime}}" show-value />
-      </view>
-    </view>
-</view>
+		<view class="slider-box">
+			<text class="slider-title">答题时间</text>
+			<view class="slider-view">
+				<slider bindchange="sliderChange" min="3" max="10" value="{{downTime}}" show-value />
+			</view>
+		</view>
+	</view>
+	<view class="modules_box">
+		<view class="modules_icon_box">
+			<image class="modules_icon" mode="scaleToFill" src="{{isMax?'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/hg.png?sign=aee2010ae1b930f8e0177d48db67d2b1&t=1585801642':'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/hg2.png?sign=682e5586ac28935bcad356b2f1daa962&t=1585801507'}}"></image>
+		</view>
+		<view class="modules_title_box">{{isMax?'您当前为全服第一':'全服最高闯关'}}</view>
+		<view class="modules_text_box">
+			<view>{{iqMaxNum}}关</view>
+		</view>
+	</view>
 </view>
