@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/solveFormula/solveFormula",
 
     "pages/menu/menu",
     "pages/index/index",
@@ -16,7 +17,6 @@
 
     "pages/petAge/petAge",
     "pages/petAge/ageCalculate/ageCalculate",
-    "pages/solveFormula/solveFormula",
 
     "pages/bigWheel/bigWheel",
     "pages/bodyTest/bodyTest",

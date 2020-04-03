@@ -23,6 +23,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    currentParaIndex:0,
+    currentParaId:'',
     process: '',
     result_fraction: 0,
     result: '',
@@ -50,7 +52,27 @@ Page({
 
     yuan: ['一'],
     ci: ['一', '二', '三', '四'],
-    formulaList: ['aX+b=0', 'aX²+bX+c=0', 'aX³+bX²+cX+d=0', 'aX⁴+bX³+cX²+dX+e=0', ]
+    formulaList: ['aX+b=0', 'aX²+bX+c=0', 'aX³+bX²+cX+d=0', 'aX⁴+bX³+cX²+dX+e=0', ],
+    formulaList2: ['A₀X+B₀y=C₀\nA₁X+B₁y=C₁', 'A₀X+B₀y+C₀=D₀\nA₁X+B₁y+C₁=D₁\nA₂X+B₂y+C₂=D₂', 'A₀X+B₀y+C₀+D₀=E₀\nA₁X+B₁y+C₁+D₁=E₁\nA₂X+B₂y+C₂+D₂=E₂\nA₃X+B₃y+C₃+D₃=E₃'],
+    formulaList3:[
+      {
+        A:'A₀',B:'B₀',C:'C₀',D:'D₀',E:'E₀',
+    },      {
+      A:'A₁',B:'B₁',C:'C₁',D:'D₁',E:'E₁',
+  },      {
+    A:'A₂',B:'B₂',C:'C₂',D:'D₂',E:'E₂',
+},      {
+  A:'A₃',B:'B₃',C:'C₃',D:'D₃',E:'E₃',
+},]
+  },
+  choosePara:function(e){
+    var currentParaIndex = e.currentTarget.dataset.index
+    var currentParaId = e.currentTarget.id
+    this.setData({
+      currentParaIndex,
+      currentParaId
+    })
+    console.log(currentParaIndex,currentParaId)
   },
   clear: function (e) {
     this.setData({
@@ -515,6 +537,7 @@ Page({
   },
   bindChangeYuan: function (e) {
     var indexOfYuan = e.detail.value[0]
+    console.log(indexOfYuan)
     this.setData({
       indexOfYuan
     })
