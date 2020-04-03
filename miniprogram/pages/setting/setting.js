@@ -1,21 +1,39 @@
 // miniprogram/pages/setting/setting.js
+//获取实例
+var app = getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    path:''
-
+    isVibrate_setting:false
   },
-  test:function(e){
-   
+  //声音
+  switchChangeVibrate() {
+
+    var isVibrate_setting = this.data.isVibrate_setting
+    isVibrate_setting = isVibrate_setting ? false : true;
+    wx.setStorageSync('isVibrate_setting', isVibrate_setting)
+    app.globalData.isVibrate = isVibrate_setting
+    this.setData({
+      isVibrate_setting
+    })
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var isVibrate_setting = wx.getStorageSync('isVibrate_setting')
+    if (isVibrate_setting === '') {
+      wx.setStorageSync('isVibrate_setting', false)
+      isVibrate_setting = false
+    }
+    app.globalData.isVibrate = isVibrate_setting
+    this.setData({
+      isVibrate_setting
+    })
 /*     var that = this
     wx.cloud.downloadFile({
       fileID: 'cloud://luo-r5nle.6c75-luo-r5nle-1301210100/t1.jpg',

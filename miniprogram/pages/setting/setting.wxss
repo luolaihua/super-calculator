@@ -1,1 +1,49 @@
 /* miniprogram/pages/setting/setting.wxss */
+
+.modules_box ,.btn-box{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: calc(100% - 20px);
+    height: 60px;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    background-color: #ffffff;
+    border-radius: 6px;
+    border: 1px solid transparent;
+    box-sizing: border-box;
+  }
+  .btn-box{
+      justify-content: space-between;
+  }
+  
+  .modules_icon_box {
+    height: 60px;
+    width: 60px;
+  }
+  
+  .modules_icon {
+    width: 20px;
+    height: 20px;
+    margin: 20px;
+  }
+  
+  .modules_title_box {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 60px;
+    line-height: 60px;
+    width: calc(100% - 120px);
+    font-size: 14px;
+    color: #7a7a7a;
+  }
+  
+  .modules_switch_box {
+    display: flex;
+    height: 60px;
+    width: 40px;
+    align-items: center;
+    justify-content: center;
+  }

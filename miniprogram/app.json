@@ -1,7 +1,9 @@
 {
   "pages": [
-    "pages/index/index",
+
     "pages/menu/menu",
+    "pages/index/index",
+    "pages/setting/setting",
     "pages/boringTime/boringTime",
 
     "pages/iqGame/iqGame",
@@ -39,7 +41,7 @@
     "pages/databaseGuide/databaseGuide",
     "pages/storageConsole/storageConsole",
     "pages/userConsole/userConsole",
-    "pages/setting/setting",
+
     "pages/aboutMatrix/aboutMatrix",
     "pages/scientificData/scientificData",
     "pages/welcome/welcome",

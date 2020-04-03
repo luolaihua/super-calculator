@@ -312,7 +312,13 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    var that = this
+    if (this.data.isVibrate) {
+      wx.onAccelerometerChange(function (res) {
+        if (res.x > 1 || res.y > 1 || res.z > 1) { //偏移量为2时触发，有的使用1
+          that.add()
+        }
+      });}
   },
 
 

@@ -110,7 +110,12 @@ Page({
       {
         name: '二维码生成',
         url: 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/qrcode.png?sign=55badb58d9a0f80593a553d81f92f408&t=1585483105'
+      },
+      {
+        name: '设置',
+        url: 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/setting.png?sign=040c3d3c32993619663ae1eb05ce8e35&t=1585904368'
       }
+
 
     ]
   },
@@ -201,6 +206,11 @@ Page({
       case 14:
         wx.navigateTo({
           url: '../qrCode/qrCode',
+        })
+        break;
+      case 15:
+        wx.navigateTo({
+          url: '../setting/setting',
         })
         break;
     }
