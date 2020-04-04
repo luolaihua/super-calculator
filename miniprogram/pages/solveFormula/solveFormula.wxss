@@ -1,13 +1,15 @@
 /* miniprogram/pages/solveFormula/solveFormula.wxss */
-page{
+page {
   background-color: white;
 }
+
 .picker {
   background-color: white;
   height: 150rpx;
   width: 200rpx;
 }
-.indicator{
+
+.indicator {
   height: 100rpx;
 }
 
@@ -28,7 +30,7 @@ page{
   justify-content: center;
 }
 
-.formula-box{
+.formula-box {
   width: 100%;
   height: 150rpx;
   display: flex;
@@ -37,26 +39,38 @@ page{
   justify-content: center;
 }
 
-.formulaContent2{
+.formulaContent2 {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  font-size: 30rpx;
+  font-size: 45rpx;
 }
+
+.formulaContent2 input {
+  text-align: center;
+  width: 12vw;
+  height: 8vh;
+  color: orangered;
+  margin: 0 4px;
+}
+
+.formulaContent2 text {
+  text-align: center;
+  font-size: 30rpx;
+  font-weight: bolder;
+}
+
 .input-box {
   width: 100vw;
   height: 8vh;
   margin-top: 4vh;
   margin-bottom: 4vh;
-
   display: flex;
   justify-content: center;
   align-items: center;
   border-bottom: darkgrey solid 1px;
   border-top: darkgrey solid 1px;
-
-
 }
 
 .input-box input {
@@ -65,6 +79,7 @@ page{
   font-size: 40rpx;
   text-align: center;
 }
+
 .showFormula {
   font-weight: bolder;
   width: 100%;

@@ -17,14 +17,33 @@ math.config({
 parser.set('h', math.complex('3'))
 console.log(parser.evaluate('h / 2+a',scope).toString())
  */
+const FormulaList = [
+  ['A₀', 'B₀', 'C₀', 'D₀', 'E₀'],
+  ['A₁', 'B₁', 'C₁', 'D₁', 'E₁'],
+  ['A₂', 'B₂', 'C₂', 'D₂', 'E₂'],
+  ['A₃', 'B₃', 'C₃', 'D₃', 'E₃']
+]
+const numList = [
+  [0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0]
+]
+console.log(math.zeros(3, 3)._data)
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    currentParaIndex:0,
-    currentParaId:'',
+    numList2: numList,
+    paraValue: 0,
+    isToZero: false,
+    currentParaIndex: 0,
+    currentParaId: '',
+    row: 0,
+    column: 0,
     process: '',
     result_fraction: 0,
     result: '',
@@ -54,26 +73,223 @@ Page({
     ci: ['一', '二', '三', '四'],
     formulaList: ['aX+b=0', 'aX²+bX+c=0', 'aX³+bX²+cX+d=0', 'aX⁴+bX³+cX²+dX+e=0', ],
     formulaList2: ['A₀X+B₀y=C₀\nA₁X+B₁y=C₁', 'A₀X+B₀y+C₀=D₀\nA₁X+B₁y+C₁=D₁\nA₂X+B₂y+C₂=D₂', 'A₀X+B₀y+C₀+D₀=E₀\nA₁X+B₁y+C₁+D₁=E₁\nA₂X+B₂y+C₂+D₂=E₂\nA₃X+B₃y+C₃+D₃=E₃'],
-    formulaList3:[
-      {
-        A:'A₀',B:'B₀',C:'C₀',D:'D₀',E:'E₀',
-    },      {
-      A:'A₁',B:'B₁',C:'C₁',D:'D₁',E:'E₁',
-  },      {
-    A:'A₂',B:'B₂',C:'C₂',D:'D₂',E:'E₂',
-},      {
-  A:'A₃',B:'B₃',C:'C₃',D:'D₃',E:'E₃',
-},]
+    formulaList3: FormulaList
   },
-  choosePara:function(e){
-    var currentParaIndex = e.currentTarget.dataset.index
-    var currentParaId = e.currentTarget.id
+  input: function (value) {
+    var numList2 = this.data.numList2
+    var row = this.data.row
+    var column = this.data.column;
+
+    if (value == '') {
+      value = 0
+    }
+
+    numList2[row][column] = value
+    console.log(numList2)
+
     this.setData({
-      currentParaIndex,
+      numList2
+    })
+  },
+  //多元方程参数输入
+  inputPara2: function (e) {
+    var value = e.detail.value
+    this.input(value)
+    this.setData({
+      paraValue: value,
+    })
+  },
+  inputText: function (e) {
+    var value = e.detail.value
+    this.input(value)
+  },
+  changeColor: function () {
+    this.setData({
+      currentParaId: '',
+    })
+  },
+  bindfocus: function (e) {
+    var currentParaId = this.data.column
+    this.setData({
       currentParaId
     })
-    console.log(currentParaIndex,currentParaId)
   },
+
+  choosePara: function (e) {
+    var currentParaIndex = e.currentTarget.dataset.index
+    var currentParaId = Number(e.currentTarget.id)
+    this.setData({
+      row: currentParaIndex,
+      column: currentParaId,
+      currentParaIndex,
+      currentParaId,
+      paraValue: this.data.numList2[currentParaIndex][currentParaId]
+    })
+    console.log(currentParaIndex, currentParaId)
+  },
+
+  solve: function (e) {
+    var indexOfYuan = this.data.indexOfYuan
+
+    //一元方程求解
+    if (indexOfYuan == 0) {
+
+
+      var paraList = this.data.paraList
+      for (let index = 0; index < paraList.length; index++) {
+        try {
+          paraList[index].value = math.evaluate(paraList[index].value + '').toString()
+        } catch (e) {
+          console.log(e)
+          wx.showToast({
+            title: '输入有误！',
+            icon: 'none'
+          })
+          return
+        }
+      }
+
+      var a = paraList[0].value
+      var b = paraList[1].value
+      var c = paraList[2].value
+      var d = paraList[3].value
+      var e = paraList[4].value
+
+
+      if (Number(a) == 0) {
+        wx.showToast({
+          title: 'a不能为0！',
+          icon: 'none'
+        })
+        return
+      }
+      var indexOfShow = this.data.indexOfShow
+      var result = 0,
+        process
+      let scope = {
+        a: a,
+        b: b,
+        c: c,
+        d: d,
+        e: e
+      }
+      //  console.log(scope)
+
+      try {
+        switch (indexOfShow) {
+          //一元一次
+          case 0:
+            var res = this.solve1Equaltion(scope)
+            result = res.result
+            process = res.process
+            break;
+            // one yuan two ci
+          case 1:
+            var res = this.solve2Equaltion(scope)
+            result = res.result
+            process = res.process
+            break;
+          case 2:
+            var res = this.solve3Equaltion(scope)
+            result = res.result
+            process = res.process
+            break;
+          case 3:
+            var res = this.solve4Equaltion(scope)
+            result = res.result
+            process = res.process
+            break;
+          default:
+            break;
+        }
+      } catch (e) {
+        console.log(e)
+        wx.showToast({
+          title: '输入有误！',
+          icon: 'none',
+          image: '',
+          duration: 1500,
+          mask: false,
+          success: (result) => {
+
+          },
+          fail: () => {},
+          complete: () => {}
+        });
+      }
+
+
+      this.setData({
+        process,
+        result,
+        paraList
+        //result_fraction: math.fraction(result).toFraction()
+      })
+
+    } else {
+      var numList2 = this.data.numList2
+      var matrixOfA, matrixOfb = [],
+        res, res2 = ''
+
+      function solveAb(num) {
+        var res
+        num++
+        var matrixOfA = math.zeros(num, num)._data
+        var matrixOfb = []
+        for (let row = 0; row < matrixOfA.length; row++) {
+          try {
+            
+            matrixOfb.push(math.evaluate(numList2[row][num] + '').toString())
+          } catch (e) {
+            console.log(e)
+          }
+         // matrixOfb.push(numList2[row][num])
+          for (let column = 0; column < matrixOfA.length; column++) {
+            //matrixOfA[row][column] = numList2[row][column]
+            try {
+              matrixOfA[row][column] = math.evaluate(numList2[row][column] + '').toString()
+            } catch (e) {
+              console.log(e)
+            }
+          }
+        }
+
+        console.log(matrixOfA)
+        console.log(matrixOfb)
+        res = math.lusolve(matrixOfA, matrixOfb)
+        return res
+      }
+      switch (indexOfYuan) {
+        // 二元方程
+        case 1:
+          res = solveAb(1)
+
+          break;
+        case 2:
+          res = solveAb(2)
+          res2 = "\nZ = " + math.format(res[2][0], PRECISION).toString()
+          break;
+        case 3:
+          res = solveAb(3)
+          res2 = "\nZ = " + math.format(res[2][0], PRECISION).toString() +
+            "\nK = " + math.format(res[3][0], PRECISION).toString()
+          break;
+        default:
+          break;
+      }
+
+      var result = "X = " + math.format(res[0][0], PRECISION).toString() +
+        "\nY = " + math.format(res[1][0], PRECISION).toString() + res2
+      console.log(result)
+      console.log(res)
+      this.setData({
+        result
+      })
+    }
+
+  },
+
+
   clear: function (e) {
     this.setData({
       paraList: [{
@@ -92,8 +308,10 @@ Page({
         name: 'e',
         value: 0
       }, ],
+      numList2: numList,
       process: '',
       result: '',
+      paraValue: 0,
     })
   },
   paraDelete: function (e) {
@@ -106,84 +324,7 @@ Page({
     //console.log(paraList)
 
   },
-  solve: function (e) {
 
-    var paraList = this.data.paraList
-    for (let index = 0; index < paraList.length; index++) {
-      try {
-        paraList[index].value = math.evaluate(paraList[index].value + '').toString()
-      } catch (e) {
-        console.log(e)
-        wx.showToast({
-          title: '输入有误！',
-          icon: 'none'
-        })
-        return
-      }
-    }
-
-    var a = paraList[0].value
-    var b = paraList[1].value
-    var c = paraList[2].value
-    var d = paraList[3].value
-    var e = paraList[4].value
-
-
-    if (Number(a) == 0) {
-      wx.showToast({
-        title: 'a不能为0！',
-        icon: 'none'
-      })
-      return
-    }
-    var indexOfShow = this.data.indexOfShow
-    var result = 0,
-      delta, x1, x2, process
-    let scope = {
-      a: a,
-      b: b,
-      c: c,
-      d: d,
-      e: e
-    }
-    //  console.log(scope)
-
-
-    switch (indexOfShow) {
-      //一元一次
-      case 0:
-        var res = this.solve1Equaltion(scope)
-        result = res.result
-        process = res.process
-        break;
-        // one yuan two ci
-      case 1:
-        var res = this.solve2Equaltion(scope)
-        result = res.result
-        process = res.process
-        break;
-      case 2:
-        var res = this.solve3Equaltion(scope)
-        result = res.result
-        process = res.process
-        break;
-      case 3:
-        var res = this.solve4Equaltion(scope)
-        result = res.result
-        process = res.process
-        break;
-      default:
-        break;
-    }
-
-    this.setData({
-      process,
-      result,
-      paraList
-      //result_fraction: math.fraction(result).toFraction()
-    })
-
-  },
   solve1Equaltion: function (scope) {
     var a = scope.a
     var b = scope.b
@@ -539,14 +680,18 @@ Page({
     var indexOfYuan = e.detail.value[0]
     console.log(indexOfYuan)
     this.setData({
-      indexOfYuan
+      indexOfYuan,
+      result:'',
+      process:''
     })
     this.showWhich()
   },
   bindChangeCi: function (e) {
     var indexOfCi = e.detail.value[0]
     this.setData({
-      indexOfCi
+      indexOfCi,
+      result:'',
+      process:''
     })
     this.showWhich()
 
@@ -567,14 +712,14 @@ Page({
    */
   onLoad: function (options) {
     var isShowSolveFormula = wx.getStorageSync('isShowSolveFormula')
-    if(isShowSolveFormula===''){
+    if (isShowSolveFormula === '') {
       wx.setStorageSync('isShowSolveFormula', true)
       isShowSolveFormula = true
     }
-    if(isShowSolveFormula){
+    if (isShowSolveFormula) {
       wx.showModal({
         title: '解方程',
-        content: '此计算器可以解一元一次至一元四次方程，上下滑动标题可切换方程',
+        content: '此计算器可以解一元一次至一元四次方程以及多元一次方程组，上下滑动标题可切换方程',
         cancelText: '不再提醒',
         confirmText: '我知道了',
         confirmColor: '#3CC51F',
@@ -639,15 +784,15 @@ Page({
    */
   onShareAppMessage: function () {
     return {
-       title: '这个计算器可以解方程~',
-       path: '/pages/solveFormula/solveFormula',
-       success: function (res) {
-          console.log('成功进入分享==========', res);
+      title: '这个计算器可以解方程~',
+      path: '/pages/solveFormula/solveFormula',
+      success: function (res) {
+        console.log('成功进入分享==========', res);
 
-       },
-       fail: function (res) {
-          console.log('进入分享失败==========', res);
-       }
+      },
+      fail: function (res) {
+        console.log('进入分享失败==========', res);
+      }
     }
- },
+  },
 })
