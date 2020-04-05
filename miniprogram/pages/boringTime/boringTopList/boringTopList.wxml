@@ -1,0 +1,13 @@
+<!--miniprogram/pages/boringTime/boringTopList/boringTopList.wxml-->
+<block wx:for="{{collectionData}}">
+	<view class="modules_box">
+		<view class="modules_icon_box">
+			<image class="modules_icon" mode="scaleToFill" src="{{item.avatarUrl==''?'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/hg.png?sign=aee2010ae1b930f8e0177d48db67d2b1&t=1585801642':item.avatarUrl}}" />
+		</view>
+		<view class="modules_title_box">{{item.nickName==''?'无聊的网友':item.nickName}}</view>
+		<view class="modules_text_box">
+			<view>{{item.maxNum}}</view>
+		</view>
+	</view>
+</block>
+

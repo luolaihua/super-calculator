@@ -6,7 +6,7 @@
 	<view class="res" id="result" style="font-size:{{fontsize}}rpx;">{{res}}</view>
 </scroll-view>
 
-<view class="specialOperator-box " wx:if="{{isOpenSpecial&&isScientific}}">
+<view class="specialOperator-box {{isOpenSpecial?'open':'close'}}" style="height:{{isOpenSpecial?'18vh':''}}" wx:if="{{isScientific}}">
 	<view wx:for="{{specialOperatorList}}" wx:key="id">
 		<view class="specialOperator" bindtap="specialOp" id="{{index}}">{{item.name}}</view>
 	</view>

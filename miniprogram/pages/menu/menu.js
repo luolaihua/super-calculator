@@ -59,10 +59,7 @@ Page({
         name: '单位转换',
         url: 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/transfer.png?sign=1e1cd7308864eef93c7aca19794ccaee&t=1583810636'
       },
-      /*  {
-        name: '聊天室',
-        url: 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/chat.png?sign=e997ce067a2b221c69f8df23c36ea74d&t=1583810662'
-      }, */
+
       {
         name: '体测成绩计算',
         url: 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/tice.png?sign=4377add665517649836f45cdeb025d84&t=1583810682'
@@ -114,8 +111,11 @@ Page({
       {
         name: '设置',
         url: 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/setting.png?sign=040c3d3c32993619663ae1eb05ce8e35&t=1585904368'
-      }
-
+      },
+        {
+        name: '聊天室',
+        url: 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/chat.png?sign=e997ce067a2b221c69f8df23c36ea74d&t=1583810662'
+      }, 
 
     ]
   },
@@ -138,11 +138,7 @@ Page({
           url: '../unitTransfer/unitTransfer',
         })
         break;
-        /*       case 2:
-                wx.navigateTo({
-                  url: '../im/room/room',
-                })
-                break; */
+
       case 6:
         wx.navigateTo({
           url: '../beijinghua/beijinghua',
@@ -213,6 +209,11 @@ Page({
           url: '../setting/setting',
         })
         break;
+        case 16:
+          wx.navigateTo({
+            url: '../im/room/room',
+          })
+          break; 
     }
   },
 

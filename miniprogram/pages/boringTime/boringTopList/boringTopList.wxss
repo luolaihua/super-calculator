@@ -1,6 +1,5 @@
-/* miniprogram/pages/setting/setting.wxss */
-
-.modules_box ,.btn-box{
+/* miniprogram/pages/boringTime/boringTopList/boringTopList.wxss */
+.modules_box {
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -13,9 +12,6 @@
     border-radius: 6px;
     border: 1px solid transparent;
     box-sizing: border-box;
-  }
-  .btn-box{
-      justify-content: space-between;
   }
   
   .modules_icon_box {
@@ -30,6 +26,7 @@
   }
   
   .modules_title_box {
+  
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -47,3 +44,11 @@
     align-items: center;
     justify-content: center;
   }
+  .modules_text_box {
+    display: flex;
+    height: 60px;
+  margin-right: 20rpx;
+    align-items: center;
+    justify-content: center;
+  }
+  

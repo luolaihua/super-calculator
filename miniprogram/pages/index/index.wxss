@@ -75,13 +75,48 @@ button::after {
 
 .specialOperator-box {
   position: fixed;
-  top: 10vh;
+  bottom: 68vh;
   left: 50rpx;
   z-index: 3;
   width: 30vw;
   display: flex;
   flex-direction: column;
   margin: 10px;
+  overflow: hidden;
+  height: 0;
+  animation-fill-mode: forwards;
+}
+
+@keyframes slidedown {
+  from {
+    height: 0;
+  }
+
+  to {
+    height: 20vh;
+  }
+}
+
+@keyframes slideup {
+  from {
+    height: 20vh;
+   
+  }
+
+  to {
+    height: 0;
+
+  }
+}
+
+.open {
+  animation: slidedown 1s;
+
+}
+
+.close {
+ display: none;
+  animation: slideup 1s;
 }
 
 .specialOperator {

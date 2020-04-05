@@ -29,7 +29,7 @@ const numList = [
   [0, 0, 0, 0, 0],
   [0, 0, 0, 0, 0]
 ]
-console.log(math.zeros(3, 3)._data)
+//console.log(math.zeros(3, 3)._data)
 
 Page({
 

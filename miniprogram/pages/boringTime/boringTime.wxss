@@ -7,6 +7,16 @@
   justify-content: center;
   align-items: center;
 }
+.infoIcon{
+  height: 4vh;
+  width: 4vh;
+  position: fixed;
+  z-index: 2;
+  top: 0.5vh;
+  right: 10rpx;
+  opacity: 1;
+}
+
 .max{
   position: fixed;
   top: 1vh;

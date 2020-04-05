@@ -7,7 +7,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    isVibrate_setting:false
+    isVibrate_setting:false,
+    openId:''
   },
   //声音
   switchChangeVibrate() {
@@ -20,7 +21,47 @@ Page({
       isVibrate_setting
     })
   },
+  onGetUserInfo: function (e) {
+    var nickName = e.detail.userInfo.nickName
+    var avatarUrl = e.detail.userInfo.avatarUrl
+    wx.setStorageSync('nickName', nickName)
+    wx.setStorageSync('avatarUrl', avatarUrl)
+   console.log(avatarUrl,nickName)
+  },
+  getOpenId: async function () {
+    if (this.openid) {
+      return this.openid
+    }
 
+    const {
+      result
+    } = await wx.cloud.callFunction({
+      name: 'login',
+    })
+    console.log(result)
+    //console.log(result.userInfo.openId, '====openid')
+    this.setData({
+      openId: result.userInfo.openId
+    })
+
+    return result.userInfo.openid
+  },
+  sendMessage:function(){
+    wx.requestSubscribeMessage({
+      tmplIds: ['v-91v-ZZU9IV2isP7r341HmKTRJ3GJehx_A6l8MxmGE'],
+      success (res) { 
+        console.log(res)
+      wx.cloud.callFunction({
+          name: 'sendMessage',
+          data:{
+            thing1:'你好',
+            number2:'999'
+          }
+        })
+
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */

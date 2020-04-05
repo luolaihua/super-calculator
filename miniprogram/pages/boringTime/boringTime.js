@@ -64,6 +64,20 @@ Page({
     imgUrl: imageUrl.sort(util.randomsort),
 
   },
+  toTopList (){
+    wx.navigateTo({
+      url: '../boringTime/boringTopList/boringTopList',
+      success: function(res){
+        // success
+      },
+      fail: function() {
+        // fail
+      },
+      complete: function() {
+        // complete
+      }
+    })
+  },
   showMax(){
     
     var that = this
@@ -80,10 +94,10 @@ Page({
       //先执行完await中的get函数，才会执行更新
       await db.collection('maxNum').doc('boringMax').get().then(res => {
         var maxCloud = res.data.maxNum
-        if (boringTimeMax >= maxCloud) {
+        if (boringTimeMax < maxCloud) {
           //iqMaxNum = res.data.maxNum
           // console.log('iqMaxNum > res.data.maxNum')
-          boringTimeMax_cloud = boringTimeMax
+          boringTimeMax_cloud = maxCloud
           db.collection('maxNum').doc('boringMax').update({
             data: {
               maxNum: boringTimeMax
@@ -94,7 +108,7 @@ Page({
           })
         } else {
           // console.log('iqMaxNum > res.data.maxNum')
-          boringTimeMax_cloud = maxCloud
+          boringTimeMax_cloud = boringTimeMax
         }
         // console.log(maxCloud)
         //console.log(iqMaxNum)
@@ -152,23 +166,52 @@ Page({
   },
 
   bindtouchend(e) {
+
+    //把interval全部清除
     for (let index = 0; index < intervalArr.length; index++) {
- 
       clearInterval(intervalArr[index])
     }
     
+
     var t1 = e.timeStamp - this.data.startTime
     var boringTimeMax = this.data.boringTimeMax
+    var that = this
+    const db = wx.cloud.database()
 
     if (boringTimeMax < t1) {
       boringTimeMax = t1
       this.setData({
         boringTimeMax
       })
+      
+      this.setTopList(boringTimeMax)
       wx.setStorageSync('boringTimeMax', boringTimeMax)
     }
     this.setData({
       boringTime: t1
+    })
+  },
+  setTopList:function(maxNum){
+    var nickName = wx.getStorageSync('nickName')
+    var avatarUrl = wx.getStorageSync('avatarUrl')
+    wx.cloud.callFunction({
+      name: 'setTopList',
+      data: {
+        maxData: {
+          maxNum:maxNum,
+          nickName:nickName,
+          avatarUrl:avatarUrl
+        }
+      },
+      success: res => {
+        // output: res.result === 3
+      },
+      fail: err => {
+        // handle error
+      },
+      complete: () => {
+        // ...
+      }
     })
   },
 

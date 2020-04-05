@@ -1,4 +1,7 @@
 <!--miniprogram/pages/boringTime/boringTime.wxml-->
+<image bindtap="toTopList" class="infoIcon" 
+src="https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/info.png?sign=d34812d50f262f6de132e13556881533&t=1584065908" mode="aspectFit"></image>
+
 <view class="body" bindtap="bindtap" bindtouchstart="bindtouchstart" bindtouchend="bindtouchend">
 	<view class="showFace">
   <block wx:for="{{imgUrl}}" wx:key="index">
