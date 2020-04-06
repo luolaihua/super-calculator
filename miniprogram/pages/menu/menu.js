@@ -45,79 +45,14 @@ console.log((8>>1).toString(2),'++')
 
 //获取应用实例
 const app = getApp()
+const imgUrl = require('../util/imgUrl')
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    grids: [{
-        name: '亲戚计算',
-        url: 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/ren.png?sign=d3d51b6cd80337305ecbaa681651ca1b&t=1583810614'
-      },
-      {
-        name: '单位转换',
-        url: 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/transfer.png?sign=1e1cd7308864eef93c7aca19794ccaee&t=1583810636'
-      },
-
-      {
-        name: '体测成绩计算',
-        url: 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/tice.png?sign=4377add665517649836f45cdeb025d84&t=1583810682'
-      },
-      {
-        name: 'BMI计算',
-        url: 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/bmi_heart.png?sign=0ce03487b7fc0209cd34cc99a0d8eb73&t=1583810706'
-      },
-      {
-        name: '色环电阻计算',
-        url: 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/dianzu.png?sign=13107795a86da836e239ddcbb9eeb764&t=1583810720'
-      },
-      {
-        name: '洋气网名生成',
-        url: 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/tushe.png?sign=c1d696b5abf791809d1827df41b0041c&t=1583810736'
-      },
-      {
-        name: '翻译机',
-        url: 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/laugh.png?sign=c967f9a3732781aac35db6247aa5b126&t=1583833459'
-      }, {
-        name: '智商提高',
-        url: 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/zhishang.png?sign=93f2e91128fb2b9e9bb9b87de7472b2a&t=1583810771'
-      }, {
-        name: '小偏心大转盘',
-        url: 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/l.png?sign=b0771e17f0466b51de37266784bc51fc&t=1583810797'
-      }, {
-        name: '数学闯关',
-        url: 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/math.png?sign=1261d5d036cd39ca8d2314219e969249&t=1583851184'
-      }, {
-        name: '解方程',
-        url: 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/formula2.png?sign=4bb677a8286994c9ac7f65c197d4b451&t=1584948328'
-      },
-      {
-        name: '宠物年龄计算',
-        url: 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/dog.png?sign=8308889b4d9f08aba9c4b1209116dc95&t=1585277948'
-      },
-      {
-        name: '无聊计算',
-        url: 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/laugh3.png?sign=04ee9551d37b49da8f003b861189e5f5&t=1585366101'
-      },
-      {
-        name: '数数器',
-        url: 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/%E6%95%B0%E5%AD%97.png?sign=2d788745a5546fe58fa62bc1cf237443&t=1585481895'
-      },
-      {
-        name: '二维码生成',
-        url: 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/qrcode.png?sign=55badb58d9a0f80593a553d81f92f408&t=1585483105'
-      },
-      {
-        name: '设置',
-        url: 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/setting.png?sign=040c3d3c32993619663ae1eb05ce8e35&t=1585904368'
-      },
-        {
-        name: '聊天室',
-        url: 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/chat.png?sign=e997ce067a2b221c69f8df23c36ea74d&t=1583810662'
-      }, 
-
-    ]
+    grids: imgUrl.menu_imgList
   },
   navigateTo: function (e) {
     //是否开启触摸反馈

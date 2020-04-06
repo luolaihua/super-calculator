@@ -3,6 +3,7 @@
 const updateManager = wx.getUpdateManager()
 const math = require('../util/math.min.js');
 const Fraction = require('../util/fraction.js');
+const imgUrl = require('../util/imgUrl')
 const parser = math.parser();
 String.prototype.replaceAll = function (search, replacement) {
   var target = this;
@@ -21,6 +22,12 @@ var touchMoveY = 0; // y轴方向移动的距离
 
 Page({
   data: {
+    calculator_questionMark:imgUrl.calculator_questionMark,
+    calculator_soundOpen:imgUrl.calculator_soundOpen,
+    calculator_soundClose:imgUrl.calculator_soundClose,
+    calculator_arrow_up:imgUrl.calculator_arrow_up,
+    calculator_arrow_down:imgUrl.calculator_arrow_down,
+    calculator_history:imgUrl.calculator_history,
     isShowHistory:false,
     scrollTop: 100,
     isSound: false,

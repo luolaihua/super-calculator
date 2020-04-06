@@ -19,10 +19,10 @@
 
 <view class="switchBtn">
 	<view class="switchItem" bindtap="toChoose">
-		<image src="https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/edit_circle.png?sign=216e346de00503334d592647863a2ada&t=1583830791" mode="aspectFit" style="width:80rpx;height:80rpx" class="swithchItem"></image>
+		<image src="{{bigWheel_edit_circle}}" mode="aspectFit" style="width:80rpx;height:80rpx" class="swithchItem"></image>
 	</view>
 	<view class="switchItem" bindtap="setting">
-		<image src="https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/set.png?sign=8b30a637f9dabb1b193e156c7292e42b&t=1583830955" mode="aspectFit" style="width:80rpx;height:80rpx" class="swithchItem"></image>
+		<image src="{{bigWheel_setting}}" mode="aspectFit" style="width:80rpx;height:80rpx" class="swithchItem"></image>
 	</view>
 
 </view>

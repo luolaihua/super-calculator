@@ -1,5 +1,6 @@
 // miniprogram/pages/iqGame/iqGameInfo/iqGameInfo.js
 var util = require('../../util/util')
+var imgUrl = require('../../util/imgUrl')
 var app = getApp()
 
 Page({

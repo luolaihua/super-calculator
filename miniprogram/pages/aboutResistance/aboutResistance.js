@@ -1,11 +1,12 @@
 // miniprogram/pages/aboutResistance/aboutResistance.js
+const imgUrl = require("../util/imgUrl")
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    aboutResistance:imgUrl.aboutResistance
   },
 
   /**

@@ -1,10 +1,19 @@
 // miniprogram/pages/bigWheel/chooseItem/chooseItem.js
 var util = require('../../util/util')
 var xiaojueding = require('../../util/xiaojueding.js');
+const imgUrl = require("../../util/imgUrl")
 
 var app = getApp()
 Page({
   data: {
+    bigWheel_close_list:imgUrl.bigWheel_close_list,
+    bigWheel_open_list:imgUrl.bigWheel_open_list,
+    bigWheel_add:imgUrl.bigWheel_add,
+    bigWheel_edit:imgUrl.bigWheel_edit,
+    bigWheel_love:imgUrl.bigWheel_love,
+    bigWheel_delete:imgUrl.bigWheel_delete,
+    bigWheel_wheel:imgUrl.bigWheel_wheel,
+
     xiaojueding: xiaojueding,
     myxiaojueding: [],
     tab_index: 2,

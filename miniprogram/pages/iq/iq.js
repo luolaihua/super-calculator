@@ -3,13 +3,16 @@
 const app = getApp()
 var date = new Date()
 var today = date.getDate()
+const imgUrl = require('../util/imgUrl')
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    isLight: ''
+    isLight: '',
+    light_icon:imgUrl.light_icon,
+    dark_icon:imgUrl.dark_icon,
 
   },
   iq: function (e) {

@@ -110,13 +110,13 @@ button::after {
 }
 
 .open {
-  animation: slidedown 1s;
+  animation: slidedown 0.6s;
 
 }
 
 .close {
  display: none;
-  animation: slideup 1s;
+  animation: slideup 0.6s;
 }
 
 .specialOperator {

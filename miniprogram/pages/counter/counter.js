@@ -1,4 +1,5 @@
 // miniprogram/pages/counter/counter.js
+const imgUrl = require('../util/imgUrl')
 const soundList = [
   'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/wav/%E9%9B%B6.wav?sign=4dabc88dc83d3ef7056547a8702283e2&t=1582898316',
   'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/wav/%E4%B8%80.wav?sign=3cc974e8c54918056ee064a9610cb392&t=1582898183',
@@ -16,16 +17,6 @@ const opSoundList = [
   'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/wav/buuu.wav?sign=0d4b958ff643cb4143fc3d047bc7a5c1&t=1585492674',
   'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/wav/duaaaa.wav?sign=95e17075faf1a8537c5b0723b55162d8&t=1585492700'
 
-]
-const imgList = [
-  "https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/%E8%AE%A1%E6%95%B0%E5%99%A8%E5%87%8F.png?sign=1600f1f4d6542a553e7a455bfdddf3fd&t=1585486405",
-  "https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/%E8%AE%A1%E6%95%B0%E5%99%A8%E5%8A%A0.png?sign=950a89f6247501e936a0c091ec0b8ee0&t=1585484785",
-  "https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/wen_black.png?sign=0ad92b2c63f9ea67b8a2a1f719f0f3bb&t=1583811721",
-  'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/cacu_sound.png?sign=13d8d7d4049a51db489cee49b7fa1887&t=1583811768',
-  'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/cacu_mute.png?sign=ac76e56c21b8e005e889ed19eb445ced&t=1583811803',
-  'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/noVibrate.png?sign=92d633b0239cc56e1e2fa39f6e4d14b3&t=1585551350',
-  'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/vibrate4.png?sign=197b479e3a73c249f9c0bdfdfd6235a8&t=1585551875',
-  'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/sound_man.png?sign=61fb0eccc30e7b7a93009201cff58e20&t=1585551407',
 ]
 
 const innerAudioContext = wx.createInnerAudioContext()
@@ -47,7 +38,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    imgList: imgList,
+    imgList: imgUrl.counterImgList,
     num: 0,
     startTime: 0,
     endTime: 0,

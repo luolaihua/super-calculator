@@ -1,10 +1,10 @@
 <!--miniprogram/pages/iq/iq.wxml-->
 <view class="deng-box">
 	<view class="deng" bindtap="iq" wx:if='{{isLight}}'>
-    <image src="https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/d1.png?sign=cb0dba7b4d4335546526ea5451bb2891&t=1583842836" mode="aspectFit" style="width:200rpx;height:200rpx"></image>
+    <image src="{{light_icon}}" mode="aspectFit" style="width:200rpx;height:200rpx"></image>
 	</view>
   	<view class="deng" bindtap="iq" wx:if='{{!isLight}}'>
-    <image src="https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/d2.png?sign=5166add572bac53d23be135baa35d2ab&t=1583842856" mode="aspectFit" style="width:200rpx;height:200rpx"></image>
+    <image src="{{dark_icon}}" mode="aspectFit" style="width:200rpx;height:200rpx"></image>
 	</view>
 </view>
 

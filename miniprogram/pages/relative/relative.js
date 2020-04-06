@@ -3,12 +3,14 @@
 var app = getApp();
 //引用js
 var relationship = require("../util/relationship.js");
+const imgUrl = require('../util/imgUrl')
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    relative_questionMark:imgUrl.relative_questionMark,
     inputValue: '',
     chain: '',
     isShowScreen: true,

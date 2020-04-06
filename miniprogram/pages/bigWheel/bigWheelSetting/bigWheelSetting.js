@@ -1,10 +1,15 @@
 // miniprogram/pages/bigWheel/bigWheelSetting/bigWheelSetting.js
 var util = require('../../util/util')
+var imgUrl = require('../../util/imgUrl')
 var app = getApp()
 
 Page({
 
   data: {
+    showLove:imgUrl.showLove,
+    bigWheel_sound:imgUrl.bigWheel_sound,
+    bigWheel_repeat:imgUrl.bigWheel_repeat,
+    bigWheel_speed:imgUrl.bigWheel_speed,
     speed: 1,
     isSound: '',
     isRepeat: '',

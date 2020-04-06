@@ -1,7 +1,7 @@
 <!--index.wxml-->
-<image bindtap="help" class="about" src="https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/wen_black.png?sign=0ad92b2c63f9ea67b8a2a1f719f0f3bb&t=1583811721" mode="aspectFit"></image>
-<image bindtap="isSound" class="sound" src="{{isSound?'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/cacu_sound.png?sign=13d8d7d4049a51db489cee49b7fa1887&t=1583811768':'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/cacu_mute.png?sign=ac76e56c21b8e005e889ed19eb445ced&t=1583811803'}}" mode="aspectFit"></image>
-<image bindtap="toHistory" wx:if="{{isShowHistory&&(isScientific?indexOfSpecialList==2:'true')}}" class="history" src="https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/history.png?sign=627eb085551cfd0bb1e5b31d8fd82f17&t=1584949902" mode="aspectFit"></image>
+<image bindtap="help" class="about" src="{{calculator_questionMark}}" mode="aspectFit"></image>
+<image bindtap="isSound" class="sound" src="{{isSound?calculator_soundOpen:calculator_soundClose}}" mode="aspectFit"></image>
+<image bindtap="toHistory" wx:if="{{isShowHistory&&(isScientific?indexOfSpecialList==2:'true')}}" class="history" src="{{calculator_history}}" mode="aspectFit"></image>
 <scroll-view enable-flex scroll-top="{{scrollTop}}px" scroll-y class="screen1" style="height:{{isScientific?29:39}}vh ">
 	<view class="res" id="result" style="font-size:{{fontsize}}rpx;">{{res}}</view>
 </scroll-view>
@@ -13,7 +13,7 @@
 
 </view>
 <view class="showSpecial">
-	<image wx:if="{{isScientific}}" bindtap="isOpenSpecial" class="question_control" mode="scaleToFill" src="{{!isOpenSpecial?'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/openTop.png?sign=ed9c720b8050634ff72a7e86d9e40efe&t=1584690522':'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/closeDown.png?sign=d2da5d5ed8656807dcfd874df8786a34&t=1584690551'}}"></image>
+	<image wx:if="{{isScientific}}" bindtap="isOpenSpecial" class="question_control" mode="scaleToFill" src="{{!isOpenSpecial?calculator_arrow_up:calculator_arrow_down}}"></image>
 	<view wx:if="{{isScientific}}" bindtap='chooseContent'>{{specialOperatorList[indexOfSpecialList].content}}</view>
 
 </view>

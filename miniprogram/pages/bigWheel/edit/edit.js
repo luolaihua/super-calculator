@@ -1,9 +1,13 @@
 // pages/edit/edit.js
 var util = require('../../util/util.js')
+const imgUrl = require("../../util/imgUrl")
 var app = getApp()
 
 Page({
    data: {
+      bigWheel_questionMark:imgUrl.bigWheel_questionMark,
+      bigWheel_sub:imgUrl.bigWheel_sub,
+      bigWheel_add:imgUrl.bigWheel_add,
       isLove:false,
       probability: 1,
       input_answer_list: [],

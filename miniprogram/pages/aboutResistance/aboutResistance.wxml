@@ -1,5 +1,5 @@
 <!--miniprogram/pages/aboutResistance/aboutResistance.wxml-->
-<image  style="width:100vw" src="https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/timg.jpg?sign=18a31a13821708ce655855a6a6bc02b6&t=1583371259"></image>
+<image  style="width:100vw" src="{{aboutResistance}}"></image>
 
 <view>
 <text>（1）四色环电阻</text>

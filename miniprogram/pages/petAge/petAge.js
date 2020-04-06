@@ -1,36 +1,13 @@
 // miniprogram/pages/petAge/petAge.js
 const app = getApp()
+const imgUrl = require('../util/imgUrl')
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    grids: [{
-      name: '狗',
-      url: 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/animalsPic/dog2.png?sign=e41ffa5cbb8aa43b13871514ff0b36b6&t=1585289910'
-    },
-    {
-      name: '猫',
-      url: 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/animalsPic/cat2.png?sign=8231aeb1281fb01a15bbc05f1382b381&t=1585290101'
-    },
-    {
-      name: '仓鼠',
-      url: 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/animalsPic/cangshu.png?sign=bbc89fe72017dd2dbfe3dd359fc550a5&t=1585359084'
-    },
-    {
-      name: '龙猫',
-      url: 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/animalsPic/longmao.png?sign=ad2626eb2214a0017b0ef40c74f0a5ec&t=1585359171'
-    },
-    {
-      name: '兔子',
-      url: 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/animalsPic/rabbit.png?sign=ccc71b81c5eb30c96073c106a584e916&t=1585359281'
-    },
-/*     {
-      name: '关于',
-      url: 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/animalsPic/human.png?sign=f1be6b14b63398f1293a42dc626ab3a8&t=1585308592'
-    } */
-  ]
+    grids: imgUrl.pet_imgList
   },
   navigateTo: function (e) {
     //是否开启触摸反馈

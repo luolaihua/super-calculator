@@ -1,4 +1,5 @@
 var util = require('../util/util')
+const imgUrl = require("../util/imgUrl")
 var app = getApp();
 
 var xiaojuedingArr = require('../util/xiaojueding')
@@ -16,6 +17,9 @@ wx.setStorageSync('all', xiaojuedingArr);
  */
 var page = {
    data: {
+      bigWheel_edit_circle:imgUrl.bigWheel_edit_circle,
+      bigWheel_setting:imgUrl.bigWheel_setting,
+
       size: { //转盘大小可配置
          w: 599,
          h: 600

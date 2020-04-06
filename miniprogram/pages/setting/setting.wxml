@@ -18,7 +18,14 @@
 	<view class="modules_title_box">客服罗小炮</view>
 	<image class="modules_icon" mode="scaleToFill" src="https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/animalsPic/human.png?sign=912b2ecc5e7da48f67fb0f22bd5c1db2&t=1585906038" />
 </button>
+<button  class="btn-box" style="width: calc(100% - 20px);" open-type="getUserInfo" bindgetuserinfo="onGetUserInfo">
+	<view class="modules_title_box">{{nickName==''?'获取用户名和头像':nickName}}</view>
+	<image class="modules_icon" mode="scaleToFill" src="{{avatarUrl}}" />
+</button>
+<!--
 <button open-type="getUserInfo" bindgetuserinfo="onGetUserInfo" type="primary">登录</button>
-<button bindtap = "getOpenId">获取OPID</button>
-<button bindtap = "sendMessage">发送订阅消息</button>
+<button bindtap="getOpenId">获取OPID</button>
+<button bindtap="sendMessage">发送订阅消息</button>
+-->
+
 

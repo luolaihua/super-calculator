@@ -2,7 +2,10 @@
 <block wx:for="{{collectionData}}">
 	<view class="modules_box">
 		<view class="modules_icon_box">
-			<image class="modules_icon" mode="scaleToFill" src="{{item.avatarUrl==''?'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/hg.png?sign=aee2010ae1b930f8e0177d48db67d2b1&t=1585801642':item.avatarUrl}}" />
+			<image wx:if="{{index==0}}" class="modules_icon" mode="scaleToFill" src="{{no1}}" />
+			<image wx:elif="{{index==1}}" class="modules_icon" mode="scaleToFill" src="{{no2}}" />
+			<image wx:elif="{{index==2}}" class="modules_icon" mode="scaleToFill" src="{{no3}}" />
+			<image wx:else class="modules_icon" mode="scaleToFill" src="{{item.avatarUrl==''?defaultImg:item.avatarUrl}}" />
 		</view>
 		<view class="modules_title_box">{{item.nickName==''?'无聊的网友':item.nickName}}</view>
 		<view class="modules_text_box">

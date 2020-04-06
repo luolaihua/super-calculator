@@ -8,7 +8,9 @@ Page({
    */
   data: {
     isVibrate_setting:false,
-    openId:''
+    openId:'',
+    nickName:'',
+    avatarUrl:''
   },
   //声音
   switchChangeVibrate() {
@@ -26,7 +28,12 @@ Page({
     var avatarUrl = e.detail.userInfo.avatarUrl
     wx.setStorageSync('nickName', nickName)
     wx.setStorageSync('avatarUrl', avatarUrl)
+    this.getOpenId()
    console.log(avatarUrl,nickName)
+   this.setData({
+     nickName,
+     avatarUrl
+   })
   },
   getOpenId: async function () {
     if (this.openid) {
@@ -38,7 +45,8 @@ Page({
     } = await wx.cloud.callFunction({
       name: 'login',
     })
-    console.log(result)
+    wx.setStorageSync('openId', result.userInfo.openId)
+    console.log(result.userInfo.openId)
     //console.log(result.userInfo.openId, '====openid')
     this.setData({
       openId: result.userInfo.openId

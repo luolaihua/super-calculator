@@ -13,7 +13,7 @@
 	<view style="color:white;padding-left:40rpx" wx:if="{{chain !=''}}"> TA是你：</view>
 	<view class="show">{{chain}}</view>
 </block>
-<image bindtap="introduction" class="about" src="https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/wen_orange.png?sign=0f64024342fb44e2a0aa0252eeb95dfe&t=1583810924" mode="aspectFit"></image>
+<image bindtap="introduction" class="about" src="{{relative_questionMark}}" mode="aspectFit"></image>
 <!-- 显示按钮功能 style="height:{{second_height}}px"-->
 <view class="btngroup">
 	<view class="btnBox">

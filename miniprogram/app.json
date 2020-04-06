@@ -1,12 +1,14 @@
 {
-  "pages": [
-
-        "pages/menu/menu",
-        "pages/boringTime/boringTime",
+  "pages": [ 
+       "pages/index/index",
+         "pages/boringTime/boringTime",
     "pages/boringTime/boringTopList/boringTopList",
+        "pages/menu/menu",
+   
+
 
     "pages/im/room/room",
-    "pages/index/index",
+
     "pages/solveFormula/solveFormula",
     "pages/setting/setting",
 
