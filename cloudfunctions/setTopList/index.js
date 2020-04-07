@@ -13,11 +13,11 @@ exports.main = async (event, context) => {
 
   console.log(id)
   //获取集合列表，判断id是否存在，存在则更新数据，不存在则添加id和数据
-    db.collection('test').get().then(res => {
+/*     db.collection('test').get().then(res => {
     // res.data 包含该记录的数据
     //collectionData = res.data
     console.log(res.data)
-  })
+  }) */
    
 /*   for (let index = 0; index < collectionData.length; index++) {
     if (collectionData[index]._id == id) {
@@ -43,11 +43,11 @@ exports.main = async (event, context) => {
     })
   } */
   //var result = 999
-  /*   return {
+     return {
      result: db.collection('test').get(),
       event,
       openid: wxContext.OPENID,
       appid: wxContext.APPID,
       unionid: wxContext.UNIONID,
-    } */
+    } 
 }

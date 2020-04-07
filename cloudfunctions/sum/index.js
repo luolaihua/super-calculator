@@ -10,6 +10,6 @@ const _ = db.command
 exports.main = async (event, context) => {
   const wxContext = cloud.getWXContext()
 
-  return   db.collection('test').get()
+  return   db.collection('topList').get()
  
 }

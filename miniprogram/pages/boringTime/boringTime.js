@@ -4,6 +4,138 @@ var util = require('../util/util')
 const imgUrl = require('../util/imgUrl')
 var intervalArr = []
 const imageUrl = imgUrl.boringFace
+/**
+ * 珊瑚图片内容安全
+ */
+function doImgSecCheck() {
+  var d = Date.now()
+  wx.serviceMarket.invokeService({
+    service: 'wxee446d7507c68b11',
+    api: 'imgSecCheck',
+    data: {
+      "Action": "ImageModeration",
+      "Scenes": ["PORN", "POLITICS", "TERRORISM", "TEXT"],
+      "ImageUrl": "https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTL1L9LJPQxXJcBXZSEDiagYDYemEgucElq3ibMnLyzgzCuVGibiaQ4wu73wDiayicDhC1gT9eSQKFyt3SUA/132",
+      "ImageBase64": "",
+      "Config": "",
+      "Extra": ""
+    },
+  }).then(res => {
+    console.log(res)
+  })
+}
+//doImgSecCheck()
+
+/**
+ * 珊瑚文本内容安全
+ */
+function doMsgSecCheck () {
+  wx.serviceMarket.invokeService({
+    service: 'wxee446d7507c68b11',
+    api: 'msgSecCheck',
+    data: {
+      "Action": "TextApproval",
+      "Text": "hello world!"
+    },
+  }).then(res => {
+    console.log(res)
+  })
+}
+
+
+//doMsgSecCheck ()
+
+wx.getImageInfo({
+  src: 'https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTL1L9LJPQxXJcBXZSEDiagYDYemEgucElq3ibMnLyzgzCuVGibiaQ4wu73wDiayicDhC1gT9eSQKFyt3SUA/132',
+  success: function (res) {       //访问存放微信用户头像的Url 
+    console.log(res.path)
+    wx.getFileSystemManager().readFile({
+      filePath: res.path, //选择图片返回的相对路径
+      encoding: 'base64', //编码格式
+      success: res => { //成功的回调
+        wx.cloud.callFunction({
+          name:'databaseTest',
+          data:{
+            //path: 'pictures/' + util.vcode(new Date())+index+'.png',
+            file: res.data
+          },
+          success(_res){    
+            console.log(_res)
+          },fail(_res){
+            console.log(_res)
+          }
+        })
+      }
+    })
+
+
+
+/*     wx.cloud.uploadFile({
+      cloudPath:'test.png',
+      filePath:res.path,
+      success: res => {
+        console.log('[上传文件] 成功：', res)
+         wx.cloud.callFunction({
+          name: 'imgSecCheck',
+          data: {
+            contentType: contentType,
+            fileID: res.fileID
+          }
+        }).then(res => {
+          console.log("检测结果", res.result);
+           if (res.result.errCode == 0) {
+               wx.showToast({
+                icon: 'none',
+                title: '图片正常',
+            })
+          } else {
+            wx.showToast({
+              icon: 'none',
+              title: '图片含有违法信息，请换张说明图',
+            })
+          }
+        }) 
+      },
+      fail: e => {
+        console.error('[上传文件] 失败：', e)
+      }
+    }) 
+ */
+  }
+}) 
+
+/* wx.cloud.uploadFile({
+  cloudPath:'test.png',
+  filePath:'',
+  success: res => {
+    console.log('[上传文件] 成功：', res)
+    wx.cloud.callFunction({
+      name: 'imgSecCheck',
+      data: {
+        contentType: contentType,
+        fileID: res.fileID
+      }
+    }).then(res => {
+      console.log("检测结果", res.result);
+       if (res.result.errCode == 0) {
+           wx.showToast({
+            icon: 'none',
+            title: '图片正常',
+        })
+      } else {
+        wx.showToast({
+          icon: 'none',
+          title: '图片含有违法信息，请换张说明图',
+        })
+      }
+    }) 
+  },
+  fail: e => {
+    console.error('[上传文件] 失败：', e)
+  }
+}) */
+//
+
 Page({
 
   /**
