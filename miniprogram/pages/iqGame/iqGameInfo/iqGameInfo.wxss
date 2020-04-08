@@ -8,6 +8,17 @@ page {
   width: 100%;
   margin-bottom: 10px;
 }
+.modules_icon_box2 {
+  height: 60px;
+  width: 60px;
+}
+
+.modules_icon2 {
+  border-radius: 10%;
+  width: 30px;
+  height: 30px;
+  margin: 15px;
+}
 
 .modules_box {
   display: flex;

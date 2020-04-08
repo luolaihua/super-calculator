@@ -6,13 +6,58 @@ var app = getApp()
 Page({
 
   data: {
+    gradeUrl:imgUrl.iqGame_grade,
+    BGMUrl:imgUrl.iqGame_BGM,
+    musicUrl:imgUrl.iqGame_music,
+    starUrl:imgUrl.iqGame_star,
+    crownUrl1:imgUrl.iqGame_crown1,
+    crownUrl2:imgUrl.iqGame_crown2,
+    no1:imgUrl.No1,
+    no2:imgUrl.No2,
+    no3:imgUrl.No3,
+    defaultImg:imgUrl.boringFace[6],
     grade: '一年级',
     downTime: 5,
     isSound: '',
     isRepeat: '',
     isBGM: '',
     iqMaxNum: 0,
-    isMax: false
+    isMax: false,
+    collectionData:[],
+    isOpenList:false
+  },
+  openTopList:function(e){
+    var isOpenList = !this.data.isOpenList
+    var collectionData ,that = this
+    if(isOpenList){
+      
+      //调用云函数获取数据
+      wx.cloud.callFunction({
+        // 要调用的云函数名称
+        name: 'setTopList',
+        // 传递给云函数的参数
+        data: {
+          type:'chuangGuanNum'
+        },
+        success: res => {
+          console.log(res)
+          collectionData =  res.result
+          that.setData({
+            collectionData 
+          })
+          // output: res.result === 3
+        },
+        fail: err => {
+          // handle error
+        },
+        complete: () => {
+          // ...
+        }
+      })
+    }
+    this.setData({
+      isOpenList
+    })
   },
   sliderChange: function (e) {
     var value = e.detail.value
@@ -75,13 +120,10 @@ Page({
       //先执行完await中的get函数，才会执行更新
       await db.collection('maxNum').doc('iqGameMax').get().then(res => {
         var maxCloud = res.data.maxNum
-        if (iqMaxNum >= maxCloud) {
-          //iqMaxNum = res.data.maxNum
-          // console.log('iqMaxNum > res.data.maxNum')
+        if (iqMaxNum > maxCloud) {
           isMax = true
           db.collection('maxNum').doc('iqGameMax').update({
             data: {
-              // 表示指示数据库将字段自增 1
               maxNum: iqMaxNum
             },
             success: function (res) {
@@ -106,6 +148,34 @@ Page({
     updateGet()
 
     that.gradeMake(successNum)
+
+//通知展示
+    var isShowIqGameTopListModal = wx.getStorageSync('isShowIqGameTopListModal')
+    if (isShowIqGameTopListModal === '') {
+      wx.setStorageSync('isShowIqGameTopListModal', true)
+      isShowIqGameTopListModal = true
+    }
+    if (isShowIqGameTopListModal) {
+      wx.showModal({
+        title: 'SoBoring',
+        content: '点击全服最高闯关可展开闯关排行榜，在菜单->设置中获取您的网名和头像，以便参与数学闯关排行榜',
+        cancelText: '不再提醒',
+        confirmText: '我知道了',
+        confirmColor: '#3CC51F',
+        success(res) {
+          if (res.confirm) {
+            console.log('用户点击确定')
+          } else if (res.cancel) {
+            console.log('用户点击取消')
+            wx.setStorageSync('isShowIqGameTopListModal', false)
+          }
+        },
+        fail: function (res) {},
+        complete: function (res) {},
+      })
+    }
+    
+
     that.setData({
       isSound: isSound,
       isBGM: isBGM,

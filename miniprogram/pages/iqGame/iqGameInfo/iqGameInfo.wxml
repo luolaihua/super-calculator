@@ -1,8 +1,8 @@
-<!--miniprogram/pages/iqGame/iqGameInfo/iqGameInfo.wxml-->
+<!-- miniprogram/pages/iqGame/iqGameInfo/iqGameInfo.wxml -->
 <view class="container">
 	<view class="modules_box">
 		<view class="modules_icon_box">
-			<image class="modules_icon" mode="scaleToFill" src="https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/zuan.png?sign=bf97a01f58d170088d111b5d186d6819&t=1584072775"></image>
+			<image class="modules_icon" mode="scaleToFill" src="{{gradeUrl}}" />
 		</view>
 		<view class="modules_title_box">游戏等级</view>
 		<view class="modules_text_box">
@@ -11,37 +11,52 @@
 	</view>
 	<view class="modules_box">
 		<view class="modules_icon_box">
-			<image class="modules_icon" mode="scaleToFill" src="https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/music.png?sign=47291c08dd5a2dc1f4e7b1f952aaf6dd&t=1584072804"></image>
+			<image class="modules_icon" mode="scaleToFill" src="{{BGMUrl}}" />
 		</view>
 		<view class="modules_title_box">BGM</view>
 		<view class="modules_switch_box">
-			<switch bindchange="switchChangeBGM" checked="{{isBGM}}" class="modules_switch" type="switch"></switch>
+			<switch
+			 bindchange="switchChangeBGM"
+			 checked="{{isBGM}}"
+			 class="modules_switch"
+			 type="switch"
+			/>
 		</view>
 	</view>
 	<view class="modules_box">
 		<view class="modules_icon_box">
-			<image class="modules_icon" mode="scaleToFill" src="https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/music2.png?sign=8bfbb9eb2c6df29e9497b2bfe49117e9&t=1584072822"></image>
+			<image class="modules_icon" mode="scaleToFill" src="{{musicUrl}}" />
 		</view>
 		<view class="modules_title_box">音效</view>
 		<view class="modules_switch_box">
-			<switch bindchange="switchChangeSound" checked="{{isSound}}" class="modules_switch" type="switch"></switch>
+			<switch
+			 bindchange="switchChangeSound"
+			 checked="{{isSound}}"
+			 class="modules_switch"
+			 type="switch"
+			/>
 		</view>
 	</view>
-
 	<view class="modules_box">
 		<view class="modules_icon_box">
-			<image class="modules_icon" mode="scaleToFill" src="https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/star.png?sign=20d8f647a4d81962496b30a2619b917a&t=1584072850"></image>
+			<image class="modules_icon" mode="scaleToFill" src="{{starUrl}}" />
 		</view>
 		<view class="slider-box">
 			<text class="slider-title">答题时间</text>
 			<view class="slider-view">
-				<slider bindchange="sliderChange" min="3" max="10" value="{{downTime}}" show-value />
+				<slider
+				 bindchange="sliderChange"
+				 min="3"
+				 max="10"
+				 value="{{downTime}}"
+				 show-value
+				/>
 			</view>
 		</view>
 	</view>
-	<view class="modules_box">
+	<view class="modules_box" bind:tap="openTopList">
 		<view class="modules_icon_box">
-			<image class="modules_icon" mode="scaleToFill" src="{{isMax?'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/hg.png?sign=aee2010ae1b930f8e0177d48db67d2b1&t=1585801642':'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/hg2.png?sign=682e5586ac28935bcad356b2f1daa962&t=1585801507'}}"></image>
+			<image class="modules_icon" mode="scaleToFill" src="{{isMax?crownUrl1:crownUrl2}}" />
 		</view>
 		<view class="modules_title_box">{{isMax?'您当前为全服第一':'全服最高闯关'}}</view>
 		<view class="modules_text_box">
@@ -49,3 +64,40 @@
 		</view>
 	</view>
 </view>
+<block wx:if="{{isOpenList}}">
+	<block wx:for="{{collectionData}}">
+		<view class="modules_box">
+			<view class="modules_icon_box2">
+				<image
+				 wx:if="{{index==0}}"
+				 class="modules_icon"
+				 mode="scaleToFill"
+				 src="{{no1}}"
+				/>
+				<image
+				 wx:elif="{{index==1}}"
+				 class="modules_icon"
+				 mode="scaleToFill"
+				 src="{{no2}}"
+				/>
+				<image
+				 wx:elif="{{index==2}}"
+				 class="modules_icon"
+				 mode="scaleToFill"
+				 src="{{no3}}"
+				/>
+				<image
+				 wx:else
+				 class="modules_icon2"
+				 mode="scaleToFill"
+				 src="{{item.avatarUrl==''?defaultImg:item.avatarUrl}}"
+				/>
+			</view>
+			<view class="modules_title_box">{{item.nickName==''?'互联网冲浪选手':item.nickName}}</view>
+			<view class="modules_text_box">
+				<view>{{item.chuangGuanNum}}关</view>
+			</view>
+		</view>
+	</block>
+</block>
+

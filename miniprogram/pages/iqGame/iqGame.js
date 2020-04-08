@@ -1,5 +1,6 @@
 // miniprogram/pages/iqGame/iqGame.js
 var util = require('../util/util')
+const myApi = require('../util/myApi')
 var bgm = wx.createInnerAudioContext()
 bgm.loop = true
 var dida = wx.createInnerAudioContext()
@@ -127,6 +128,7 @@ Page({
 
         })
         wx.setStorageSync('successNum', successNum + 1)
+        myApi.setTopList("fromIqGame",successNum + 1)
         if (this.data.isSound) {
           success.play()
         }
@@ -297,7 +299,10 @@ Page({
       grade
     countDownTime = wx.getStorageSync('downTime')
 
+    //初始化榜单
+    myApi.setTopList("fromIqGame",successNum)
 
+    
     if (countDownTime == '') {
       wx.setStorageSync('downTime', 5)
       countDownTime = 5

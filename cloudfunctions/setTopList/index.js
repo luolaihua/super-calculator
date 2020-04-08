@@ -7,47 +7,19 @@ const _ = db.command
 // 云函数入口函数
 exports.main = async (event, context) => {
   const wxContext = cloud.getWXContext()
- // var maxData = event.maxData, collectionData = [], isExist = false
-  var id=wxContext.OPENID
-  //maxData._id = id
-
-  console.log(id)
-  //获取集合列表，判断id是否存在，存在则更新数据，不存在则添加id和数据
-/*     db.collection('test').get().then(res => {
-    // res.data 包含该记录的数据
-    //collectionData = res.data
-    console.log(res.data)
-  }) */
-   
-/*   for (let index = 0; index < collectionData.length; index++) {
-    if (collectionData[index]._id == id) {
-      isExist = true
-    }
+  var id=wxContext.OPENID,topListData
+  var type = event.type
+  console.log(type)
+  if(type==''){
+    type='maxNum'
   }
 
-  if (!isExist) {
-    db.collection('topList').add({
-      data: maxData,
-      success: function (res) {
-        console.log(res)
-      }
-    })
-  } else {
-    db.collection('topList').doc(id).update({
-      data: {
-        maxNum:  maxData.maxNum
-      },
-      success: function (res) {
-        console.log(res.data)
-      }
-    })
-  } */
-  //var result = 999
-     return {
-     result: db.collection('test').get(),
-      event,
-      openid: wxContext.OPENID,
-      appid: wxContext.APPID,
-      unionid: wxContext.UNIONID,
-    } 
+  //能一次取一百条,目前够用
+  await db.collection('topList').orderBy(type, 'desc').get().then(res => {
+    // res.data 包含该记录的数据
+    //console.log(res.data)
+    topListData =res.data
+  })
+return topListData
+
 }

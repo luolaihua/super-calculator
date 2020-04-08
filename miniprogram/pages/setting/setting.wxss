@@ -24,9 +24,10 @@
   }
   
   .modules_icon {
-    width: 20px;
-    height: 20px;
-    margin: 20px;
+    border-radius: 10%;
+    width: 30px;
+    height: 30px;
+    margin: 15px;
   }
   
   .modules_title_box {

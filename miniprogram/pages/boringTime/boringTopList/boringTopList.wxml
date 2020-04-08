@@ -5,9 +5,9 @@
 			<image wx:if="{{index==0}}" class="modules_icon" mode="scaleToFill" src="{{no1}}" />
 			<image wx:elif="{{index==1}}" class="modules_icon" mode="scaleToFill" src="{{no2}}" />
 			<image wx:elif="{{index==2}}" class="modules_icon" mode="scaleToFill" src="{{no3}}" />
-			<image wx:else class="modules_icon" mode="scaleToFill" src="{{item.avatarUrl==''?defaultImg:item.avatarUrl}}" />
+			<image wx:else class="modules_icon" mode="scaleToFill" src="{{item.avatarUrl}}" />
 		</view>
-		<view class="modules_title_box">{{item.nickName==''?'无聊的网友':item.nickName}}</view>
+		<view class="modules_title_box">{{item.nickName}}</view>
 		<view class="modules_text_box">
 			<view>{{item.maxNum}}</view>
 		</view>

@@ -21,7 +21,33 @@ Page({
    */
   onLoad: function (options) {
     var collectionData ,that = this
-    const db = wx.cloud.database()
+
+    //调用云函数获取数据
+    wx.cloud.callFunction({
+      // 要调用的云函数名称
+      name: 'setTopList',
+      // 传递给云函数的参数
+      data: {
+        type:'maxNum'
+      },
+      success: res => {
+        console.log(res)
+        collectionData =  res.result
+        this.setData({
+          collectionData
+        })
+        // output: res.result === 3
+      },
+      fail: err => {
+        // handle error
+      },
+      complete: () => {
+        // ...
+      }
+    })
+
+    //小程序端获取数据
+ /*    const db = wx.cloud.database()
     db.collection('topList').orderBy('maxNum', 'desc').get().then(res => {
       // res.data 包含该记录的数据
       collectionData = res.data
@@ -31,7 +57,7 @@ Page({
 
       console.log(res.data)
     })
-
+ */
     var isShowBoringTopListModal = wx.getStorageSync('isShowBoringTopListModal')
     if (isShowBoringTopListModal === '') {
       wx.setStorageSync('isShowBoringTopListModal', true)

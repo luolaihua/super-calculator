@@ -1,4 +1,10 @@
 module.exports = {
+  iqGame_grade:"https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/zuan.png?sign=bf97a01f58d170088d111b5d186d6819&t=1584072775",
+  iqGame_BGM:"https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/music.png?sign=47291c08dd5a2dc1f4e7b1f952aaf6dd&t=1584072804",
+  iqGame_music:"https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/music2.png?sign=8bfbb9eb2c6df29e9497b2bfe49117e9&t=1584072822",
+  iqGame_star:"https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/star.png?sign=20d8f647a4d81962496b30a2619b917a&t=1584072850",
+  iqGame_crown1:'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/hg.png?sign=aee2010ae1b930f8e0177d48db67d2b1&t=1585801642',
+  iqGame_crown2:'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/hg2.png?sign=682e5586ac28935bcad356b2f1daa962&t=1585801507',
   aboutResistance:'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/timg.jpg?sign=18a31a13821708ce655855a6a6bc02b6&t=1583371259',
   relative_questionMark:'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/wen_orange.png?sign=0f64024342fb44e2a0aa0252eeb95dfe&t=1583810924',
   human:'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/animalsPic/human.png?sign=f1be6b14b63398f1293a42dc626ab3a8&t=1585308592',
