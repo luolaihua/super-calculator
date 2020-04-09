@@ -1,17 +1,14 @@
 {
-  "pages": [ 
-       "pages/index/index",
-         "pages/boringTime/boringTime",
-    "pages/boringTime/boringTopList/boringTopList",
-        "pages/menu/menu",
-   
-
-
-    "pages/im/room/room",
-
-    "pages/solveFormula/solveFormula",
+  "pages": [
+     
+    "pages/imageEdit/imageEdit",
+ "pages/menu/menu",  
     "pages/setting/setting",
-
+    "pages/index/index",
+    "pages/boringTime/boringTime",
+    "pages/boringTime/boringTopList/boringTopList",
+    "pages/im/room/room",
+    "pages/solveFormula/solveFormula",
     "pages/iqGame/iqGame",
     "pages/myMatrices/myMatrices",
     "pages/qrCode/qrCode",

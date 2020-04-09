@@ -170,18 +170,6 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    wx.getStorage({
-      key: 'myName',
-      success(res) {
-        //console.log(res.data)
-        if (res.data != '') {
-          wx.showToast({
-            title: '你好呀，' + res.data,
-            icon: 'none'
-          })
-        }
-      }
-    })
 
   },
 

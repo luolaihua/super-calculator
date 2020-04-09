@@ -29,6 +29,32 @@
     height: 30px;
     margin: 15px;
   }
+  .avatar {
+    border-radius: 50%;
+    width: 8vh;
+    height: 8vh;
+    margin: 3vh;
+  }
+  .userInfo{
+    width: 100vw;
+    height: 20vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .nickName{
+    height: 4vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+  .editName{
+    border-radius: 50%;
+    width: 2vh;
+    height: 2vh;
+  }
   
   .modules_title_box {
     display: flex;

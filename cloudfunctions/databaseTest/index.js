@@ -8,19 +8,16 @@ cloud.init({
 const db = cloud.database()
 // 云函数入口函数
 exports.main = async (event, context) => {
+  requestType = event.requestType
 
-var data
- await db.collection('topList').orderBy('maxNum', 'desc').get().then(res => {
-    // res.data 包含该记录的数据
-    console.log(res.data)
-     data =res.data
-  })
-return data
 
-//文本内容安全检测
-  /*   try {
+        //文本内容安全检测
+  if(requestType=='msgSecCheck'){
+
+    console.log(event.content)
+   try {
       let result = await cloud.openapi.security.msgSecCheck({
-        content: '么么么哒'
+        content: event.content
       })
       console.log(result)
       if (result.errCode == 0) {
@@ -29,7 +26,25 @@ return data
       return false
     } catch (err) {
       return false;
-    } */
+    } 
+  }else if(requestType=='airCropImage'){
+
+    let fileId = event.file;
+  // 获取文件的临时连接
+  let tempUrl = await cloud.getTempFileURL({
+    fileList: [fileId]
+  })
+  let newUrl = tempUrl.fileList[0].tempFileURL;
+  // 对图片进行裁剪
+  let cropResult = await cloud.openapi.img.aiCrop({
+    imgUrl:newUrl,
+    ratios:'1.0'//裁剪比例
+  })
+  return cropResult
+  }else{
+    return 'nothing'
+  }
+
 //图像内容安全检测
 /*   const fileID = 'cloud://luo-r5nle.6c75-luo-r5nle-1301210100/animalsPic/cangshu.png'
   const res = await cloud.downloadFile({

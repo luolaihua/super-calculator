@@ -1,0 +1,11 @@
+/* miniprogram/pages/imageEdit/imageEdit.wxss */
+.addImage,.showImage{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10vh;
+}
+.addImage image{
+width: 40vw;
+height: 40vw;
+}

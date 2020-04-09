@@ -2,12 +2,16 @@
 //获取实例
 var app = getApp();
 const myApi = require('../util/myApi')
+const imgUrl = require('../util/imgUrl')
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    editUrl:imgUrl.bigWheel_edit,
+    peopleUrl:imgUrl.human,
+    touchUrl:imgUrl.setting_touchUrl,
     isVibrate_setting: false,
     openId: '',
     nickName: '',
@@ -37,7 +41,6 @@ Page({
     //安全检测
     myApi.checkImgAndMsg(avatarUrl, nickName).then(res => {
       wx.hideLoading();
-
       //根据是否安全获取openId还是将openID置空
       myApi.getOpenId(res)
 
@@ -97,19 +100,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var isVibrate_setting = wx.getStorageSync('isVibrate_setting')
-    var nickName = wx.getStorageSync('nickName')
-    var avatarUrl =  wx.getStorageSync('avatarUrl')
-    if (isVibrate_setting === '') {
-      wx.setStorageSync('isVibrate_setting', false)
-      isVibrate_setting = false
-    }
-    app.globalData.isVibrate = isVibrate_setting
-    this.setData({
-      isVibrate_setting,
-      nickName,
-      avatarUrl
-    })
+
     /*     var that = this
         wx.cloud.downloadFile({
           fileID: 'cloud://luo-r5nle.6c75-luo-r5nle-1301210100/t1.jpg',
@@ -138,7 +129,19 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    var isVibrate_setting = wx.getStorageSync('isVibrate_setting')
+    var nickName = wx.getStorageSync('nickName')
+    var avatarUrl =  wx.getStorageSync('avatarUrl')
+    if (isVibrate_setting === '') {
+      wx.setStorageSync('isVibrate_setting', false)
+      isVibrate_setting = false
+    }
+    app.globalData.isVibrate = isVibrate_setting
+    this.setData({
+      isVibrate_setting,
+      nickName,
+      avatarUrl
+    })
   },
 
   /**

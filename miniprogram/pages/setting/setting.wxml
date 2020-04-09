@@ -1,7 +1,25 @@
 <!--miniprogram/pages/setting/setting.wxml-->
+<block  wx:if="{{nickName!=''}}">
+<view class="userInfo" hover-class="none" hover-stop-propagation="false">
+	<image src="{{avatarUrl}}" class="avatar"/>
+	<view class="nickName" hover-class="none" hover-stop-propagation="false">
+		<text style="margin-right:20rpx">{{nickName}}</text>
+		<navigator url="../nameMade/nameMade">
+		<image src="{{editUrl}}" class="editName" mode="scaleToFill"/>
+		</navigator>
+		
+	</view>
+	
+</view>
+</block>
+
+<button  class="btn-box" style="width: calc(100% - 20px);" open-type="getUserInfo" bindgetuserinfo="onGetUserInfo">
+	<view class="modules_title_box">{{nickName==''?'获取用户名和头像':nickName}}</view>
+	<image class="modules_icon" mode="scaleToFill" src="{{avatarUrl}}" />
+</button>
 <view class="modules_box">
 	<view class="modules_icon_box">
-		<image class="modules_icon" mode="scaleToFill" src="https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/touch.png?sign=5bdc2eb25eb28c5f81b7616f9e80083c&t=1585906200" />
+		<image class="modules_icon" mode="scaleToFill" src="{{touchUrl}}" />
 	</view>
 	<view class="modules_title_box">触摸反馈</view>
 	<view class="modules_switch_box">
@@ -16,12 +34,9 @@
 
 <button class="btn-box" style="width: calc(100% - 20px);" open-type="contact">
 	<view class="modules_title_box">机器人客服</view>
-	<image class="modules_icon" mode="scaleToFill" src="https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/animalsPic/human.png?sign=912b2ecc5e7da48f67fb0f22bd5c1db2&t=1585906038" />
+	<image class="modules_icon" mode="scaleToFill" src="{{peopleUrl}}" />
 </button>
-<button  class="btn-box" style="width: calc(100% - 20px);" open-type="getUserInfo" bindgetuserinfo="onGetUserInfo">
-	<view class="modules_title_box">{{nickName==''?'获取用户名和头像':nickName}}</view>
-	<image class="modules_icon" mode="scaleToFill" src="{{avatarUrl}}" />
-</button>
+
 <!--
 <button open-type="getUserInfo" bindgetuserinfo="onGetUserInfo" type="primary">登录</button>
 <button bindtap="getOpenId">获取OPID</button>
