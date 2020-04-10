@@ -26,6 +26,12 @@ App({
         // env: 'my-env-id',
         traceUser: true,
       })
+      var isVibrate_setting = wx.getStorageSync('isVibrate_setting')
+      if (isVibrate_setting === '') {
+        wx.setStorageSync('isVibrate_setting', false)
+        isVibrate_setting = false
+      }
+      this.globalData.isVibrate = isVibrate_setting
     }
 /*     plugin.init({
 

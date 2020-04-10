@@ -1,7 +1,7 @@
 <!--miniprogram/pages/setting/setting.wxml-->
 <block  wx:if="{{nickName!=''}}">
 <view class="userInfo" hover-class="none" hover-stop-propagation="false">
-	<image src="{{avatarUrl}}" class="avatar"/>
+	<image bindtap="changeAvatar" src="{{avatarUrl}}" class="avatar"/>
 	<view class="nickName" hover-class="none" hover-stop-propagation="false">
 		<text style="margin-right:20rpx">{{nickName}}</text>
 		<navigator url="../nameMade/nameMade">

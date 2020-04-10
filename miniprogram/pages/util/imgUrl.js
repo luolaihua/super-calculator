@@ -1,5 +1,6 @@
 module.exports = {
   addImage:'cloud://luo-r5nle.6c75-luo-r5nle-1301210100/images/addImage.png',
+  addImage2:'cloud://luo-r5nle.6c75-luo-r5nle-1301210100/images/addImage2.png',
   setting_touchUrl:'cloud://luo-r5nle.6c75-luo-r5nle-1301210100/images/touch.png',
   iqGame_grade:"https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/zuan.png?sign=bf97a01f58d170088d111b5d186d6819&t=1584072775",
   iqGame_BGM:"https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/music.png?sign=47291c08dd5a2dc1f4e7b1f952aaf6dd&t=1584072804",

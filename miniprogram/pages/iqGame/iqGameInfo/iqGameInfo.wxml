@@ -15,12 +15,7 @@
 		</view>
 		<view class="modules_title_box">BGM</view>
 		<view class="modules_switch_box">
-			<switch
-			 bindchange="switchChangeBGM"
-			 checked="{{isBGM}}"
-			 class="modules_switch"
-			 type="switch"
-			/>
+			<switch bindchange="switchChangeBGM" checked="{{isBGM}}" class="modules_switch" type="switch" />
 		</view>
 	</view>
 	<view class="modules_box">
@@ -29,12 +24,7 @@
 		</view>
 		<view class="modules_title_box">音效</view>
 		<view class="modules_switch_box">
-			<switch
-			 bindchange="switchChangeSound"
-			 checked="{{isSound}}"
-			 class="modules_switch"
-			 type="switch"
-			/>
+			<switch bindchange="switchChangeSound" checked="{{isSound}}" class="modules_switch" type="switch" />
 		</view>
 	</view>
 	<view class="modules_box">
@@ -44,13 +34,7 @@
 		<view class="slider-box">
 			<text class="slider-title">答题时间</text>
 			<view class="slider-view">
-				<slider
-				 bindchange="sliderChange"
-				 min="3"
-				 max="10"
-				 value="{{downTime}}"
-				 show-value
-				/>
+				<slider bindchange="sliderChange" min="3" max="10" block-size="12" value="{{downTime}}" show-value />
 			</view>
 		</view>
 	</view>
@@ -68,30 +52,10 @@
 	<block wx:for="{{collectionData}}">
 		<view class="modules_box">
 			<view class="modules_icon_box2">
-				<image
-				 wx:if="{{index==0}}"
-				 class="modules_icon"
-				 mode="scaleToFill"
-				 src="{{no1}}"
-				/>
-				<image
-				 wx:elif="{{index==1}}"
-				 class="modules_icon"
-				 mode="scaleToFill"
-				 src="{{no2}}"
-				/>
-				<image
-				 wx:elif="{{index==2}}"
-				 class="modules_icon"
-				 mode="scaleToFill"
-				 src="{{no3}}"
-				/>
-				<image
-				 wx:else
-				 class="modules_icon2"
-				 mode="scaleToFill"
-				 src="{{item.avatarUrl==''?defaultImg:item.avatarUrl}}"
-				/>
+				<image wx:if="{{index==0}}" class="modules_icon" mode="scaleToFill" src="{{no1}}" />
+				<image wx:elif="{{index==1}}" class="modules_icon" mode="scaleToFill" src="{{no2}}" />
+				<image wx:elif="{{index==2}}" class="modules_icon" mode="scaleToFill" src="{{no3}}" />
+				<image wx:else class="modules_icon2" mode="scaleToFill" src="{{item.avatarUrl==''?defaultImg:item.avatarUrl}}" />
 			</view>
 			<view class="modules_title_box">{{item.nickName==''?'互联网冲浪选手':item.nickName}}</view>
 			<view class="modules_text_box">
@@ -100,4 +64,3 @@
 		</view>
 	</block>
 </block>
-

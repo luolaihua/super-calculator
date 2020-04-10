@@ -8,6 +8,7 @@ page {
   width: 100%;
   margin-bottom: 10px;
 }
+
 .modules_icon_box2 {
   height: 60px;
   width: 60px;
@@ -65,10 +66,11 @@ page {
   align-items: center;
   justify-content: center;
 }
+
 .modules_text_box {
   display: flex;
   height: 60px;
-margin-right: 20rpx;
+  margin-right: 20rpx;
   align-items: center;
   justify-content: center;
 }
@@ -79,37 +81,44 @@ margin-right: 20rpx;
 }
 
 .modules_button {
-  width: 40px!important;
-  height: 20px!important;
+  width: 40px !important;
+  height: 20px !important;
 }
 
 .wx-switch-input {
-  width: 40px!important;
-  height: 20px!important;
+  width: 40px !important;
+  height: 20px !important;
 }
 
 .wx-switch-input::before {
-  width: 38px!important;
-  height: 18px!important;
+  width: 38px !important;
+  height: 18px !important;
 }
 
 .wx-switch-input::after {
-  width: 18px!important;
-  height: 18px!important;
+  width: 18px !important;
+  height: 18px !important;
 }
 
-.slider-box{
+.slider-box {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   width: calc(100% - 20px);
-
-  box-sizing: border-box;
 }
-.slider-title{
+
+.slider-title {
   font-size: 14px;
   color: #7a7a7a;
-  
-} 
-.slider-view{
- padding-left: 0;
+
+}
+
+.slider-view {
+  height: 25px;
+
+  width: 100%;
+}
+
+.slider-view slider {
+  margin-left: 0;
 }

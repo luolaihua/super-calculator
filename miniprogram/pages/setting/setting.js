@@ -17,7 +17,11 @@ Page({
     nickName: '',
     avatarUrl: ''
   },
-  //声音
+  changeAvatar:function(){
+    wx.navigateTo({
+      url: '../imageEdit/imageEdit',
+    })
+  },
   switchChangeVibrate() {
 
     var isVibrate_setting = this.data.isVibrate_setting
@@ -129,9 +133,10 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    var isVibrate_setting = wx.getStorageSync('isVibrate_setting')
+    
     var nickName = wx.getStorageSync('nickName')
     var avatarUrl =  wx.getStorageSync('avatarUrl')
+    var isVibrate_setting = wx.getStorageSync('isVibrate_setting')
     if (isVibrate_setting === '') {
       wx.setStorageSync('isVibrate_setting', false)
       isVibrate_setting = false

@@ -1,3 +1,4 @@
+const app = getApp()
 /**
  * 珊瑚图片内容安全
  */
@@ -56,7 +57,11 @@ async function doMsgSecCheck(content) {
   })
   return test
 }
-
+/**
+ * 安全检测头像和网名
+ * @param {头像链接} avatarUrl 
+ * @param {网名} nickName 
+ */
 async function checkImgAndMsg(avatarUrl, nickName) {
   var t1, t2
   //安全检测
@@ -80,6 +85,10 @@ async function checkImgAndMsg(avatarUrl, nickName) {
   })
   return t1 && t2
 }
+/**
+ * 获取openId
+ * @param {} isSafe 
+ */
 async function getOpenId(isSafe) {
   if (isSafe) {
     const {
@@ -96,6 +105,11 @@ async function getOpenId(isSafe) {
   }
 
 }
+/**
+ * 
+ * @param {数据来源:fromBoringTime,fromIqGame} type 
+ * @param {榜单数据} maxNum 
+ */
 async function setTopList(type, maxNum) {
   var maxData = {}
   const db = wx.cloud.database()
@@ -136,13 +150,22 @@ async function setTopList(type, maxNum) {
   })
 }
 
+function vibrate(){
+  if(app.globalData.isVibrate){
+    wx.vibrateShort({
+      complete: (res) => {},
+    })
+  }
+}
+
 
 module.exports = {
   doImgSecCheck,
   doMsgSecCheck,
   getOpenId,
   setTopList,
-  checkImgAndMsg
+  checkImgAndMsg,
+  vibrate
 }
 /*   wx.getImageInfo({
     src: 'https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTL1L9LJPQxXJcBXZSEDiagYDYemEgucElq3ibMnLyzgzCuVGibiaQ4wu73wDiayicDhC1gT9eSQKFyt3SUA/132',

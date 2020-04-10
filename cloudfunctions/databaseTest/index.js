@@ -41,8 +41,28 @@ exports.main = async (event, context) => {
     ratios:'1.0'//裁剪比例
   })
   return cropResult
-  }else{
-    return 'nothing'
+  }else if(requestType=='imgSecCheck'){
+    const fileID = event.fileID
+    const res = await cloud.downloadFile({
+    fileID: fileID,
+  })
+  const buffer = res.fileContent
+
+  //var buffer = new Buffer(event.file, 'base64')
+  try {
+    var result = await cloud.openapi.security.imgSecCheck({
+      media: {
+        contentType: "image/png",
+        value: buffer
+      }
+    })
+    if (result.errCode == 0) {
+      return true;
+    }
+    return false
+  } catch (err) {
+    return err
+  }
   }
 
 //图像内容安全检测
