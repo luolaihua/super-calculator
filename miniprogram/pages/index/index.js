@@ -4,7 +4,9 @@ const updateManager = wx.getUpdateManager()
 const math = require('../util/math.min.js');
 const Fraction = require('../util/fraction.js');
 const imgUrl = require('../util/imgUrl')
+const wavUrl = require('../util/wavUrl')
 const parser = math.parser();
+const innerAudioContext = wx.createInnerAudioContext()
 String.prototype.replaceAll = function (search, replacement) {
   var target = this;
   return target.replace(new RegExp(search, 'g'), replacement);
@@ -22,15 +24,15 @@ var touchMoveY = 0; // y轴方向移动的距离
 
 Page({
   data: {
-    calculator_questionMark:imgUrl.calculator_questionMark,
-    calculator_soundOpen:imgUrl.calculator_soundOpen,
-    calculator_soundClose:imgUrl.calculator_soundClose,
-    calculator_arrow_up:imgUrl.calculator_arrow_up,
-    calculator_arrow_down:imgUrl.calculator_arrow_down,
-    calculator_history:imgUrl.calculator_history,
-    isShowHistory:false,
+    calculator_questionMark: imgUrl.calculator_questionMark,
+    calculator_soundOpen: imgUrl.calculator_soundOpen,
+    calculator_soundClose: imgUrl.calculator_soundClose,
+    calculator_arrow_up: imgUrl.calculator_arrow_up,
+    calculator_arrow_down: imgUrl.calculator_arrow_down,
+    calculator_history: imgUrl.calculator_history,
+    isShowHistory: false,
     scrollTop: 100,
-    isSound: false,
+    isSound: true,
     isScientific: false,
     isFraction: false,
     ANS: '0',
@@ -121,14 +123,14 @@ Page({
         }] */
 
   },
-  toDeg:function(e){
-   var res = this.data.res
-   if(!isNaN(res)){
-     res = res*180/Math.PI+''
-   }
-   this.setData({
-     res
-   })
+  toDeg: function (e) {
+    var res = this.data.res
+    if (!isNaN(res)) {
+      res = res * 180 / Math.PI + ''
+    }
+    this.setData({
+      res
+    })
   },
   chooseContent: function (e) {
     //是否开启触摸反馈
@@ -419,8 +421,8 @@ Page({
     //加音效
     //添加音效
     if (this.data.isSound) {
-      const innerAudioContext = wx.createInnerAudioContext()
-      innerAudioContext.src = 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/wav/del.wav?sign=13dfc6d5b63527b1d270b2ab55302774&t=1582902798'
+      //const innerAudioContext = wx.createInnerAudioContext()
+      innerAudioContext.src = wavUrl.delete
       innerAudioContext.play()
     }
 
@@ -441,8 +443,8 @@ Page({
     //加音效
     //添加音效
     if (this.data.isSound) {
-      const innerAudioContext = wx.createInnerAudioContext()
-      innerAudioContext.src = 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/wav/%E6%B8%85%E9%99%A4.wav?sign=a5eb5a0e860b03850f7caa129c3d788c&t=1582898674'
+      //const innerAudioContext = wx.createInnerAudioContext()
+      innerAudioContext.src = wavUrl.clear
       innerAudioContext.play()
     }
 
@@ -518,97 +520,97 @@ Page({
     //加音效
     //添加音效
     if (this.data.isSound) {
-      const innerAudioContext = wx.createInnerAudioContext()
+
       switch (btnValue) {
         case '1':
-          innerAudioContext.src = 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/wav/%E4%B8%80.wav?sign=3cc974e8c54918056ee064a9610cb392&t=1582898183'
+          innerAudioContext.src = wavUrl.one
           break;
         case '2':
-          innerAudioContext.src = 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/wav/%E4%BA%8C.wav?sign=6dd653c302b76d79ca4d84221894f683&t=1582898200'
+          innerAudioContext.src = wavUrl.two
           break;
         case '3':
-          innerAudioContext.src = 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/wav/%E4%B8%89.wav?sign=1336f5e7a4fe5e95dddbcbeb7a553407&t=1582898222'
+          innerAudioContext.src = wavUrl.three
           break;
         case '4':
-          innerAudioContext.src = 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/wav/%E5%9B%9B.wav?sign=899c4b724047e281a68097387ba3f60c&t=1582898235'
+          innerAudioContext.src = wavUrl.four
           break;
         case '5':
-          innerAudioContext.src = 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/wav/%E4%BA%94.wav?sign=955774279e60c65df3618b3a931014fd&t=1582898250'
+          innerAudioContext.src = wavUrl.five
           break;
         case '6':
-          innerAudioContext.src = 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/wav/%E5%85%AD.wav?sign=9d69018c5420b26dde0ca3208b185493&t=1582898264'
+          innerAudioContext.src = wavUrl.six
           break;
         case '7':
-          innerAudioContext.src = 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/wav/%E4%B8%83.wav?sign=70256ef35fec8b6a2eefa2baf5514f2f&t=1582898276'
+          innerAudioContext.src = wavUrl.seven
           break;
         case '8':
-          innerAudioContext.src = 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/wav/%E5%85%AB.wav?sign=44b5d547f4f17f90e1b3101c54c74574&t=1582898289'
+          innerAudioContext.src = wavUrl.eight
           break;
         case '9':
-          innerAudioContext.src = 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/wav/%E4%B9%9D.wav?sign=cf48b26372b64649379078de761983e6&t=1582898302'
+          innerAudioContext.src = wavUrl.nine
           break;
         case '0':
-          innerAudioContext.src = 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/wav/%E9%9B%B6.wav?sign=4dabc88dc83d3ef7056547a8702283e2&t=1582898316'
+          innerAudioContext.src = wavUrl.zero
           break;
         case '.':
-          innerAudioContext.src = 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/wav/%E7%82%B9.wav?sign=0f24fb49d3e22303b0172df3aeee89d2&t=1582898462'
+          innerAudioContext.src = wavUrl.dot
           break;
         case '+':
-          innerAudioContext.src = 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/wav/%E5%8A%A0.wav?sign=4778ae236f472915ca6e9c1bd485f722&t=1582898488'
+          innerAudioContext.src = wavUrl.add
           break;
         case '-':
-          innerAudioContext.src = 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/wav/%E5%87%8F.wav?sign=c54b1dfcc9e986a3dc13ee81dc9a6bbd&t=1582898504'
+          innerAudioContext.src = wavUrl.sub
           break;
         case '÷':
-          innerAudioContext.src = 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/wav/%E9%99%A4%E4%BB%A5.wav?sign=1bdeb37260fd216f73cca73b841e8e3a&t=1582898515'
+          innerAudioContext.src = wavUrl.divide
           break;
         case '×':
-          innerAudioContext.src = 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/wav/%E4%B9%98.wav?sign=d6400ce05da72f732bf429ca98d5ef39&t=1582898529'
+          innerAudioContext.src = wavUrl.mult
           break;
         case 'sin(':
-          innerAudioContext.src = 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/wav/sin.wav?sign=b25c6ed7f78535a5edfb151bc1837ec7&t=1582903026'
+          innerAudioContext.src = wavUrl.sin
           break;
         case 'cos(':
-          innerAudioContext.src = 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/wav/cos.wav?sign=3ca766df686d09c05c6d679cef96974f&t=1582903053'
+          innerAudioContext.src = wavUrl.cos
           break;
         case 'tan(':
-          innerAudioContext.src = 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/wav/tan.wav?sign=4c3a4e9f90919841bbe12975221cb627&t=1582903084'
+          innerAudioContext.src = wavUrl.tan
           break;
         case 'asin(':
-          innerAudioContext.src = 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/wav/asin.wav?sign=a67b818eeb27d39f71d644bc0b4ba341&t=1582903118'
+          innerAudioContext.src = wavUrl.asin
           break;
         case 'acos(':
-          innerAudioContext.src = 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/wav/acos.wav?sign=9d5316f3c0236a506be9fb07ca3e41fa&t=1582903138'
+          innerAudioContext.src = wavUrl.acos
           break;
         case 'atan(':
-          innerAudioContext.src = 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/wav/atan.wav?sign=5e845e0ea3d81b938f18cc042eacba2f&t=1582903161'
+          innerAudioContext.src = wavUrl.atan
           break;
         case 'log(':
-          innerAudioContext.src = 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/wav/log.wav?sign=2866208fed5edf60b029a2d35948a379&t=1582903181'
+          innerAudioContext.src = wavUrl.log
           break;
         case '(':
-          innerAudioContext.src = 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/wav/left.wav?sign=489d4d8c0d2107151b68e5081931dbf4&t=1582903243'
+          innerAudioContext.src = wavUrl.left
           break;
         case ')':
-          innerAudioContext.src = 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/wav/right.wav?sign=e5c8006901637a6dc421bdc52932add8&t=1582903269'
+          innerAudioContext.src = wavUrl.right
           break;
         case 'π':
-          innerAudioContext.src = 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/wav/pi.wav?sign=a4d1af8a6b0c643f7c6248a6528621b3&t=1582903312'
+          innerAudioContext.src = wavUrl.pai
           break;
         case '^':
-          innerAudioContext.src = 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/wav/npow.wav?sign=6b37e40286d6af08b6ab0df413d88833&t=1582903335'
+          innerAudioContext.src = wavUrl.nCiFang
           break;
         case '!':
-          innerAudioContext.src = 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/wav/n.wav?sign=7f49fe1d2a655f93d6b8e68cbc411046&t=1582903408'
+          innerAudioContext.src = wavUrl.leicheng
           break;
         case '√(':
-          innerAudioContext.src = 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/wav/sqrt.wav?sign=882d1ca1eb3128c6c0d940b64d551400&t=1582903906'
+          innerAudioContext.src = wavUrl.kaifang
           break;
         case '^(-1)':
-          innerAudioContext.src = 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/wav/inverse.wav?sign=b22b7ce4300f0b3fcaa5a9d6f4619a57&t=1582903888'
+          innerAudioContext.src = wavUrl.daoshu
           break;
         case '%':
-          innerAudioContext.src = 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/wav/mod.wav?sign=41501bcde363db26363cbe75ff7aad45&t=1582903877'
+          innerAudioContext.src = wavUrl.quyu
           break;
       }
       innerAudioContext.play()
@@ -675,16 +677,16 @@ Page({
     if (index == 2) {
       try {
         //历史记录
-       var historyArr = wx.getStorageSync('historyArr')
-       if(historyArr==''){
-         var arr = []
-         arr.push(result)
-        wx.setStorageSync('historyArr', arr)
-       }else{
-        
-        historyArr.unshift(result)
-        wx.setStorageSync('historyArr', historyArr)
-       }
+        var historyArr = wx.getStorageSync('historyArr')
+        if (historyArr == '') {
+          var arr = []
+          arr.push(result)
+          wx.setStorageSync('historyArr', arr)
+        } else {
+
+          historyArr.unshift(result)
+          wx.setStorageSync('historyArr', historyArr)
+        }
 
 
         parser.evaluate('A = ' + ans)
@@ -719,25 +721,25 @@ Page({
       res: res,
       ANS: res,
       condition: 'equaled',
-      isShowHistory:true
+      isShowHistory: true
     })
 
 
     //加音效
     //添加音效
     if (this.data.isSound) {
-      const innerAudioContext = wx.createInnerAudioContext()
+      // const innerAudioContext = wx.createInnerAudioContext()
       innerAudioContext.src = 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/wav/%E7%AD%89%E4%BA%8E.wav?sign=feec5bbb7a08686461a79ddcd655d293&t=1582898728'
       innerAudioContext.play()
     }
   },
-  toHistory:function(e){
+  toHistory: function (e) {
     var that = this
 
     wx.navigateTo({
       //传参格式：参数与路径之间使用 ?分隔，参数键与参数值用 = 相连，
       //不同参数用 & 分隔；如 '/pages/index/index?value1=hello&value2=world'
-      url: '../scientificData/scientificData?value='+'history',
+      url: '../scientificData/scientificData?value=' + 'history',
       // 为指定事件添加一个监听器，获取被打开页面传送到当前页面的数据
       events: {
         getHistoryData: function (data) {
@@ -764,7 +766,7 @@ Page({
     wx.navigateTo({
       //传参格式：参数与路径之间使用 ?分隔，参数键与参数值用 = 相连，
       //不同参数用 & 分隔；如 '/pages/index/index?value1=hello&value2=world'
-      url: '../scientificData/scientificData?value='+'scientificData',
+      url: '../scientificData/scientificData?value=' + 'scientificData',
       // 为指定事件添加一个监听器，获取被打开页面传送到当前页面的数据
       events: {
         getScientifiData: function (data) {
@@ -869,16 +871,16 @@ Page({
     //历史记录
     var isShowHistory = true
     var historyArr = wx.getStorageSync('historyArr')
-    if(historyArr==''){
-        isShowHistory = false
+    if (historyArr == '') {
+      isShowHistory = false
     }
-     this.setData({
-        isShowHistory
-      })
+    this.setData({
+      isShowHistory
+    })
 
     updateManager.onCheckForUpdate(function (res) {
       // 请求完新版本信息的回调
-     // console.log('hasUpdate', res.hasUpdate)
+      // console.log('hasUpdate', res.hasUpdate)
     })
 
     updateManager.onUpdateReady(function () {
