@@ -1,3 +1,5 @@
+
+
 module.exports ={
   one:'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/wav/CalculatorSound/one.wav?sign=d21104dbd97a745a6cb93136c73e680e&t=1586705889',
   two:'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/wav/CalculatorSound/two.wav?sign=304c8078a87abede98aafdc0940c0c1f&t=1586705744',
@@ -35,5 +37,5 @@ module.exports ={
   kaifang:'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/wav/CalculatorSound/kaiFang.wav?sign=d3afe4c7490f7a03a3cb7c079d6fc96e&t=1586705982',
   pai:'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/wav/CalculatorSound/pai.wav?sign=170ec871f483bd995ad987860b38225b&t=1586705873',
   quyu:'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/wav/CalculatorSound/quyu.wav?sign=0266bf04cb9e054cecb7db06ca6e47a5&t=1586705821',
-  zero:'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/wav/CalculatorSound/zero.wav?sign=028f3d603e238518d76606120b3b907c&t=1586705680',
+  zero:'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/wav/CalculatorSound/zero.wav?sign=9ddc13e06a6371fd139ca5798910a476&t=1586793025',
 }

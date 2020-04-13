@@ -21,7 +21,6 @@ var interval = ""; // 记录/清理时间记录
 var touchMoveX = 0; // x轴方向移动的距离
 var touchMoveY = 0; // y轴方向移动的距离
 
-
 Page({
   data: {
     calculator_questionMark: imgUrl.calculator_questionMark,
@@ -321,8 +320,6 @@ Page({
                 }) */
       }
     }
-
-
   },
   //通过touchStart和touchEnd来控制长按的时间
   touchStart: function (e) {
@@ -421,7 +418,7 @@ Page({
     //加音效
     //添加音效
     if (this.data.isSound) {
-      //const innerAudioContext = wx.createInnerAudioContext()
+      const innerAudioContext = wx.createInnerAudioContext()
       innerAudioContext.src = wavUrl.delete
       innerAudioContext.play()
     }
@@ -443,7 +440,7 @@ Page({
     //加音效
     //添加音效
     if (this.data.isSound) {
-      //const innerAudioContext = wx.createInnerAudioContext()
+      const innerAudioContext = wx.createInnerAudioContext()
       innerAudioContext.src = wavUrl.clear
       innerAudioContext.play()
     }
@@ -520,6 +517,7 @@ Page({
     //加音效
     //添加音效
     if (this.data.isSound) {
+      const innerAudioContext = wx.createInnerAudioContext()
 
       switch (btnValue) {
         case '1':
@@ -715,6 +713,13 @@ Page({
         })
       }
     }
+    //小于10e8时不使用科学计数法
+    if(!isNaN(res)){
+      if(Number(res)<Number('10e8')){
+        res = Number(res).toString()
+      }
+    }
+    //动态改变字体
     this.changeFontSize(res)
 
     this.setData({
@@ -724,15 +729,91 @@ Page({
       isShowHistory: true
     })
 
-
+    var that = this
     //加音效
     //添加音效
     if (this.data.isSound) {
-      // const innerAudioContext = wx.createInnerAudioContext()
+      const innerAudioContext = wx.createInnerAudioContext()
       innerAudioContext.src = 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/wav/%E7%AD%89%E4%BA%8E.wav?sign=feec5bbb7a08686461a79ddcd655d293&t=1582898728'
       innerAudioContext.play()
+      innerAudioContext.onEnded(() => {
+        that.playResultSound(res)
+      })
     }
   },
+  playResultSound: function (res) {
+    if (isNaN(res)) {
+      return
+    }
+    if(res<100000){
+          var wavSrc = []
+   var resArr = res.split('')
+    console.log(resArr)
+    for (let index = 0; index < resArr.length; index++) {
+
+      switch (resArr[index]) {
+        case '0':
+          wavSrc.push(wavUrl.zero)
+          break
+        case '1':
+          wavSrc.push(wavUrl.one)
+          break
+        case '2':
+          wavSrc.push(wavUrl.two)
+          break
+        case '3':
+          wavSrc.push(wavUrl.three)
+          break
+        case '4':
+          wavSrc.push(wavUrl.four)
+          break
+        case '5':
+          wavSrc.push(wavUrl.five)
+          break
+        case '6':
+          wavSrc.push(wavUrl.six)
+          break
+        case '7':
+          wavSrc.push(wavUrl.seven)
+          break
+        case '8':
+          wavSrc.push(wavUrl.eight)
+          break
+        case '9':
+          wavSrc.push(wavUrl.nine)
+          break
+        case '.':
+          wavSrc.push(wavUrl.dot)
+          break
+      }
+    }
+    loopVoice(wavSrc, wavSrc.length)
+    }
+
+
+    function loopVoice(srcs, maxtimes) {
+      let secondIAC = wx.createInnerAudioContext()
+      secondIAC.obeyMuteSwitch = false
+      secondIAC.onError(() => {
+        console.error('error')
+      })
+      let times = 0
+      secondIAC.src = srcs[times]
+      secondIAC.onPlay(() => {
+        times++
+      })
+      secondIAC.onEnded(() => {
+        if (times === maxtimes) {
+          secondIAC.destroy()
+        }
+        secondIAC.src = srcs[times]
+        secondIAC.play()
+      })
+      secondIAC.play()
+    }
+
+  },
+
   toHistory: function (e) {
     var that = this
 
@@ -798,6 +879,7 @@ Page({
       isRuleTrue: true
     })
   },
+
 
 
   //数字谐音解析函数
