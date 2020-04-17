@@ -5,8 +5,9 @@ const math = require('../util/math.min.js');
 const Fraction = require('../util/fraction.js');
 const imgUrl = require('../util/imgUrl')
 const wavUrl = require('../util/wavUrl')
+const myApi = require('../util/myApi')
 const parser = math.parser();
-const innerAudioContext = wx.createInnerAudioContext()
+//const innerAudioContext = wx.createInnerAudioContext()
 String.prototype.replaceAll = function (search, replacement) {
   var target = this;
   return target.replace(new RegExp(search, 'g'), replacement);
@@ -21,6 +22,7 @@ var interval = ""; // 记录/清理时间记录
 var touchMoveX = 0; // x轴方向移动的距离
 var touchMoveY = 0; // y轴方向移动的距离
 
+var wavTempPath
 Page({
   data: {
     calculator_questionMark: imgUrl.calculator_questionMark,
@@ -31,7 +33,7 @@ Page({
     calculator_history: imgUrl.calculator_history,
     isShowHistory: false,
     scrollTop: 100,
-    isSound: true,
+    isSound: false,
     isScientific: false,
     isFraction: false,
     ANS: '0',
@@ -181,27 +183,62 @@ Page({
   isSound: function (e) {
     //是否开启触摸反馈
     if (app.globalData.isVibrate) {
-      wx.vibrateShort({
+      wx.vibrateShort()
+    }
+         if (this.data.isSound) {
+          this.setData({
+            //fontsize: 40,
+            isSound: false
+          })
+          wx.showToast({
+            title: '语音关闭',
+          })
+        } else {
+          this.setData({
+            //fontsize: 40,
+            isSound: true
+          })
+          wx.showToast({
+            title: '语音开启',
+          })
+        } 
+/* 
+
+    wx.showLoading({
+      title: '语音包下载中',
+    })
+
+    var wavTempPathArr = [],
+      folderName = 'cloud://luo-r5nle.6c75-luo-r5nle-1301210100/wav/CalculatorSound/',
+      fileIDArr = ['cloud://luo-r5nle.6c75-luo-r5nle-1301210100/wav/CalculatorSound/zero.wav',
+        'cloud://luo-r5nle.6c75-luo-r5nle-1301210100/wav/CalculatorSound/one.wav',
+        'cloud://luo-r5nle.6c75-luo-r5nle-1301210100/wav/CalculatorSound/two.wav',
+        'cloud://luo-r5nle.6c75-luo-r5nle-1301210100/wav/CalculatorSound/three.wav',
+      ]
+    try {
+      myApi.downloadSaveFiles({
+        urls: fileIDArr,
+        success: function (res) {
+          wavTempPath = res
+          console.log(res);
+          console.info(res.get(fileIDArr[0]).savedFilePath)
+        },
+        fail: function (e) {
+          console.info("下载失败");
+        }
+      })
+
+    } catch (e) {
+      console.log(e)
+    } finally {
+      wx.hideLoading({
         complete: (res) => {},
       })
     }
-    if (this.data.isSound) {
-      this.setData({
-        //fontsize: 40,
-        isSound: false
-      })
-      wx.showToast({
-        title: '语音关闭',
-      })
-    } else {
-      this.setData({
-        //fontsize: 40,
-        isSound: true
-      })
-      wx.showToast({
-        title: '语音开启',
-      })
-    }
+ */
+
+
+
   },
 
   //打开透明层
@@ -704,6 +741,21 @@ Page({
         //把deg转成°
         res = res.toString().replace(' deg', '°');
 
+        //小于10e8时不使用科学计数法
+        if (!isNaN(res)) {
+          if (Number(res) < Number('10e8')) {
+            res = Number(res).toString()
+          }
+        }
+        //动态改变字体大小
+        this.changeFontSize(res)
+
+        this.setData({
+          res: res,
+          ANS: res,
+          condition: 'equaled',
+          isShowHistory: true
+        })
         //console.log(res)
       } catch (e) {
         console.log(e)
@@ -713,103 +765,142 @@ Page({
         })
       }
     }
-    //小于10e8时不使用科学计数法
-    if(!isNaN(res)){
-      if(Number(res)<Number('10e8')){
-        res = Number(res).toString()
-      }
-    }
-    //动态改变字体
-    this.changeFontSize(res)
 
-    this.setData({
-      res: res,
-      ANS: res,
-      condition: 'equaled',
-      isShowHistory: true
-    })
+
 
     var that = this
     //加音效
     //添加音效
     if (this.data.isSound) {
       const innerAudioContext = wx.createInnerAudioContext()
-      innerAudioContext.src = 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/wav/%E7%AD%89%E4%BA%8E.wav?sign=feec5bbb7a08686461a79ddcd655d293&t=1582898728'
+      innerAudioContext.src = wavUrl.equal
       innerAudioContext.play()
-      innerAudioContext.onEnded(() => {
+/*       innerAudioContext.onEnded(() => {
         that.playResultSound(res)
-      })
+      }) */
     }
   },
+  //TODO 安卓真机，IOS真机和模拟器效果不一样，问题没有解决
   playResultSound: function (res) {
-    if (isNaN(res)) {
+
+    //如果不是数字，或者大于九万九千九百九十九  直接返回
+    if (isNaN(res) || res >= 100000) {
       return
     }
-    if(res<100000){
-          var wavSrc = []
-   var resArr = res.split('')
-    console.log(resArr)
-    for (let index = 0; index < resArr.length; index++) {
 
-      switch (resArr[index]) {
+    var wavSrcArr = []
+    if (res == '0') {
+      wavSrcArr.push(wavUrl.zero)
+    } else {
+      var resArr = res.split('')
+      //整数部分长度
+      var integerPartLength = res.split('.')[0].length
+      console.log(resArr)
+      console.log(integerPartLength)
+
+      //逐个检查数字
+      for (let index = 0; index < resArr.length; index++) {
+        var curIntIndex = integerPartLength - index
+        //判断整十整百整千整万情况
+        if ((res % 10 == 0 && curIntIndex == 1) || (res % 100 == 0 && curIntIndex == 2) || (res % 1000 == 0 && curIntIndex == 3) || (res % 10000 == 0 && curIntIndex == 4) ||
+          (resArr[index] == '0' && resArr[index + 1] == '0' && curIntIndex > 0)) {
+          continue
+        }
+        //先把当前数字放入
+        pushWhich(resArr[index])
+        //添加个十百千万语音
+
+        if (resArr[index] == '0') {
+          continue
+        }
+        switch (curIntIndex) {
+          case 5:
+            wavSrcArr.push(wavUrl.wan)
+            break
+          case 4:
+            wavSrcArr.push(wavUrl.qian)
+            break
+          case 3:
+            wavSrcArr.push(wavUrl.bai)
+            break
+          case 2:
+            wavSrcArr.push(wavUrl.shi)
+            break
+        }
+
+
+      }
+    }
+    loopVoice(wavSrcArr)
+
+
+
+    function pushWhich(number) {
+      switch (number + '') {
         case '0':
-          wavSrc.push(wavUrl.zero)
+          wavSrcArr.push(wavUrl.zero)
+          // wavSrcArr.push(wavTempPath.get(fileIDArr[0]).savedFilePath)
           break
         case '1':
-          wavSrc.push(wavUrl.one)
+          wavSrcArr.push(wavUrl.one)
+          //wavSrcArr.push(wavTempPath.get(fileIDArr[1]).savedFilePath)
           break
         case '2':
-          wavSrc.push(wavUrl.two)
+          wavSrcArr.push(wavUrl.two)
+          //wavSrcArr.push(wavTempPath.get(fileIDArr[2]).savedFilePath)
           break
         case '3':
-          wavSrc.push(wavUrl.three)
+          //wavSrcArr.push(wavTempPath.get(fileIDArr[3]).savedFilePath)
+          wavSrcArr.push(wavUrl.three)
           break
         case '4':
-          wavSrc.push(wavUrl.four)
+          wavSrcArr.push(wavUrl.four)
           break
         case '5':
-          wavSrc.push(wavUrl.five)
+          wavSrcArr.push(wavUrl.five)
           break
         case '6':
-          wavSrc.push(wavUrl.six)
+          wavSrcArr.push(wavUrl.six)
           break
         case '7':
-          wavSrc.push(wavUrl.seven)
+          wavSrcArr.push(wavUrl.seven)
           break
         case '8':
-          wavSrc.push(wavUrl.eight)
+          wavSrcArr.push(wavUrl.eight)
           break
         case '9':
-          wavSrc.push(wavUrl.nine)
+          wavSrcArr.push(wavUrl.nine)
           break
         case '.':
-          wavSrc.push(wavUrl.dot)
+          wavSrcArr.push(wavUrl.dot)
           break
       }
     }
-    loopVoice(wavSrc, wavSrc.length)
-    }
 
-
-    function loopVoice(srcs, maxtimes) {
-      let secondIAC = wx.createInnerAudioContext()
-      secondIAC.obeyMuteSwitch = false
-      secondIAC.onError(() => {
+    function loopVoice(wavSrcArr) {
+      let myInnerAudio = wx.createInnerAudioContext()
+      //myInnerAudio.obeyMuteSwitch = false
+      //播放速度 调至2，最大
+      myInnerAudio.playbackRate = 1.0
+      myInnerAudio.onError(() => {
         console.error('error')
       })
       let times = 0
-      secondIAC.src = srcs[times]
-      secondIAC.onPlay(() => {
+      myInnerAudio.src = wavSrcArr[times]
+
+      myInnerAudio.play()
+      myInnerAudio.onPlay(() => {
         times++
       })
-      secondIAC.onEnded(() => {
-        if (times === maxtimes) {
-          secondIAC.destroy()
+      myInnerAudio.onEnded(() => {
+        console.log("???")
+        if (times === wavSrcArr.length-1) {
+          myInnerAudio.destroy()
         }
-        secondIAC.src = srcs[times]
-        secondIAC.play()
+        myInnerAudio.src = wavSrcArr[times]
+        myInnerAudio.play()
       })
-      secondIAC.play()
+
     }
 
   },
@@ -931,6 +1022,9 @@ Page({
 
   },
   changeFontSize: function (res) {
+    if (res == undefined || res == '') {
+      return
+    }
     var length = res.length,
       fontsize
 

@@ -9,6 +9,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    feedBackUrl:imgUrl.feedbackUrl,
     editUrl:imgUrl.bigWheel_edit,
     peopleUrl:imgUrl.human,
     touchUrl:imgUrl.setting_touchUrl,

@@ -25,7 +25,7 @@
 	},
 	"appid": "wxc79fcd9f8a3d3b4f",
 	"projectname": "myCalculator",
-	"libVersion": "2.10.3",
+	"libVersion": "2.10.4",
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
 	"cloudfunctionTemplateRoot": "cloudfunctionTemplate",

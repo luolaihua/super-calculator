@@ -36,6 +36,10 @@
 	<view class="modules_title_box">机器人客服</view>
 	<image class="modules_icon" mode="scaleToFill" src="{{peopleUrl}}" />
 </button>
+<button class="btn-box" style="width: calc(100% - 20px);" open-type="feedback">
+	<view class="modules_title_box">意见反馈</view>
+	<image class="modules_icon_small" mode="scaleToFill" src="{{feedBackUrl}}" />
+</button>
 
 <!--
 <button open-type="getUserInfo" bindgetuserinfo="onGetUserInfo" type="primary">登录</button>

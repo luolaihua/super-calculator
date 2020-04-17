@@ -6,16 +6,16 @@ var app = getApp()
 Page({
 
   data: {
-    gradeUrl:imgUrl.iqGame_grade,
-    BGMUrl:imgUrl.iqGame_BGM,
-    musicUrl:imgUrl.iqGame_music,
-    starUrl:imgUrl.iqGame_star,
-    crownUrl1:imgUrl.iqGame_crown1,
-    crownUrl2:imgUrl.iqGame_crown2,
-    no1:imgUrl.No1,
-    no2:imgUrl.No2,
-    no3:imgUrl.No3,
-    defaultImg:imgUrl.boringFace[6],
+    gradeUrl: imgUrl.iqGame_grade,
+    BGMUrl: imgUrl.iqGame_BGM,
+    musicUrl: imgUrl.iqGame_music,
+    starUrl: imgUrl.iqGame_star,
+    crownUrl1: imgUrl.iqGame_crown1,
+    crownUrl2: imgUrl.iqGame_crown2,
+    no1: imgUrl.No1,
+    no2: imgUrl.No2,
+    no3: imgUrl.No3,
+    defaultImg: imgUrl.boringFace[6],
     grade: '一年级',
     downTime: 5,
     isSound: '',
@@ -23,37 +23,51 @@ Page({
     isBGM: '',
     iqMaxNum: 0,
     isMax: false,
-    collectionData:[],
-    isOpenList:false
+    collectionData: [],
+    isOpenList: false
   },
-  openTopList:function(e){
+  openTopList: function (e) {
     var isOpenList = !this.data.isOpenList
-    var collectionData ,that = this
-    if(isOpenList){
-      
-      //调用云函数获取数据
-      wx.cloud.callFunction({
-        // 要调用的云函数名称
-        name: 'setTopList',
-        // 传递给云函数的参数
-        data: {
-          type:'chuangGuanNum'
-        },
-        success: res => {
-          console.log(res)
-          collectionData =  res.result
-          that.setData({
-            collectionData 
-          })
-          // output: res.result === 3
-        },
-        fail: err => {
-          // handle error
-        },
-        complete: () => {
-          // ...
-        }
-      })
+    var collectionData, that = this
+    if (isOpenList) {
+      try {
+        wx.showLoading({
+          title: '加载中',
+        })
+        //调用云函数获取数据
+        wx.cloud.callFunction({
+          // 要调用的云函数名称
+          name: 'setTopList',
+          // 传递给云函数的参数
+          data: {
+            type: 'chuangGuanNum'
+          },
+          success: res => {
+
+            console.log(res)
+            collectionData = res.result
+            that.setData({
+              collectionData
+            })
+            // output: res.result === 3
+          },
+          fail: err => {
+            // handle error
+          },
+          complete: () => {
+            wx.hideLoading({
+              complete: (res) => {},
+            })
+            // ...
+          }
+        })
+      } catch (e) {
+        wx.showToast({
+          title: '获取数据失败啦',
+          icon:"none"
+        })
+      }
+
     }
     this.setData({
       isOpenList
@@ -149,7 +163,7 @@ Page({
 
     that.gradeMake(successNum)
 
-//通知展示
+    //通知展示
     var isShowIqGameTopListModal = wx.getStorageSync('isShowIqGameTopListModal')
     if (isShowIqGameTopListModal === '') {
       wx.setStorageSync('isShowIqGameTopListModal', true)
@@ -174,7 +188,7 @@ Page({
         complete: function (res) {},
       })
     }
-    
+
 
     that.setData({
       isSound: isSound,

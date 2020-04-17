@@ -21,8 +21,11 @@ Page({
    */
   onLoad: function (options) {
     var collectionData ,that = this
-
-    //调用云函数获取数据
+try{
+  wx.showLoading({
+    title: '加载中',
+  })
+   //调用云函数获取数据
     wx.cloud.callFunction({
       // 要调用的云函数名称
       name: 'setTopList',
@@ -46,6 +49,18 @@ Page({
       }
     })
 
+}catch(e){
+ wx.showToast({
+   title: '抱歉，数据加载失败',
+   icon:'none'
+ })
+
+}finally{
+  wx.hideLoading({
+    complete: (res) => {},
+  })
+}
+ 
     //小程序端获取数据
  /*    const db = wx.cloud.database()
     db.collection('topList').orderBy('maxNum', 'desc').get().then(res => {
