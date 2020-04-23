@@ -145,8 +145,14 @@ Page({
         })
         break;
         case 16:
-          wx.navigateTo({
-            url: '../im/room/room',
+          wx.navigateToMiniProgram({
+            appId: 'wxaf60970efe7d982d',
+            path: 'pages/map/map',
+            envVersion: 'release',
+            success(res) {
+              console.log(res)
+              // 打开成功
+            }
           })
           break; 
     }

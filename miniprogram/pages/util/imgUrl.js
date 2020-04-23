@@ -93,7 +93,11 @@ module.exports = {
   {
     name: '设置',
     url: 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/setting.png?sign=040c3d3c32993619663ae1eb05ce8e35&t=1585904368'
-  }/* ,
+  },{
+    name:'美食地图',
+    url:'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/%E6%9C%88%E7%90%83.png?sign=1c491436bf36b5a6af81dde9568754fd&t=1587458335'
+  },
+    /* ,
     {
     name: '聊天室',
     url: 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/chat.png?sign=e997ce067a2b221c69f8df23c36ea74d&t=1583810662'

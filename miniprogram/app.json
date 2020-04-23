@@ -82,5 +82,6 @@
         "selectedIconPath": "images/menu_orange.png"
       }
     ]
-  }
+  },
+  "navigateToMiniProgramAppIdList":["wxaf60970efe7d982d"]
 }
