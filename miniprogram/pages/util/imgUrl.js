@@ -86,17 +86,17 @@ module.exports = {
     name: '数数器',
     url: 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/%E6%95%B0%E5%AD%97.png?sign=2d788745a5546fe58fa62bc1cf237443&t=1585481895'
   },
-  {
+/*   {
     name: '二维码生成',
     url: 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/qrcode.png?sign=55badb58d9a0f80593a553d81f92f408&t=1585483105'
-  },
+  }, */
   {
     name: '设置',
     url: 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/setting.png?sign=040c3d3c32993619663ae1eb05ce8e35&t=1585904368'
-  },{
+  },/* {
     name:'美食地图',
     url:'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/%E6%9C%88%E7%90%83.png?sign=1c491436bf36b5a6af81dde9568754fd&t=1587458335'
-  },
+  }, */
     /* ,
     {
     name: '聊天室',

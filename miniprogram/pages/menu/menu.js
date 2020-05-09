@@ -134,17 +134,17 @@ Page({
           url: '../counter/counter',
         })
         break;
-      case 14:
+/*       case 14:
         wx.navigateTo({
           url: '../qrCode/qrCode',
         })
-        break;
-      case 15:
+        break; */
+      case 14:
         wx.navigateTo({
           url: '../setting/setting',
         })
         break;
-        case 16:
+/*         case 15:
           wx.navigateToMiniProgram({
             appId: 'wxaf60970efe7d982d',
             path: 'pages/map/map',
@@ -154,7 +154,7 @@ Page({
               // 打开成功
             }
           })
-          break; 
+          break;  */
     }
   },
 

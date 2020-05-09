@@ -1,6 +1,6 @@
 <!--miniprogram/pages/nameMade/nameMade.wxml-->
 <!--miniprogram/pages/beijinghua/beijinghua.wxml-->
-<view class="page">
+<view class="page" bindtap="switchName">
 	<view class="weui-form">
 		<view class="weui-form__text-area " >
 			<view class="weui-form__title" >时尚网名生成</view>

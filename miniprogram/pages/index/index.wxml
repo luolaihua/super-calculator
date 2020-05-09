@@ -2,20 +2,20 @@
 <image bindtap="help" class="about" src="{{calculator_questionMark}}" mode="aspectFit"></image>
 <image bindtap="isSound" class="sound" src="{{isSound?calculator_soundOpen:calculator_soundClose}}" mode="aspectFit"></image>
 <image bindtap="toHistory" wx:if="{{isShowHistory&&(isScientific?indexOfSpecialList==2:'true')}}" class="history" src="{{calculator_history}}" mode="aspectFit"></image>
-<scroll-view enable-flex scroll-top="{{scrollTop}}px" scroll-y class="screen1" style="height:{{isScientific?29:39}}vh ">
+<scroll-view enable-flex scroll-top="{{scrollTop}}px" scroll-y class="screen1" style="height:{{isScientific?22:32}}vh ">
 	<view class="res" id="result" style="font-size:{{fontsize}}rpx;">{{res}}</view>
 </scroll-view>
-
+<view class="screen2" >
+	<text class="res2"wx:if="{{indexOfSpecialList==2}}">{{res_ed==''?'':'='+res_ed}}</text>
+</view>
 <view class="specialOperator-box {{isOpenSpecial?'open':'close'}}" style="height:{{isOpenSpecial?'18vh':''}}" wx:if="{{isScientific}}">
 	<view wx:for="{{specialOperatorList}}" wx:key="id">
 		<view class="specialOperator" bindtap="specialOp" id="{{index}}">{{item.name}}</view>
 	</view>
-
 </view>
 <view class="showSpecial">
 	<image wx:if="{{isScientific}}" bindtap="isOpenSpecial" class="question_control" mode="scaleToFill" src="{{!isOpenSpecial?calculator_arrow_up:calculator_arrow_down}}"></image>
 	<view wx:if="{{isScientific}}" bindtap='chooseContent'>{{specialOperatorList[indexOfSpecialList].content}}</view>
-
 </view>
 <view class="btngroup">
 	<view class="btnbox" wx:if="{{isScientific}}" style="height:{{isScientific?8:10}}vh">
