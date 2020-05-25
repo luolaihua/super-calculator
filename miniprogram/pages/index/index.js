@@ -774,9 +774,6 @@ Page({
         })
       }
     }
-
-
-
     var that = this
     //加音效
     //添加音效
@@ -1086,6 +1083,23 @@ Page({
     //历史记录
     var isShowHistory = true
     var historyArr = wx.getStorageSync('historyArr')
+    //
+    var isShowWelcome= wx.getStorageSync('isShowWelcome')
+    if(!isShowWelcome){
+      wx.showModal({
+        title: 'WELCOME',
+        cancelText:'不再提示',
+        confirmText:'我知道了',
+        content: '欢迎使用T3000!\n本软件尚处于开发状态，存在许多未知错误，如果对本软件有任何意见或建议，欢迎您在设置->机器人客服中与客服联系。如果客服无法及时回复，您可以在意见反馈中留言，无须填写联系方式，开发者收到反馈信息将会第一时间对您的反馈做出回应。谢谢^_^',
+        success (res) {
+        if (res.confirm) {
+          
+        } else if (res.cancel) {
+          wx.setStorageSync('isShowWelcome', true)
+        }
+        }
+        })
+    }
     if (historyArr == '') {
       isShowHistory = false
     }
