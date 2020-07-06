@@ -1,4 +1,5 @@
 module.exports = {
+  adUrl:'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/%E5%B9%BF%E5%91%8A.png?sign=a211ed87128f147f202a1740a5e008f6&t=1593681364',
   feedbackUrl:'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/feedback.png?sign=6670976380dd70c893bf39debdd27bc0&t=1587110487',
   addImage:'cloud://luo-r5nle.6c75-luo-r5nle-1301210100/images/addImage.png',
   addImage2:'cloud://luo-r5nle.6c75-luo-r5nle-1301210100/images/addImage2.png',

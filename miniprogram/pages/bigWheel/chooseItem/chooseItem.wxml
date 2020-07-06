@@ -63,6 +63,10 @@
 	</view>
 
 </view>
+
 	<view class="sticky" bindtap="toWheel">
 		<image  class="question_btn_icon sticky_item" src="{{bigWheel_wheel}}" mode="aspectFit" style="width:80rpx;height:80rpx" class="swithchItem"></image>
+	</view>
+		<view style="width:100vw;margin-top:80rpx;">
+	<ad unit-id="adunit-c457c2d3cc61cc88" ad-type="grid" grid-opacity="0.8" grid-count="5" ad-theme="white"></ad>
 	</view>

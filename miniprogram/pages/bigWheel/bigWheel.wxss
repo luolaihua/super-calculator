@@ -183,7 +183,8 @@ page {
 .switchBtn {
   display: flex;
   flex-direction: row;
-  margin-bottom: 30rpx;
+  margin-bottom: 20rpx;
+  margin-top: 20rpx;
 
 }
 

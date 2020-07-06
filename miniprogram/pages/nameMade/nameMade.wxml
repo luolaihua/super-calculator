@@ -2,8 +2,8 @@
 <!--miniprogram/pages/beijinghua/beijinghua.wxml-->
 <view class="page" bindtap="switchName">
 	<view class="weui-form">
-		<view class="weui-form__text-area " >
-			<view class="weui-form__title" >时尚网名生成</view>
+		<view class="weui-form__text-area ">
+			<view class="weui-form__title">时尚网名生成</view>
 		</view>
 		<view class="weui-form__control-area ">
 			<view class="weui-cells__group weui-cells__group_form ">
@@ -16,18 +16,20 @@
 					</view>
 				</view>
 			</view>
-				<view class="content" bindtap="switchName">
-					<text selectable='true'>
-					{{content}}
-					</text>
-				</view>
+			<view class="content" bindtap="switchName">
+				<text selectable='true'>
+				{{content}}
+				</text>
+			</view>
 
 		</view>
 
 		<view class="weui-form__opr-area ">
 			<button type="primary" bindtap="chooseIt">就选它了</button>
 		</view>
-
+		<view class="adContainer">
+			<ad unit-id="adunit-3bef9360b91d243a" ></ad>
+		</view>
 		<view class="weui-form__extra-area ">
 			<view class="weui-footer">
 				<view class="weui-footer__text">点击姓名换一个</view>

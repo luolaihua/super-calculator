@@ -8,14 +8,16 @@
 	</zhuanpan>
 
 	<view style='margin-top:50rpx'></view>
-
-	<view class='juedinoption' wx:for='{{myJueding}}' wx:key='key' wx:if='{{index<4 && share}}' bindtap='xiaojueding' data-idx='{{index}}'>{{item.option}}</view>
-
-
+<!--
+-->
+	<view class='juedinoption' wx:for='{{myJueding}}' wx:key='key' wx:if='{{index<3 && share}}' bindtap='xiaojueding' data-idx='{{index}}'>{{item.option}}</view>
 
 </view>
-
-
+<!--
+		<view style="width:100vw;margin-top:30rpx;">
+		<ad unit-id="adunit-53a2a4d67b527fd2"></ad>
+	</view>
+-->
 
 <view class="switchBtn">
 	<view class="switchItem" bindtap="toChoose">

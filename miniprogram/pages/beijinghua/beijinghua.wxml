@@ -15,7 +15,7 @@
 					</view>
 				</view>
 			</view>
-			<scroll-view scroll-y='true' style="height:700rpx">
+			<scroll-view scroll-y='true' style="height:300rpx">
 				<view class="content" >
 					<text selectable='true'>
 					{{content}}
@@ -28,10 +28,12 @@
 		<view class="weui-form__opr-area ">
 			<button type="primary" bindtap="clear">清除</button>
 		</view>
-
+		<view class="adContainer">
+			<ad unit-id="adunit-2f3451bf3fc2cca4" ></ad>
+		</view>
 		<view class="weui-form__extra-area ">
 			<view class="weui-footer">
-				<view class="weui-footer__text">点击或滑动标题切换语言</view>
+				<view class="weui-footer__text">点击或滑动上方语言标题切换语言</view>
 				<view class="weui-footer__text">Copyright © 2019-2020 仅供娱乐</view>
 			</view>
 		</view>

@@ -9,9 +9,9 @@ page,.page{height:100%;}
 
 }
 .weui-form__opr-area {
-  margin-bottom: 58px
+  margin-bottom: 30px
 }
 
 .weui-form__opr-area:last-child {
-  margin-bottom: 80px
+  margin-bottom: 50px
 }

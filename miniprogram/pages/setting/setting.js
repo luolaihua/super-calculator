@@ -3,22 +3,34 @@
 var app = getApp();
 const myApi = require('../util/myApi')
 const imgUrl = require('../util/imgUrl')
+//let rewardedVideoAd = null
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    feedBackUrl:imgUrl.feedbackUrl,
-    editUrl:imgUrl.bigWheel_edit,
-    peopleUrl:imgUrl.human,
-    touchUrl:imgUrl.setting_touchUrl,
+    adUrl:imgUrl.adUrl,
+    feedBackUrl: imgUrl.feedbackUrl,
+    editUrl: imgUrl.bigWheel_edit,
+    peopleUrl: imgUrl.human,
+    touchUrl: imgUrl.setting_touchUrl,
     isVibrate_setting: false,
     openId: '',
     nickName: '',
     avatarUrl: ''
   },
-  changeAvatar:function(){
+  showAd() {
+    rewardedVideoAd.show()
+      .catch(() => {
+        rewardedVideoAd.load()
+          .then(() => rewardedVideoAd.show())
+          .catch(err => {
+            console.log('激励视频 广告显示失败')
+          })
+      })
+  },
+  changeAvatar: function () {
     wx.navigateTo({
       url: '../imageEdit/imageEdit',
     })
@@ -65,18 +77,18 @@ Page({
           confirmText: '我知道了',
           confirmColor: '#3CC51F',
           success: (result) => {
-            if(result.confirm){
-              
+            if (result.confirm) {
+
             }
           },
-          fail: ()=>{},
-          complete: ()=>{}
+          fail: () => {},
+          complete: () => {}
         });
-        
+
 
         that.setData({
-          nickName:'互联网冲浪选手',
-          avatarUrl:'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/f8.png?sign=631f4b204fb7014de0ff373a5f1a37a4&t=1586346749'
+          nickName: '互联网冲浪选手',
+          avatarUrl: 'https://6c75-luo-r5nle-1301210100.tcb.qcloud.la/images/f8.png?sign=631f4b204fb7014de0ff373a5f1a37a4&t=1586346749'
         })
       }
     })
@@ -88,7 +100,7 @@ Page({
   sendMessage: function () {
     wx.getSetting({
       withSubscriptions: true,
-      success (res) {
+      success(res) {
         console.log(res.authSetting)
         // res.authSetting = {
         //   "scope.userInfo": true,
@@ -125,7 +137,20 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    // if (wx.createRewardedVideoAd) {
+    //   rewardedVideoAd = wx.createRewardedVideoAd({
+    //     adUnitId: 'adunit-9eace7c24b0b63ae'
+    //   })
+    //   rewardedVideoAd.onLoad(() => {
+    //     console.log('onLoad event emit')
+    //   })
+    //   rewardedVideoAd.onError((err) => {
+    //     console.log('onError event emit', err)
+    //   })
+    //   rewardedVideoAd.onClose((res) => {
+    //     console.log('onClose event emit', res)
+    //   })
+    // }
     /*     var that = this
         wx.cloud.downloadFile({
           fileID: 'cloud://luo-r5nle.6c75-luo-r5nle-1301210100/t1.jpg',
@@ -154,9 +179,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    
+
     var nickName = wx.getStorageSync('nickName')
-    var avatarUrl =  wx.getStorageSync('avatarUrl')
+    var avatarUrl = wx.getStorageSync('avatarUrl')
     var isVibrate_setting = wx.getStorageSync('isVibrate_setting')
     if (isVibrate_setting === '') {
       wx.setStorageSync('isVibrate_setting', false)

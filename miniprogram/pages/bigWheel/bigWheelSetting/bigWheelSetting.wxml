@@ -41,4 +41,7 @@
       </view>
     </view>
 </view>
+	<view style="width:100vw;margin-top:100rpx;">
+		<ad unit-id="adunit-9e9d1d8eb604a634" ></ad>
+	</view>
 </view>

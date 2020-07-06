@@ -36,8 +36,8 @@
   }
   .avatar {
     border-radius: 50%;
-    width: 8vh;
-    height: 8vh;
+    width: 10vh;
+    height: 10vh;
     margin: 3vh;
   }
   .userInfo{
@@ -78,4 +78,8 @@
     width: 40px;
     align-items: center;
     justify-content: center;
+  }
+  .adContainer {
+    margin-top: 20px;
+    width: 100%;
   }

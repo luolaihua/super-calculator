@@ -2,6 +2,7 @@
 var math = require('../util/math.min.js');
 
 var app = getApp()
+let interstitialAd = null
 
 function dataPro(data, rowA, coloumA) {
   var d = []
@@ -540,6 +541,12 @@ Page({
   },
   //功能为等于号
   show: function (e) {
+     // 在适合的场景显示插屏广告
+     if (interstitialAd) {
+      interstitialAd.show().catch((err) => {
+        console.error(err)
+      })
+    }
     var dataA = this.data.dataA
     var rowA = this.data.rowA
     var coloumA = this.data.coloumA
@@ -702,6 +709,20 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    if (wx.createInterstitialAd) {
+      interstitialAd = wx.createInterstitialAd({
+        adUnitId: 'adunit-92fedd0b6cb01491'
+      })
+      interstitialAd.onLoad(() => {
+        console.log('onLoad event emit')
+      })
+      interstitialAd.onError((err) => {
+        console.log('onError event emit', err)
+      })
+      interstitialAd.onClose((res) => {
+        console.log('onClose event emit', res)
+      })
+    }
 
   },
 
@@ -716,7 +737,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+   
   },
 
   /**

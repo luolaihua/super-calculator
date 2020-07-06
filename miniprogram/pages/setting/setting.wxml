@@ -35,6 +35,15 @@
 </button>
 
 <!--
+<button class="btn-box" style="width: calc(100% - 20px);" bindtap="showAd">
+	<view class="modules_title_box">观看广告鼓励作者</view>
+	<image class="modules_icon_small" mode="scaleToFill" src="{{adUrl}}" />
+</button>
+-->
+<view class="adContainer">
+	<ad unit-id="adunit-7e6b6cc3f1d032c8" bindload="adLoad" binderror="adError" bindclose="adClose"></ad>
+</view>
+<!--
 	<button bindtap="sendMessage">发送订阅消息</button>
 <button open-type="getUserInfo" bindgetuserinfo="onGetUserInfo" type="primary">登录</button>
 <button bindtap="getOpenId">获取OPID</button>
